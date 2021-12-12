@@ -1,0 +1,7 @@
+= Numerical algorithms for data modeling (Ivan Markovsky and Konstantin Usevich)
+
+We consider exact and approximate fitting of data by models. The problems are posed in the behavioral setting, i.e., the models are viewed as sets of outcomes and are not a priori bound to particular representations. This formulation gives freedom in the choice of the most suitable representation for a particular purpose. 
+
+Data fitting by dynamic models is the subject of system identification. We treat the following exact identification problem: given a finite time series find the least complex (minimal number of input and state variables) linear time-invariant system that fits the data. Algorithms aiming at different representations of the system are developed and implemented in a ready to use software.
+
+The approximate identification problem considered is defined as minimization of the distance from a given time series to a trajectory of a linear time-invariant system, subject to the constraint that the system is of a bounded complexity. There is no a priori distinction between input and output variables and the approximation error is not assumed to be a stochastic process.

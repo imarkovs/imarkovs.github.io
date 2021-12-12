@@ -1,0 +1,177 @@
+<html>
+<head><title>ELEC 3035: Control System Design</title></head>
+<body>
+
+<center>
+<h1>ELEC 3035: Control System Design</h1>
+</center>
+<center>
+<h2><a href="http://www.ecs.soton.ac.uk/">School of Electronics and Computer Science</a></h2>
+<h2><a href="http://www.soton.ac.uk/">University of Southampton</a></h2>
+</center>
+
+<hr>
+
+<UL>
+<LI> <a href="#info">Course information</a>
+<LI> <a href="#lectures">Lecture slides</a>
+<LI> <a href="#tutorials">Handouts for the tutorials</a>
+<LI> <a href="#exams">Exams</a>
+<LI> <a href="#examples">Numerical examples</a>
+
+</UL>
+
+<hr>
+
+<h2><a NAME="announcements">Announcements</h2>
+
+<ul>
+<li> 22/01: More practice problems and solutions are added.
+<li> 16/01: Practice problems are added in section <a href="#exams">"Exams"</a>.
+<li> 12/11: Matlab code that reproducing the numerical examples in the lectures and tutorials is added in section <a href="#examples">"Numerical examples"</a>. 
+<li> 12/11: Solutions for the quiz on controllability are added in section <a href="#tutorials">"Exams"</a>.
+<li> 26/10: Solutions and histogram of results for the linear algebra quiz is added in section <a href="#tutorials">"Exams"</a>.
+<li> 16/10: The next session is Tuesday 21 October from 8:15-10:00 in Building 13, room 3021. We will start Lecture 3 "State space and polynomial representations". An excellent background reading for the material in this lecture with lots of physical examples is the paper <a href="http://homes.esat.kuleuven.be/~jwillems/Articles/JournalArticles/2007.1.pdf">The behavioral approach to open and interconnected systems</a> by <a href="http://homes.esat.kuleuven.be/~jwillems/">Jan Willems.</a>
+<li> 15/10: <a href="http://www.ecs.soton.ac.uk/~im/gradcourse/l1_notes.pdf">Lecture notes</a> on "Review of linear algebra".
+<li> 9/10: Problems for the first tutorial session are posted in section <a href="#tutorials">"Handouts for the tutorials"</a>. 
+<li> 9/10: The first tutorial session will take place Friday 17:00-18:00, Building 32, room 3077. From next week on the tutorials are moved to Tuesday 8:15-9:00 in Building 13, room 3021. 
+<li> 29/09: Review the material on linear algebra from MATH1017.
+</ul>
+
+<hr>
+
+<h2><a NAME="info">Course information</h2>
+
+<p><b>Lectures:</b> 
+
+<ul>
+<li> Tuesday 9:00-10:00, Building 13, room 3021 
+<li> Wednesday 10:00-11:00, Building 13, room 3021 
+</ul>
+
+<p><b>Tutorials:</b> 
+
+<ul>
+<li> Friday 17:00-18:00, Building 32, room 3077. <font COLOR="#FF0000">From second week on, Tuesday 8:15-9:00, Building 13, room 3021.</font>
+</ul>
+
+<p><b>Instructors:</b> 
+
+<ul>
+<li> <a href="http://www.ecs.soton.ac.uk/people/etar">Eric Rogers</a>, Building 1, room 2041, Tel. 8059 2197, <tt><a href="mailto:etar@ecs.soton.ac.uk">etar@ecs.soton.ac.uk</a></tt>
+<li> <a href="http://www.ecs.soton.ac.uk/people/im">Ivan Markovsky</a>, Building 1, room 2029, Tel. 8059 8715, <tt><a href="mailto:im@ecs.soton.ac.uk">im@ecs.soton.ac.uk</a></tt>, Office hours: Wednesday 9:00-10:00.
+</ul>
+
+<p><b>References:</b> 
+
+<ul>
+<li><cite><a href="http://www.cds.caltech.edu/~murray/amwiki/Main_Page">Feedback Systems: An Introduction for Scientists and Engineers</a></cite>, K. Astrom and R. Murray</li>
+
+<p> Background reading on control theory.
+
+<li><cite>Computer-controlled systems: theory and design</cite>, K. Astrom and B. Wittenmark</li>
+
+<p> Covers the material of lectures 6-9. 
+
+<li><cite>Introduction to linear algebra</cite>, G. Strang</li>
+
+<p> An excellent and very readable text for lecture 2.
+
+<li><cite>Introduction to mathematical systems theory: A behavioral approach</cite>, J.W. Polderman and J.C. Willems</li>
+
+<p> Advanced text covering the material of lectures 3-9 (in more details).
+</ul>
+
+<p><b>Grading:</b> 100% on written exam
+
+<hr>
+
+<h2><a NAME="lectures">Lecture slides</h2>
+
+<h3>Part I: Linear systems</h3>
+
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/l0.pdf">Overview</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l0_2x2.pdf">4-on-1</a>)
+
+<ol>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l1.pdf">Review of linear algebra</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l1_2x2.pdf">4-on-1</a>) <a href="http://www.ecs.soton.ac.uk/~im/gradcourse/l1_notes.pdf">Notes</a></li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l2.pdf">State space and polynomial representations</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l2_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l3.pdf">Autonomous systems</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l3_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l4.pdf">Controllability and state transfer</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l4_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l5.pdf">Observability and state estimation</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l5_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l6.pdf">Pole placement by state feedback</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l6_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l7.pdf">Observer design by pole placement</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l7_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l8.pdf">Polynomial approach for pole placement</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l8_2x2.pdf">4-on-1</a>)</li>
+</ol>
+
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/review.pdf">Review of Part I</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/review_2x2.pdf">4-on-1</a>)
+
+<h3>Part II: Nonlinear systems</h3>
+
+<ul>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/nlssm.pdf">Mathematical modelling of nonlinear systems</a>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/lyapt.pdf">Lyapunov analysis, part 1</a>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/lyapt2.pdf">Lyapunov analysis, part 2</a>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/cardm.pdf">Describing functions</a>
+</ul>
+
+<hr>
+
+<h2><a NAME="tutorials">Handouts for the tutorials</h2>
+
+<h4>Part I: Linear systems</h4>
+
+<ol>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial1.pdf">Linear algebra</a> (problems + solutions)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial2.pdf">State space and polynomial representations</a> (problems + solutions)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial3.pdf">Autonomous dynamical systems</a> (problems + solutions) and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial2.mat">data file for the simulation examples</a> (Matlab mat-file)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial4.pdf">Controllability and observability</a> (problems + solutions)
+</ol>
+
+<h4>Part II: Nonlinear systems</h4>
+
+<hr>
+
+<h2><a NAME="exams">Exams, quizzes, practice problems</h2>
+
+<ul>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/practice-problems.pdf">Practice problems</a>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz3.pdf">2008/09 quiz on controllability</a> and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz3_sol.pdf">solutions</a></li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz2.pdf">2008/09 quiz on linear algebra</a> and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz2_sol.pdf">solutions</a></li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam08.pdf">Exam January 2008</a>, <a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam08sol1.pdf">solutions for part 1</a>, and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam08sol2.pdf">solutions for part 2</a></li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz1.pdf">2007/08 quiz on linear algebra</a></li>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/exam_el335_06.pdf">Exam 2006</a></li>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/exam2005con.pdf">Exam 2005</a></li>
+</ul>
+
+<hr>
+
+<h2><a NAME="examples">Numerical examples</h2>
+
+<ul>
+<li> Static vs deadbeat control (lecture 0)
+<p> <a href="http://www.ecs.soton.ac.uk/~im/elec3035/l0sys.mat">data file</a> and 
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/l0.m">mfile</a>
+</li>
+<li> Vector field of harmonic oscillator (lecture 3) 
+<p> <a href="http://www.ecs.soton.ac.uk/~im/elec3035/l3.m">l3.m</a>, 
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/vectfield.m">vectfield.m</a>
+</li>
+<li> Minimum energy state transfer (lecture 4)
+<p> <a href="http://www.ecs.soton.ac.uk/~im/elec3035/l4.m">l4.m</a></li>
+<li> Estimation uncertainty (lecture 5)
+<p> <a href="?http://www.ecs.soton.ac.uk/~im/elec3035/l5.m">l5.m</a></li>
+<li> Output feedback deadbeat control (lecture 7)
+<p> <a href="?http://www.ecs.soton.ac.uk/~im/elec3035/l7.m">l7.m</a></li>
+<li> Linear least squares approximation of a quadratic function (tutorial 1)
+<p> <a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial1.m">tutorial1.m</a></li>
+<li> Prediction and identification of an autonomous system (tutorial 3) 
+<p> <a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial2.m">tutorial3.m</a>, 
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/sspredict.m">sspredict.m</a>, 
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/polpredict.m">polpredict.m</a>, 
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/ident.m">ident.m</a> 
+</li>
+</ul>
+
+<hr>
+
+</body></html>

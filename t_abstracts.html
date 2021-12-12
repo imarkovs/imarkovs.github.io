@@ -1,0 +1,225 @@
+
+<table>
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="florian">1</a>]
+</td>
+<td class="bibtexitem">
+F.&nbsp;Dörfler, J.&nbsp;Coulson, and I.&nbsp;Markovsky.
+ Bridging direct &amp; indirect data-driven control formulations via
+  regularizations and relaxations.
+ Technical report, arXiv:2101.01273, 2021.
+[&nbsp;<a href="t_bib.html#florian">bib</a>&nbsp;| 
+<a href="https://arxiv.org/abs/2101.01273">pdf</a>&nbsp;]
+<blockquote>
+We discuss connections between sequential system identification and control for linear time-invariant systems, which we term indirect data-driven control, as well as a direct data-driven control approach seeking an optimal decision compatible with recorded data assembled in a Hankel matrix and robustified through suitable regularizations. We formulate these two problems in the language of behavioral systems theory and parametric mathematical programs, and we bridge them through a multi-criteria formulation trading off system identification and control objectives. We illustrate our results with two methods from subspace identification and control: namely, subspace predictive control and low-rank approximation which constrain trajectories to be consistent with a non-parametric predictor derived from (respectively, the column span of) a data Hankel matrix. In both cases we conclude that direct and regularized data-driven control can be derived as convex relaxation of the indirect approach, and the regularizations account for an implicit identification step. Our analysis further reveals a novel regularizer and sheds light on the remarkable performance of direct methods on nonlinear systems.
+</blockquote>
+<p><blockquote>
+Keywords: multi-objective optimization, system identification, data-driven control, DeePC, behavioral system theory
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="ddsim-narx">2</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky.
+ Data-driven simulation of nonlinear systems via linear time-invariant
+  embedding.
+ Technical report, Vrije Universiteit Brussel, 2021.
+[&nbsp;<a href="t_bib.html#ddsim-narx">bib</a>&nbsp;| 
+<a href="http://arxiv.org/abs/https://imarkovs.github.io/publications/ddsim-narx.pdf">arXiv</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/ddsim-narx.pdf">pdf</a>&nbsp;]
+<blockquote>
+Nonparameteric representations of linear time-invariant systems that use Hankel matrices constructed from data are the basis for data-driven signal processing and control methods of linear time-invariant systems. This paper extends the approach to data-driven simulation of a class of nonlinear systems. The key step of the generalization is an embedding result that is also of independent interest. The behavior of a polynomial time-invariant system is included into the behavior of a linear time-invariant system. A subclass of polynomial time-invariant systems that leads to a computationally tractable data-driven simulation problem is generalized bilinear. It includes Hammerstein, finite-lag Volterra, and biliner systems. The method proposed is illustrated and compared with the classical model-based method on simulation examples in the errors-invariables setup as well as benchmark real-life data sets.
+</blockquote>
+<p><blockquote>
+Keywords: behavioral approach, system identification, data-driven methods, nonlinear systems.
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="identifiability">3</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky and F.&nbsp;Dörfler.
+ Identifiability in the behavioral setting.
+ Technical report, Vrije Universiteit Brussel, 2020.
+[&nbsp;<a href="t_bib.html#identifiability">bib</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/identifiability.pdf">pdf</a>&nbsp;| 
+<a href="https://imarkovs.github.io/software/identifiability-code.pdf">software</a>&nbsp;]
+<blockquote>
+The behavioral approach to system identification starts from a given time series without a priori separation of the variables into inputs and outputs. The available identifiability conditions however require persistency of excitation of an input component of the time series which implicitly assumes that an input/output partitioning of the variables is given. In addition, a standard identifiability assumption is that the true data generating system is controllable. The conditions of controllability and persistency of excitation are sufficient but not necessary.<p>
+Motivated by the need to infer linear-time invariant models from rank deficient Hankel matrices and to use such matrices as data-driven predictors in signal processing and control, we derive necessary and sufficient identifiability conditions that do not require a priori given input/output partitioning of the variables nor controllability of the true system. The prior knowledge needed for identifiability is the number of inputs, lag, and order of the true system. The results are based on a modification of the notion of a most powerful unfalsified model for finite data and a novel algorithm for its computation. <p>
+The results in the paper are derived assuming exact data, however, low-rank approximation allows their application in the case of noisy data. We compare empirically low-rank approximation of the Hankel, Page, and trajectory matrices in the errors-in-variables setting. Although the Page and trajectory matrices are unstructured, the parameter estimates obtained from them are less accurate than the one obtained from the Hankel matrix.
+
+</blockquote>
+<p><blockquote>
+Keywords: Behavioral system theory, System identification, Most powerful unfalsified model, Hankel matrix.
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="sem">4</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky and D.&nbsp;Toon Verbeke.
+ Sum-of-exponentials modeling via Hankel low-rank approximation with
+  palindromic kernel structure.
+ Technical report, Dept. ELEC, Vrije Universiteit Brussel, 2018.
+[&nbsp;<a href="t_bib.html#sem">bib</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/sem.pdf">.pdf</a>&nbsp;]
+<blockquote>
+Estimation of a sum-of-damped-exponentials signal from noisy samples of the signal is a classic signal processing problem. It can be solved by maximum likelihood as well as suboptimal subspace methods. In this paper, we consider the related problem of sum-of-exponentials modeling, in which the model is constrained to have no damping. This constraint is difficult to impose in the subspace methods. We develop solution methods using an equivalent Hankel matrix low-rank approximation formulation. A necessary condition for the model to have no damping is that a vector in the kernel of the Hankel matrix has palindromic structure. Imposing this necessary condition in solution methods is trivial. Simulation results show that even for a relatively high noise-to-signal ratios the necessary condition is in fact also sufficient, i.e., the identified model has no dumping. Another contribution of the paper is a method for sum-of-exponentials modeling based on circulant embedding: low-rank approximation of a circulant matrix constructed from the given data. This method imposes the constraint that the model has no damping plus an addition constraint that the model frequencies are on the discrete-Fourier transform's grid.
+</blockquote>
+<p><blockquote>
+Keywords: system identification, sum-of-exponentials modeling, low-rank approximation, behavioral approach, subspace methods, circulant embedding.
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="uncontr">5</a>]
+</td>
+<td class="bibtexitem">
+N.&nbsp;Guglielmi and I.&nbsp;Markovsky.
+ Computing the distance to uncontrollability: the SISO case.
+ Technical report, Vrije Univ. Brussel, 2014.
+[&nbsp;<a href="t_bib.html#uncontr">bib</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/uncontr.pdf">pdf</a>&nbsp;]
+<blockquote>
+In this paper, the problem of computing the distance from a given linear time-invariant system to the nearest uncontrollable system is posed and solved in the behavioral setting. In the case of a system with two external variables, the problem is restated as a Sylvester structured distance to singularity problem. The structured distance to singularity problem is then solved by integrating a system of ordinary differential equations which describes the gradient associated to the cost functional.
+An advantage of the method with respect to other approaches is in its capability to include further constraints. Numerical simulations also show that the method is more robust to the initial approximation than the Newton-type methods.
+</blockquote>
+<p><blockquote>
+Keywords: Sylvester matrix, structured pseudospectrum, structured low-rank approximation, ODEs on matrix manifolds, structured distance to singularity, distance to uncontrollability, behavioral approach.
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="M08">6</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky.
+ Results on the PASCAL challenge &ldquo;Simple causal effects in time
+  series&rdquo;.
+ Technical Report 16779, ECS, Univ. of Southampton, 2008.
+[&nbsp;<a href="t_bib.html#M08">bib</a>&nbsp;| 
+<a href="http://eprints.soton.ac.uk/266779/1/challenge.pdf">pdf</a>&nbsp;| 
+<a href="http://eprints.soton.ac.uk/266779/2/challenge.tar">software</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="MVV06">7</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky, R.&nbsp;J. Vaccaro, and S.&nbsp;Van Huffel.
+ System identification by optimal subspace estimation.
+ Technical Report 06--210, Dept. EE, K.U.Leuven, 2006.
+[&nbsp;<a href="t_bib.html#MVV06">bib</a>&nbsp;| 
+<a href="ftp://ftp.esat.kuleuven.be/pub/SISTA/markovsky/reports/06-210.ps.gz">.ps.gz</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="wtls">8</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
+ A Matlab toolbox for weighted total least squares approximation.
+ Technical Report 04--220, Dept. EE, K.U.Leuven, 2004.
+[&nbsp;<a href="t_bib.html#wtls">bib</a>&nbsp;| 
+<a href="ftp://ftp.esat.kuleuven.be/pub/SISTA/markovsky/reports/04-220.ps.gz">.ps.gz</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="detss-software">9</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky, J.&nbsp;C. Willems, P.&nbsp;Rapisarda, and B.&nbsp;De Moor.
+ Algorithms for deterministic balanced subspace identification.
+ Technical Report 04--13, Dept. EE, K.U.Leuven, 2004.
+[&nbsp;<a href="t_bib.html#detss-software">bib</a>&nbsp;| 
+<a href="ftp://ftp.esat.kuleuven.be/pub/SISTA/markovsky/reports/04-13.ps.gz">.ps.gz</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="MV03b">10</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
+ Software for structured total least squares estimation: User's guide.
+ Technical Report 03--136, Dept. EE, K.U.Leuven, 2003.
+[&nbsp;<a href="t_bib.html#MV03b">bib</a>&nbsp;| 
+<a href="ftp://ftp.esat.kuleuven.be/pub/SISTA/markovsky/reports/03-136.ps.gz">.ps.gz</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="KMV02a">11</a>]
+</td>
+<td class="bibtexitem">
+A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
+ About the convergence of the computational algorithm for the EW-TLS
+  estimator.
+ Technical Report 02--49, Dept. EE, K.U.Leuven, 2002.
+[&nbsp;<a href="t_bib.html#KMV02a">bib</a>&nbsp;| 
+<a href="ftp://ftp.esat.kuleuven.be/pub/SISTA/markovsky/reports/02-49.ps.gz">.ps.gz</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="MSV00">12</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky, J.&nbsp;Suykens, and S.&nbsp;Van Huffel.
+ Linear parametric design: Approximation, estimation and control.
+ Technical Report 01--39, Dept. EE, K.U.Leuven, December 2000.
+[&nbsp;<a href="t_bib.html#MSV00">bib</a>&nbsp;| 
+<a href="ftp://ftp.esat.kuleuven.be/pub/SISTA/markovsky/reports/01-39b.ps.gz">.ps.gz</a>&nbsp;]
+
+</td>
+</tr>
+</table><hr><p><em>This file was generated by
+<a href="http://www.lri.fr/~filliatr/bibtex2html/">bibtex2html</a> 1.98.</em></p>

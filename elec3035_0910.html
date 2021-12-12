@@ -1,0 +1,150 @@
+<html>
+<head><title>ELEC 3035: Control System Design</title></head>
+<body>
+
+<center>
+<h1>ELEC 3035: Control System Design</h1>
+</center>
+<center>
+<h2><a href="http://www.ecs.soton.ac.uk/">School of Electronics and Computer Science</a></h2>
+<h2><a href="http://www.soton.ac.uk/">University of Southampton</a></h2>
+</center>
+
+<hr>
+
+<UL>
+<LI> <a href="#info">Course information</a>
+<LI> <a href="#handouts">Handouts</a>
+<LI> <a href="#exams">Exams</a>
+
+</UL>
+
+<hr>
+
+<h2><a NAME="announcements">Announcements</h2>
+<ul>
+<li> 07/01, 2008/09 exam and solutions are added for practice
+<li> 13/11, notes for part 2 of the course are available from <a href="https://secure.ecs.soton.ac.uk/notes/elec3035/">this page.</a>
+<li> 09/11, solutions to the quiz on controllability are added in section <a href="#exams">exams</a>.
+<li> 05/11, <font COLOR="#FF0000">The session on Monday, 9 November, 16:00-18:00, will take place in Building 13, room 3021.</font>  
+<li> 21/10, solutions to the exercises of the second lab session are added in the <a href="http://www.ecs.soton.ac.uk/~im/elec3035/lab2.pdf">pdf document</a>.
+<li> 21/10, <font COLOR="#FF0000">The session on Monday, 26 October, 16:00-18:00, will take place in Building 13, room 3021.</font> 
+<li> 16/10, solutions to the second quiz on linear algebra are added in section <a href="#exams">exams</a>.
+<li> 13/10, solutions to the exercises of the first lab session are added in the <a href="http://www.ecs.soton.ac.uk/~im/elec3035/lab1.pdf">pdf document</a>.
+<p> In order to make your Matlab coding more efficient, consider writing the code in a file (and execute it by calling the file) rather than directly on the command line. You can start Mtalab's editor by typing "edit" in Matlab.
+<p> Please spend 15 minutes to read this <a href="http://www.math.utah.edu/lab/ms/matlab/matlab.html">short tutorial</a> which contains most of what you need for doing the exercises.
+<p> 
+<li> 11/10, solutions to the quiz on linear algebra are added in section <a href="#exams">exams</a>.
+</ul>
+<hr>
+
+<h2><a NAME="info">Course information</h2>
+
+<p><b>Lectures:</b> 
+
+<ul>
+<li> Friday 13:00-14:00, Building 13, room 3021
+<li> Monday 16:00-18:00, from 2 November to 11 January, Building 13, room 3021
+</ul>
+
+<p><b>Lab sessions:</b> 
+<ul>
+<li> Monday 16:00-18:00, on 5, 12, 19, and 26 October, Building 58, room 1053 
+</ul>
+
+<p><b>Lecturers:</b> 
+
+<ul>
+<li> <a href="http://www.ecs.soton.ac.uk/people/etar">Eric Rogers</a>, Building 1, room 2041, Tel. 8059 2197, <tt><a href="mailto:etar@ecs.soton.ac.uk">etar@ecs.soton.ac.uk</a></tt>
+		    <li> <a href="http://www.ecs.soton.ac.uk/people/im">Ivan Markovsky</a>, Building 1, room 2029, Tel. 8059 8715, <tt><a href="mailto:im@ecs.soton.ac.uk">im@ecs.soton.ac.uk</a></tt>, Office hours: Wednesday 17:00-18:00, <font COLOR="#FF0000">except 21 October</font>
+</ul>
+
+<p><b>References:</b> 
+
+<ul>
+<li><cite><a href="http://www.cds.caltech.edu/~murray/amwiki/Main_Page">Feedback Systems: An Introduction for Scientists and Engineers</a></cite>, K. Astrom and R. Murray</li>
+
+<p> Background reading on control theory.
+
+<li><cite>Introduction to linear algebra</cite>, G. Strang</li>
+
+<p> An excellent and very readable text for lecture 1.
+
+<li><cite>Introduction to mathematical systems theory: A behavioral approach</cite>, J.W. Polderman and J.C. Willems</li>
+
+<p> Advanced text covering the material of lectures 3-9 (in more details).
+
+<li><cite>Computer-controlled systems: theory and design</cite>, K. Astrom and B. Wittenmark</li>
+
+<p> Covers the material of lectures 6-9. 
+</ul>
+
+<p><b>Prerequisites:</b> 
+<ul>
+<li> MATH 1013, MATH 1017, MATH 2021, and MATH 2022 (linear algebra and differential equations)
+<li> ELEC 1011: Communications and control (dynamical systems, convolution, transfer function)
+<li> ELEC 2019: Control and systems engineering (frequency domain control methods)
+<li> MATLAB (<a href="http://www.math.utah.edu/lab/ms/matlab/matlab.html">short tutorial</a> 
+and a <a href="http://www.maths.dundee.ac.uk/~ftp/na-reports/MatlabNotes.pdf">longer one</a>)
+</ul>
+
+<p><b>Grading:</b> 100% on written exam
+
+<hr>
+
+<h2><a NAME="lectures">Handouts</h2>
+
+<h3>Part I: Linear systems</h3>
+
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/l0.pdf">Overview</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l0_2x2.pdf">4-on-1</a>)
+
+<ol>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l1.pdf">Review of linear algebra</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l1_2x2.pdf">4-on-1</a>) 
+
+<p><a href="http://www.ecs.soton.ac.uk/~im/gradcourse/l1_notes.pdf">Notes</a>
+<p><a href="http://www.ecs.soton.ac.uk/~im/elec3035/lab1.pdf">Exercises for the lab sessions</a>
+<p><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial1.pdf">Additional problems for homework</a></li>
+
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l2.pdf">State space and polynomial representations</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l2_2x2.pdf">4-on-1</a>)</li>
+
+<p><a href="http://www.ecs.soton.ac.uk/~im/elec3035/lab2.pdf">Exercises for the lab sessions</a>
+<p><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial2.pdf">Additional problems for homework</a></li>
+
+
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l3.pdf">Autonomous systems</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l3_2x2.pdf">4-on-1</a>)</li>
+
+<p><a href="http://www.ecs.soton.ac.uk/~im/elec3035/lab3.pdf">Exercises for the lab sessions</a>
+<p><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial3.pdf">Additional problems for homework</a> and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial2.mat">data file for the simulation examples</a>
+
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l4.pdf">Controllability and state transfer</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l4_2x2.pdf">4-on-1</a>)</li>
+
+<p><a href="http://www.ecs.soton.ac.uk/~im/elec3035/lab4.pdf">Exercises for the lab sessions</a>
+<p><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial4.pdf">Additional problems for homework</a>
+
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l5.pdf">Observability and state estimation</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l5_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l6.pdf">Pole placement by state feedback</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l6_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l7.pdf">Observer design by pole placement</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l7_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l8.pdf">Polynomial approach for pole placement</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l8_2x2.pdf">4-on-1</a>)</li>
+</ol>
+
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/review.pdf">Review of Part I</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/review_2x2.pdf">4-on-1</a>)
+
+<h3><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/">Part II: Nonlinear systems</a> (requires ECS login)</h3>
+
+<hr>
+
+<h2><a NAME="exams">Exams, quizzes, practice problems</h2>
+
+<ul>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz1.pdf">Quiz 1 on linear algebra</a> and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz1_sol.pdf">solutions</a></li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz2.pdf">Quiz 2 on linear algebra</a> and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz2_sol.pdf">solutions</a></li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz3.pdf">Quiz 3 on controllability</a> and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz3_sol.pdf">solutions</a></li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/practice-problems.pdf">Exam practice problems</a>
+			      <li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam09.pdf">Exam January 2009</a>, <a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam09sol1.pdf">solutions for part 1</a>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam08.pdf">Exam January 2008</a>, <a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam08sol1.pdf">solutions for part 1</a>, and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam08sol2.pdf">solutions for part 2</a></li>
+</li>
+</ul>
+
+<hr>
+
+</body></html>

@@ -1,0 +1,126 @@
+ [1] M. Zhang, I. Markovsky, C. Schretter, and J. D'hooge. Compressed ultrasound signal reconstruction using a low-rank and joint-sparse representation model. Transactions on Ultrasonics, Ferroelectrics, and Frequency Control, 2019.
+ [2] A. Fazzi, N. Guglielmi, and I. Markovsky. An ODE based method for computing the approximate greatest common divisor of polynomials. Numerical algorithms, 2018.
+ [3] I. Markovsky. A missing data approach to data-driven filtering and control. IEEE Trans. Automat. Contr., 62:1972-1978, April 2017.
+ [4] K. Usevich and I. Markovsky. Variable projection methods for approximate (greatest) common divisor computations. Theoretical Computer Science, 681:176-198, 2017.
+ [5] I. Markovsky and G. MercÃ¨re. Subspace identification with constraints on the impulse response. Int. J. Contr., 90:1728-1735, 2017.
+ [6] N. Guglielmi and I. Markovsky. An ODE based method for computing the distance of co-prime polynomials to common divisibility. SIAM Journal on Numerical Analysis, 55:1456-1482, 2017. [7] K. Usevich and I. Markovsky. Adjusted least squares fitting of algebraic hypersurfaces. Linear Algebra Appl., 502:243-274, 2016.
+     Systems &amp; Control Lett., 95:53-61, 2016. [ bib | pdf | software | Abstract ]
+ [9] I. Markovsky. Comparison of adaptive and model-free methods for dynamic
+     measurement. IEEE Signal Proc. Lett., 22(8):1094-1097, 2015. [ bib | pdf |
+     software | Abstract ]
+[10] I. Markovsky and R. Pintelon. Identification of linear time-invariant systems from
+     multiple experiments. IEEE Trans. Signal Process., 63(13):3549-3554, 2015. [ bib |
+     pdf | Abstract ]
+[11] I. Markovsky. An application of system identification in metrology. Control Eng.
+     Practice, 43:85-93, 2015. [ bib | pdf | software | Abstract ]
+[12] K. Usevich and I. Markovsky. Variable projection for affinely structured low-rank
+     approximation in weighted 2-norms. J. Comput. Appl. Math., 272:430-448, 2014.
+     [ bib | pdf | software | Abstract ]
+[13] I. Markovsky and K. Usevich. Software for weighted structured low-rank
+     approximation. J. Comput. Appl. Math., 256:278-292, 2014. [ bib | pdf | software |
+     Abstract ]
+[14] I. Markovsky. Recent progress on variable projection methods for structured low-
+     rank approximation. Signal Processing, 96PB:406-419, 2014. [ bib | pdf |
+     software | Abstract ]
+[15] K. Usevich and I. Markovsky. Optimization on a Grassmann manifold with application
+     to system identification. Automatica, 50:1656-1662, 2014. [ bib | pdf | software |
+     Abstract ]
+[16] I. Markovsky, J. Goos, K. Usevich, and R. Pintelon. Realization and identification
+     of autonomous linear periodically time-varying systems. Automatica, 50:1632-1640,
+     2014. [ bib | pdf | software | Abstract ]
+[17] M. Ishteva, K. Usevich, and I. Markovsky. Factorization approach to structured
+     low-rank approximation with applications. SIAM J. Matrix Anal. Appl., 35(3):1180-
+     1204, 2014. [ bib | pdf | software | Abstract ]
+[18] S. Rhode, K. Usevich, I. Markovsky, and F. Gauterin. A recursive restricted total
+     least-squares algorithm. IEEE Trans. Signal Process., 62(21):5652-5662, 2014.
+     [ bib | pdf | software | Abstract ]
+[19] I. Markovsky and K. Usevich. Structured low-rank approximation with missing data.
+     SIAM J. Matrix Anal. Appl., 34(2):814-830, 2013. [ bib | pdf | software |
+     Abstract ]
+[20] I. Markovsky. A software package for system identification in the behavioral
+     setting. Control Eng. Practice, 21(10):1422-1436, 2013. [ bib | pdf | software |
+     Abstract ]
+[21] F. Le, I. Markovsky, C. Freeman, and E. Rogers. Recursive identification of
+     Hammerstein systems with application to electrically stimulated muscle. Control
+     Eng. Practice, 20(4):386-396, 2012. [ bib | pdf | Abstract ]
+[22] I. Markovsky. On the complex least squares problem with constrained phase. SIAM J.
+     Matrix Anal. Appl., 32(3):987-992, 2011. [ bib | pdf | software | Abstract ]
+[23] I. Markovsky. Closed-loop data-driven simulation. Int. J. Contr., 83(10):2134-
+     2139, 2010. [ bib | pdf | software | Abstract ]
+[24] I. Markovsky, D. Sima, and S. Van Huffel. Total least squares methods. Wiley
+     Interdisciplinary Reviews: Comput. Stat., 2(2):212-217, 2010. [ bib | pdf |
+     Abstract ]
+[25] F. Le, I. Markovsky, C. Freeman, and E. Rogers. Identification of electrically
+     stimulated muscle models of stroke patients. Control Eng. Practice, 18(4):396-407,
+     2010. [ bib | pdf | Abstract ]
+[26] I. Markovsky. Bibliography on total least squares and related methods. Statistics
+     and Its Interface, 3:329-334, 2010. [ bib | pdf | Abstract ]
+[27] I. Markovsky and S. Mahmoodi. Least-squares contour alignment. IEEE Signal Proc.
+     Letters, 16(1):41-44, 2009. [ bib | pdf | software | Abstract ]
+[28] I. Markovsky and P. Rapisarda. Data-driven simulation and control. Int. J. Contr.,
+     81(12):1946-1959, 2008. [ bib | pdf | Abstract ]
+[29] I. Markovsky. Structured low-rank approximation and its applications. Automatica,
+     44(4):891-909, 2008. [ bib | pdf | software | Abstract ]
+[30] I. Markovsky and M. Niranjan. Approximate low-rank factorization with structured
+     factors. Comput. Statist. Data Anal., 54:3411-3420, 2008. [ bib | pdf | software |
+     Abstract ]
+[31] I. Markovsky and S. Van Huffel. Overview of total least squares methods. Signal
+     Processing, 87:2283-2302, 2007. [ bib | pdf | Abstract ]
+[32] S. Shklyar, A. Kukush, I. Markovsky, and S. Van Huffel. On the conic section
+     fitting problem. Journal of Multivariate Analysis, 98:588-624, 2007. [ bib | pdf |
+     Abstract ]
+[33] I. Markovsky and S. Van Huffel. Left vs right representations for solving weighted
+     low rank approximation problems. Linear Algebra Appl., 422:540-552, 2007. [ bib |
+     pdf | software | Abstract ]
+[34] M. Schuermans, I. Markovsky, and S. Van Huffel. An adapted version of the element-
+     wise weighted TLS method for applications in chemometrics. Chemometrics and
+     Intelligent Laboratory Systems, 85(1):40-46, 2007. [ bib | pdf | Abstract ]
+[35] A. Kukush, I. Markovsky, and S. Van Huffel. Estimation in a linear multivariate
+     measurement error model with a change point in the data. Comput. Statist. Data
+     Anal., 52(2):1167-1182, 2007. [ bib | pdf | Abstract ]
+[36] I. Markovsky, M. Rastello, A. Premoli, A. Kukush, and S. Van Huffel. The element-
+     wise weighted total least squares problem. Comput. Statist. Data Anal., 50(1):181-
+     209, 2005. [ bib | pdf | software | Abstract ]
+[37] A. Kukush, I. Markovsky, and S. Van Huffel. Consistency of the structured total
+     least squares estimator in a multivariate errors-in-variables model. J. Statist.
+     Plann. Inference, 133(2):315-358, 2005. [ bib | pdf | Abstract ]
+[38] I. Markovsky, S. Van Huffel, and R. Pintelon. Block-Toeplitz/Hankel structured
+     total least squares. SIAM J. Matrix Anal. Appl., 26(4):1083-1099, 2005. [ bib |
+     pdf | software | Abstract ]
+[39] I. Markovsky and B. De Moor. Linear dynamic filtering with noisy input and output.
+     Automatica, 41(1):167-171, 2005. [ bib | Abstract ]
+[40] I. Markovsky, J. C. Willems, P. Rapisarda, and B. De Moor. Algorithms for
+     deterministic balanced subspace identification. Automatica, 41(5):755-766, 2005.
+     [ bib | pdf | software | Abstract ]
+[41] I. Markovsky, J. C. Willems, S. Van Huffel, B. De Moor, and R. Pintelon.
+     Application of structured total least squares for system identification and model
+     reduction. IEEE Trans. Automat. Contr., 50(10):1490-1500, 2005. [ bib | pdf |
+     software | Abstract ]
+[42] J. C. Willems, P. Rapisarda, I. Markovsky, and B. De Moor. A note on persistency
+     of excitation. Systems &amp; Control Lett., 54(4):325-329, 2005. [ bib | pdf |
+     Abstract ]
+[43] I. Markovsky and S. Van Huffel. High-performance numerical algorithms and software
+     for structured total least squares. J. Comput. Appl. Math., 180(2):311-331, 2005.
+     [ bib | pdf | software | Abstract ]
+[44] M. Schuermans, I. Markovsky, P. Wentzell, and S. Van Huffel. On the equivalence
+     between total least squares and maximum likelihood PCA. Analytica Chimica Acta,
+     544(1-2):254-267, 2005. [ bib | pdf | Abstract ]
+[45] A. Kukush, I. Markovsky, and S. Van Huffel. Consistent estimation in an implicit
+     quadratic measurement error model. Comput. Statist. Data Anal., 47(1):123-147,
+     2004. [ bib | pdf | software | Abstract ]
+[46] I. Markovsky, A. Kukush, and S. Van Huffel. Consistent least squares fitting of
+     ellipsoids. Numerische Mathematik, 98(1):177-194, 2004. [ bib | pdf | software |
+     Abstract ]
+[47] I. Markovsky, S. Van Huffel, and A. Kukush. On the computation of the structured
+     total least squares estimator. Numer. Linear. Algebra Appl., 11:591-608, 2004.
+     [ bib | pdf | software | Abstract ]
+[48] A. Kukush, I. Markovsky, and S. Van Huffel. Consistent estimation in the bilinear
+     multivariate errors-in-variables model. Metrika, 57(3):253-285, 2003. [ bib |
+     pdf | Abstract ]
+[49] A. Kukush, I. Markovsky, and S. Van Huffel. Consistent fundamental matrix
+     estimation in a quadratic measurement error model arising in motion analysis.
+     Comput. Statist. Data Anal., 41(1):3-18, 2002. [ bib | pdf | Abstract ]
+[50] M. Lemmon, K. He, and I. Markovsky. Supervisory hybrid systems. IEEE Control
+     Systems Magazine, 19(4):42-55, August 1999. [ bib | Abstract ]
+===============================================================================
+This file was generated by bibtex2html 1.97.

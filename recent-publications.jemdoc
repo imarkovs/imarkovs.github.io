@@ -1,0 +1,95 @@
+# jemdoc: menu{MENU}{publications.html}
+# jemdoc: analytics{UA-42984386-1}
+= Recent publications 
+
+- *Software for weighted structured low-rank approximation*
+-- First revised version (accepted for publication): 
+[publications/slra.pdf paper], 
+[publications/slra-long.pdf paper with code], 
+[publications/slra-answer.pdf reviewers' comments and answer letter]
+-- Up-to-date version of the paper and the code is included in the [slra/software.html SLRA package.]
+
+~~~
+{}{}
+@Article{slra-software,
+  author  = {I. Markovsky and K. Usevich},
+  title   = {Software for weighted structured low-rank approximation},
+  volume  = {256},
+  pages   = {278--292},
+  year    = {2013},
+  journal = {J. Comput. Appl. Math.},
+}
+~~~
+
+- *Structured low-rank approximation with missing data*
+-- Original submission: 
+[publications/slra-ext-v1.pdf paper], 
+[publications/slra-ext-long-v1.pdf paper with code], 
+[publications/slra-ext-code-v1.tar code],
+[publications/slra-ext-answer1.pdf reviewers' comments and answer letter]
+-- First revised version: 
+[publications/slra-ext-v2.pdf paper], 
+[publications/slra-ext-long-v2.pdf paper with code], 
+[publications/slra-ext-code-v2.tar code],
+[publications/slra-ext-answer2.pdf reviewers' comments and answer letter]
+-- Second revised version (accepted for publication): 
+[publications/slra-ext.pdf paper], 
+[publications/slra-ext-long.pdf paper with code], 
+[publications/slra-ext-code.tar code]
+
+~~~
+{}{}
+@Article{slra-ext,
+  author   = {I. Markovsky and K. Usevich},
+  title    = {Structured low-rank approximation with missing data},
+  year     = {2013},
+  journal  = {SIAM. J. Matrix Anal. & Appl.},
+  vol      = {34},
+  issue    = {2},
+  pages    = {814--830},
+}
+~~~
+
+- *A software package for system identification in the behavioral setting*
+-- First revised version (accepted for publication): 
+[publications/ident.pdf paper], 
+[publications/ident-long.pdf paper with code], 
+[publications/ident.tar code],
+[publications/ident-answer.pdf reviewers' comments and answer letter], [ident-demo.html software demo]
+-- Up-to-date version of the paper and the code is included in the [slra/software.html SLRA package.]
+
+~~~
+{}{}
+@Article{ident,
+  author  = {I. Markovsky},
+  title   = {A software package for system identification in the behavioral setting},
+  year    = {2013},
+  journal = {Control Engineering Practice},
+  volume  = {21},
+  issue   = {10},
+  pages   = {1422--1436},
+}
+~~~
+
+- *Recent progress on structured low-rank approximation*
+-- Original submission: 
+[publications/overview-v1.pdf paper], 
+[publications/overview-long-v1.pdf paper with code], 
+[publications/overview-code-v1.tar code]
+-- First revised version:
+[publications/overview-answer-v2.pdf reviewers' comments and answer letter]
+-- Second revised version (accepted for publication):
+[publications/overview-v3.pdf paper], 
+[publications/overview-answer-v3.pdf reviewers' comments and answer letter]
+-- Up-to-date version of the paper and the code is included in the [slra/software.html SLRA package.]
+
+~~~
+{}{}
+@Article{overview,
+  author = 	 {I. Markovsky},
+  title = 	 {Recent progress on variable projection methods for structured low-rank approximation},
+  year = 	 {2013},
+  journal =      {Signal Processing},
+}
+~~~
+#includeraw{stat-counter.html}

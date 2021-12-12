@@ -1,0 +1,294 @@
+# jemdoc: menu{MENU}{talks.html}
+# jemdoc: analytics{UA-42984386-1}
+= Presentations
+
+== 2021
+
+- [talks/teaching.pdf Deep learning using the human brain] \n
+  Invited lecture at the [https://e-university.tu-sofia.bg/e-conf/?r=514 International Conference of Automatics], Sozopol, Bulgaria, 3-7 September
+- Data-driven dynamic interpolation and approximation: System theory without transfer function and state space representations \n
+  Invited lecture at the [http://www.fields.utoronto.ca/activities/20-21/constraint-rank Mini-symposium on Applications of Low Rank Matrix Completion], The Fields Institute, Canada, 9-11 June 
+- Data-driven signal processing \n
+  Talk given at the Division of Mathematics, Gran Sasso Science Institute, L'Aquila., online, 31 March
+- Dynamic measurement \n
+  Talk given at the Division of automatic control systems, Technical UNiversity of Sofia, online, 16 March
+
+== 2020
+
+- Data-driven dynamic interpolation \n
+  Talk given at the [https://homes.esat.kuleuven.be/~sistawww/biomed/selma/index.php/presentations/seminars/ SeLMA seminar], Leuven, 23 November
+- LTI embedding of nonlinear systems\n
+  Talk given at the Ifa seminar, ETH-Zurich, Switzerland, 10 September
+- Model-free signal processing and control\n
+  Talk given at the SAAS group, Université Libre de Bruxelles, Brussels, 29 May
+- Line spectral estimation with palindromic kernels\n
+  Poster presented by D. Verbeke at the [https://2020.ieeeicassp.org/ International Conference on Acoustics, Speech, and Signal Processing], Barcelona, Spain, 2--8 May
+# https://2020.ieeeicassp-virtual.org/presentation/poster/line-spectral-estimation-palindromic-kernels
+
+== 2019
+
+- Subspace methods for multi-channel sum-of-exponentials common dynamics estimation\n
+  Talk given at the [http://cdc2019.ieeecss.org/index.php IEEE Conference on Decision and Control], Nice, France, 11--13 December
+- Software package for mosaic-Hankel structured low-rank approximation\n
+  Talk given at the [http://cdc2019.ieeecss.org/index.php IEEE Conference on Decision and Control], Nice, France, 11--13 December
+- Computing common factors of matrix polynomials with applications in system and control theory\n
+  Talk given by A. Fazzi at the [http://cdc2019.ieeecss.org/index.php IEEE Conference on Decision and Control], Nice, France, 11--13 December
+- Sparsity in system identification and data-driven control\n
+  Invited lecure given at [https://www.southampton.ac.uk/cormsis/news/events/2019/10/18-optml-event.page OptML: Optimization and Machine Learning], Southampton, UK, 18 October
+- Data-driven simulation using nuclear norm matrix completion\n
+  Poster presented by P. Dreesen at the [https://ernsi2019.tue.nl/ workshop of the European Research Network on System Identification (ERNSI)], Maastricht, The Netherlands, 22--25 September​
+- Model-based vs data-driven linear quadratic tracking control\n
+  Poster presented by J. Coulson at the [https://ernsi2019.tue.nl/ workshop of the European Research Network on System Identification (ERNSI)], Maastricht, The Netherlands, 22--25 September​	
+- Data-driven structured noise filtering via common dynamics estimation\n
+  Talk given at the [https://ernsi2019.tue.nl/ workshop of the European Research Network on System Identification (ERNSI)], Maastricht, The Netherlands, 22--25 September​
+- Data-driven simulation using nuclear norm matrix completion: guarantees for successful recovery\n
+  Talk given by P. Dreesen at the [https://sites.google.com/site/lowrankmodels/home Workshop on Low-Rank Models and Applications ], Mons, Belgium, 12--13 September​	
+- Applications of common factor computation in signal processing\n
+  Poster presented at the [https://events.math.unipd.it/drwa19/ Dolomites Research Week on Approximation], Canazei, Italy, 2--6 September
+- Data-driven simulation using the nuclear norm heuristic\n
+  Talk given by P. Dreesen at the [https://2019.ieeeicassp.org/ IEEE International Conference on Acoustics, Speech and Signal Processing], Brighton, UK, 12--17 ​May
+- Common dynamics estimation\n
+  Talks given at the [https://vubirelec.be/education/seminars ELEC seminar], Brussels, Belgium, 14 May  
+- A low-rank matrix completion approach to data-driven signal processing\n
+  Invited lecture at the [http://people.ee.ethz.ch/~bsaverio/index.php IfA-IDSC Control Seminar Series], ETH Zurich, 29 April
+- Low-rank approximation with applications\n
+  Talk given at the [http://www.or.mist.i.u-tokyo.ac.jp/ Mathematical Informatics 5th Lab], The University of Tokyo, Japan, 27 March
+- [talks/ernsi18-slides.pdf Dynamic measurement: application of system identification in metrology]\n
+  Talk given at the National Physical Laboratory, Teddington, UK, 13 March
+- A low-rank matrix completion approach to data-driven signal processing\n
+  Talks given at the [https://vubirelec.be/education/seminars ELEC seminar], Brussels, Belgium, 7 February
+
+== 2018
+
+- [talks/ica18b.pdf Using Hankel low-rank approximation for sparse signal recovery]\n
+  Talk given at a workshop on "Sparse Approximation with Exponential Sums and Applications", Goettingen, 26--27 November
+- A Low-Rank and Joint-Sparse Model for Ultrasound Signal Reconstruction\n
+  Poster presented by C. Schretter at the [https://sites.google.com/view/itwist18 International Traveling workshop on interactions between low-complexity data models and sensing techniques], Marseille, France, 21--23, November​
+- [talks/ernsi18-slides.pdf Dynamic measurement: application of system identification in metrology]\n
+  Talk given at the [http://mlg.eng.cam.ac.uk/ernsi2018/ Workshop of the European Research Network on System Identification], Cambridge, UK, 23--26, September
+- [talks/ernsi18-poster.pdf Identification of autonomous Wiener systems]\n
+  Poster presented at the [http://mlg.eng.cam.ac.uk/ernsi2018/ Workshop of the European Research Network on System Identification], Cambridge, UK, 23--26, September
+- [talks/ica18b.pdf Using Hankel low-rank approximation for sparse signal recovery]\n
+  Poster presented at the [https://events.math.unipd.it/drwa18/ Dolomites Research Week on Approximation], Alba di Canazei, Italy, 10--14, September
+- [talks/ernsi18.pdf Identification of autonomous Wiener systems]\n
+  Talks given at the [https://vubirelec.be/education/seminars ELEC seminar], Brussels, Belgium, 4 September
+- [talks/eurasip-slides.pdf The no free lunch principle in data modeling]\n
+  Invited lecture at the [https://homes.esat.kuleuven.be/~sistawww/biomed/biotensorssummerschool18/index.php BioTensors workshop], Leuven, Belgium, 27--31 August
+- A comparison between structured low-rank approximation and correlation approach for data-driven output tracking\n
+  Talks given by S. Formentin at the [https://www.kth.se/en/eecs/om-oss/konferenser-och-event/sysid2018 8th IFAC Symposium on System Identification], Stockholm, Sweden, 9--11, July 
+- [talks/ica18b.pdf Using Hankel low-rank approximation for sparse signal recovery]\n
+  Poster presented at the [http://cvssp.org/events/lva-ica-2018/ 14th Int. Conf. of Latent Variable Analysis and Signal Separation], Guildford, UK, 2--6, July
+- [talks/ica18a.pdf Applications of common factor computation in signal processing]\n
+  Poster presented at the [http://cvssp.org/events/lva-ica-2018/ 14th Int. Conf. of Latent Variable Analysis and Signal Separation], Guildford, UK, 2--6, July
+- Structured low-rank approximation approach to sum-of-exponentials modeling\n
+  Invited lecture at the [http://math.univ-lille1.fr/~bbecker/amf2018/ International conference on Approximation and Matrix Functions], University of Lille, 1 June
+- System identification in the behavioral setting\n
+  Talks given at the Seminar of the Department of Electrical Engineering, TU Eindhoven, The Netherlands, 14 March
+- Data-driven signal processing\n
+  [https://www.esat.kuleuven.be/stadius/selma/index.php/2018/01/30/kick-off-meeting-selma/ SeLMA Kick-off meeting], K.U. Leuven, Belgium, 23 February 
+
+== 2017
+
+- [talks/learning-to-learn.pdf Learning to learn]\n
+  Talks given at the Seminarie Actuele Wetenschappen en Samenleving, University of Brussels, 17 November
+- Identification from a "small" number of samples\n
+  Poster presented at the [https://ernsi2017.sciencesconf.org/ Workshop of the European network on system identification (ERNSI)], Lyon, France, 24--27, September
+# - Dolomites workshop on constructive approximation and applications, Canazei, Italy, 4--8, September
+- Sum-of-exponentials modeling and common dynamics estimation using Tensorlab\n
+  Interactive presentation at the [https://www.ifac2017.org/ IFAC World Congress], Toulouse, France, 9--14, July
+- Application of low-rank approximation for nonlinear system identification \n 
+  Talk given at the [https://www.um.edu.mt/events/med2017/ Mediterranean conference on control and automation], Valletta, Malta, 3--6, July
+- [talks/sparsity.pdf Sparsity in system identification and data-driven control]\n
+  Invited lecture at the [http://homepages.ulb.ac.be/~majansen/workshopSAMS2017/ Workshop on sparsity in applied mathematics and statistics], Brussels, 1--2 June 
+- [talks/tda.pdf Scientometrics via low-rank approximation and completion]\n
+  Talk given at the Intelligence Research Institute of the Spanish Research Council, Barcelona, Spain, 4 April 
+- Data-driven time-varying dynamic measurements\n
+  Talk given by G. Quintana-Carapia at the [http://www.beneluxmeeting.nl/2017/ Benelux meeting on systems and control], Spa, Belgium, 28--30, March
+- [http://www.talks.cam.ac.uk/talk/index/70922 A missing data approach to data-driven filtering and control]\n
+  Talk given at the [http://www.talks.cam.ac.uk/show/index/11827 CUED Control Group Seminars], Cambridge, UK, 27 February
+- Low-rank approximation and its applications\n
+  Talk given at the [http://www.dcsc.tudelft.nl/ Delft Center for Systems and Control], Delft, The Netherlands, 18 January
+
+== 2016
+
+- Low-rank approximation and its applications\n
+Invited lecture presented at the [http://www.math.bas.bg/IMIdocs/BGSIAM/bgsiam16_announcement.htm The 11th Annual Meeting of the Bulgarian Section of SIAM], Sofia, Bulgaria, 20--22, December 
+- Innovation-based subspace identification in open and closed-loop\n
+Talk given by Guillaume Mercère at the [http://cdc2016.ieeecss.org/ IEEE Conference on Decision and Control], Las Vegas, 12-14 December
+- An outlook from past and current research on low-rank approximation\n
+Invited lecture given at the DYSCO study day, Louvain-La-Neuve, 1 December
+- [talks/nonlin-sysid.pdf Application of low-rank approximation in nonlinear system identification]\n
+Discussion talk given at the "Nonlinear identification workshop, Brussels, 16--17, November
+- Data-driven dynamic weight measurement\n
+Poster presented by Gustavo Quintana-Carapia at the [https://www.ptb.de/cms/en/ptb/fachabteilungen/abt8/fb-84/ag-842/workdyn2016.html International Workshop on Analysis of Dynamic Measurements], Berlin, Germany, 9--10 November
+- Low-rank matrix approximation\n
+Two-hour seminar given at the University of Antwerpen, 24 October
+- [talks/goettingen.pdf Structured low-rank approximation approach to sum-of-exponentials]\n
+Talk given at the [http://www.uni-goettingen.de/en/86244.html Colloquia Institut für Numerische und Angewandte Mathematik], Goettingen, 18 October
+- A low-rank matrix completion approach to data-driven signal processing\n
+Talk given at the [https://people.kth.se/~bo/ERNSI/ Workshop of the European network on system identification (ERNSI)], Castelbrando Cison di Valmarino, Italy, 25--28 September
+- Innovation-based subspace identification in open- and closed-loop\n
+Poster presented by Guillaume Mercère at the [https://people.kth.se/~bo/ERNSI/ Workshop of the European network on system identification (ERNSI)], Castelbrando Cison di Valmarino, Italy, 25--28 September 
+- Model order estimation based on a method for computing distance to uncontrollability\n
+Poster presented at the [http://www.isma-isaac.be/isma_conf/objectives.html Conference on noise and vibration engineering (ISMA)], Leuven, Belgium, 19--21 September 
+- [talks/model-free.pdf A low-rank matrix completion approach to data-driven signal processing]\n
+Invited lecture presented at the [http://www.commsp.ee.ic.ac.uk/~icore/SparseSignalProcessingWorkshop.html London Workshop on Sparse Signal Processing], 15-16 September
+- Missing data estimation approach to data-driven signal processing\n
+Invited lecture presented at the [http://events.math.unipd.it/dwcaa16/ Dolomites workshop on constructive approximation and applications], Canazei, Italy, 8--13 September
+- Low-rank approximation and its applications\n
+Talk given at the [http://math.bas.bg/index.php/en/en-mnu-research-activities-2/en-mnu-seminars Institute of mathematics and informatics], of the Bulgarian academy of science, Sofia, Bulgaria, 27 July
+- Data driven dynamic measurements\n
+Talk given by Gustavo Quintana-Carapia at the [http://www.beneluxmeeting.nl/2016/ Benelux meeting on systems and control], Soesterberg, Netherlands, 22--24 March
+- Scientometrics via low-rank approximation and completion\n
+Invited lecture at the [http://www.vlc.ecs.soton.ac.uk/ Vision, learning, and control group] conference, Carys manor, UK, 23 March 
+- [talks/elec16.pdf Subspace identification with constraints on the impulse response]\n
+Talk at the [http://vubirelec.be/education/seminars ELEC seminar], Brussels, 4 March
+- [talks/tda.pdf Scientometrics via low-rank approximation and completion]\n
+Invited lecture at the [http://www.esat.kuleuven.be/stadius/TDA2016/ Workshop on tensor decompositions and applications], Leuven, Belgium, 18--22 January 
+
+== 2015
+
+- Subspace-based identification with equality constraints\n
+Poster presented by Guillaume Mercère at the [http://www.control.isy.liu.se/en/conferences/ernsi2015/index.html ERNSI Workshop], Varberg, Sweden, 20--23 September 
+- System identification in the behavioral setting\n 
+Poster presented at the [http://amca.cz/lva2015/ International conference on latent variable analysis and signal separation], Liberec, Czech Republic, 25--28 August
+- Model-free optimal tracking control via nuclear norm minimization\n
+Poster presented at the [http://www.siam.org/meetings/ct15/ SIAM Conference on control and its applications], Paris, 8--10 June 
+- [talks/dagstuhl.pdf Structured low-rank approximation approach to sum-of-exponentials]\n 
+Invited lecture at the [http://www.dagstuhl.de/15251/ Sparse modelling and multi-exponential analysis],
+Dagstuhl, Germany, 14--19 June
+- [talks/bonn.pdf A structured low-rank approximation approach to system identification]\n
+Invited lecture at the [http://www.hcm.uni-bonn.de/events/eventpages/2015/workshop-low-rank-optimization-and-applications/ Workshop on Low-rank Optimization and Applications], Bonn, Germany, 8--12 June 
+- Low-rank approximation and its applications\n 
+Invited lecture at the [http://www.gipsa-lab.fr/summerschool/slra2015/ Structured low-rank approximation workshop], Grenoble, 1--2 June
+- System identification in the behavioral setting\n
+Talk at the [http://www.uclouvain.be/11245.html Seminars in Systems and Control], U.C. Louvain, 5 May
+- System identification with missing data\n 
+Talk at [http://lva.insa-lyon.fr/en/node Laboratoire Vibrations Acoustique], 
+Lyon, France, 30 April
+- Blind FIR system identification, distance to uncontrollability, and minimal kernal representations\n
+Talk at the [http://www.beneluxmeeting.nl/2015/ 34th Benelux Meeting on Systems and Control], 
+Lommel, Belgium, 24--26 March
+
+== 2014
+
+- [talks/tools-seminar-org-mode.pdf Reproducible research with Emacs org-mode]\n
+Talk at the [http://vubirelec.be/education/seminars ELEC seminar], Brussels, 10 December
+- Progress and challenges in optimization methods for system identification and control\n
+Talk at the [http://vubirelec.be/education/seminars ELEC seminar], Brussels, 24 October
+- System identification with missing data\n
+Poster at the [http://wwwtw.vub.ac.be/elec/ERNSI%202014/ERNSI2014-home.html Workshop of the European Research Network on System Identification], Ostend, Belgium, 21--24 September
+- Multiple experiments in operational modal analysis\n
+Talk at the [http://www.isma-isaac.be/isma_conf/objectives.html Leuven Conference on Noise and Vibration Engineering], Leuven, 15--17 September
+- Adjusted least squares estimator for fitting algebraic hypersurfaces with arbitrary support\n
+Lecture presented by K. Usevich at the [http://noether.math.uoa.gr/conferences/sla2014/?q=content/welcome-sla-2014 Structured Numerical Linear and Multilinear Algebra:  Analysis, Algorithms and Applications], Kalamata, Greece, 8--12 September 
+- Tensor low multilinear rank approximation by structured matrix low-rank approximation\n
+Talk given by M. Ishteva at the [https://fwn06.housing.rug.nl/mtns2014/ International Symposium on Mathematical Theory of Networks and Systems], Groningen, The Netherlands, 7--11 July
+- Structured low-rank approximation with missing data\n
+Poster at the [http://sites.uclouvain.be/HHXIX/ Householder Symposium], Spa, Belgium, 8--13 June 
+- Structured matrix low-rank approximation and its application for solving tensor problem\n
+Invited lecture presented by M. Ishteva at the [http://www.unilim.fr/pages_perso/paola.boito/SMD/structured_matrix_days_2014.html Structured Matrix Days], Université de Limoges, May 26--27
+- Low-rank approximation with applications\n
+Lecture at the [http://parallel.bas.bg/Conferences/nmascaa/ International Conference on Numerical Methods for Scientific Computations], Bansko, Bulgaria, May 19--22
+- Factorization approach to structured low-rank approximation\n
+Lecture presented by M. Ishteva at the [http://parallel.bas.bg/Conferences/nmscaa/ International Conference on Numerical Methods for Scientific Computations], Bansko, Bulgaria, May 19--22
+
+== 2013
+
+- [talks/cdc13a.pdf Exact system identification with missing data]\n
+Presented at the [http://cdc2013.units.it/ IEEE Conference on Decision and Control], Florence, Italy, December 10--13, 2013.
+- [talks/cdc13b.pdf Approximate system identification with missing data]\n
+Presented at the [http://cdc2013.units.it/ IEEE Conference on Decision and Control], Florence, Italy, December 10--13, 2013.
+- [talks/dysco13.pdf Low-rank approximations and its applications in system identification and signal processing]\n
+Plenary lecture given at the [http://sites.uclouvain.be/dysco/StudyDays/2013-november Study day of the IAP network on dynamical systems, control and optimization], Palais des Académies, Brussels, November 22.
+- [ident-demo.html A software package for system identification in the behavioral setting]\n 
+Software demo presented at the [http://ernsi-2013.cran.univ-lorraine.fr/ Workshop of the ERNSI network], Nancy, 22--25 September.
+- [talks/ernsi13.pdf Subspace identification of autonomous linear periodically time-varying systems]\n 
+Poster presented at the [http://ernsi-2013.cran.univ-lorraine.fr/ Workshop of the ERNSI network], Nancy, 22--25 September.
+- Low-rank approximation problems in system identification\n
+Presented at the [http://events.math.unipd.it/drwa13/ Dolomites research week on approximation], Alba di Canazei, Italy, September 8.
+- [doctoral-school.html ELEC/VUB Doctoral school lectures on "Low-rank approximation and its applications"], VUB, Brussels, 28--29 May.
+- [talks/liege.pdf Data-driven modeling: A low-rank approximation problem]\n
+Presented at the [http://www.montefiore.ulg.ac.be/services/stochastic/new/cmsimple/index.php?Events Systems and Modeling group seminar], Liege, March 29.
+- [talks/benelux13.pdf System identification in the behavioral setting]\n
+Presented at the [http://saas.ulb.ac.be/bm2013/ Benelux Meeting on Systems and Control], Houffalize, Belgium, March 26--28.
+
+== 2012
+
+- [talks/elec12.pdf Data-driven modeling: A low-rank approximation problem]\n
+ELEC seminar, Brussels, 8 November.
+- [talks/ernsi12.pdf System identification with missing data]\n
+Poster presented at the [http://www.ernsi2012.tue.nl/ Workshop of the ERNSI network], Maastricht, The Netherlands, 25 September.
+- [http://homepages.vub.ac.be/~kusevich/slides/Usevich_Markovsky_ERNSI2012.pdf Fast algorithms and software for weighted mosaic Hankel low-rank approximation]\n
+Poster at the [http://www.ernsi2012.tue.nl/ Workshop of the ERNSI network], Maastricht, The Netherlands, 24 September.
+- [http://homepages.vub.ac.be/~kusevich/slides/Usevich_Markovsky_SLA_2012.pdf Fast algorithms and software for weighted mosaic-Hankel-like low-rank approximation]\n
+Presented by K. Usevich at the conference 
+[https://www.cs.kuleuven.be/conference/sla2012/ "Structured numerical linear and multilinear algebra problems analysis, algorithms, and applications"], K.U. Leuven, 14 September. 
+- [talks/cambridge11.pdf Hankel structured low-rank matrix completion]\n
+Presented at the
+[http://www.esat.kuleuven.be/scd/event.php?view=1&id=1674 SISTA Seminar], K.U.Leuven, 19 September.
+
+== 2011
+
+- [talks/cambridge11.pdf Hankel structured low rank matrix completion]\n
+Presented at the Electrical Engineering Department, Cambridge, on 18 November.
+- [talks/sensor.pdf Fast measurements of slow processes]\n
+Presented at the Department ELEC, Vrije Universiteit Brussel, on 10 November.
+- Bias correction for polynomial low rank approximation\n
+Poster presented at the [http://www-sop.inria.fr/apics/ERNSI11/index.htm Workshop of the ERNSI network], Nice, France, 25--28 September.
+- [talks/slra.pdf Low-rank approximation and its applications]\n 
+Poster, presented at the
+[http://www.math.unipd.it/~demarchi/drwa11/ Dolomites research week on approximation], Alba di Canazei, Trento, Italy, 5--9, September.
+- [talks/curve-fitting.pdf Nonlinearly structured low-rank approximation with application to algebraic curve fitting]\n
+Poster presented at the 
+[https://outreach.scidac.gov/HH11/ Householder symposium], Lake Tahoe, California, USA, 12--17 June.
+- [talks/sensor.pdf Fast measurements of slow processes]\n
+Presented at the
+Division of Systems and Control, Department of Information Technology, Uppsala University, March 29.
+- Low-rank approximation: theory, algorithms, and applications\n
+Presented at the Mathematics Department, Leicester University, on 10 March.
+- Low-rank approximation: a tool for data modeling\n
+Presented at the 
+[http://web.mat.bham.ac.uk/loghin/onaseminars.html Optimisation and numerical analysis seminar], School of mathematics, University of Birmingham, on 3 February.
+
+== 2010
+
+- Data modeling using nuclear norm heuristic\n
+Presented at the 
+[http://www.cfe-csda.org/ercim10/ ERCIM Conference on computing & statistics], London on 11 December.
+- Low-rank approximation and its applications\n
+Presented at the 
+[http://www.symbiosis.soton.ac.uk/ Symbiosis seminar], Southampton, UK, on 24 November.
+- [talks/curve-fitting.pdf Fitting algebraic curves to data]\n
+Presented at the 
+[http://www-control.eng.cam.ac.uk/jmm/ernsi/ernsi2010.html ERNSI workshop], Cambridge, UK, on 28 September, and the 
+[http://ssa.cf.ac.uk/ Workshop on singular spectrum analysis and its applications], Cardiff, UK, 20 September.
+- [talks/borovez.pdf Affine data modeling by low-rank approximation]\n
+Presented at the 
+[http://www.math.bas.bg/~nummeth/nma10/ Conference on numerical methods and applications], Borovez, BG, on 21 August.
+- [slra.pdf Low-rank approximation and its applications]\n
+Presented at the 
+Statistics seminar of the School of mathematics, Cardiff University, on March 9.
+
+== 2009
+
+- [talks/sysid08b_2x2.pdf Closed-loop data-driven simulation]\n
+Presented at the 
+[http://www.sysid2009.org/ IFAC Symposium on system identification], Saint-Malo, France, on 7 July.
+- [talks/sysid08a_2x2.pdf Applications of structured low-rank approximation]\n
+Presented at the 
+[http://www.sysid2009.org/ IFAC Symposium on system identification], Saint-Malo, France, on 7 July.
+- [http://www.ecs.soton.ac.uk/~im/talks/jan_2x2.pdf Data-driven simulation and control]\n
+Presented at the 
+[http://www.esat.kuleuven.be/scd/oismc/ Open and Interconnected Systems Modeling and Control], Brugge, Belgium, 17 September. 
+- [http://www.ecs.soton.ac.uk/~im/talks/slra_2x2.pdf Low-rank approximation and its applications]\n
+Presented at the 
+[http://www2.le.ac.uk/departments/mathematics/extranet/conferences/a4a6-algorithms-for-approximation-vi Algorithms for Approximation VI], Ambleside, U.K, on 1 September.
+- [http://www.ecs.soton.ac.uk/~im/talks/xerox_2x2.pdf Low-rank approximation: theory and applications]\n
+Presented at the 
+[http://www.shef.ac.uk/dcs/ Computer Scince Department seminar series], University of Sheffield, on 18 June, and the  
+[http://www.xrce.xerox.com/news/conferences/seminars.html Xerox seminar series], Xerox Research Center Europe, Grenoble, on 11 June.
+
+== [talks/seminars.html 2000--2008]
+
+#includeraw{stat-counter.html}

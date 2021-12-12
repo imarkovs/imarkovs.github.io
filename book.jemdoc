@@ -1,0 +1,23 @@
+# jemdoc: analytics{UA-42984386-1}
+= Low-Rank Approximation: Algorithms, Implementation, Applications
+
+~~~
+{}{img_left}{book.jpg}{Springer}{200px}{}{}
+== [book/toc.pdf   Preface and table of contents]
+== [book/intro.pdf Introduction]
+== [book/book-2x1.pdf  Full text]
+== [book/code.tgz Mechanically extracted code from the book]
+~~~
+
+~~~
+{BibTeX entry}{}
+@Book{lra-book,
+  author = 	 {I. Markovsky},
+  title = 	 {Low Rank Approximation: Algorithms, Implementation, Applications},
+  publisher = 	 {Springer},
+  year = 	 {2012},
+}
+~~~
+
+#includeraw{stat-counter.html}
+

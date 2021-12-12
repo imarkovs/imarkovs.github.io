@@ -1,0 +1,146 @@
+<html>
+<head><title>ELEC 3035: Control System Design</title></head>
+<body>
+
+<center>
+<h1>ELEC 3035: Control System Design</h1>
+</center>
+<center>
+<h2><a href="http://www.ecs.soton.ac.uk/">School of Electronics and Computer Science</a></h2>
+<h2><a href="http://www.soton.ac.uk/">University of Southampton</a></h2>
+</center>
+
+<hr>
+
+<UL>
+<LI> <a href="#info">Course information</a>
+<LI> <a href="#lectures">Lecture slides</a>
+<LI> <a href="#tutorials">Handouts for the tutorials</a>
+<LI> <a href="#exams">Exams</a>
+
+</UL>
+
+<hr>
+
+<h2><a NAME="announcements">Announcements</h2>
+
+<ul>
+<li> 13/03: The January 2008 exam questions are available in section <a href="#exams">"Exams"</a>.
+<li> 14/01: Solutions to the set of problems "Controllability and observability" are available in section <a href="#tutorials">"Handouts for the tutorials"</a>.
+<li> 18/11: A copy of this page is available at the <a href="https://secure.ecs.soton.ac.uk/notes/elec3035/">ECS course notes web page</a>.
+<li> 13/11: Friday 16/11 class we be a questions and answers session and review of the material from Part I. 
+<li> 13/11: The material on linear quadratic control and Kalman filtering will not be covered and will not enter into the exam questions.
+<li> 13/11: Thursday 15/11 is the last lecture of the first part. Monday 19/11 Prof. Eric Rogers starts teaching the second part of the course.
+<li> 06/11: Monday 12/11 class will be a questions and answers session. 
+<li> 06/11: Solutions to the set of problems "Autonomous dynamical systems" are available in section <a href="#tutorials">"Handouts for the tutorials"</a>.
+<li> 25/10: Solutions to the set of problems "State space and polynomial representations" and a new set of problems "Autonomous dynamical systems" are available in section <a href="#tutorials">"Handouts for the tutorials"</a>. 
+</ul>
+
+<hr>
+
+<h2><a NAME="info">Course information</h2>
+
+<p><b>Lectures:</b> 
+
+<ul>
+<li> Thursdays 12:00-13:00, Building 32, room 3077
+<li> Fridays 14:00-15:00, Building 13, room 3021 
+</ul>
+
+<p><b>Tutorials:</b> 
+
+<ul>
+<li> Mondays 10:00-11:00, Building 7, room 3019
+</ul>
+
+<p><b>Instructors:</b> 
+
+<ul>
+<li> <a href="http://www.ecs.soton.ac.uk/people/etar">Eric Rogers</a>, Building 1, room 2041, Tel. 8059 2197, <tt><a href="mailto:etar@ecs.soton.ac.uk">etar@ecs.soton.ac.uk</a></tt>
+<li> <a href="http://www.ecs.soton.ac.uk/people/im">Ivan Markovsky</a>, Building 1, room 2029, Tel. 8059 8715, <tt><a href="mailto:im@ecs.soton.ac.uk">im@ecs.soton.ac.uk</a></tt>
+</ul>
+
+<p><b>References:</b> 
+
+<ul>
+<li><cite>Introduction to mathematical systems theory: A behavioral approach</cite>, J.W. Polderman and J.C. Willems</li>
+
+<p> Advanced text covering the material of lectures 3-9 (in more details).
+
+<li><cite>Computer-controlled systems: theory and design</cite>, K. Astrom and B. Wittenmark</li>
+
+<p> Covers the material of lectures 6-9. 
+
+<li><cite>Introduction to linear algebra</cite>, G. Strang</li>
+
+<p> An excellent and very readable text for lecture 2.
+</ul>
+
+<p><b>Grading:</b> 100% on written exam
+
+<hr>
+
+<h2><a NAME="lectures">Lecture slides</h2>
+
+<h3>Part I: Linear systems</h3>
+
+<ol>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l1.pdf">Overview</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l1_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l2.pdf">Review of linear algebra</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l2_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l3.pdf">State space and polynomial representations</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l3_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l4.pdf">Autonomous systems</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l4_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l5.pdf">Controllability and state transfer</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l5_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l6.pdf">Observability and state estimation</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l6_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l7.pdf">Pole placement by state feedback</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l7_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l8.pdf">Observer design by pole placement</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l8_2x2.pdf">4-on-1</a>)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/l9.pdf">Polynomial approach for pole placement</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/l9_2x2.pdf">4-on-1</a>)</li>
+</ol>
+
+<a href="http://www.ecs.soton.ac.uk/~im/elec3035/review.pdf">Review of Part I</a> (<a href= "http://www.ecs.soton.ac.uk/~im/elec3035/review_2x2.pdf">4-on-1</a>)
+
+<h3>Part II: Nonlinear systems</h3>
+
+<ul>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/nlssm.pdf">Mathematical modelling of nonlinear systems</a>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/lyapt.pdf">Lyapunov analysis, part 1</a>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/lyapt2.pdf">Lyapunov analysis, part 2</a>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/cardm.pdf">Describing functions</a>
+</ul>
+
+<hr>
+
+<h2><a NAME="tutorials">Handouts for the tutorials</h2>
+
+<h3>Part I: Linear systems</h3>
+
+<ol>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial1.pdf">State space and polynomial representations</a> (problems + solutions)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial2.pdf">Autonomous dynamical systems</a> (problems + solutions) and <a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial2.mat">data file for the simulation examples</a> (Matlab mat-file)</li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/tutorial3.pdf">Controllability and observability</a> (problems + solutions)
+</ol>
+
+<h3>Part II: Nonlinear systems</h3>
+
+<h3>Tutorials and handouts from previous years</h3>
+
+<ul>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/el3035d.pdf">Slides on synthesis of linear SISO controllers</a></li>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/ssm.pdf">Handout on linear state space analysis</a></li>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/el300t.pdf">Tutorial on linear state space analysis</a></li>
+</ul>
+
+
+<hr>
+
+<h2><a NAME="exams">Exams</h2>
+
+<ul>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/exam08.pdf">Exam January 2008</a></li>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/exam_el335_06.pdf">Exam 2006</a></li>
+<li><a href="https://secure.ecs.soton.ac.uk/notes/elec3035/exam2005con.pdf">Exam 2005</a></li>
+<li><a href="http://www.ecs.soton.ac.uk/~im/elec3035/quiz1.pdf">Quiz on linear algebra</a></li>
+</ul>
+
+<hr>
+
+</body></html>

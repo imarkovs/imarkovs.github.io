@@ -1,0 +1,29 @@
+# jemdoc: menu{MENU}{publications.html}
+# jemdoc: analytics{UA-42984386-1}
+= Publications of Ivan Markovsky
+
+== Books
+
+#includeraw{b.html}
+
+== Journal papers
+
+#includeraw{j.html}
+
+== Conference papers 
+
+#includeraw{c.html}
+
+== Book chapters
+
+#includeraw{bc.html}
+
+== Technical reports
+
+#includeraw{t.html}
+
+== Editorial
+
+#includeraw{e.html}
+
+#includeraw{stat-counter.html}
