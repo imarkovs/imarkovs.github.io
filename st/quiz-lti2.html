@@ -1,0 +1,208 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Alike' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="quiz.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //close all the content divs on page load
+      $('.response').hide();
+
+      // toggle slide
+      $('.selection').click(function(){
+        // by calling sibling, we can use same div for all demos
+        $(this).siblings('.response').slideToggle('fast');
+      });
+
+      $('button').click(function(event){
+        var $target = $(event.target);
+        var $checkboxes = $target.parent('.mcq').find('input');
+        for (var i = 0; i < $checkboxes.length; i++) {
+          var $checkbox = $checkboxes.eq(i);
+          a = $checkbox;
+          if ($checkbox[0].checked && $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.correct-checkbox').show();
+          } else if ($checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('wrong')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else if (!$checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else {
+            $checkbox.nextAll('.correct-checkbox').show();
+          }
+        }
+        $target.parent('.mcq').find('.response').slideToggle('fast');
+        if ($target.text() == 'Submit') {
+          $target.text('Hide');
+        } else {
+          $checkboxes.nextAll('.incorrect-checkbox').hide();
+          $checkboxes.nextAll('.correct-checkbox').hide();
+          $target.text('Submit');
+        }
+      });
+    });
+    </script>
+  </head>
+
+<body>
+  $\newcommand{\ones}{\mathbf 1}$
+  <div>
+	<h1>LTI Systems Quiz 2</h1>
+	<fieldset>
+		<legend>Choose the statements that are always true for the situation described in the question. Don't make extra assumptions.</legend>
+		<div>
+			<div class="description">
+Question 1: Consider the system $\mathcal{B}$ defined by the state space representation
+\[ \sigma x = \begin{bmatrix} 1 &amp; 1 \\ 0 &amp; 1 \end{bmatrix} x, \quad y = \begin{bmatrix} 1 &amp; 0 \end{bmatrix} x. \]
+The output $y\in\mathcal{B}$ is</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">sum of two exponetials.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">$y$ is a constant.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">$y$ is a linear function.</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 2: If $\mathcal{B} = \{\, (u,y) \ | \ y = h \star u \,\}$, then</div>
+			<div class="mcq">
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">there are polynomials $p(z)$ and $q(z)$, such that $\mathcal{B} = \{\, (u,y) \ | \ y = Z^{-1} \big(q(z) / p(z)\big) Z(u) \,\}$, where $Z$ is the Z-transform.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">there are matrices $A$, $B$, $C$, $D$, such that $\mathcal{B} = \{\, (u,y) \ | \ \sigma x = Ax + Bu, \ y = Cx + Du \,\}$.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">there is a polynomial matrix $R(z)$, such that $\mathcal{B} = \text{ker}\big(R(\sigma)\big)$.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<button>Submit</button>
+			</div>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 3: If $\mathcal{B} = \{\, (u,y) \ | \ y = Z^{-1} \big(q(z) / p(z)\big) Z(u) \,\}$, where $Z$ is the Z-transform, then</div>
+			<div class="mcq">
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">there is a sequence $h$, such that $\mathcal{B} = \{\, (u,y) \ | \ y = h \star u \,\}$.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">there are matrices $A$, $B$, $C$, $D$, such that $\mathcal{B} = \{\, (u,y) \ | \ \sigma x = Ax + Bu, \ y = Cx + Du \,\}$.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">there is a polynomial matrix $R(z)$, such that $\mathcal{B} = \text{ker}\big(R(\sigma)\big)$.</span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<button>Submit</button>
+			</div>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 4: The output of a signle-input single-output linear time-invariant system to a nonzero input can not be a zero signal.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">True</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">False</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 5: The output of a signle-input single-output linear time-invariant system to $\text{sin}(\omega_1t)$ input can not be $\text{sin}(\omega_2t)$, where $\omega_1\neq\omega_2$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">True</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">False</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+	</fieldset>
+	<br/>
+</div>
+
+  <footer>
+  Page generated using <a href="https://github.com/karanveerm/quizgen">Quizgen</a>
+  </footer>
+</body>
+</html>

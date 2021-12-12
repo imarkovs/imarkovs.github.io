@@ -1,0 +1,302 @@
+
+<table>
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="usevich2019tensorizations">1</a>]
+</td>
+<td class="bibtexitem">
+K.&nbsp;Usevich, P.&nbsp;Dreesen, and M.&nbsp;Ishteva.
+ Decoupling multivariate polynomials: interconnections between
+  tensorizations.
+ <em>J. Comp. Appl. Math.</em>, 363:22--34, 2020.
+ (preprint at arXiv:1703.02493).
+[&nbsp;<a href="j_bib.html#usevich2019tensorizations">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1016/j.cam.2019.03.036">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="gustavo-tim">2</a>]
+</td>
+<td class="bibtexitem">
+G.&nbsp;Q. Carapia, I.&nbsp;Markovsky, R.&nbsp;Pintelon, P.&nbsp;Csurcsia, and D.&nbsp;Verbeke.
+ Experimental validation of a data-driven step input estimation method
+  for dynamic measurements.
+ <em>IEEE Transactions on Instrumentation and Measurement</em>,
+  69:4843--4851, 2020.
+[&nbsp;<a href="j_bib.html#gustavo-tim">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/TIM.2019.2951865">DOI</a>&nbsp;| 
+<a href="http://homepages.vub.ac.be/~imarkovs/publications/gustavo-tim.pdf">.pdf</a>&nbsp;]
+<blockquote>
+Simultaneous fast and accurate measurement is still a challenging and active problem in metrology. A sensor is a dynamic system that produces a transient response. For fast measurements, the unknown input needs to be estimated using the sensor transient response. When a model of the sensor exists, standard compensation filter methods can be used to estimate the input. If a model is not available, either an adaptive filter is used or a sensor model is identified before the input estimation. Recently, a signal processing method was proposed to avoid the identification stage and estimate directly the value of a step input from the sensor response. This data-driven step input estimation method requires only the order of the sensor dynamics and the sensor static gain. To validate the data-driven step input estimation method, in this paper, the uncertainty of the input estimate is studied and illustrated on simulation and real-life weighing measurements. It was found that the predicted mean- squared error of the input estimate is close to an approximate Cramér-Rao lower bound for biased estimators.
+</blockquote>
+<p><blockquote>
+Keywords: Metrology, Dynamic measurement, Cramér-Rao lower bound, Data-driven signal processing
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="gustavo-csda">3</a>]
+</td>
+<td class="bibtexitem">
+G.&nbsp;Q. Carapia, I.&nbsp;Markovsky, R.&nbsp;Pintelon, P.&nbsp;Csurcsia, and D.&nbsp;Verbeke.
+ Bias and covariance of the least squares estimate in a structured
+  errors-in-variables problem.
+ <em>Comput. Statist. Data Anal.</em>, 144:106893, 2020.
+[&nbsp;<a href="j_bib.html#gustavo-csda">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1016/j.csda.2019.106893">DOI</a>&nbsp;| 
+<a href="http://homepages.vub.ac.be/~imarkovs/publications/gustavo-csda.pdf">.pdf</a>&nbsp;]
+<blockquote>
+A structured errors-in-variables (EIV) problem arising in metrology is studied. The observations of a sensor response are subject to perturbation. The input estimation from the transient response leads to a structured EIV problem. Total least squares (TLS) is a typical estimation method to solve EIV problems. The TLS estimator of an EIV problem is consistent, and can be computed efficiently when the perturbations have zero mean, and are independently and identically distributed (i.i.d). If the perturbation is additionally Gaussian, the TLS solution coincides with maximum-likelihood (ML). However, the computational complexity of structured TLS and total ML prevents their real-time implementation. The least-squares (LS) estimator offers a suboptimal but simple recursive solution to structured EIV problems with correlation, but the statistical properties of the LS estimator are unknown. To know the LS estimate uncertainty in EIV problems, either structured or not, to provide confidence bounds for the estimation uncertainty, and to find the difference from the optimal solutions, the bias and variance of the LS estimates should be quantified. Expressions to predict the bias and variance of LS estimators applied to unstructured and structured EIV problems are derived. The predicted bias and variance quantify the statistical properties of the LS estimate and give an approximation of the uncertainty and the mean squared error for comparison to the Cramer-Rao lower bound of the structured EIV problem.
+</blockquote>
+<p><blockquote>
+Keywords: structured errors-in-variables problems, least-squares estimation, Cramer-Rao lower bound, statistical analysis, uncertainty assessment, Monte Carlo simulation
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="gustavo-measurement">4</a>]
+</td>
+<td class="bibtexitem">
+G.&nbsp;Q. Carapia and I.&nbsp;Markovsky.
+ Input parameters estimation from time-varying measurements.
+ <em>Measurement</em>, 153, 2020.
+[&nbsp;<a href="j_bib.html#gustavo-measurement">bib</a>&nbsp;| 
+<a href="https://doi.org/10.1016/j.measurement.2019.107418">DOI</a>&nbsp;| 
+<a href="http://homepages.vub.ac.be/~imarkovs/publications/gustavo-measurement.pdf">pdf</a>&nbsp;| 
+<a href="http://homepages.vub.ac.be/~imarkovs/publications/gustavo-measurement.pdf">.pdf</a>&nbsp;]
+<blockquote>
+A measurement is a dynamical process that aims to estimate the true value of a measurand. The measurand is the input that excites a sensor, and, as a consequence, the sensor output is a transient response. The main approach to estimate the input is applying the sensor transient response to another dynamical system. This dynamical system is designed by deconvolution to invert the sensor dynamics and compensate the sensor response. Digital signal processors enable an alternative approach to estimate the unknown input. There exists a data-driven subspace-based signal processing method that estimates a measurand, assuming it is constant during the measurement. To estimate the parameters of a measurand that varies at a constant rate, we extended the data-driven input estimation method to make it adaptive to the affine input. In this paper, we describe the proposed subspace signal processing method for the measurement of an affine measurand and compare its performance to a maximum-likelihood input estimation method and to an existing time-varying compensation filter. The subspace method is recursive and allows real-time implementations since it directly estimates the input without identifying a sensor model. The maximum-likelihood method is model-based and requires very high computational effort. In this form, the maximum-likelihood method cannot be implemented in real-time, however, we used it as a reference to evaluate the subspace method and the time-varying compensation filter results. The effectiveness of the subspace method is validated in a simulation study with a time-varying sensor. The results show that the subspace method estimation has relative errors that are one order of magnitude smaller and converges two times faster than the compensation filter.
+</blockquote>
+<p><blockquote>
+Keywords: Affine input estimation, Subspace estimation method, Maximum-likelihood estimation method, Recursive least squares, Dynamic weighing
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="cd-est">5</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky, T.&nbsp;Liu, and A.&nbsp;Takeda.
+ Data-driven structured noise filtering via common dynamics
+  estimation.
+ <em>IEEE Trans. Signal Process.</em>, 68:3064--3073, 2020.
+[&nbsp;<a href="j_bib.html#cd-est">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/TSP.2020.2993676">DOI</a>&nbsp;| 
+<a href="http://homepages.vub.ac.be/~imarkovs/publications/cd-est.pdf">.pdf</a>&nbsp;]
+<blockquote>
+Classical signal from noise separation problems assume that the signal is a trajectory of a low-complexity linear time-invariant system and that the noise is a random process. In this paper, we generalize this classical setup to what we call data-driven structured noise filtering. In the new setup, the noise has two components: structured noise, which is also a trajectory of a low-complexity linear time-invariant system, and unstructured noise, which is a zero-mean white Gaussian process. The key assumption that makes the separation problem in the new setup well posed is that among several experiments, the signal's dynamics remains the same while the structured noise's dynamics varies. The data-driven structured noise filtering problem then becomes a problem of estimation of common linear time-invariant dynamics among several observed signals. We show that this latter problem is a structured low-rank approximation problem with multiple rank constraints and use a subspace identification approach for solving it. The resulting methods allow computationally efficient and numerically robust implementation and have the system theoretic interpretation of finding the intersection of autonomous linear time-invariant behaviors. Statistical analysis of the methods providing confidence bounds is a topic for future research.
+</blockquote>
+<p><blockquote>
+Keywords: Hankel structured low-rank approximation, Subspace system identification, Behavioral approach
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="ddctr-test">6</a>]
+</td>
+<td class="bibtexitem">
+V.&nbsp;Mishra, I.&nbsp;Markovsky, and B.&nbsp;Grossmann.
+ Data-driven tests for controllability.
+ <em>Control Systems Letters</em>, 5:517--522, 2020.
+[&nbsp;<a href="j_bib.html#ddctr-test">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/LCSYS.2020.3003770">DOI</a>&nbsp;| 
+<a href="http://homepages.vub.ac.be/~imarkovs/publications/ddctr-test.pdf">pdf</a>&nbsp;]
+<blockquote>
+The fundamental lemma due to Willems et al. plays an important role in system identification and data-driven control. One of the assumptions for the fundamental lemma is that the underlying linear time-invariant system is controllable. In this paper, the fundamental lemma is extended to address system identification for uncontrollable systems. Then, a data-driven algebraic test is derived to check whether the underlying system is controllable or not. An algorithm based on the singular value decomposition of a Hankel matrix constructed from the data is provided to implement the developed test. The algorithm has cubic computational cost. Examples are given to illustrate the theoretical results.
+</blockquote>
+<p>
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="cd-est-simax">7</a>]
+</td>
+<td class="bibtexitem">
+T.&nbsp;Liu, I.&nbsp;Markovsky, T.-K. Pong, and A.&nbsp;Takeda.
+ A hybrid penalty method for a class of optimization problems with
+  multiple rank constraints.
+ <em>SIAM J. Matrix Anal. Appl.</em>, 41:1260--1283, 2020.
+[&nbsp;<a href="j_bib.html#cd-est-simax">bib</a>&nbsp;| 
+<a href="https://arxiv.org/pdf/1906.10396">pdf</a>&nbsp;]
+<blockquote>
+In this paper, we consider the problem of minimizing a smooth objective over multiple rank constraints on Hankel-structured matrices. This kind of problems arises in system identification, system theory and signal processing, where the rank constraints are typically “hard constraints”. To solve these problems, we propose a hybrid penalty method that combines a penalty method with a post-processing scheme. Specifically, we solve the penalty subproblems until the penalty parameter reaches a given threshold, and then switch to a local alternating “pseudo-projection” method to further reduce constraint violation. Pseudo-projection is a generalization of the concept of projection. We show that a pseudo-projection onto a single low-rank Hankel-structured matrix constraint can be computed efficiently by existing softwares such as SLRA (Markovsky and Usevich, 2014), under mild assumptions. We also demonstrate how the penalty subproblems in the hybrid penalty method can be solved by pseudo-projection-based optimization methods, and then present some convergence results for our hybrid penalty method. Finally, the efficiency of our method is illustrated by numerical examples.
+</blockquote>
+<p><blockquote>
+Keywords: Hankel-structure, system identification, hybrid penalty method, pseudo-projection.
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="decuyper2019lcss">8</a>]
+</td>
+<td class="bibtexitem">
+J.&nbsp;Decuyper, P.&nbsp;Dreesen, J.&nbsp;Schoukens, M.&nbsp;C. Runacres, and K.&nbsp;Tiels.
+ Decoupling multivariate polynomials for nonlinear state-space models.
+ <em>IEEE Control Systems Letters (L-CSS)</em>, 3(3):745--750,
+  2019.
+[&nbsp;<a href="j_bib.html#decuyper2019lcss">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/LCSYS.2019.2916955">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="miaomiao">9</a>]
+</td>
+<td class="bibtexitem">
+M.&nbsp;Zhang, I.&nbsp;Markovsky, C.&nbsp;Schretter, and J.&nbsp;D'hooge.
+ Compressed ultrasound signal reconstruction using a low-rank and
+  joint-sparse representation model.
+ <em>Transactions on Ultrasonics, Ferroelectrics, and Frequency
+  Control</em>, 66:1232--1245, 2019.
+[&nbsp;<a href="j_bib.html#miaomiao">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/TUFFC.2019.2915096">DOI</a>&nbsp;| 
+<a href="https://arxiv.org/pdf/1812.04843">pdf</a>&nbsp;]
+<blockquote>
+With the introduction of very dense sensor arrays in ultrasound imaging, data transfer rate and data storage can become a bottle neck in ultrasound system design. To reduce the amount of sampled channel data, we proposed a new approach based on the low-rank and joint-sparse model that allows to explore the correlations between different ultrasound channels and transmissions. With this method, the minimum number of measurements at each channel can be lower than the sparsity in compressive sensing theory. The accuracy of reconstruction is less dependent on the sparse basis. An optimization algorithm, based on simultaneous direction method of multipliers, is proposed to efficiently solve the resulting optimization problem. Results on different datasets with different experimental settings show that the proposed method is better adapted to the ultrasound signals and can recover the image with fewer samples (e.g. 10% of the samples), while maintaining adequate image quality.
+</blockquote>
+<p><blockquote>
+Keywords: compressive sensing, matrix completion, low-rank and joint-sparse model, ultrasound imaging
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="aut-wiener">10</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky.
+ On the behavior of autonomous Wiener systems.
+ <em>Automatica</em>, 110:108601, 2019.
+[&nbsp;<a href="j_bib.html#aut-wiener">bib</a>&nbsp;| 
+<a href="https://doi.org/10.1016/j.automatica.2019.108601">DOI</a>&nbsp;| 
+<a href="http://homepages.vub.ac.be/~imarkovs/publications/aut-wiener.pdf">.pdf</a>&nbsp;]
+<blockquote>
+Wiener systems are nonlinear dynamical systems, consisting of a linear dynamical system and a static nonlinear system in a series connection. Existing results for analysis and identification of Wiener systems assume zero initial conditions. In this paper, we consider the response of a Wiener system to initial conditions only, i.e., we consider autonomous Wiener systems. Our main result is a proof that an autonomous Wiener system with a polynomial nonlinearity is equivalent to a finite-dimensional linear system. The order of the equivalent linear system is (<em>n</em> + <em>d</em>)-choose-<em>d</em> --- the number of combinations with repetitions of <em>d</em> elements out of <em>n</em> elements --- where <em>n</em> is the order of the linear subsystem and <em>d</em> is the degree of the nonlinearity. The relation between the eigenvalues of the equivalent linear system and the linear subsystem is given by a rank-1 factorization of a symmetric <I>d</I>-way tensor. As an application of the result, we outline a procedure for identification of autonomous Wiener systems.
+</blockquote>
+<p><blockquote>
+Keywords: Nonlinear system identification, Block-oriented models, Wiener system
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="hollander2018">11</a>]
+</td>
+<td class="bibtexitem">
+G.&nbsp;Hollander, P.&nbsp;Dreesen, M.&nbsp;Ishteva, and J.&nbsp;Schoukens.
+ Approximate decoupling of multivariate polynomials using weighted
+  tensor decomposition.
+ <em>Numer. Lin. Alg. Appl.</em>, 25(2):e2135, 2018.
+[&nbsp;<a href="j_bib.html#hollander2018">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1002/nla.2135">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="relan2018mssp">12</a>]
+</td>
+<td class="bibtexitem">
+R.&nbsp;Relan, K.&nbsp;Tiels, A.&nbsp;Marconato, P.&nbsp;Dreesen, and J.&nbsp;Schoukens.
+ Data-driven discrete-time parsimonious identification of a nonlinear
+  state-space model for a weakly nonlinear system with short data record.
+ <em>Mech. Syst. Signal Process.</em>, 104:929--943, 2018.
+[&nbsp;<a href="j_bib.html#relan2018mssp">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1016/j.ymssp.2017.09.015">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="fakhrizadeh2018mssp">13</a>]
+</td>
+<td class="bibtexitem">
+A.&nbsp;Fakhrizadeh Esfahani, P.&nbsp;Dreesen, K.&nbsp;Tiels, J.-P. No&euml;l, and
+  J.&nbsp;Schoukens.
+ Parameter reduction in nonlinear state-space identification of
+  hysteresis.
+ <em>Mech. Syst. Signal Process.</em>, 104:884--895, 2018.
+[&nbsp;<a href="j_bib.html#fakhrizadeh2018mssp">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1016/j.ymssp.2017.10.017">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="dreesen2018real">14</a>]
+</td>
+<td class="bibtexitem">
+P.&nbsp;Dreesen, K.&nbsp;Batselier, and B.&nbsp;De Moor.
+ Multidimensional realization theory and polynomial system solving.
+ <em>Int. J. Control</em>, 91(12):2692--2704, 2018.
+[&nbsp;<a href="j_bib.html#dreesen2018real">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1080/00207179.2017.1378924">DOI</a>&nbsp;]
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="agcd-ode">15</a>]
+</td>
+<td class="bibtexitem">
+A.&nbsp;Fazzi, N.&nbsp;Guglielmi, and I.&nbsp;Markovsky.
+ An ODE based method for computing the approximate greatest common
+  divisor of polynomials.
+ <em>Numerical algorithms</em>, 81:719--740, 2018.
+[&nbsp;<a href="j_bib.html#agcd-ode">bib</a>&nbsp;| 
+<a href="http://homepages.vub.ac.be/~imarkovs/publications/agcd-ode.pdf">pdf</a>&nbsp;]
+<blockquote>
+Computing the greatest common divisor of a set of polynomials is a problem which plays an important role in different fields, such as linear system, control and network theory. In practice, the polynomials are obtained through measurements and computations, so that their coefficients are inexact. This poses the problem of computing an approximate common factor. We propose an improvement and a generalization of the method recently proposed in Guglielmi, N., Markovsky, I.: An ODE based method for computing the distance of coprime polynomials. SIAM J. Numer. Anal. 55, 1456–1482 (2017), which restates the problem as a (structured) distance to singularity of the Sylvester matrix. We generalize the algorithm in order to work with more than 2 polynomials and to compute an Approximate GCD (Greatest Common Divisor) of degree k &gt; 0; moreover we show that the algorithm becomes faster by replacing the eigenvalues by the singular values.
+</blockquote>
+<p><blockquote>
+Keywords: Sylvester matrix, iterative methods, Approximate GCD, polynomials
+</blockquote>
+
+</td>
+</tr>
+</table><hr><p><em>This file was generated by
+<a href="http://www.lri.fr/~filliatr/bibtex2html/">bibtex2html</a> 1.98.</em></p>

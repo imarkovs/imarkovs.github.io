@@ -1,0 +1,100 @@
+#define RUN_TIME 2000       // data collection time (in msec)
+#define SAMPLING_PERIOD 50  // data collection sampling time (in msec)
+#define STEP_LEVEL -50      // step motor power (integer between -100 and 100)
+
+#define KP 0 // proportional gain
+#define KD 0 // derivative gain
+#define KI 0 // integration gain
+#define ERROR_TOL 50        // exit if error > ERROR_TOL
+
+#define MOTORS OUT_AC       // motors' connection
+#define SENSOR IN_4         // sensor's connection
+#define FILE_NAME "s.dat"
+
+int dist;                   // target distance to the object
+
+inline void beep() {
+  PlayTone(440,100); Wait(1000);
+}
+
+void WaitPressM() {  
+  TextOut(0, LCD_LINE2, "Press M button."); beep();
+  // Make sure previous button is released, loop until all released
+  while(ButtonPressed(BTNLEFT,   false) ||
+        ButtonPressed(BTNCENTER, false) ||
+        ButtonPressed(BTNRIGHT,  false));
+  // Wait for the middle button to be pressed
+  while (!ButtonPressed(BTNCENTER, false)) ;
+}
+task save_data() {
+  int  y, t; long IniTick;
+  byte yb, handle;
+  unsigned int result;
+  const int file_size = RUN_TIME / SAMPLING_PERIOD;
+
+  DeleteFile(FILE_NAME);
+  result = CreateFile(FILE_NAME, file_size, handle);
+  if (result == LDR_SUCCESS) {
+    IniTick = CurrentTick(); t = 0;
+    while (t < RUN_TIME) {
+      t = IniTick - CurrentTick();
+      if (t % SAMPLING_PERIOD) {
+        y = SensorUS(SENSOR); yb = y;
+        result = Write(handle, yb);      
+        if (result != LDR_SUCCESS) {
+          TextOut(0, LCD_LINE7, "Data collection"); 
+          TextOut(0, LCD_LINE8, "stopped."); beep();
+          break;
+        }
+      }
+    }
+    CloseFile(handle);
+  } else {
+    TextOut(0, LCD_LINE2, "error"); NumOut(50, LCD_LINE2, result);
+  }
+}
+task step_control() {
+  OnFwd(MOTORS, STEP_LEVEL); Wait(RUN_TIME + 250); Coast(MOTORS);
+}
+
+inline int max(int a, int b) {return (a > b) ? a : b;}
+inline int min(int a, int b) {return (a < b) ? a : b;}
+inline int clip_to_100(int a) {return min(max(a, -100), 100);}
+
+task pid_control()
+{
+  int y, u, e, e_old, diff; long sum = 0;
+
+  while (true) {
+    y = SensorUS(SENSOR);
+    e_old = e;
+    e     = y - dist;
+    if (e > ERROR_TOL) {
+      TextOut(0, LCD_LINE1, "I've lost it!"); break;
+    }
+    sum  = e + 0.95 * sum;
+    diff = e - e_old;
+    u    = clip_to_100(KP * e + KI * sum + KD * diff);
+    OnFwd(MOTORS, u);
+    TextOut(0,  LCD_LINE4, "Y =         ");
+    TextOut(10, LCD_LINE4, NumToStr(y));
+    TextOut(0,  LCD_LINE5, "E =         "); 
+    TextOut(10, LCD_LINE5, NumToStr(e));
+    TextOut(0,  LCD_LINE6, "U =         "); 
+    TextOut(10, LCD_LINE6, NumToStr(u));
+  } 
+}
+task main() {
+  SetSensorLowspeed(SENSOR);
+  if (!false) { // PID control
+    TextOut(0, LCD_LINE1, "To measure DIST"); WaitPressM();
+    dist = SensorUS(SENSOR);
+    ClearScreen();
+    TextOut(0, LCD_LINE3, StrCat("DIST = ", NumToStr(dist)));
+    TextOut(0, LCD_LINE1, "To start"); WaitPressM();
+    TextOut(0, LCD_LINE1, "Tracking ...");
+    start pid_control;
+  } else       // step input
+    start step_control;
+  start save_data;
+}

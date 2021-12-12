@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2019-09-30 Mon 07:03 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>MATLAB catch-up course: Linear algebra, signals, and systems</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ivan Markovsky" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">MATLAB catch-up course: Linear algebra, signals, and systems</h1>
+
+<div id="outline-container-orged2ff99" class="outline-2">
+<h2 id="orged2ff99">Organization</h2>
+<div class="outline-text-2" id="text-orged2ff99">
+</div>
+<div id="outline-container-orgc963e33" class="outline-3">
+<h3 id="orgc963e33">Lectures</h3>
+<div class="outline-text-3" id="text-orgc963e33">
+<ul class="org-ul">
+<li>Thomas Van den Dries: statistics</li>
+<li>Ivan Markovsky: linear algebra, signals &amp; systems</li>
+<li>Ben Grossmann: exercises</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org024ac2f" class="outline-3">
+<h3 id="org024ac2f">Materials</h3>
+<div class="outline-text-3" id="text-org024ac2f">
+<ul class="org-ul">
+<li><p>
+these notes are available from 
+</p>
+<blockquote>
+<p>
+<a href="http://homepages.vub.ac.be/~imarkovs/matlab">http://homepages.vub.ac.be/~imarkovs/matlab</a>  
+</p>
+</blockquote></li>
+<li><p>
+recommended book
+</p>
+<blockquote>
+<p>
+Higham, D. J., &amp; Higham, N. J.. MATLAB guide. 3rd edition, SIAM, 2017.
+</p>
+</blockquote></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orgcb80a1d" class="outline-2">
+<h2 id="orgcb80a1d">Introduction</h2>
+<div class="outline-text-2" id="text-orgcb80a1d">
+</div>
+<div id="outline-container-org17e427d" class="outline-3">
+<h3 id="org17e427d">Why study/use Matlab?</h3>
+<div class="outline-text-3" id="text-org17e427d">
+<ul class="org-ul">
+<li>a bit of history
+<ul class="org-ul">
+<li>Created in the later 1970 by <a href="https://en.wikipedia.org/wiki/Cleve_Moler">Cleve Moler</a> on the basis of the <a href="https://en.wikipedia.org/wiki/EISPACK">EISPACK</a>.</li>
+<li>In 1985 became a commercial software package.</li>
+<li>Now it is de facto a standard for research in numerical linear algebra.</li>
+</ul></li>
+<li>main features
+<ul class="org-ul">
+<li>interpreted high-level language, specialized for linear algebra</li>
+<li>efficient low-level computations thanks to the use of the BLAS and LAPACK (successor of EISPACK)</li>
+<li>a wide range of functions, organized in toolboxes (some of them are also commercial products)</li>
+</ul></li>
+<li>disadvantages and alternatives 
+<ul class="org-ul">
+<li>not free (free alternative: <a href="https://www.gnu.org/software/octave/">GNU Octave</a>)</li>
+<li>less efficient in comparison with low-level languages (more efficient alternative: <a href="https://julialang.org/">Julia</a>)</li>
+<li>not a general purpose programming language (popular alternative: <a href="https://www.python.org/">Python</a>)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2386140" class="outline-3">
+<h3 id="org2386140">Prepare your work environment</h3>
+<div class="outline-text-3" id="text-org2386140">
+<ul class="org-ul">
+<li>install Matlab/Octave on your PC
+<ul class="org-ul">
+<li>in order to use Matlab, you need a license; VUB offers a group license for students</li>
+<li>for our purposes (linear algebra, signals, and systems), Octave is sufficient</li>
+<li>Octave does not have an equivalent to Simulink (graphical simulation package).
+Also there are incompatibilities between Matlab and Octave when using toolboxes.</li>
+</ul></li>
+<li>use your favorite text editor or IDE
+<ul class="org-ul">
+<li>You don't have to use the build-in editor in Matlab.</li>
+<li><a href="https://www.gnu.org/software/emacs/">GNU emacs</a> is a powerful text editor. It has a steep learning curve.</li>
+<li><p>
+Other popular options: vim, atom, notepad++, gedit 
+</p>
+<blockquote>
+<p>
+The good craftsman are recognized by their tools.
+</p>
+</blockquote></li>
+</ul></li>
+<li>Matlab is an interpreter, using its own language.
+<ul class="org-ul">
+<li>interactive mode
+<ul class="org-ul">
+<li>You type commands on the <i>command line</i> and get the results in the <i>work space</i></li>
+<li>Use <code>who</code> to find what variables you have in the work space.</li>
+<li><code>whos</code> gives extra information: sizes, types, memory used</li>
+</ul></li>
+<li>scripts vs functions
+<ul class="org-ul">
+<li>Create the habit of logging your work in script files. You can copy paste from a file on the command line in order to execute this piece of code. Also you can run a whole script by typing the name of the file on the command line.</li>
+<li>By convention, both Matlab scripts and functions are saved in files with extension <code>.m</code> (m-files).</li>
+<li>The command <code>pwd</code> prints the <i>current working directory</i>. Matlab searches for files first in the current directory. Then, in directories that are on the <i>Matlab path</i>. You can add a directory to the path by the function <code>path</code>. Note that Matlab is case sensitive. <code>which</code> shows the path to the file that is called.</li>
+</ul></li>
+<li>toolboxes 
+<ul class="org-ul">
+<li>You can organize a number of files into a "toolbox", just collect the files in one directory</li>
+<li>Add a table of contents by including in the same directory an m-file with the name of the toolbox.</li>
+<li>There is no distinction between functions written in m-files and Matlab's <i>build in functions</i> (that are hard codded into the system).</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org59cb30c" class="outline-3">
+<h3 id="org59cb30c">Getting help</h3>
+<div class="outline-text-3" id="text-org59cb30c">
+<ul class="org-ul">
+<li>A line beginning with <code>%</code> is a comment. A line beginning with <code>%%</code> is a section title. Anything between <code>%{</code> and <code>}%</code> is a comment.</li>
+<li><code>help</code> &#x2014; prints usage information for a Matlab function. The first lines of the m-file that are comments is the usage information printed by the help function. Create the habit of documenting your functions and scripts. <code>type</code> types the full code of an m-file.</li>
+<li><code>lookfor</code> &#x2014; searches for functions by keywords,</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orge67b98c" class="outline-2">
+<h2 id="orge67b98c">Input and output</h2>
+<div class="outline-text-2" id="text-orge67b98c">
+<ul class="org-ul">
+<li>Use semi-columns <code>;</code> at the end of a line to suppress output. Check the <code>format</code> command for different formats of the output.</li>
+<li>Load/save data from/to files with <code>load</code> and <code>save</code>.</li>
+<li>Export figures to different formats with <code>print</code>.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org6c52fa8" class="outline-2">
+<h2 id="org6c52fa8">The matrix data type</h2>
+<div class="outline-text-2" id="text-org6c52fa8">
+</div>
+<div id="outline-container-org26e235f" class="outline-3">
+<h3 id="org26e235f">IEEE arithmetic</h3>
+<div class="outline-text-3" id="text-org26e235f">
+<ul class="org-ul">
+<li><code>eps</code> &#x2014; the smallest number in the double floating point arithmetic</li>
+<li><code>inf</code> &#x2014; a number bigger that the biggest number represented in double floating point (over/under flow)</li>
+<li><code>NaN</code> &#x2014; "Not a Number", results from undefined operations, e.g., <code>0 / 0</code>, used also to represent missing data</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org60575a6" class="outline-3">
+<h3 id="org60575a6">Special matrices and vectors</h3>
+<div class="outline-text-3" id="text-org60575a6">
+<ul class="org-ul">
+<li><code>zeros(n, m)</code> / <code>ones(n, m)</code> is the \(n\times m\) matrix of all zeros / ones</li>
+<li><code>eye(n)</code> is the identity matrix \(I_{n}\), <code>eye(m, n)</code> returns the matrix \(\begin{bmatrix} I_{m} & 0_{m,n-m} \end{bmatrix}\) if \(m < n\) and \(\begin{bmatrix}  I_{m} \\ 0_{m-n,n} \end{bmatrix}\) if \(n < m\)</li>
+<li><code>1:n</code> is the row vector \(\begin{bmatrix}  1&\cdots&n \end{bmatrix}\), <code>1:s:n</code> increments by <code>s</code> instead of by 1</li>
+<li><code>[]</code> is an empty matrix</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org99d79c9" class="outline-3">
+<h3 id="org99d79c9">Matrix indexing</h3>
+<div class="outline-text-3" id="text-org99d79c9">
+<ul class="org-ul">
+<li>defining a matrix and selecting elements (illustrated by an example)
+<ul class="org-ul">
+<li><code>a = [1 2 3; 4 5 6]</code> defines the matrix \(A = \begin{bmatrix}  1&2&3\\ 4&5&6 \end{bmatrix}\)</li>
+<li><code>a(1, 2)</code> is the element \(A_{12}\)</li>
+<li><code>a(1, :)</code> is the first row, <code>a(:, 1)</code> is the first column, <code>a(1:2, 1:2)</code> is the submatrix \(A = \begin{bmatrix}  1&2 \\ 4&5 \end{bmatrix}\)</li>
+<li><code>a(1, :) = []</code> deletes the first row</li>
+</ul></li>
+<li><code>a(:)</code> is the (column-wise) vectorized matrix, in the example \(\text{vec}(A) = \begin{bmatrix}  1& 4& 2& 5& 3& 6 \end{bmatrix}^{\top}\). If <code>a</code> is indexed with a single integer <code>a(i)</code> the index refers to the element in the vector \(\text{vec}(A)\).</li>
+<li>More generally, <code>a(I)</code>, where <code>I</code> is a matrix of integers between 1 and \(mn\), is the matrix with the same size as \(I\), which \((i,j)\)th element is \(A(I(i,j))\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf9dcf4c" class="outline-3">
+<h3 id="orgf9dcf4c">Other useful operations</h3>
+<div class="outline-text-3" id="text-orgf9dcf4c">
+<ul class="org-ul">
+<li>You can concatenate matrices of compatible dimensions <code>[A11 A12; A21 A22]</code> (block matrices)</li>
+<li><code>*</code> and <code>^</code> are the <i>matrix product and power</i>. Element-wise matrix operations are preceded: <code>a .* a</code>.</li>
+<li>Adding a scalar to a matrix adds the scalar to all elements.</li>
+<li>Use <code>reshape</code> to reorganize the data in a matrix of different size with the same number of elements, e.g., for the example above <code>reshape(a, 3, 2)</code> gives the matrix \(\begin{bmatrix}  1&5\\ 4&3\\ 3&6 \end{bmatrix}\)</li>
+<li>Use <code>find</code> to find elements in a matrix that satisfy a condition, e.g., <code>[I, J] = find(a &gt; 4)</code></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgbd2ae11" class="outline-2">
+<h2 id="orgbd2ae11">Linear algebra</h2>
+<div class="outline-text-2" id="text-orgbd2ae11">
+<ul class="org-ul">
+<li>The generalization of the scalar division to matrices is used for solving systems of linear equations.
+<ol class="org-ol">
+<li>square nonsingular matrix: <code>x = a \ b</code> is the unique solution \(x = A^{-1}b\) (computed in a better way than inverting \(A\) and multiplication of the inverse with \(b\))</li>
+<li>tall full column rank matrix: <code>x = a \ b</code> is the least-squares approximate solution \(x = (A^{\top}A)^{-1}A^{\top}b\), see also <code>lscov</code></li>
+<li>far full row rank matrix: <code>x = a \ b</code> is a solution with \(n-m\) elements set to zero (<i>not</i> the least norm solution \(x = A^{\top} (AA^{\top})^{-1} b\))</li>
+</ol></li>
+<li><code>eig</code> and <code>svd</code> &#x2014; eigenvalues and singular values decompositions, <code>eigs</code> and <code>svds</code> are used to compute selected eigenvalues and singular values and vectors (for large-scale problems)</li>
+<li><code>rank</code>, <code>null</code>, <code>pinv</code> &#x2014; rank, null space and pseudo-inverse</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org25f67a6" class="outline-2">
+<h2 id="org25f67a6">Toolboxes</h2>
+<div class="outline-text-2" id="text-org25f67a6">
+</div>
+<div id="outline-container-org22d5ca9" class="outline-3">
+<h3 id="org22d5ca9">Optimization toolbox</h3>
+<div class="outline-text-3" id="text-org22d5ca9">
+<ul class="org-ul">
+<li>functions can be defined in m-files or as implicit functions <code>f = @(x) x ^ 2;</code></li>
+<li>a wide rande of local optimization problems and methods, see the user manual or type <code>help optim</code></li>
+<li>numerical approximation of derivatives</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org58fd6f4" class="outline-3">
+<h3 id="org58fd6f4">Control toolbox</h3>
+<div class="outline-text-3" id="text-org58fd6f4">
+<ul class="org-ul">
+<li>analysis and design of linear time-invariant systems, see the user manual or type <code>help control</code></li>
+<li>state-space, transfer function, zero-pole-gain objects</li>
+<li>Kalman filter design, pole-placement, linear-quadratic optimal control</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgf84bb24" class="outline-3">
+<h3 id="orgf84bb24">Identification toolbox</h3>
+<div class="outline-text-3" id="text-orgf84bb24">
+<ul class="org-ul">
+<li>identification of linear time-invariant and certain classes of nonlinear systems, see the user manual or type <code>help ident</code></li>
+<li>parametric and nonparametric models / methods</li>
+<li>subspace, instrumental variable, and prediction error methods</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-org98d70df" class="outline-2">
+<h2 id="org98d70df">Other topics</h2>
+<div class="outline-text-2" id="text-org98d70df">
+</div>
+<div id="outline-container-org20b7a6b" class="outline-3">
+<h3 id="org20b7a6b">sparse matrices</h3>
+<div class="outline-text-3" id="text-org20b7a6b">
+<p>
+large scale problems have structure, which is often sparsity (sparse matrix has many zero entries)
+</p>
+</div>
+</div>
+<div id="outline-container-orge915665" class="outline-3">
+<h3 id="orge915665">mex-files</h3>
+<div class="outline-text-3" id="text-orge915665">
+<p>
+calling C-functions from Matlab, used for more efficient implementation (of a part of the code)
+</p>
+</div>
+</div>
+<div id="outline-container-org18abb5b" class="outline-3">
+<h3 id="org18abb5b"><a href="http://homepages.vub.ac.be/~imarkovs/talks/tools-seminar-org-mode.pdf">Literate programming and reproducible research</a></h3>
+<div class="outline-text-3" id="text-org18abb5b">
+<ul class="org-ul">
+<li><code>publish</code> &#x2014; generates a view of an m-file in different formats</li>
+<li><a href="https://www.cs.tufts.edu/~nr/noweb/">noweb</a>     &#x2014; a literate programming system</li>
+<li><a href="https://orgmode.org/">org-mode</a>  &#x2014; a mode of the emacs text editor, allows literate programming, reproducible research (code evaluation from within the editor), and much more</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7021d35" class="outline-2">
+<h2 id="org7021d35"><a href="./exercises.pdf">Exercises</a></h2>
+</div>
+</div>
+</body>
+</html>

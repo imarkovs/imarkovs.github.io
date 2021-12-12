@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Comparison of methods for system identification with missing data</title>
+<!-- 2014-07-16 Wed 08:53 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Comparison of methods for system identification with missing data</h1>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Setup</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">Methods compared</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li>Nuclear norm minimization
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-matlab" id="nucnrm">[sysh_nn, wh_nn] = nucnrm_md(y, u, n);
+</pre>
+</div>
+<ul class="org-ul">
+<li>SLRA method for output error identification (initial approximation from <code>nucnrm_md</code>)
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-matlab" id="ident">opt.exct = 1<span style="color: #98fb98;">:</span>m;     <span style="color: #ee0000;">% output error</span>
+opt.sys0 = sysh_nn; <span style="color: #ee0000;">% initial approximation</span>
+[sysh, info, wh] = ident(w, m, ell, opt);
+</pre>
+</div>
+<ul class="org-ul">
+<li>Local polynomial method (<code>dof=20</code>)
+</li>
+</ul>
+<div class="org-src-container">
+
+<pre class="src src-matlab" id="sysid">[sysh_lp, yh_lp] = lpoly_md(u, y, Tm, n, 20);
+</pre>
+</div>
+<p>
+<code>lpoly_md</code> is a wrapper function calling <code>MissingDataLocalPolyAnal</code> and <code>MissingDataLocalPolyAnal_MIMO</code>
+</p>
+<div class="org-src-container">
+
+<pre class="src src-matlab"><span style="color: #00ffff;">function</span> <span style="color: #eedd82;">[sysh, yh]</span> = <span style="color: #ffffff; text-decoration: underline;">lpoly_md</span>(<span style="color: #eedd82;">u</span>, <span style="color: #eedd82;">y</span>, <span style="color: #eedd82;">Tm</span>, <span style="color: #eedd82;">n</span>, <span style="color: #eedd82;">dof</span>)
+
+[m, T] = size(u); <span style="color: #00ffff;">if</span> m <span style="color: #98fb98;">&gt;</span> T, u = u'; m = T; <span style="color: #00ffff;">end</span>
+[p, T] = size(y); <span style="color: #00ffff;">if</span> p <span style="color: #98fb98;">&gt;</span> T, y = y'; p = T; <span style="color: #00ffff;">end</span>
+
+data = struct(<span style="color: #ff7f24;">'u'</span>, u', <span style="color: #ff7f24;">'y'</span>, y', <span style="color: #ff7f24;">'Ts'</span>, 1);
+method = struct(<span style="color: #ff7f24;">'dof'</span>, dof, <span style="color: #ff7f24;">'order'</span>, [], <span style="color: #ff7f24;">'transient'</span>, [], <span style="text-decoration: underline;">...</span>
+                <span style="color: #ff7f24;">'startfreq'</span>, [], <span style="color: #ff7f24;">'stopfreq'</span>, [], <span style="color: #ff7f24;">'step'</span>, []);
+<span style="color: #00ffff;">if</span> (p <span style="color: #98fb98;">==</span> 1 <span style="color: #98fb98;">&amp;</span> m <span style="color: #98fb98;">==</span> 1)
+  data.MissingValuesPosition = Tm;
+  [CZ, Z, freq, dof, yh, G, CovG, dof, CL] = MissingDataLocalPolyAnal(data, method);  
+<span style="color: #00ffff;">else</span>
+  <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">i</span> = <span style="color: #7fffd4;">1:p</span>, data.MissingValuesPosition{<span style="color: #7fffd4;">i</span>} = Tm; <span style="color: #00ffff;">end</span>
+  [CZ, Z, freq, MissingValues, TZ, G, CovecG, dof] = MissingDataLocalPolyAnal_MIMO(data, method);
+  yh = []; <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">i</span> = <span style="color: #7fffd4;">1:p</span>, yh(<span style="color: #98fb98;">:</span>, <span style="color: #7fffd4;">i</span>) = data.MissingValuesPosition{<span style="color: #7fffd4;">i</span>}; <span style="color: #00ffff;">end</span>
+<span style="color: #00ffff;">end</span>
+sysh = ss(tfest(iddata(G', ones(size(G')), 1, <span style="color: #ff7f24;">'freq'</span>, freq), n, <span style="color: #ff7f24;">'Ts'</span>, 1)); <span style="color: #ee0000;">% is this correct?</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Data generation</h3>
+<div class="outline-text-3" id="text-1-2">
+<div class="org-src-container">
+
+<pre class="src src-matlab" id="true-data">sys0 = drss(n, p, m); u0 = rand(T, m); y0 = lsim(sys0, u0); w0 = [u0 y0];
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-matlab" id="noisy-data">yt = randn(T, p); 
+w = w0 <span style="color: #98fb98;">+</span> NL(<span style="color: #7fffd4;">i</span>) <span style="color: #98fb98;">*</span> [zeros(T, m) yt] <span style="color: #98fb98;">/</span> norm(yt, <span style="color: #ff7f24;">'fro'</span>) <span style="color: #98fb98;">*</span> norm(y0, <span style="color: #ff7f24;">'fro'</span>);
+</pre>
+</div>
+<div class="org-src-container">
+
+<pre class="src src-matlab" id="missing-values">w(Tm, m <span style="color: #98fb98;">+</span> 1<span style="color: #98fb98;">:</span>end) = <span style="color: #7fffd4;">NaN</span>; u = w(<span style="color: #98fb98;">:</span>, 1<span style="color: #98fb98;">:</span>m); y = w(<span style="color: #98fb98;">:</span>, m <span style="color: #98fb98;">+</span> 1<span style="color: #98fb98;">:</span>end);
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Validation</h3>
+<div class="outline-text-3" id="text-1-3">
+<div class="org-src-container">
+
+<pre class="src src-matlab" id="define-e_md">e_md = @(yh) norm(y0(Tm, <span style="color: #98fb98;">:</span>) <span style="color: #98fb98;">-</span> yh, <span style="color: #ff7f24;">'fro'</span>) <span style="color: #98fb98;">/</span> norm(y0(Tm, <span style="color: #98fb98;">:</span>)) <span style="color: #98fb98;">*</span> 100;
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">Testing all methods for different noise levels</h3>
+<div class="outline-text-3" id="text-1-4">
+<div class="org-src-container">
+
+<pre class="src src-matlab" id="test"><span style="color: #98fb98;">&lt;&lt;</span>true<span style="color: #98fb98;">-</span>data<span style="color: #98fb98;">&gt;&gt;</span>
+<span style="color: #98fb98;">&lt;&lt;</span>define<span style="color: #98fb98;">-</span>e_md<span style="color: #98fb98;">&gt;&gt;</span>
+<span style="color: #00ffff;">for</span> <span style="color: #eedd82;">i</span> = <span style="color: #7fffd4;">1:np</span>
+  <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">j</span> = <span style="color: #7fffd4;">1:N</span>
+    <span style="color: #98fb98;">&lt;&lt;</span>noisy<span style="color: #98fb98;">-</span>data<span style="color: #98fb98;">&gt;&gt;</span>
+    <span style="color: #98fb98;">&lt;&lt;</span>missing<span style="color: #98fb98;">-</span>values<span style="color: #98fb98;">&gt;&gt;</span>
+    <span style="color: #98fb98;">&lt;&lt;</span>nucnrm<span style="color: #98fb98;">&gt;&gt;</span>
+    <span style="color: #98fb98;">&lt;&lt;</span>ident<span style="color: #98fb98;">&gt;&gt;</span>
+    <span style="color: #98fb98;">&lt;&lt;</span>sysid<span style="color: #98fb98;">&gt;&gt;</span>
+    e_nn(<span style="color: #7fffd4;">j</span>, <span style="color: #7fffd4;">i</span>) = e_md(wh_nn(Tm, m <span style="color: #98fb98;">+</span> 1<span style="color: #98fb98;">:</span>end)); 
+    e_id(<span style="color: #7fffd4;">j</span>, <span style="color: #7fffd4;">i</span>) = e_md(wh(Tm, m <span style="color: #98fb98;">+</span> 1<span style="color: #98fb98;">:</span>end)); 
+    e_lp(<span style="color: #7fffd4;">j</span>, <span style="color: #7fffd4;">i</span>) = e_md(yh_lp);
+  <span style="color: #00ffff;">end</span>
+<span style="color: #00ffff;">end</span>
+plot(NL, mean(e_id), <span style="color: #ff7f24;">'b'</span>), hold on, plot(NL, mean(e_nn), <span style="color: #ff7f24;">'r'</span>), plot(NL, mean(e_lp), <span style="color: #ff7f24;">'k'</span>)
+legend(<span style="color: #ff7f24;">'slra'</span>, <span style="color: #ff7f24;">'nucnrm'</span>, <span style="color: #ff7f24;">'lp'</span>, <span style="color: #ff7f24;">'location'</span>, <span style="color: #ff7f24;">'NorthWest'</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Experiments</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Initialization</h3>
+<div class="outline-text-3" id="text-2-1">
+<div class="org-src-container">
+
+<pre class="src src-matlab">clear all, rand(<span style="color: #ff7f24;">'state'</span>, 0), randn(<span style="color: #ff7f24;">'state'</span>, 0)
+addpath <span style="color: #98fb98;">/</span>home<span style="color: #98fb98;">/</span>im<span style="color: #98fb98;">/</span>mfiles<span style="color: #98fb98;">/</span>missing<span style="color: #98fb98;">-</span>data<span style="color: #98fb98;">-</span>dynamic<span style="color: #98fb98;">/</span>simio<span style="color: #98fb98;">/</span> <span style="color: #ee0000;">% nucnrm_md</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">General simulation parameters</h3>
+<div class="outline-text-3" id="text-2-2">
+<div class="org-src-container">
+
+<pre class="src src-matlab">ell = 1; m = 1; p = 1; T = 100; n = p <span style="color: #98fb98;">*</span> ell; 
+N = 20; np = 7; NL = linspace(0, 0.1, np);
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">A block of missing values</h3>
+<div class="outline-text-3" id="text-2-3">
+<div class="org-src-container">
+
+<pre class="src src-matlab">Tm = 40<span style="color: #98fb98;">:</span>60; test, print_fig(<span style="color: #ff7f24;">'block'</span>)
+plot2svg block.svg
+</pre>
+</div>
+
+<div class="center">
+</div>
+
+<table class="imgtable"><tr><td>
+<img src="block.svg" alt="" width="500px" />&nbsp;
+<td align="right"></td></tr></table>
+</div>
+</div>
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Periodic missing values</h3>
+<div class="outline-text-3" id="text-2-4">
+<div class="org-src-container">
+
+<pre class="src src-matlab">Tm = 10<span style="color: #98fb98;">:</span>ell <span style="color: #98fb98;">+</span> 1<span style="color: #98fb98;">:</span>90; test, print_fig(<span style="color: #ff7f24;">'periodic'</span>)
+plot2svg periodic.svg
+</pre>
+</div>
+
+<div class="center">
+</div>
+
+<table class="imgtable"><tr><td>
+<img src="periodic.svg" alt="" width="500px" />&nbsp;
+<td align="right"></td></tr></table>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Created: 2014-07-16 Wed 08:53</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.1.1 (<a href="http://orgmode.org">Org</a> mode 8.0.7)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

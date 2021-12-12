@@ -1,0 +1,178 @@
+#+TITLE: Reproducible research with Emacs org-mode
+#+PROPERTY: cache yes
+#+PROPERTY: session *MATLAB*
+#+PROPERTY: noweb no-export
+#+BEGIN_LaTeX
+\AtBeginSection[]{\begin{frame}<beamer>\frametitle{Plan}
+\tableofcontents[currentsection]
+\end{frame}}
+#+END_LATEX
+
+* Problems we want to address
+** Reporting computational results
+1. setup and run calculations
+  1. prepare simulation files and data 
+  - execute the simulation files 
+- present the results in pdf document or on webpage
+  1. explain what / how is done ($\leftrightarrow$ 1.1)
+  - copy-paste results from Matlab in a document
+- make the results reproducible (readme file)
+  1. make the code and the data available
+  - explain how to run the code on the data (make file)
+- *redo steps 1.2, 2, 3 every time 1.1 is modified*
+** Why making the results reproducible?
+1. comparing your method with another method
+  - was the code available?
+  - asking the authors, have you got it?
+  - if you got it, was it clear how to use it?
+- applying your method on examples from a paper 
+  - was the data available?
+  - were all details about the simulation setup given?
+- sharing your code with someone else
+  - was it easy to find it?
+  - did you remember how to use it and how it works?
+** Writing better code documentation
+- link algorithms to software implementation
+  - writing formulas in comments is tedious
+  - pasting code and results into text is tedious
+  - tedious means time consuming and error-prone
+- we need papers with more implementation details\\ 
+  as well as code with better explanations
+- can be done at the same time (literate programming)
+** Tools available
+- matlab publish
+  - m-file with text in comments
+  - export to pdf (via \LaTeX) and html
+  - results are inserted in the document
+  - no literate programming support
+  - issues with functions calling
+- [[http://www.cs.tufts.edu/~nr/noweb/][noweb]] / [[http://nuweb.sourceforge.net/][nuweb]] 
+  - mix \LaTeX{} and any sort of code
+  - external program extracts code and tex files
+  - results are not inserted in the document
+- emacs $+$ org-mode 
+  - combines literate programming and reproducibility
+  - does not need additional software
+  - works with any language 
+* Solution via Emacs org-mode
+** Outline
+- code, text/formulas, and results are in one source file
+- markup language separates code, data, and text
+- code can be run and output is automatically inserted
+  - the editor interacts with the OS
+  - calling the compiler and capturing the output
+- source is readable and can be exported (pdf, html)
+** Emacs in a nutshell
+- written in 1976 at MIT AI Lab by Stallman and Steele
+- extensible in Emacs-lisp
+  - every aspect of the editor is customizable
+  - any functionality can be added
+- operates in *modes* that provide features
+  - Matlab, C/C++, LaTeX, ... modes
+  - provides editing functions, syntax highlighting, ...
+- has integration with the OS 
+  - you can do everything you need from within emacs
+** Emacs Org-mode
+- written by Carsten Dominik in 2003
+- document organization via fold-able outline structure
+- task management, links, tables, ...
+- markup language: code, \LaTeX, ... can be embedded 
+- code execution and results capture
+- export engine 
+** Code evaluation
+- example:
+  #+BEGIN_SRC matlab :exports both
+  [pi exp(1) sqrt(2)]
+  #+END_SRC
+
+#+RESULTS[c3410b31c0bb8ebf8cefc8574df68598e0d77272]:
+| 3.1416 | 2.7183 | 1.4142 |
+
+
+- code is tagged 
+  - see [[~/talks/tools-seminar-org-mode.org][source file]]
+- can be evaluated 
+  - place the cursor within the block 
+  - and type =Ctrl+c, Ctrl+c=
+- options control the export 
+  - see the [[http://orgmode.org/worg/org-contrib/babel/header-args.html][manual]]
+- the value of =ans= after evaluation is included 
+** Figure output
+#+BEGIN_SRC matlab :results silent :exports code
+ezplot('sinc', [-5, 5])
+print -dpng f1.png, ans = 'f1.png'
+#+END_SRC
+
+[[./f1.png]]
+
+** Literate programming
+- uses the noweb syntax
+  - see, [[http://orgmode.org/manual/Noweb-reference-syntax.html#Noweb-reference-syntax][user manual]] 
+  - options control the export, see [[http://orgmode.org/manual/noweb.html#noweb][noweb options]]
+- =data= block
+  #+name: data
+  #+BEGIN_SRC matlab 
+  a = 1; b = 2;
+  #+END_SRC
+- =computation= block
+  #+name: computation
+  #+BEGIN_SRC matlab 
+  a + b
+  #+END_SRC
+- putting them together
+  #+name: result
+  #+BEGIN_SRC matlab :cache no :results append :exports both :tangle test.m 
+  <<data>> 
+  <<computation>> 
+  #+END_SRC
+
+#+RESULTS: result
+: 3
+
+* Trying it out
+** Trying it out
+- publish is build in Matlab
+- noweb / nuweb require installation 
+- emacs with org-mode
+  - export to pdf and html works "out of the box"
+  - in Windows, matlab integration needs tweaking
+  - Egon and I are still trying to set it up ...
+- references
+  - [[http://statweb.stanford.edu/~donoho/Reports/1995/wavelab.pdf][Donoho's original paper on reproducible research]]
+  - [[http://www.jstatsoft.org/v46/i03][journal of statistical software's paper]]
+  - [[https://www.youtube.com/watch?v=1-dUkyn_fZA][I used ideas from this presentation]]
+* abstract                                                               :NP:
+Research in system identification involves both theory and experiments. Theoretical results are preferred over empirical observations based on numerical simulations. The research questions that we try to answer, however, are often too complicated to allow rigorous analysis. Even when theory is still applicable, numerical simulations are useful in 1) coming up with an idea of what to prove and 2) validating that theoretical results are correct. Therefore, despite of its lower scientific rating numerical simulation is an important research tool that needs to be mastered.
+
+This talk covers the following questions:
+1. How to automate the process of generating a report about computational results?
+2. How to make the results easily reproducible by others and why we should do this?
+3. How to document code that implements an algorithm in a research paper? 
+4. How to include implementation details in a research paper?
+The proposed solution to questions 3 and 4 is literate programming: an idea that code should be presented for a human to read rather than for a computer to execute. Practical solution to questions 1-4 (and much more) is available withing Emacs org-mode.
+
+References:
+
+Eric Schulte, Dan Davison, Thomas Dye, Carsten Dominik, [[http://www.jstatsoft.org/v46/i03][A Multi-Language Computing Environment for Literate Programming and Reproducible Research]], Vol. 46, Issue 3, Jan 2012
+* preamble                                                               :NP:
+#+AUTHOR:    Ivan Markovsky
+#+EMAIL:     imarkovs@vub.ac.be
+#+DATE:      
+#+LaTeX_CLASS: beamer
+#+LaTeX_CLASS_OPTIONS: [bigger]
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+BEAMER_FRAME_LEVEL: 2
+#+OPTIONS:   H:2 toc:nil
+#+TOC: headlines [currentsection]
+#+LaTeX_HEADER: %\institute{Vrije Universiteit Brussel}
+#+LaTeX_HEADER: \usepackage{times}\usepackage{listings}\lstset{flexiblecolumns=true}
+#+LaTeX_HEADER: \definecolor{dkgreen}{rgb}{0,0.6,0} \definecolor{gray}{rgb}{0.5,0.5,0.5}
+#+LaTeX_HEADER: \setbeamertemplate{footline}[page number]
+#+LaTeX_HEADER: \usepackage{etoolbox}
+#+LaTeX_HEADER: \makeatletter
+#+LaTeX_HEADER: \patchcmd{\@listI}{\itemsep3\p@}{\itemsep1.25em}{}{}
+#+LaTeX_HEADER: \makeatother
+#+LaTeX_HEADER: \setbeamertemplate{navigation symbols}{}  
+#+LaTeX_HEADER: \usepackage{pgfpages}
+#+EXCLUDE_TAGS: NP
+-

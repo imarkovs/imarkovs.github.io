@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta name="generator" content="jemdoc, see http://jemdoc.jaboc.net/" />
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<link rel="stylesheet" href="jemdoc.css" type="text/css" />
+<link rel="stylesheet" href="toggle.css" type="text/css" />
+<script src="toggle.js" type="text/javascript"></script>
+<title>ELEC/VUB doctoral school lectures on &ldquo;System identification in the behavioral setting&rdquo;</title>
+</head>
+<body>
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+try {
+    var pageTracker = _gat._getTracker("UA-42984386-1");
+    pageTracker._trackPageview();
+} catch(err) {}</script>
+<div id="layout-content">
+<div id="toptitle">
+<h1>ELEC/VUB doctoral school lectures on &ldquo;System identification in the behavioral setting&rdquo;</h1>
+</div>
+<h2>Abstract</h2>
+<p>Established data modeling approaches are often derived in a stochastic setting. An alternative deterministic approximation approach, known in the systems and control literature as the behavioral approach, has been developed since the 80's by Jan C. Willems and co-workers. The behavioral approach differentiates between the abstract notion of a model and the concrete notion of a model representation. This distinction proves to be important for developing a coherent theory and effective algorithms for system identification, analysis, and control. The course presents a behavioral approach to system identification. </p>
+<p>The highlight of the course is the low-rank approximation problem, which is a practical tool for modeling in the behavioral setting. A matrix constructed from the data being rank deficient implies that there is an exact low complexity linear model for that data. Moreover, the rank of the data matrix corresponds to the complexity of the model. In the generic case when an exact low-complexity model does not exist, the aim is to find a model that fits the data approximately. The corresponding computational problem is low-rank approximation. In the case of linear time-invariant dynamical models, the data matrix is, in addition, Hankel structured and the approximation should have the same structure.</p>
+<p>Once the approximate system identification problem is formulated as a low-rank approximation problem, it is solved by generic methods. Except for a few special cases, however, low-rank approximation problems are nonconvex and a global solution is expensive to compute. In the course, we present methods based on local optimization, which lead to fast and effective algorithms. The cost function evaluation has the system theoretic interpretation of Kalman smoothing.</p>
+<p>In addition to the theory and algorithms for exact and approximate system identification, the course presents examples from system theory (model reduction and distance to uncontrollability), computer algebra (approximate common divisor computation), and machine learning (recommender systems). Software implementation of the developed methods makes the theory applicable in practice. An essential part of the course are exercises, which give hands-on experience with the presented theory and methods.</p>
+<p><b>Keywords:</b> linear algebra, system theory, system identification, numerical algorithms</p>
+<h2>Lecture slides</h2>
+<ol>
+<li><p><a href="doctoral-school/l1.pdf">Classical vs behavioral paradigms for data modeling</a><br /> 
+<a href="javascript:toggleAbs('l1')">[abstract]</a> <br/><span id="bib_l1" class="noshow">The classical paradigm for data modeling invariably assumes that an input\/output partitioning of the data is a priori given. For linear models, this paradigm leads to computational problems of solving approximately overdetermined systems of linear equations. Examples of most simple data fitting problems, however, suggest that the a priori fixed input\/output partitioning of the data may be inadequate: 1) the fitting criteria often depend implicitly on the choice of the input and output variables, which may be arbitrary, and 2) the resulting computational problems may be ill-conditioned. An alternative paradigm for data modeling, sometimes refered to as the behavioral paradigm, does not assume a priori fixed input\/output partitioning of the data. The corresponding computational problems involve approximation of a matrix constructed from the data by another matrix of lower rank. We will review applications in systems and control, signal processing, computer algebra, chemometrics, psychometrics, machine learning, and computer vision that lead to low-rank approximation problems. Finally, generic solution methods for solving low-rank approximation problems are outlined.</span></p>
+</li>
+<li><p><a href="doctoral-school/l2.pdf">Subspace methods</a><br /> 
+<a href="javascript:toggleAbs('l2')">[abstract]</a> <br/><span id="bib_l2" class="noshow">Three linear model representations---kernel, image, and input\/output---are defined and the connections among them are shown. The problem of obtaining a state space representation of the system is known as system realization. The transition from impulse response to state space representation is a special exact identification problem and is at the heart of the subspace identification methods. Then the problem of deriving a representation of the system from a general exact trajectory of that system is considered. A key condition for existence of a unique solution is persistency of excitation of an input component of the data. The result leads to algorithms for exact identification. First, we present algorithms for passing from data to an impulse response representation. Then, we show how a state sequence of the model can be obtained directly from the data.</span></p>
+</li>
+<li><p><a href="doctoral-school/l3.pdf">Optimization-based methods</a><br /> 
+<a href="javascript:toggleAbs('l3')">[abstract]</a> <br/><span id="bib_l3" class="noshow">Approximate data modeling is a trade-off between model complexity and model accuracy. One particular scalarization of this biobjective problem is the low-rank approximation problem. Fundamentally different ways of measuring the model accuracy are the misfit and latency. Misfit leads to errors-in-variables problems and latency leads to the prediction error problems. Independent of the particular problem formulation, there are three conceptually different approaches for solving the problem: convex relaxations, local optimization, and global optimization. We present a method based on local optimization. A bilinear structure of the problem is effectively used to eliminate part of the optimization variables. The computation of the cost function has system theoretic interpretation of Kalman smoothing. The remaining problem is a nonlinear least squares optimization over the model parameters.</span></p>
+</li>
+</ol>
+<h2><a href="doctoral-school/exercises-elec-2017.pdf">Exercises</a></h2>
+<ul>
+<li><p><a href="doctoral-school/exercises-elec-2017-sol.pdf">solutions</a></p>
+</li>
+</ul>
+<h2>References</h2>
+<ul>
+<li><p>I. Markovsky, <a href="http://homepages.vub.ac.be/~imarkovs/springer-book.pdf">Low rank approximation: Algorithms, implementation, applications</a>, Springer, 2012.</p>
+</li>
+<li><p>I. Markovsky, et al. <a href="http://homepages.vub.ac.be/~imarkovs/siam-book.pdf">Exact and approximate modeling of linear systems: A behavioral approach</a>, SIAM, 2006.</p>
+</li>
+</ul>
+<!-- Start of StatCounter Code for Default Guide -->
+<script type="text/javascript">
+var sc_project=9435963; 
+var sc_invisible=1; 
+var sc_security="b0624018"; 
+var scJsHost = (("https:" == document.location.protocol) ?
+"https://secure." : "http://www.");
+document.write("<sc"+"ript type='text/javascript' src='" +
+scJsHost+
+"statcounter.com/counter/counter.js'></"+"script>");
+</script>
+<noscript><div class="statcounter"><a title="website
+statistics" href="http://statcounter.com/free-web-stats/"
+target="_blank"><img class="statcounter"
+src="http://c.statcounter.com/9435963/0/b0624018/1/"
+alt="website statistics"></a></div></noscript>
+<!-- End of StatCounter Code for Default Guide -->
+<div id="footer">
+<div id="footer-text">
+Page generated 2019-03-18 10:27:42 CET, by <a href="http://jemdoc.jaboc.net/">jemdoc</a>.
+</div>
+</div>
+</div>
+</body>
+</html>

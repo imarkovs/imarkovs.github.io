@@ -1,0 +1,12 @@
+= ELEC/VUB Doctoral school #lectures on "Low-rank approximation and its applications"
+
+== Lectures
+. [l1.pdf Classical vs behavioral paradigms for data modeling] ([l1.org source])
+. [l2.pdf Exact identification] ([l2.org source])
+. [l3.pdf Approximate identification] ([l3.org source])
+
+== Links
+- [book/code.tgz code from the book "Low Rank Approximation: Algorithms, Implementation, Applications"]
+- [slra/software.html software for approximate system identification]
+- [http://www.cs.tufts.edu/~nr/noweb/ noweb]
+- [http://orgmode.org/worg/org-contrib/babel/ org mode]

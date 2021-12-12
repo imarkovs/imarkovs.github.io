@@ -1,0 +1,36 @@
+#+TITLE: SLRA: Software for weighted structured low-rank approximation
+
+The package computes locally optimal solutions to low-rank approximation problems 
+\[
+minimize \quad over \widehat p \quad \norm{p - \widehat p}_w \quad\text{subject to}\quad \rank({\calS}(\widehat p)) \leq r 
+\]
+with the following features:
+- mosaic Hankel structured approximating matrix ${\calS}(\widehat p)$,
+- weighted 2-norm approximation criterion $\norm{\cdot}_w$,
+- fixed elements in the approximating matrix,
+- missing elements in the data matrix, and
+- linear constraints on an approximating matrix's left kernel basis.
+For an $m\times n$ data matrix, with $m < n$, the computational complexity of the cost function and derivative evaluation is $O(m^2n)$, so that the package is suitable for applications with $n\gg m$.
+
+** Documentation [??]
+
+** Download 
+- precompiled mex files for 64 bit Linux, Windows, and Mac OS [slra.tgz] 
+- source code https://github.com/slra/slra Software for structured low-rank approximation
+
+** Licencing
+
+** Citing
+
+** Feedback
+
+** Version history
+- 
+
+* preamble								 :NP:
+#+AUTHOR: Ivan Markovsky and Konstantin Usevich, Vrije Universiteit Brussel
+#+EXPORT_EXCLUDE_TAGS: NP
+#+OPTIONS: LaTeX:dvipng
+#+OPTIONS: num:2
+#+STYLE: <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+#+INFOJS_OPT: view:info toc:nil  

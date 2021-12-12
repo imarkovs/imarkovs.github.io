@@ -1,0 +1,244 @@
+<h1>c.bib</h1><a name="dreesen2018lvaica"></a><pre>
+@inproceedings{<a href="c.html#dreesen2018lvaica">dreesen2018lvaica</a>,
+  author = {P. Dreesen and J. {De Geeter} and M. Ishteva},
+  title = {Decoupling multivariate functions using second-order information and tensors},
+  booktitle = {Proc. 14th International Conference on Latent Variable Analysis and Signal Separation (LVA/ICA 2018)},
+  series = {Lecture Notes on Computer Science (LNCS)},
+  volume = {10891},
+  editor = {Y. Deville and S. Gannot and R. Mason and M.~D. Plumbley and D. Ward},
+  pages = {79--88},
+  address = {Guildford, UK},
+  year = {2018},
+  myurl = {./pub/dreesen2018lvaica.pdf},
+  doi = {10.1007/978-3-319-93764-9_8},
+  url = {https://arxiv.org/abs/1805.08479}
+}
+</pre>
+
+<a name="dreesen2017lvaica"></a><pre>
+@inproceedings{<a href="c.html#dreesen2017lvaica">dreesen2017lvaica</a>,
+  author = {P. Dreesen and D.T. Westwick and J. Schoukens and M. Ishteva},
+  title = {Modeling parallel {W}iener-{H}ammerstein systems using tensor decomposition of {V}olterra kernels},
+  year = {2017},
+  booktitle = {Proc. 13th International Conference on Latent Variable Analysis and Signal Separation ({LVA/ICA 2017})},
+  series = {Lecture Notes on Computer Science (LNCS)},
+  volume = {10169},
+  editor = {P. Tichavsky and M. Babaie-Zadeh and O. Michel and N. Thirion-Moreau},
+  pages = {16--25},
+  myurl = {./pub/dreesen2016pWHdec_FINAL_LNCS.pdf},
+  doi = {10.1007/978-3-319-53547-0_2},
+  address = {Grenoble, France}
+}
+</pre>
+
+<a name="dreesen2017camsap"></a><pre>
+@inproceedings{<a href="c.html#dreesen2017camsap">dreesen2017camsap</a>,
+  author = {P. Dreesen and K. Tiels and M. Ishteva and J. Schoukens},
+  title = {Nonlinear system identification: finding structure in nonlinear black-box models},
+  booktitle = {Proc. {IEEE} International Workshop on Computational Advances in Multi-Sensor Adaptive Processing (CAMSAP 2017)},
+  pages = {443--446},
+  venue = {Curacao, Dutch Antilles},
+  year = {2017},
+  eventdate = {2017-12-10/2017-12-13},
+  doi = {10.1109/CAMSAP.2017.8313214},
+  myurl = {./pub/pdreesen_CAMSAP2017.pdf}
+}
+</pre>
+
+<a name="dreesen2019icassp"></a><pre>
+@inproceedings{<a href="c.html#dreesen2019icassp">dreesen2019icassp</a>,
+  author = {P. Dreesen and I. Markovsky},
+  title = {Data-driven simulation using the nuclear norm heuristic},
+  booktitle = {Proc. {IEEE} International Conference on Acoustics, Speech, and Signal Processing (ICASSP~2019)},
+  address = {Brighton, UK},
+  pages = {8207--8211},
+  doi = {10.1109/ICASSP.2019.8682993},
+  year = {2019},
+  myurl = {./pub/pdreesen_icassp2019.pdf}
+}
+</pre>
+
+<a name="ica2"></a><pre>
+@inproceedings{<a href="c.html#ica2">ica2</a>,
+  author = {I. Markovsky and O. Debals and L. De Lathauwer},
+  title = {Sum-of-Exponentials Modeling and Common Dynamics Estimation Using Tensorlab},
+  year = {2017},
+  booktitle = {20th World Congress of the International Federation of Automatic Control},
+  month = {July},
+  pages = {14715--14720},
+  address = {Toulouse, France},
+  pdf = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/ica2.pdf">http://homepages.vub.ac.be/~imarkovs/publications/ica2.pdf</a>},
+  abstract = {Fitting a signal to a sum-of-exponentials model is a basic problem in signal processing. It can be posed and solved as a Hankel structured low-rank matrix approximation problem. Subsequently, local optimization, subspace, and convex relaxation methods can be used for the numerical solution. In this paper, we show another approach, based on the recently proposed concept of structured data fusion. Structured data fusion problems are solved in the Tensorlab toolbox by local optimization methods. The approach allows fitting of signals with missing samples and adding constraints on the model, such as fixed exponents and common dynamics in multi-channel estimation problems. These problems are non-trivial to solve by other existing methods.},
+  keywords = {system identification; low-rank approximation; mosaic Hankel matrix; tensorlab; structured data fusion.}
+}
+</pre>
+
+<a name="med2"></a><pre>
+@inproceedings{<a href="c.html#med2">med2</a>,
+  author = {I. Markovsky},
+  title = {Application of low-rank approximation for nonlinear system identification},
+  year = {2017},
+  booktitle = {25th IEEE Mediterranean Conference on Control and Automation},
+  month = {July},
+  address = {Valletta, Malta},
+  pdf = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/med2.pdf">http://homepages.vub.ac.be/~imarkovs/publications/med2.pdf</a>},
+  abstract = {The paper considers the class of discrete-time, single-input, single-output, nonlinear dynamical systems described by a polynomial difference equation. This class, call polynomial time-invariant, is a proper generalization of the linear time-invariant model class. The identification data is assumed to be generated in the errors-in-variables setting, where the input and the output noise is zero mean, white, and the noise variances is known up to a scaling factor. The identification problem has two sub-problems
+\begin{enumerate}
+\item structure selection: find the monomials appearing in the difference equation representation of the system, and 
+\item parameter estimation: estimate the coefficients of the equation. 
+\end{enumerate}
+
+The main result shows that the parameter estimation by minimization of the 2-norm of the equation error leads to unstructured low-rank approximation of an extended data matrix. The resulting method is computationally robust and efficient due to the use of the singular value decomposition. However, it requires knowledge of the model structure and even when the correct model structure is used, it leads to biased results. For the structure selection, the use 1-norm regularization is proposed. For the bias removal an adjustment of the ordinary least squares estimator is proposed. The resulting adjusted low-rank approximation methods defines an unbiased estimator for the model parameters of the polynomial time-invariant model.},
+  isbn = {978-1-5090-4532-7/17},
+  pages = {12--16}
+}
+</pre>
+
+<a name="sysid18"></a><pre>
+@inproceedings{<a href="c.html#sysid18">sysid18</a>,
+  author = {S. Formentin and I. Markovsky},
+  title = {A comparison between structured low-rank approximation and correlation approach for data-driven output tracking},
+  booktitle = {Proc. of the IFAC Symposium on System Identification},
+  pages = {1068--1073},
+  year = {2018},
+  pdf = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/sysid18.pdf">http://homepages.vub.ac.be/~imarkovs/publications/sysid18.pdf</a>},
+  abstract = {Data-driven control is an alternative to the classical model-based control paradigm. The main idea is that a model of the plant is not explicitly identified prior to designing the control signal. Two recently proposed methods for data-driven control—a method based on correlation analysis and a method based on structured matrix low-rank approximation and completion—solve identical control problems. The aim of this paper is to compare the methods, both theoretically and via a numerical case study. The main conclusion of the comparison is that there is no universally best method: the two approaches have complementary advantages and disadvantages. Future work will aim to combine the two methods into a more effective unified approach for data-driven output tracking.},
+  keywords = {data-driven control, output tracking, virtual reference feedback tuning, structured low-rank approximation, matrix completion},
+  optdoi = {},
+  optisbn = {}
+}
+</pre>
+
+<a name="itwist"></a><pre>
+@inproceedings{<a href="c.html#itwist">itwist</a>,
+  author = {M. Zhang and I. Markovsky and C. Schretter and J. D'hooge},
+  title = {Ultrasound signal reconstruction from sparse samples using a low-rank and joint-sparse model},
+  booktitle = {In Proceedings of iTWIST'18, Paper-ID: 21},
+  optpages = {--},
+  year = {2018},
+  pdf = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/itwist18.pdf">http://homepages.vub.ac.be/~imarkovs/publications/itwist18.pdf</a>},
+  abstract = {With the introduction of very dense sensor arrays in ultrasound (US) imaging, data transfer rate and data storage can become a bottle neck in ultrasound system design. To reduce the amount of sampled channel data, several strategies based on compressive sensing (CS) have been proposed. However, the reconstruction accuracy of CS-based methods is highly dependent on the sparse basis and the number of measurements for each channel cannot be lower than the sparsity thereby limiting the data reduction rate. Therefore, we propose to use a low-rank and joint-sparse model to represent US signals and exploit the correlations between adjacent receiving channels. Results show that the proposed method is better adapted to the ultrasound signals and can recover high quality image approximations from as low as 10\% of the samples.},
+  keywords = {compressive sensing, matrix completion, low-rank and joint-sparse model, ultrasound imaging},
+  optdoi = {},
+  optisbn = {},
+  address = {Marseille, France},
+  date = {November 21--23}
+}
+</pre>
+
+<a name="ddctr-nn"></a><pre>
+@inproceedings{<a href="c.html#ddctr-nn">ddctr-nn</a>,
+  author = {P. Dreesen and I. Markovsky},
+  title = {Data-Driven Simulation Using The Nuclear Norm Heuristic},
+  booktitle = {In Proceedings of the International Conference on Acoustics, Speech, and Signal Processing},
+  year = {2019},
+  url = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/ddctr-nn.pdf">http://homepages.vub.ac.be/~imarkovs/publications/ddctr-nn.pdf</a>},
+  abstract = {Applications of signal processing and control are classically model-based, involving a two-step procedure for modeling and design: first a model is built from given data, and second, the estimated model is used for filtering, estimation, or control. Both steps typically involve optimization problems, but the combination of both is not necessarily optimal, and the modeling step often ignores the ultimate design objective. Recently, data-driven alternatives are receiving attention, which employ a direct approach combining the modeling and design into a single step. In earlier work, it was shown that data-driven signal processing problems can often be rephrased as missing data completion problems, where the signal of interest is part of an incomplete low-rank mosaic Hankel structured matrix. In this paper, we consider the exact data case and the problem of simulating from a given input, an output trajectory of the unknown data generating system. Our findings suggest that, when using an adequate rescaling of the given data, the exact data-driven simulation problem can be solved by replacing the original structured low-rank matrix completion problem by a convex optimization problem, using the nuclear norm heuristic.},
+  keywords = {data-driven signal processing, low-rank matrix completion, mosaic Hankel matrix, nuclear norm, convex optimization},
+  address = {Brighton, UK},
+  date = {May 12--17}
+}
+</pre>
+
+<a name="cdc19a"></a><pre>
+@inproceedings{<a href="c.html#cdc19a">cdc19a</a>,
+  author = {A. Fazzi and N. Guglielmi and I. Markovsky},
+  title = {Computing common factors of matrix polynomials with applications in system and control theory},
+  booktitle = {Proc. of the IEEE Conf. on Decision and Control},
+  year = {2019},
+  month = {December},
+  address = {Nice, France},
+  pages = {7721--7726},
+  doi = {978-1-7281-1397-5/19/},
+  url = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/agcd-cdc.pdf">http://homepages.vub.ac.be/~imarkovs/publications/agcd-cdc.pdf</a>},
+  abstract = {We consider the problem of computing (approximate) greatest common divisors for matrix polynomials and we present some related facts and applications in system and control theory. The main application is to compute the distance of a controllable multi-input multi-output system to the set of uncontrollable ones; then we describe some related results.},
+  keywords = {Matrix polynomial common factor, Distance to uncontrollability, Behavioral approach},
+  optpdf = {}
+}
+</pre>
+
+<a name="cdc19b"></a><pre>
+@inproceedings{<a href="c.html#cdc19b">cdc19b</a>,
+  author = {I. Markovsky and T. Liu and A. Takeda},
+  title = {Subspace methods for multi-channel sum-of-exponentials common dynamics estimation},
+  booktitle = {Proc. of the IEEE Conf. on Decision and Control},
+  year = {2019},
+  optmonth = {December},
+  optaddress = {Nice, France},
+  pages = {2672--2675},
+  optdoi = {978-1-7281-1397-5/19},
+  opturl = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/cd-est-cdc.pdf">http://homepages.vub.ac.be/~imarkovs/publications/cd-est-cdc.pdf</a>},
+  abstract = {Estimation of common dynamics among several observed signals occurs in signal processing, system theory, and computer algebra problems. In this paper, we propose subspace methods for common linear time-invariant dynamics detection and estimation. First, we consider the deterministic problem of detection of common dynamics when the data is exact (noise free). Then, we consider the stochastic estimation problem when the data is corrupted by white Gaussian noise. The methods proposed have a system theoretic interpretation of finding the intersection of autonomous linear time-invariant behaviors. },
+  keywords = {common dynamics, subspace identification, behavioral approach, approximate common divisor},
+  optpdf = {},
+  software = {<a href="http://homepages.vub.ac.be/~imarkovs/software/common-dynamics.tar">http://homepages.vub.ac.be/~imarkovs/software/common-dynamics.tar</a>}
+}
+</pre>
+
+<a name="slra-cdc"></a><pre>
+@inproceedings{<a href="c.html#slra-cdc">slra-cdc</a>,
+  author = {K. Usevich and I. Markovsky},
+  title = {Software package for mosaic-{H}ankel structured low-rank approximation},
+  booktitle = {Proc. of the IEEE Conf. on Decision and Control},
+  year = {2019},
+  month = {December},
+  address = {Nice, France},
+  pages = {7165--7170},
+  doi = {978-1-7281-1397-5/19/},
+  url = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/slra-cdc.pdf">http://homepages.vub.ac.be/~imarkovs/publications/slra-cdc.pdf</a>},
+  abstract = {This paper presents the SLRA package (http://slra.github.io)---C software with interface to MATLAB, Octave, and R for solving low-rank approximation problems with the following features: mosaic Hankel structured approximating matrix, weighted 2-norm approximation criterion, and fixed and missing elements in the approximating matrix. The package has applications in system identification, machine learning, and computer algebra. The paper gives an overview of the features of the package, including the wrapper functions for system identification (IDENT package) and approximate greatest common divisor (AGCD) computations. The addendum to the paper, available from http://homepages.vub.ac.be/~imarkovs/slra-demo, includes examples that demonstrate the usage, versatility, and efficiency of the software.},
+  keywords = {system identification; low-rank approximation; mosaic Hankel matrix; missing data; approximate greatest common factor; software}
+}
+</pre>
+
+<a name="sem-icassp"></a><pre>
+@inproceedings{<a href="c.html#sem-icassp">sem-icassp</a>,
+  author = {D. Verbeke and I. Markovsky},
+  title = {Line spectral estimation with palyndromic kernels},
+  booktitle = {In Proceedings of the International Conference on Acoustics, Speech, and Signal Processing},
+  year = {2020},
+  url = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/sem-icassp.pdf">http://homepages.vub.ac.be/~imarkovs/publications/sem-icassp.pdf</a>},
+  abstract = {Estimation of line spectra is a classical problem in signal processing and arises in many applications. The problem is to estimate the frequencies and corresponding amplitudes of a sum of (possibly complex-valued) sinusoidal components from noisy measurements. It can be solved with maximum likelihood methods or with suboptimal subspace methods. The constraint that the model does not have damping is difficult to impose in subspace methods. We develop an equivalent formulation as a structured low-rank approximation problem and present a necessary condition for the model to be undamped. The condition is that a vector in the kernel of  a Hankel matrix of observations has palindromic structure and it leads to a linear equality constraint which is easily incorporated into a numerical algorithm. Simulations show that even for relatively high noise-to-signal ratios, the necessary condition is in practice also sufficient, i.e. the identified model does not have damping.},
+  keywords = {Line spectral estimation, structured low-rank approximation, palyndromic kernels, subspace methods},
+  address = {Barcelona},
+  date = {May 3--9},
+  pages = {5960--5963}
+}
+</pre>
+
+<a name="icasp"></a><pre>
+@inproceedings{<a href="c.html#icasp">icasp</a>,
+  author = {I. Markovsky},
+  title = {Learning {K}alman filtering with {L}ego mindstorms},
+  booktitle = {International Symposium on Mathematical Theory of Networks and Systems},
+  year = {2021},
+  url = {<a href="http://homepages.vub.ac.be/~imarkovs/publications/icasp.pdf">http://homepages.vub.ac.be/~imarkovs/publications/icasp.pdf</a>},
+  abstract = {Research shows that, in learning science and engineering, guided project work leads to deeper understanding of theoretical concepts (as well as acquisition of hands-on skills) than the classical approach of textbook reading and attending lectures. In an approach to education based on project work, the role of the teacher is to create a stimulating learning environment and to supervise the students in accomplishing their objectives. The main challenge is to come up with projects that are engaging, diverse, and feasible in view of limited time and resources. In this paper, we describe such a signal processing project. The task is to improve the speed and accuracy characteristics of a sensor by real-time signal processing. It turns out that this is an application of Kalman filtering however the students need to identify a model of the sensor and implement the Kalman filter on a DSP. The project consists of three main tasks: 1) mathematical formalization of the problem, 2) development of solution methods, and 3) implementation and testing of the methods. The testing is done on an inexpensive laboratory setup, using the Lego Mindstorms educational kit in combination with a temperature sensor. The learning outcomes are understanding of model representations, system identification, and state estimation, as well as implementation in Matlab and C of real-time signal processing algorithms. Possible extensions include data fusion of multiple sensors, adaptive signal processing, and applications to other sensors.},
+  keywords = {Kalman filtering, dynamic measurement, system identification, digital signal processing}
+}
+</pre>
+
+<a name="mtns-vikas"></a><pre>
+@inproceedings{<a href="c.html#mtns-vikas">mtns-vikas</a>,
+  author = {V. Mishra and I. Markovsky},
+  title = {Unfalsified Linear Time-Invariant Behaviors of Bounded Complexity},
+  booktitle = {International Symposium on Mathematical Theory of Networks and Systems},
+  year = {2021},
+  optabstract = {},
+  optkeywords = {}
+}
+</pre>
+
+<a name="cdc20"></a><pre>
+@inproceedings{<a href="c.html#cdc20">cdc20</a>,
+  author = {V. Mishra and I. Markovsky and B. Grossmann},
+  title = {Data-Driven Tests for Controllability},
+  booktitle = {59th IEEE Conference on Decision and Control},
+  year = {2020},
+  optabstract = {},
+  optkeywords = {}
+}
+</pre>
+
+<hr><p><em>This file was generated by
+<a href="http://www.lri.fr/~filliatr/bibtex2html/">bibtex2html</a> 1.98.</em></p>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)file:///tmp/mozilla_im0/main.html -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang=""><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>main</title>
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="file:///tmp/mozilla_im0/style.css">
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h1 id="goal">Goal</h1>
+<p>The goal of this lab is for you to gain experience with the tools for identifying LTI systems described during the lectures. This will be applied to measurements on a real dynamic system. Either, you can use one of the systems available at the department, or you can suggest another system, e.g.&nbsp;which would be of interest for your master thesis.</p>
+<h1 id="typical-project">Typical project</h1>
+<p>The lecture notes cover a fairly wide range of topics, impossible to be all covered during a single lab. In addition, different students have different interests. Therefore, the tasks enumerated below are just an example of what you can do during this lab:</p>
+<ol type="1">
+<li><p>Design an excitation signal, for instance a multisine with holes, to trap nonlinear distortions.</p></li>
+<li><p>Apply the signal to the system.</p></li>
+<li><p>Distinguish the nonlinear distortions from the noise via the use of the robust and/or the fast method</p></li>
+<li><p>Obtain a non-parametric estimate of the BLA of the system, with a quantification of its uncertainty</p></li>
+<li><p>Use the Frequency Domain Identification toolbox (see <a href="file:///tmp/mozilla_im0/main.html#toolbox">below</a> to make a parametric model of the BLA (or implement the identification algorithm yourself)</p></li>
+<li><p>Apply model order selection criteria (AIC, whiteness test of the residuals, value of the cost function,…)</p></li>
+</ol>
+<p>Additional points of interest are</p>
+<ul>
+<li><p>make experiments at different setpoints, and compare the BLA’s (important if you want to classify the nonlinear systems, see the course on nonlinear systems),</p></li>
+<li><p>perform an experiment where the setpoint is varying during the experiment, and compute the BLTIA (Best Linear Time Invariant Approximation) of the system.</p></li>
+</ul>
+<h2 id="toolbox">Toolbox</h2>
+<p>The frequency domain identification toolbox can be downloaded from <a href="http://booksupport.wiley.com/" class="uri">http://booksupport.wiley.com/</a> (search for Author: Pintelon).</p>
+<h1 id="expectations">Expectations</h1>
+<p>Prepare a written, well documented report of your measurement campaign and your identification results.</p>
+<h1 id="information-on-the-vxi-measurement-system">Information on the VXI measurement system</h1>
+<p>You can work from this sharepoint drive:</p>
+<blockquote>
+<p><a href="https://vub.sharepoint.com/:f:/s/ELEC-IR/Eug9EEE8cCpJmwvHGHaXdqQB6Qd8uZHvfq4lsWvcA20BhQ?e=61bc7d">Sharepoint - VXI measurements</a></p>
+</blockquote>
+<p>That folder contains the code needed to run the VXI measurement system. See the <a href="https://vub.sharepoint.com/:u:/r/sites/ELEC-IR/Gedeelde%20documenten/Labs%20-%20ID%20of%20dynamical%20systems/VXI%20measurements/VXImeasCode/README.html?csf=1&amp;web=1&amp;e=kgsTc3"><code>VXImeasCode &gt; Readme.html</code></a> file for more information.</p>
+<p><strong>Important:</strong> Keep in mind to copy your measurement files to your personal drives, not to lose any data.</p>
+<h2 id="lab-in-tele-working">Lab in tele-working</h2>
+<p>In part due to the ongoing sanitary regulations it is likely that you will not have direct access to the measurement setup during this academic year. In that case we will make sure that the signals that you prepared will be applied to the systems, at a predefined schedule.</p>
+<h1 id="possible-systems-to-consider">Possible systems to consider</h1>
+<dl>
+<dt>Wiener-Hammerstein</dt>
+<dd><p>This is a system consisting of two linear blocks, with a static nonlinearity in between.</p>
+<p>VXI setup</p>
+</dd>
+<dt>Silverbox</dt>
+<dd><p>This is an electronic circuit which emulates a mass-spring damper system, with a nonlinear spring.</p>
+<p>VXI setup</p>
+</dd>
+<dt>Linear parameter-varying system</dt>
+<dd><p>which has an additional input which allows to vary one of the physical parameters of the system.</p>
+<p>VXI setup</p>
+</dd>
+<dt>BYOS - Bring your own system</dt>
+<dd><p>if you are working on a particular system (e.g.&nbsp;for your master thesis) and you have a working experimental setup for that system, you can also choose to perform the identification on that one.</p>
+</dd>
+</dl>
+<!-- 
+FOT device
+
+:   Forced oscillation technique, which allows to create an arbitrary
+    pressure wave at its port. It is used for identifying the acoustic
+    impedance of a human lung. For this lab, the identification consists
+    of the system from the signal in the microcontroller to the measured
+    pressure at the mouth interface.
+
+    Microcontroller setup (together with Cedric Busschots), to be confirmed.
+ -->
+
+
+</body></html>

@@ -1,0 +1,609 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2021-11-28 Sun 12:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Selected topics in nonlinear system identification</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ivan Markovsky" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Selected topics in nonlinear system identification</h1>
+<div class="org-center">
+<p>
+lecturer: <a href="http://homepages.vub.ac.be/~imarkovs">Ivan Markovsky</a> 
+</p>
+</div>
+
+<div id="outline-container-orgc2d5195" class="outline-2">
+<h2 id="orgc2d5195">Organization of the course</h2>
+<div class="outline-text-2" id="text-orgc2d5195">
+</div>
+<div id="outline-container-orgf4ff64e" class="outline-3">
+<h3 id="orgf4ff64e">Topics</h3>
+<div class="outline-text-3" id="text-orgf4ff64e">
+<ol class="org-ol">
+<li><a href="./behavioral-approach.pdf">Behavioral approach to system theory</a></li>
+<li><a href="./general-framework.pdf">A general framework for system identification</a></li>
+<li><a href="./ernsi13.pdf">Linear time/parameter-varying systems</a></li>
+<li><a href="./curve-fitting.pdf">Static nonlinear systems</a></li>
+<li>Representation and identification of nonlinear dynamic systems
+<ul class="org-ul">
+<li><a href="./nonlinear-sysid.pdf">Nonlinear auto-regressive-exogenous system identification (NARX)</a></li>
+<li><a href="./ernsi18.pdf">Identification of autonomous Wiener systems</a></li>
+</ul></li>
+<li>Data-driven control and signal processing</li>
+</ol>
+
+<p>
+<b>common theme:</b> data modeling using matrix low-rank approximation 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org007f2f4" class="outline-3">
+<h3 id="org007f2f4">Individual projects</h3>
+<div class="outline-text-3" id="text-org007f2f4">
+<ul class="org-ul">
+<li>Choose an individual <a href="#org3dc1cbc">mini-project</a>.</li>
+<li>Work on the mini-project and prepare a written report (to be submitted by <span class="timestamp-wrapper"><span class="timestamp">&lt;2021-12-16 Thu&gt;</span></span>).</li>
+<li>You give a 15 minutes oral presentation for all course participants. The presentation is followed by 15 minutes questions, discussion, and feedback.</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org4838d75" class="outline-3">
+<h3 id="org4838d75">Exam</h3>
+<div class="outline-text-3" id="text-org4838d75">
+<p>
+If you complete the mini-project and deliver a report of your work, you earn 10 points. The final mark (10&#x2013;20) is determined by the quality of the report, oral presentation, and participation in the discussions.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org753d843" class="outline-2">
+<h2 id="org753d843"><a href="./behavioral-approach.pdf">Behavioral approach to system theory</a></h2>
+<div class="outline-text-2" id="text-org753d843">
+<p>
+A prerequisite for the new material on nonlinear systems identification, is working knowledge of the linear time-invariant systems theory. Why is this? On the one hand, the class of linear time-invariant systems is a subclass of nonlinear systems. Therefore, understanding of the latter implies understanding of the former. On the other hand, many results for nonlinear systems are inspired by and are often direct generalizations of corresponding results for linear systems. For example, the three main types of representations&#x2014;Volterra series, nonlinear ARX, and nonlinear state space&#x2014;correspond to the impulse response (convolution), ARX, and state space representations of linear time-invariant systems.
+</p>
+</div>
+
+<div id="outline-container-org7748ac2" class="outline-3">
+<h3 id="org7748ac2"><a href="http://homepages.vub.ac.be/~imarkovs/vint/notes2.pdf">Linear time-invariant system's theory</a></h3>
+<div class="outline-text-3" id="text-org7748ac2">
+<p>
+We will often use the following concepts:
+</p>
+<ul class="org-ul">
+<li>behavioral definition of a dynamical system; properties of linearity, time-invariance, and final dimensionality;</li>
+<li>representations of linear time-invariant systems&#x2014;convolution, transfer function, state space;</li>
+<li>links among representations&#x2014;the realization problem.</li>
+</ul>
+<p>
+For detailed notes, see: 
+</p>
+<ul class="org-ul">
+<li><a href="http://homepages.vub.ac.be/~imarkovs/siam-book.pdf">I. Markovsky, Exact and approximate modeling in the behavioral setting</a>, Chapter 7</li>
+<li><a href="http://wwwhome.math.utwente.nl/~poldermanjw/onderwijs/DISC/mathmod/book.pdf">J.-W. Polderman and J. Willems, Introduction to mathematical systems theory</a></li>
+<li>D. Luenberger, Introduction to dynamical systems: Theory, models and applications</li>
+</ul>
+
+<p>
+Three types of problems are discussed in engineering mathematics:
+</p>
+<ul class="org-ul">
+<li>analysis problems, e.g., establishing stability, controllability, and observability properties of a system</li>
+<li>synthesis problems, e.g., design of an observer and controller for a given system, and</li>
+<li>identification problems, i.e., deriving a model of the system from observed trajectories.</li>
+</ul>
+<p>
+This course focuses on the identification problem. Solving identification problems, however, requires knowledge of analysis. Also the product of identification&#x2014;the model&#x2014;is used in analysis and synthesis. There are deep connections and interactions among the three problem areas.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc2f9f09" class="outline-3">
+<h3 id="orgc2f9f09">Problems</h3>
+<div class="outline-text-3" id="text-orgc2f9f09">
+<ol class="org-ol">
+<li><b>(Testing if a system is static linear)</b> 
+
+<ol class="org-ol">
+<li>You are given a system as a black-box or executable code of a software function. You don't know what is within the black-box (or you can not see the code of the function) but you can do an arbitrary experiment with the system, i.e., you can observe its response. Assume that the variables are partitioned into inputs that you can choose and outputs that you observe. 
+<ul class="org-ul">
+<li>What experiments would you do in order to find out whether the system is static linear?</li>
+<li>How would you infer from the observations if the system is static linear?</li>
+<li>What if the observations are corrupted by noise?</li>
+</ul></li>
+
+<li>Consider, now, the case when you are given (noisy) data \(\big\{w^{(1)},\ldots,w^{(N)}\big\}\) of \(N\) experiments with the system, i.e., you have no control over the experiment. How would you infer from the observations if the system is static linear?</li>
+</ol></li>
+
+<li><b>(Testing if a system is linear time-invariant)</b> 
+
+<ol class="org-ol">
+<li>The setup is the same as in problem 1: you are given a system as a black-box and you are allowed to do experiments in order to find out what type of system it is. In this case, the properties of interest are linearity and time-invariance, i.e., the system may be dynamic. What experiments would you do and how would you infer from the observations if the system is linear time-invariant? Consider separately the cases of exact and noisy data.</li>
+
+<li>Consider, now, the case when you are given trajectories \(\big\{w^{(1)},\ldots,w^{(N)}\big\}\)
+\[ w^{(i)} = \big( w^{(i)}(1),\ldots,w^{(i)}(T) \big) \]
+of the system, i.e., you have no control over the experiment. How would you infer from the observations if the system is linear time-invariant? Consider separately the cases of exact and noisy data.</li>
+</ol></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org07f06ba" class="outline-2">
+<h2 id="org07f06ba"><a href="./general-framework.pdf">A general framework for system identification</a></h2>
+<div class="outline-text-2" id="text-org07f06ba">
+<p>
+The three main players in system identification are the data, the model class, and the approximation criterion. The data is a finite set of time series. The model class is a set of candidate models. The approximation criterion is a measure for the distance from the data to a model. 
+</p>
+
+<p>
+In system identification, we aim to find a model from given data, however, this problem is ill-posed. We need additional prior knowledge about the model. This prior knowledge is the model class is the approximation criterion. The model class imposes a hard constraint&#x2014;the model must belong to the model class. The approximation criterion imposes a soft constraint&#x2014;the model should minimize the approximation error. 
+</p>
+
+<p>
+If there are multiple models that achieve the same approximation error, we prefer the least complex one. This is called the <a href="https://en.wikipedia.org/wiki/Occam's_razor">Occam's razor principle</a>. In fact, system identification is a trade-off between fitting accuracy and model complexity. Indeed, with a finite amount of data (which is the case in practice), exact fit is always possible by making the model complexity sufficiently high. 
+</p>
+
+<p>
+In the case of linear time-invariant systems, the model complexity is measured by a pair of natural numbers: the number of inputs and the order of the system. Similar characterization of model complexity does not exist for general nonlinear models.
+</p>
+
+<p>
+Exact identification aims to find the least complicated model that fits the data. Although it is an academic problem (one can argue that it never occurs in practice due to disturbances and measurement noise), it is important pedagogically and leads to practical approximate identification methods. In this course, we will always start with the "exact" version of the problems before treating the approximate ones.
+</p>
+</div>
+
+<div id="outline-container-orgca46876" class="outline-3">
+<h3 id="orgca46876">Problems</h3>
+<div class="outline-text-3" id="text-orgca46876">
+<ol class="org-ol">
+<li><p>
+<b>(Exact modeling of an input/output static polynomial system, a.k.a., polynomial interpolation)</b>
+</p>
+
+<p>
+Given a set of \(N\) data points \(\big\{w^{(1)},\ldots,w^{(N)}\big\} \subset \mathbb{R}^2\), where \(w^{(i)} = \big( u^{(i)}, y^{(i)}\big)\), find a polynomial static model
+\[\mathcal{B} = \{\, (u, y) \ | \  y = p_0u^0 + p_1 u^1 + \cdots + p_d u^d  \,\} \]
+that fits the data exactly.
+</p></li>
+
+<li><p>
+<b>(Exact modeling of a static polynomial system in the behavioral setting)</b> 
+</p>
+
+<p>
+Given a set of \(N\) data points \(\big\{w^{(1)},\ldots,w^{(N)}\big\} \subset \mathbb{R}^2\), find a polynomial static model
+\[\mathcal{B} = \{\, w \ | \  p_{00} w_1^0 w_2^0 + p_{10} w_1^1 w_2^0 + p_{01} w_1^0 w_2^1 + p_{11} w_1^1 w_2^1 + p_{20} w_1^2 w_2^0 + p_{02} w_1^0 w_2^2 = 0 \,\}\]
+that fits the data exactly.
+</p></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9128fc8" class="outline-2">
+<h2 id="org9128fc8">Linear time/parameter-varying systems</h2>
+<div class="outline-text-2" id="text-org9128fc8">
+<p>
+There are two main paths of generalizing the linear time-invariant model class: 
+</p>
+<ol class="org-ol">
+<li>allowing for time-variation (i.e., relaxing the time-invariance property), and</li>
+<li>allowing for nonlinearities (i.e., relaxing the linearity assumption).</li>
+</ol>
+<p>
+In this lecture, we begin with the first generalization, which leads to the class of linear time-varying systems and the related class of linear parameter-varying systems.
+</p>
+</div>
+
+<div id="outline-container-org2bb6d3f" class="outline-3">
+<h3 id="org2bb6d3f">Linear time-varying systems</h3>
+<div class="outline-text-3" id="text-org2bb6d3f">
+<ul class="org-ul">
+<li>linear differential/difference equation: the coefficients are functions of time</li>
+<li>state-space representation: the \(A,B,C,D\) matrices are functions of time</li>
+<li>autonomous case and state transition matrix \(\Phi(t_2, t_1) := A(t_2-1)A(t_2-1)\cdots A(t_1)\), for \(t_2>t_1\)</li>
+<li>driven response
+\[ x(t) = \Phi(t,0)x(0) + \underbrace{\begin{bmatrix} \Phi(t, 1)B(0) & \Phi(t, 2)B(1) & \cdots & B(t-1) \end{bmatrix}}_{\Gamma(t,0)} \begin{bmatrix} u(0)\\ u(1)\\ \vdots\\ u(t-1) \end{bmatrix} \]</li>
+<li>similarities and differences with the linear time-invariant case
+<ul class="org-ul">
+<li>the notions of poles and zeros are no longer relevant</li>
+<li>stability analysis is more complicated (requires construction of a Lyapunov function)</li>
+<li>linear time-varying systems are essentially nonparameteric: the number of parameters is \(O(T)\), where \(T\) is the number of data points</li>
+</ul></li>
+</ul>
+</div>
+
+<div id="outline-container-org5bc66b3" class="outline-4">
+<h4 id="org5bc66b3">Exercises</h4>
+<div class="outline-text-4" id="text-org5bc66b3">
+<ol class="org-ol">
+<li>Show that if \(||A(t)|| < 1\), for all \(t\), the system is asymptotically stable, i.e., \(x(t) \to 0\), for any \(x(0)\).</li>
+<li>Show that 
+\[ \begin{bmatrix} y(0)\\ y(1)\\ \vdots\\ y(t) \end{bmatrix} = \mathcal{O}(0,t)x(0) + \mathcal{G}(0,t) \begin{bmatrix} u(0)\\ u(1)\\ \vdots\\ u(t) \end{bmatrix},\]
+for some \(\mathcal{O}(0,t)\) and \(\mathcal{G}(0,t)\).</li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org55a9e56" class="outline-3">
+<h3 id="org55a9e56"><a href="./ernsi13.pdf">Identification of linear periodically time-varying systems</a></h3>
+<div class="outline-text-3" id="text-org55a9e56">
+<ul class="org-ul">
+<li>when the coefficients variation is a periodic function, the number of parameters is fixed (independent of \(T\))</li>
+<li>a "lifting" technique reduces a linear periodically time-varying system to a linear time-invariant system</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orga01c9b6" class="outline-3">
+<h3 id="orga01c9b6"><a href="./predoc-slides.pdf">Multiple-model system modeling and estimation</a></h3>
+<div class="outline-text-3" id="text-orga01c9b6">
+<p>
+In order to capture the global behavior of a strongly nonlinear system, a single linear time-invariant model is not sufficient. If the system has a number of equilibrium points, it is reasonable to expect that "most of the time" the system is in the neighborhood of these points. More generally, we have a number of <i>operating points</i> (these can be equilibrium points as well as other points of interest) that represent well the global nonlinear behavior. 
+</p>
+
+<p>
+Linearization around the set of operating point leads to a set of linear time-invariant models (local models) that are "good" approximation of the original nonlinear system in the neighborhoods of the operating points. Such a system is called a multiple model system. Consider as an analogy piecewise linear approximation of a nonlinear function. The number and location of operating points is a design parameter in the construction of the approximation. 
+</p>
+
+<p>
+The approximation of a nonlinear system by a multiple model system can be done by switching from one local model to another depending on the state of the system or by "blending" all models, taking a linear combination of the local models. The first approach leads to a switch system, which is type of a hybrid system: continues/discrete-time dynamics of the local models and discrete-event dynamics of the switching rule. The second approach leads to a parameter dependent system. 
+</p>
+<p>
+<a href="./mm-approx.pdf">./mm-approx.pdf</a>
+The parameter is the vector of the coefficients in the linear combination. We will consider next the second approach.
+</p>
+
+<p>
+The parameter of the multiple model system can be used for system approximation, estimation, and control. In the system approximation problem, given is a system or input/output data and the goal is to find the value of the parameter that minimizes the error between the multiple model system and the given system. In the estimation problem, a linear combination of a bank of local estimator is taken, 
+</p>
+<p>
+<a href="./mm-est.pdf">./mm-est.pdf</a>
+and the parameters of the linear combination are optimized to achieve the smallest estimation error. Finally in the control problem the linear combination is formed from the control signals of local controllers 
+</p>
+<p>
+<a href="./mm-ctr.pdf">./mm-ctr.pdf</a>
+and the objective is to select the optimal coefficients according to a specified control objective.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org81fc4a0" class="outline-2">
+<h2 id="org81fc4a0"><a href="./curve-fitting.pdf">Static nonlinear systems</a></h2>
+<div class="outline-text-2" id="text-org81fc4a0">
+<ul class="org-ul">
+<li>a static nonlinear system identification problem is a curve fitting problem</li>
+<li>the problem is linear in the coefficients however the ordinary least squares estimator is biased</li>
+<li>it is possible to correct for the bias, resulting in a consistent estimator</li>
+<li>polynomial decoupling</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgc95811d" class="outline-2">
+<h2 id="orgc95811d">Representations of nonlinear dynamic systems</h2>
+<div class="outline-text-2" id="text-orgc95811d">
+</div>
+<div id="outline-container-org1187d5c" class="outline-3">
+<h3 id="org1187d5c">Volterra series</h3>
+<div class="outline-text-3" id="text-org1187d5c">
+<p>
+A Volterra series expansion is a non-parametric system description that has a universal approximation property. It generalizes the concept of the finite impulse response to the nonlinear case, in much the same way as a Taylor series expansion for function approximation. In simple terms, a Volterra series is nothing more than a polynomial function of time-shifted input signals. The output \(y\) of a system can hence be written as the finite sum
+\[y(t) =\sum_{i=1}^d \, \sum_{\tau_1} \sum_{\tau_2} \cdots \sum_{\tau_i} H_i(\tau_1, \tau_2, \ldots, \tau_i)\, u(t - \tau_1)\, u(t - \tau_2)\, \cdots u(t - \tau_i) \]
+where \(u\) denotes the input and \(H_i\) is the \(i\)th-order Volterra kernel. A major advantage is that estimating the Volterra kernel coefficients is a linear problem. However, the number of coefficients grows at least combinatorially with the system memory (number of lags) and order. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2317f04" class="outline-3">
+<h3 id="org2317f04"><a href="./nonlinear-sysid.pdf">Nonlinear auto-regressive-exogenous system identification (NARX)</a></h3>
+</div>
+<div id="outline-container-orgba17b65" class="outline-3">
+<h3 id="orgba17b65"><a href="./nlss.pdf">Nonlinear state-space</a></h3>
+</div>
+<div id="outline-container-org26a2488" class="outline-3">
+<h3 id="org26a2488"><a href="./block-oriented-systems.pdf">Block-oriented nonlinear systems</a></h3>
+</div>
+<div id="outline-container-org160ddd5" class="outline-3">
+<h3 id="org160ddd5"><a href="./ernsi18.pdf">Identification of autonomous Wiener system</a></h3>
+<div class="outline-text-3" id="text-org160ddd5">
+</div>
+</div>
+</div>
+<div id="outline-container-orgb28adc6" class="outline-2">
+<h2 id="orgb28adc6">Data-driven control and signal processing</h2>
+<div class="outline-text-2" id="text-orgb28adc6">
+<ul class="org-ul">
+<li><a href="http://homepages.vub.ac.be/~imarkovs/talks/ddctr.pdf">Subspace methods</a></li>
+<li><a href="http://homepages.vub.ac.be/~imarkovs/talks/model-free.pdf">Hankel matrix completion approach</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org3dc1cbc" class="outline-2">
+<h2 id="org3dc1cbc">Mini-projects</h2>
+<div class="outline-text-2" id="text-org3dc1cbc">
+<p>
+<a href="./exercises.pdf">Exercises</a>
+</p>
+
+<ol class="org-ol">
+<li><a href="http://homepages.vub.ac.be/~imarkovs/publications/pltv-rev3.pdf">Realization and identification of autonomous linear periodically time-varying systems</a></li>
+<li><a href="./mmkf.pdf">Multiple model adaptive filtering</a></li>
+<li><a href="./curve-fitting-paper.pdf">Static nonlinear system identification</a></li>
+<li><a href="./nonlinear-subspace-identification.pdf">Nonlinear subspace identification</a></li>
+<li><a href="./nonlinear-sysid-paper.pdf">Nonlinear auto-regressive-exogenous system identification</a></li>
+<li><a href="./wiener-tac.pdf">Autonomous Wiener system analysis and identification</a></li>
+<li><a href="http://homepages.vub.ac.be/~imarkovs/publications/ddsp.pdf">Data-driven control</a> generalization to <a href="./ddsim-narx.pdf">nonlinear systems</a></li>
+</ol>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Ivan Markovsky</p>
+<p class="date">Created: 2021-11-28 Sun 12:32</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

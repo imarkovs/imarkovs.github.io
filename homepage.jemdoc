@@ -1,0 +1,39 @@
+= Ivan Markovsky
+
+~~~
+{}{img_left}{photo.jpg}{Ivan Markovsky}{100px}{}{}
+[http://wwwtw.vub.ac.be/elec/ ELEC], [http://www.vub.ac.be/ Vrije Universiteit Brussel]\n
+Buiding K, Pleinlaan 2\n
+1050 Brussels, Belgium\n
+# [Ivan.Markovsky@vub.ac.be]\n
+~~~
+
+== Biography and education
+- [cv.pdf CV] and [bio.txt short biography]
+- PhD in Electrical Engineering from [http://www.esat.kuleuven.be/sista/ K.U.Leuven], February 2005\n
+topic: system identification in the behavioural setting\n
+supervisors: 
+[http://homes.esat.kuleuven.be/~biomed/person.php?persid=17 Sabine Van Huffel], 
+[http://homes.esat.kuleuven.be/~demoor/ Bart De Moor], and 
+[http://homes.esat.kuleuven.be/~jwillems/ Jan Willems]
+
+== Research areas
+~~~
+{}{img_left}{erc-logo.gif}{ERC logo}{75px}{75px}{}
+- [slra.html structured low-rank approximation]
+- system identification
+- data-driven control
+~~~
+
+== Publications
+- preprints from the [http://www.ecs.soton.ac.uk/people/im/publications University of Southampton database]
+- preprints from the [http://www.esat.kuleuven.be/~sistawww/cgi-bin/newsearch.pl?Name=Markovsky+I K.U.Leuven database]
+- [publications.pdf list of publications]
+
+== Books
+- [siam-book.html Exact and approximate modeling of linear systems: A behavioral approach]
+- [book.html Low-rank approximation: Algorithms, implementation, applications]
+
+== [talks.html Presentations]
+
+== [software.html Software]

@@ -1,0 +1,16 @@
+Matrices and Moments: perturbation for least squares
+
+Gene H Golub
+
+Given a matrix A, (mxn) a vector b, and an approximate solution vector, we are interested in determining 
+approximate error bounds induced by the approximate solution. We are able to obtain bounds for the perturbation 
+using the Theory of Momnents. For  an nxn symmetric, positive definite matrix A and a real vector u, we study a 
+method  to estimate and bound the quadratic form u' F(A)u/ u'u where F is a differentiable function. This 
+problem arises in many applications in least squares theory eg computing a parameter in a least squares problem 
+with a quadratic constraint, regularization and estimating backward perturbations of linear least squares 
+problems. We describe a method based on the theory of moments and numerical quadrature for estimating the 
+quadratic form. A basic tool is the Lanczos algorithm which can be used for computing the recursive relationship 
+for orthogonal polynomials. We will present some numerical results showing the efficacy of our methods and will 
+discuss various extensions of the method.
+
+(Joint work with Zheng Su)

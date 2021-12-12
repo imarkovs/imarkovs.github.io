@@ -1,0 +1,583 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Alike' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="quiz.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //close all the content divs on page load
+      $('.response').hide();
+
+      // toggle slide
+      $('.selection').click(function(){
+        // by calling sibling, we can use same div for all demos
+        $(this).siblings('.response').slideToggle('fast');
+      });
+
+      $('button').click(function(event){
+        var $target = $(event.target);
+        var $checkboxes = $target.parent('.mcq').find('input');
+        for (var i = 0; i < $checkboxes.length; i++) {
+          var $checkbox = $checkboxes.eq(i);
+          a = $checkbox;
+          if ($checkbox[0].checked && $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.correct-checkbox').show();
+          } else if ($checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('wrong')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else if (!$checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else {
+            $checkbox.nextAll('.correct-checkbox').show();
+          }
+        }
+        $target.parent('.mcq').find('.response').slideToggle('fast');
+        if ($target.text() == 'Submit') {
+          $target.text('Hide');
+        } else {
+          $checkboxes.nextAll('.incorrect-checkbox').hide();
+          $checkboxes.nextAll('.correct-checkbox').hide();
+          $target.text('Submit');
+        }
+      });
+    });
+    </script>
+  </head>
+
+<body>
+  $\newcommand{\ones}{\mathbf 1}$
+  <div>
+	<h1>Linear Algebra Quiz</h1>
+	<fieldset>
+		<legend>Choose the statements that are always true for the situation described in the question. Don't make extra assumptions.</legend>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Linear functions</legend>
+		<div>
+			<div class="description">
+Question 1: The function $f(x) = ax+b$ is linear.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						 $f$ is equal to a linear function $ax$ plus a constant $b$. Such a function (called affine) is not linear. It does not satisfy neither the superposition property nor homogeneity property. (Check this out.)
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 2: The function $f(a,b,c) = ax^2+bx+c$ is linear.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes. </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 Proof: $f(a,b,c) = \begin{bmatrix} x^2 &amp; x &amp; 1 \end{bmatrix} \begin{bmatrix} a\\b\\c \end{bmatrix}$.
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No. </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						 If $f$ was a function of $x$, then it would be nonlinear (more specifically quadratic). However, $f$ is a function of $a,b,c$.
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 3: The function $f(a,b,c) = \begin{bmatrix} a &amp; b \\ b &amp; c \end{bmatrix}$ is linear.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes. </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 Proof: $f(a,b,c) = \begin{bmatrix} 1&amp;0\\0&amp;0 \end{bmatrix} a + \begin{bmatrix} 0&amp;1\\1&amp;0 \end{bmatrix} b + \begin{bmatrix} 0&amp;0\\0&amp;1 \end{bmatrix}c$.
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No. </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 4: The function $f(x) = \begin{bmatrix} x_1 \\ x_3 \\ x_2 \end{bmatrix}$ is linear.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes. </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No. </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 5: The matrix representation of the function $f(x) = \begin{bmatrix} x_1 \\ x_3 \\ x_2 \end{bmatrix}$ is</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection"> $\begin{bmatrix} 1 \\ 3 \\ 2 \end{bmatrix}$ </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection"> $\begin{bmatrix} 1 &amp;&amp; \\ &amp;3&amp; \\ &amp;&amp; 2 \end{bmatrix}$ </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">$\begin{bmatrix} 1 &amp;&amp; \\ &amp;&amp;1 \\ &amp;1&amp; \end{bmatrix}$ </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection"> $\begin{bmatrix} 1 &amp; 2 &amp; 3 \end{bmatrix}$ </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Linear system of equations</legend>
+		<div>
+			<div class="description">
+Question 1: An overdetermined system of equations has no solution.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 Here is an example of an overdetermined system of equations that has a solution: $\begin{bmatrix} 1 \\ 1 \end{bmatrix} x = \begin{bmatrix} 2 \\ 2 \end{bmatrix}$.
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 2: If an underdetermined system of equations $Ax=b$ has a solution, then it has infinitely many solutions.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 Proof: Let $x_\text{p}$ be a solution of the system. Since $Ax=b$ is underdetermined, $A$ has at least one more column than rows. Then, $A$ has at least one-dimensional kernel $\mathcal{N}$. Then, $x_\text{p}+v$, for any $v\in\mathcal{N}$ is also a solution. Since, there are infinitely many different vectors $v\in\mathcal{N}$, there are infinitely many solutions.
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 3: A square system has a unique solution.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 Here is a counter example: $\begin{bmatrix} 1 &amp; 2 \\ 1 &amp; 2 \end{bmatrix} x = \begin{bmatrix} 1 \\ 2 \end{bmatrix}$ has no solution.
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 4: The system $Ax=b$, with $m\times n$ matrix $A$, has a solution if</div>
+			<div class="mcq">
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">$b\in\text{image}(A)$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">$\text{rank}(A) = m$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">$\text{image}(A) = \mathbb{R}^m$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection"> $\text{rank}(A) = n$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection"> $\text{ker}(A) = \{0\}$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<button>Submit</button>
+			</div>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 5: A solution $x_\text{p}$ of the system $Ax=b$, with $m\times n$ matrix $A$, is unique if</div>
+			<div class="mcq">
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection"> $b\in\text{image}(A)$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection"> $\text{image}(A) = \mathbb{R}^m$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection"> $\text{rank}(A) = m$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response wrong">This option is incorrect. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">$\text{rank}(A) = n$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">$\text{ker}(A) = \{0\}$ </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct. </div>
+				</label>
+				<button>Submit</button>
+			</div>
+		</div>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Orthogonality and linear independence</legend>
+		<div>
+			<div class="description">
+Question 1: Any set of orthogonal vectors is linearly independent.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 2: The vectors $\begin{bmatrix} 1 \\ -1 \\ 1 \end{bmatrix}$ and $\begin{bmatrix} -1 \\ 0 \\ 1 \end{bmatrix}$ are orthogonal.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 3: If $v_1$, $v_2$, and $v_3$ are orthogonal, then</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection"> there are $\alpha$ and $\beta$, such that $\alpha v_1 + \beta v_2 = v_3$</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection"> there are $\alpha$, $\beta$, and $\gamma$, such that $\alpha v_1 + \beta v_2 + \gamma v_3 = 0$.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection"> for all $x$, there are $\alpha$, $\beta$, and $\gamma$, such that $\alpha v_1 + \beta v_2 + \gamma v_3 = x$.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">$\begin{bmatrix} v_1^\top \\ v_2^\top \\ v_3^\top \end{bmatrix} \begin{bmatrix} v_1 &amp; v_2 &amp; v_3 \end{bmatrix}$ is a diagonal matrix </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 4: If $v_1$, $v_2$, and $v_3$ are such that $\text{rank}(\begin{bmatrix} v_1 &amp; v_2 &amp; v_3 \end{bmatrix}) = 3$, then they are orthogonal.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 5: If $v_1$, $v_2$, and $v_3$ are such that $\begin{bmatrix} v_1^\top \\ v_2^\top \\ v_3^\top \end{bmatrix} \begin{bmatrix} v_1 &amp; v_2 &amp; v_3 \end{bmatrix} = I$, then they are orthogonal.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Eigenvalues and eigenvectors</legend>
+		<div>
+			<div class="description">
+Question 1: Let $A$ be a given $n\times n$ matrix. The system of equations $Av_i = \lambda_i v_i$, $i=1,\ldots,n$ is linear in $v_i$ and $\lambda_i$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 2: Let $A$ be a given $n\times n$ matrix and $\lambda$ be a given number. The system of equations $Av = \lambda v$ has a solution $v$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 3: Let $A$ be a given $n\times n$ matrix and $\lambda$ be an eigenvalue of $A$. The system of equations $Av = \lambda v$ has a unique solution $v$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 4: If $A$ and $B$ have the same eigenvalues, then there is $V$, such that $V^{-1}AV=B$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 5: If $\lambda$ is an eigenvalue of $A$, then there is $w$, such that $w^\top A = \lambda w^\top$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No  </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+	</fieldset>
+	<br/>
+</div>
+
+  <footer>
+  Page generated using <a href="https://github.com/karanveerm/quizgen">Quizgen</a>
+  </footer>
+</body>
+</html>

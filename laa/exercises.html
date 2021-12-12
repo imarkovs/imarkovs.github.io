@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Alike' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="quiz.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //close all the content divs on page load
+      $('.response').hide();
+
+      // toggle slide
+      $('.selection').click(function(){
+        // by calling sibling, we can use same div for all demos
+        $(this).siblings('.response').slideToggle('fast');
+      });
+
+      $('button').click(function(event){
+        var $target = $(event.target);
+        var $checkboxes = $target.parent('.mcq').find('input');
+        for (var i = 0; i < $checkboxes.length; i++) {
+          var $checkbox = $checkboxes.eq(i);
+          a = $checkbox;
+          if ($checkbox[0].checked && $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.correct-checkbox').show();
+          } else if ($checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('wrong')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else if (!$checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else {
+            $checkbox.nextAll('.correct-checkbox').show();
+          }
+        }
+        $target.parent('.mcq').find('.response').slideToggle('fast');
+        if ($target.text() == 'Submit') {
+          $target.text('Hide');
+        } else {
+          $checkboxes.nextAll('.incorrect-checkbox').hide();
+          $checkboxes.nextAll('.correct-checkbox').hide();
+          $target.text('Submit');
+        }
+      });
+    });
+    </script>
+  </head>
+
+<body>
+  $\newcommand{\ones}{\mathbf 1}$
+  <div>
+	<h1>Linear algebra</h1>
+	<fieldset>
+		<legend>Solving a systems of linear equations</legend>
+		<div class="intro">Download the file <a href="data.mat">data.mat</a> and load it in MATLAB
+<pre><code class="matlab">load data
+</pre></code>
+This group of questions refers to solving a system of linear equations $Ax = b$, where $A$ and $b$ are given and $x$ is to be found.</div>
+		<hr/>
+		<div>
+			<div class="description">
+With the matrix $A$ defined in the variable a1, the system is</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">overdetermined, </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 $A$ is $5\times2$, so that the system has 5 equations and 2 unknowns. Therefore, it is overdetermined.
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">underdetermined.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+With the matrix $A$ defined in the variable a1 and $b$ defined in the variable b1, the system has</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">no solution, </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 The system has a solution if and only if $b$ is not in the image of $A$. This can be checked in many different ways. For example, by computing the least-squares approximation and checking if the residual $\|Ax - b\|$ is numerically zero:
+<pre><code class="matlab">x1 = a1 \ b1; norm(b1 - a1 * x1)
+</pre></code>
+Note that with numerical computations the result that should in theory be zero may be a &quot;small&quot; nonzero number.
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">has unique solution,</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">has nonunique solution.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+With the matrix $A$ defined in the variable a1 and $b$ defined in the variable b2, the system has</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">no solution,</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">has unique solution, </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 Applying the same procedure as in the previous problem, we find that $x = (1,2)$ is an exact solution. It is unique because the null space of $A$ consists of the zero vector only:
+<pre><code class="matlab">x2 = a1 \ b2; norm(b2 - a1 * x2), null(a1)
+</pre></code>
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">has nonunique solution.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+With the matrix $A$ defined in the variable a2 and $b$ defined in the variable b2, the system has</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">no solution,</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">has unique solution</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">has nonunique solution, </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 Applying the same procedure as in the two previous problems, we find that $x = (1,2,0)$ is an exact nonunique solution. All solutions are given by
+\[(1,2,0) + \alpha (1,1,-2),\]
+where $\alpha$ is a free parameter.
+<pre><code class="matlab">x3 = a2 \ b2; norm(b2 - a2 * x3)
+z = null(a2); z = z / z(2)
+</pre></code>
+The following code generates a new random solution:
+<pre><code class="matlab">x4 = x3 + z * rand(size(z, 2), 1)
+</pre></code>
+Check them out!
+					</div>
+				</li>
+			</ol>
+		</div>
+	</fieldset>
+	<br/>
+	<fieldset>
+		<legend>Eigenvalues and eigenvector</legend>
+		<div class="intro">The eigenvalue decomposition $A = V\Lambda V^{-1}$ is computed in MATLAB with the function eig. Type
+<pre><code class="matlab">help eig
+</pre></code>
+for explanation of how to use it. In the problems below $A$ is given by the variable a3 and we consider the function $f(x) = Ax$.</div>
+		<hr/>
+		<div>
+			<div class="description">
+Plot $f(\mathcal{U})$, where $\mathcal{U}$ is the unit ball $\{ x \ | \ \|x\| = 1\}$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">solution </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 The image of the unit ball through a linear function is an ellipse centered at the origin with axis given by the eigenvectors of $AA^\top$. This can be verified by plotting the $y^k = Ax^k$ for points $x^k$ on the unit circle
+<pre><code class="matlab">t = linspace(0,2 * pi, 50);
+y = a3 * [cos(t); sin(t)];
+plot(y(1, :), y(2, :))
+hold on, axis equal
+</pre></code>
+Next, adding to the plot the eigenvectors, scaled by the eigenvalues
+<pre><code class="matlab">[v, d] = eig(a3 * a3');
+v1 = sqrt(d(1, 1)) * v(:, 1);
+v2 = sqrt(d(2, 2)) * v(:, 2);
+plot([0 v1(1)], [0, v1(2)])
+plot([0 v2(1)], [0, v2(2)])
+</pre></code>
+we obtain the following figure
+<div><img src="image.png"></div>
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Find a unit norm $x$ for which $\|f(x)\|$ is maximized.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">solution </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 The function $\|Ax\|$ is maximized over the set $\mathcal{U}$ by a normalized eigenvector related to the largest eigenvalue of the matrix $A^\top A$. Let $\lambda_1 &lt; \lambda_2$ be the eigenvalues of $A^\top A$ (note that they are real and nonnegative because $A^\top A$ is symmetric and nonnegative definite), we have that
+\[\lambda_1 \leq \|Ax\| = \sqrt{x^\top A^\top Ax} \leq \lambda_2\]
+<pre><code class="matlab">[v, d]  = eig(a1' * a1);
+[d_max, i_max] = max(sqrt(diag(d)));
+v_max = v(:, i_max)
+</pre></code>
+Check the result by generating vectors in random directions
+<pre><code class="matlab">x = randn(2, 1); x = x / norm(x); norm(a1 * x) &lt; d_max
+</pre></code>
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+With $x(0)$ being a random vector, does the sequence $x(k+1) = f(x(k)) / \|x(k)\|$ converge?</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">no,  </div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">yes. </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 Let $v_1$ and $v_2$ be eigenvectors related to the eigenvalues $\lambda_1 &lt; \lambda_2$ of $A^\top A$. If $x(0) = \alpha v_1$ for some $\alpha$, the limit point is $v_1/\|v_1\|$. Otherwise, the limit point is $v_2/\|v_2\|$.
+					</div>
+				</li>
+			</ol>
+		</div>
+	</fieldset>
+	<br/>
+</div>
+
+  <footer>
+  Page generated using <a href="https://github.com/karanveerm/quizgen">Quizgen</a>
+  </footer>
+</body>
+</html>

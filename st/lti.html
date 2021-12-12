@@ -1,0 +1,214 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quiz</title>
+    <link href='http://fonts.googleapis.com/css?family=Josefin+Sans|Alike' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="quiz.css" type="text/css" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+          processEscapes: true
+        }
+      });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML.js"></script>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/styles/default.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.2/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      //close all the content divs on page load
+      $('.response').hide();
+
+      // toggle slide
+      $('.selection').click(function(){
+        // by calling sibling, we can use same div for all demos
+        $(this).siblings('.response').slideToggle('fast');
+      });
+
+      $('button').click(function(event){
+        var $target = $(event.target);
+        var $checkboxes = $target.parent('.mcq').find('input');
+        for (var i = 0; i < $checkboxes.length; i++) {
+          var $checkbox = $checkboxes.eq(i);
+          a = $checkbox;
+          if ($checkbox[0].checked && $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.correct-checkbox').show();
+          } else if ($checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('wrong')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else if (!$checkbox[0].checked &&
+              $checkbox.nextAll('.response').hasClass('right')) {
+            $checkbox.nextAll('.incorrect-checkbox').show();
+          } else {
+            $checkbox.nextAll('.correct-checkbox').show();
+          }
+        }
+        $target.parent('.mcq').find('.response').slideToggle('fast');
+        if ($target.text() == 'Submit') {
+          $target.text('Hide');
+        } else {
+          $checkboxes.nextAll('.incorrect-checkbox').hide();
+          $checkboxes.nextAll('.correct-checkbox').hide();
+          $target.text('Submit');
+        }
+      });
+    });
+    </script>
+  </head>
+
+<body>
+  $\newcommand{\ones}{\mathbf 1}$
+  <div>
+	<h1>LTI Systems Quiz 1</h1>
+	<fieldset>
+		<legend>Choose the statements that are always true for the situation described in the question. Don't make extra assumptions.</legend>
+		<div>
+			<div class="description">
+Question 1: The output of a linear static system to a zero input is zero.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 2: The output of a linear time-invariant system to a zero input is a zero signal.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">Yes</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">No </div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						 The output is a sum of a response due to the input and a response due to initial conditions. The latter may be nonzero.
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 3: Let $\mathcal{B}$ be a static linear autonomous system and let $y\in\mathcal{B}$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">$y$ is zero</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">$y$ is a linear function.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">$y$ is an exponential function.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 4: Let $\mathcal{B}$ be a first order linear autonomous system and let $y\in\mathcal{B}$.</div>
+			<ol type="a">
+				<li class="choice">
+					<div class="selection">$y$ is zero</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">$y$ is a linear function.</div>
+					<div class="response wrong">
+						<span class="wrong">Incorrect. </span>
+						
+					</div>
+				</li>
+				<li class="choice">
+					<div class="selection">$y$ is an exponential function.</div>
+					<div class="response right">
+						<span class="right">Correct! </span>
+						
+					</div>
+				</li>
+			</ol>
+		</div>
+		<hr/>
+		<div>
+			<div class="description">
+Question 5: How did you do and what do you think about this quiz?</div>
+			<div class="mcq">
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">I did not understand the questions. </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct.  Please read the course notes (<a href="http://homepages.vub.ac.be/~imarkovs/st/text.pdf">http://homepages.vub.ac.be/~imarkovs/st/text.pdf</a>) and try the test again. If you still do not understand the questions, talk with me.</div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">I did some mistakes and was confused by the questions. </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct.  Please think what was confusing for you. Try to formulate specific questions. Discuss them with your colleagues. If they are also confused and can not help you, put your questions for discussion in class.</div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">I've answered the questions correctly and found the quiz OK. </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct.  Congratulations! Try now a more challenging quiz: <a href="http://homepages.vub.ac.be/~imarkovs/st/quiz-lti2.html">http://homepages.vub.ac.be/~imarkovs/st/quiz-lti2.html</a>
+The questions go beyond what was discussed in class however you do not need to know anything extra to answer them.</div>
+				</label>
+				<label>
+					<input type="checkbox"/>
+					<span class="multiple-selection">I've answered the questions correctly and found the quiz insultingly easy. </span>
+					<span class="correct-checkbox">✓</span>
+					<span class="incorrect-checkbox">✗</span>
+					<div class="response right">This option is correct.  Very good, I agree with you! Try now a this quiz: <a href="http://homepages.vub.ac.be/~imarkovs/st/quiz-lti2.html">http://homepages.vub.ac.be/~imarkovs/st/quiz-lti2.html</a>
+The questions go beyond what was discussed in class however you do not need to know anything extra to answer them.</div>
+				</label>
+				<button>Submit</button>
+			</div>
+		</div>
+	</fieldset>
+	<br/>
+</div>
+
+  <footer>
+  Page generated using <a href="https://github.com/karanveerm/quizgen">Quizgen</a>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,1374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Signal theory: Part 1</title>
+<!-- 2015-10-07 Wed 11:26 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Signal theory: Part 1</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. Introduction</a>
+<ul>
+<li><a href="#sec-1-1">General information about the course</a></li>
+<li><a href="#sec-1-2">Learning outcomes</a></li>
+<li><a href="#sec-1-3">Part 1 topics</a></li>
+<li><a href="#sec-1-4">Materials for Part 1</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2. Signals and systems</a>
+<ul>
+<li><a href="#sec-2-1">Classification of signals</a></li>
+<li><a href="#sec-2-2">Basic signals and operations with them</a></li>
+<li><a href="#sec-2-3">Dynamical systems</a></li>
+<li><a href="#sec-2-4">Response of a linear time-invariant system</a></li>
+<li><a href="#sec-2-5">Exercises&#xa0;&#xa0;&#xa0;<span class="tag"><span class="HW">HW</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3. Representations of LTI systems</a>
+<ul>
+<li><a href="#sec-3-1">Review of matrix algebra</a></li>
+<li><a href="#sec-3-2">Representation of static systems</a></li>
+<li><a href="#sec-3-3">Representation of linear time-invariant systems</a></li>
+<li><a href="#sec-3-4">Autonomous systems</a></li>
+<li><a href="#sec-3-5">Links among representations</a></li>
+<li><a href="#sec-3-6">Realization theory</a></li>
+<li><a href="#sec-3-7">Exercises&#xa0;&#xa0;&#xa0;<span class="tag"><span class="HW">HW</span></span></a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Stochastic models</a>
+<ul>
+<li><a href="#sec-4-1">Convolution of probabilities</a></li>
+<li><a href="#sec-4-2">Gaussian distribution (second order process)</a></li>
+<li><a href="#sec-4-3">Random processes</a></li>
+<li><a href="#sec-4-4">Wiener-Khintchine theorem</a></li>
+<li><a href="#sec-4-5">Estimation principles</a></li>
+<li><a href="#sec-4-6">Spectral estimation</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Least-squares estimation</a></li>
+<li><a href="#sec-6">6. Quizzes, tests, practice problems</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div class="outline-text-2" id="text-1">
+</div><div id="outline-container-sec-1-1" class="outline-3">
+<h3 id="sec-1-1">General information about the course</h3>
+<div class="outline-text-3" id="text-1-1">
+<ul class="org-ul">
+<li><b>Lecturers:</b> 
+<ul class="org-ul">
+<li>Ivan Markovsky (part 1, weeks 1, 2, 3, 4)
+</li>
+<li>Leo Van Biesen (part 2, weeks 4, 5, 6, 7) 
+</li>
+</ul>
+</li>
+<li><b>Classes:</b> 
+<ul class="org-ul">
+<li>Tuesday, 10:00&#x2013;12:00, lecture 
+</li>
+<li>Tuesday, 13:00&#x2013;16:00, exercise session
+</li>
+<li>Friday,  10:00&#x2013;12:00, lecture
+</li>
+</ul>
+</li>
+<li><b>MATLAB:</b> 
+<ul class="org-ul">
+<li>the exercises involve analytical problems and numerical experiments with MATLAB/Octave
+</li>
+<li>if you are not familiar with MATLAB, follow the optional course
+</li>
+</ul>
+</li>
+<li><b>Evaluation:</b> 
+<ul class="org-ul">
+<li>open-book exam and tests on problems similar to the exercises
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2" class="outline-3">
+<h3 id="sec-1-2">Learning outcomes</h3>
+<div class="outline-text-3" id="text-1-2">
+</div><div id="outline-container-sec-1-2-1" class="outline-4">
+<h4 id="sec-1-2-1">Specific</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<ul class="org-ul">
+<li>In-depth knowledge of linear systems theory and its application for signal processing.
+<ul class="org-ul">
+<li>Representations of linear time-invariant systems.
+</li>
+<li>Converting one representation to another.
+</li>
+<li>Realization theory (Kung's method).
+</li>
+<li>Least-squares estimation (Kalman filtering).
+</li>
+<li>System identification (subspace and optimization methods).
+</li>
+</ul>
+</li>
+<li>Can formulate a precise mathematical problem from a given engineering specification.
+</li>
+<li>Can solve signal processing problems by converting them to already solved problems.
+</li>
+<li>Can solve signal processing problems numerically using Matlab/Octave.
+</li>
+<li>Can present solution of problems in a clear, well structured way.
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-1-2-2" class="outline-4">
+<h4 id="sec-1-2-2">General</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+(Extracted from the learning outcomes of the masters program in electronics and information technology engineering.)
+</p>
+<ul class="org-ul">
+<li>In-depth knowledge and understanding of exact sciences with the specificity of their application to engineering.
+</li>
+<li>Can reformulate complex engineering problems in order to solve them (simplifying assumptions, reducing complexity).
+</li>
+<li>Can present and defend results in a scientifically sound way, using contemporary communication tools, for a national as well as for an international professional or lay audience.
+</li>
+<li>Can collaborate in a (multidisciplinary) team.
+</li>
+<li>Has a creative, problem-solving, result-driven and evidence-based attitude, aiming at innovation and applicability in industry and society.
+</li>
+<li>Has a critical attitude towards one’s own results and those of others.
+</li>
+<li>Has an active knowledge of the theory and applications of information and communication technology.
+</li>
+<li>Has a profound knowledge of modelling and control.
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-1-3" class="outline-3">
+<h3 id="sec-1-3">Part 1 topics</h3>
+<div class="outline-text-3" id="text-1-3">
+<ol class="org-ol">
+<li>Signals and systems (mostly review from a new perspective)
+<ul class="org-ul">
+<li>expansion of a signal in a basis; orthonormal basis 
+</li>
+<li>linear time-invariant systems; behavioral approach
+</li>
+<li>representations of LTI systems
+<ul class="org-ul">
+<li>convolution
+</li>
+<li>differential/difference equation
+</li>
+<li>transfer function 
+</li>
+<li>state-space representation
+</li>
+</ul>
+</li>
+<li>the realization problem
+</li>
+</ul>
+</li>
+<li>Random signals 
+<ul class="org-ul">
+<li>covariance function and spectrum
+</li>
+<li>Wiener-Khintchine theorem
+</li>
+<li>stochastic systems 
+</li>
+<li>stochastic realization
+</li>
+</ul>
+</li>
+<li>Least-squares estimation
+<ul class="org-ul">
+<li>underdetermined and overdetermined systems of linear equations
+</li>
+<li>least-norm solution and least-squares approximation
+</li>
+<li>recursive least-squares approximation
+</li>
+<li>Kalman filtering
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-sec-1-4" class="outline-3">
+<h3 id="sec-1-4">Materials for Part 1</h3>
+<div class="outline-text-3" id="text-1-4">
+<ul class="org-ul">
+<li>these notes and lecture slides
+</li>
+<li>exercises and quizzes
+</li>
+<li>references
+<ul class="org-ul">
+<li><i>signals and systems:</i> A. Oppenheim and A. Willsky, Signals and Systems
+</li>
+<li><i>linear algebra:</i> G. Strang, Linear Algebra and Its Applications
+</li>
+<li><i>system theory:</i> D. Luenberger, Introduction to Dynamical Systems: Theory, Models and Applications
+</li>
+<li><i>behavioral approach:</i> <a href="http://wwwhome.math.utwente.nl/~poldermanjw/onderwijs/DISC/mathmod/book.pdf">(Polderman and Willems)</a>
+</li>
+<li><i>realization theory:</i> Sections 2.2 and 3.1 from <a href="http://homepages.vub.ac.be/~imarkovs/book.html">(Markovsky)</a> and <a href="./deterministic-realization-theory.pdf">Sections 6.5&#x2013;8</a> from <a href="http://www.math.rutgers.edu/~sontag/mct.html">(Sontag)</a>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> Signals and systems</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="outline-container-sec-2-1" class="outline-3">
+<h3 id="sec-2-1">Classification of signals</h3>
+<div class="outline-text-3" id="text-2-1">
+<ul class="org-ul">
+<li>examples of "physical" signals
+<ul class="org-ul">
+<li>sound (speech, music, noise, &#x2026;)
+</li>
+<li>image (black/white, gray scale &#x2014; integer 0&#x2013;255, color)
+</li>
+<li>video (sequence of images)
+</li>
+<li>daily exchange rates of one currency into another
+</li>
+</ul>
+</li>
+<li>abstract representation as a function
+<ul class="org-ul">
+<li>notation \(f:{\cal X}\to{\cal Y}\) (function from \({\cal X}\) to \({\cal Y}\))
+<ul class="org-ul">
+<li>\({\cal X}\) &#x2014; domain (where the function argument, say \(x\), takes its values)
+</li>
+<li>\({\cal Y}\) &#x2014; image (where the function values belong)
+</li>
+</ul>
+</li>
+<li>\(y = f(x)\) &#x2014; value of the function at the point \(x\in{\cal X}\)
+</li>
+<li>note that the function \(f\) is not defined for values of \(x\) outside the domain, i.e., for \(x\not\in{\cal X}\)
+</li>
+</ul>
+</li>
+<li>scalar (single-channel) vs vector (multi-channel)
+</li>
+<li>real-valued vs complex-valued
+</li>
+<li>continuous/analog (the domain is \(\mathbb{R}\)) vs discrete/sampled (the domain is \(\mathbb{Z}\))
+</li>
+<li>periodic vs non-periodic
+</li>
+<li>one-dimensional (e.g., sound) vs multi-dimensional (e.g., image and video)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-2" class="outline-3">
+<h3 id="sec-2-2">Basic signals and operations with them</h3>
+<div class="outline-text-3" id="text-2-2">
+<ul class="org-ul">
+<li>Basic signals
+<ul class="org-ul">
+<li>\(\delta\) Dirak (continuous-time) and Kroneker (discrete-time) delta 
+    \[\delta(t) = \begin{cases} 1, & t = 0\\ 0, & \text{otherwise}\end{cases}\]
+</li>
+<li>\(\exp_{\beta + \mathbf{i}\omega}\) complex exponential function
+    \[\exp_{\beta + \mathbf{i}\omega}(t) = e^{\beta t + \mathbf{i}\omega t} = e^{\beta t}\big(\cos(\omega t) + \mathbf{i}\sin(\omega t)\big)\]
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">&beta;</td>
+<td class="left">---</td>
+<td class="left">damping coefficient</td>
+</tr>
+
+<tr>
+<td class="left">&omega;</td>
+<td class="left">---</td>
+<td class="left">frequency</td>
+</tr>
+</tbody>
+</table>
+<p>
+Note: complex exponentials are eigen functions of linear time invariant systems:
+  \[S(\exp_{z}) = H(z) \exp_{z}, \qquad \text{where \(S\) is a linear time invariant system}\]  
+</p>
+</li>
+</ul>
+</li>
+<li>Signal transformations
+<ul class="org-ul">
+<li>amplitude scaling \(ax\), \(a\in\mathbb{R}\)
+<ul class="org-ul">
+<li>\(|a|>1\) &#x2014; gain factor (ideal linear amplifier)
+</li>
+<li>\(|a|<1\) &#x2014; attenuation factor
+</li>
+</ul>
+</li>
+<li>time scaling \(x(at)\), \(a\in\mathbb{R}\)
+</li>
+<li>shift in time 
+    \[x(t + \tau) =: (\sigma^{\tau}x)(t), \quad \tau\in\mathbb{R}\]
+</li>
+<li>addition \(x + y\)
+    \[(x + y)(t) = x(t) + y(t)\]
+</li>
+<li>multiplication (modulation) \(xy\)
+    \[(xy)(t) = x(t)y(t)\]
+</li>
+<li>convolution \(h\star x\)
+\begin{equation}
+(h\star x)(t) = \sum_{\tau=-\infty}^{\infty} h(\tau) x(t-\tau) \label{star}\tag{$\star$}
+\end{equation}
+</li>
+<li>sampling (discretization in time, analog to digital conversion) 
+<ul class="org-ul">
+<li>uniform sampling with sampling time \(t_{\text{s}}\)
+      \[\text{sample}_{t_{\text{s}}}: x_{\text{c}} \mapsto x_{\text{d}}, \quad x_{\text{d}}(t) = x_{\text{c}}(t_{\text{s}}t), \quad t\in\mathbb{Z}\] 
+</li>
+<li>loss of information (aliasing)
+</li>
+<li>Nyquist–Shannon sampling theorem (for band limited signals, critical frequency)
+</li>
+<li>reconstruction of the continuous-time signal from the discrete-time samples via sinc interpolation is a convolution of of \(x_{\text{d}}\) with sinc function
+       \[f_{\text{c}}(t) = \left(\sum_{\tau=-\infty}^{\infty} f_{\text{d}}(\tau) \delta(t-\tau t_{\text{s}})\right) \star \text{sinc}(t)\]
+</li>
+<li>non-uniform sampling (sparsity, compressive sampling)
+</li>
+</ul>
+</li>
+<li>interpolation \(x_{\text{d}} \mapsto x_{\text{c}}\)
+<ul class="org-ul">
+<li>digital to analog conversion
+</li>
+<li>zero order hold
+</li>
+<li>linear interpolation
+</li>
+<li>polynomial interpolation
+</li>
+<li>sinc interpolation (for band limited signals)
+</li>
+</ul>
+</li>
+<li>extrapolation: predict the signal in the future
+</li>
+<li>quantization (discretization in value)
+    \(\text{quant}_{\Delta}: x_{\text{c}} \mapsto x_{\text{q}}, \ x_{\text{q}}(t) = \left\lceil \frac{x_{\text{c}}(t)}{\Delta} \right\rceil\Delta \)
+<ul class="org-ul">
+<li>\(\Delta\) &#x2014; quantization level
+</li>
+<li>loss of information
+</li>
+<li>"quantization noise"
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Signal expansion in a <a href="./basis.pdf">basis</a>
+<ul class="org-ul">
+<li>spaces and subspaces 
+</li>
+<li>basis of a subspace
+</li>
+</ul>
+</li>
+<li>Transform techniques
+<ul class="org-ul">
+<li>representation of the signal in a basis of shifted delta functions
+\begin{equation}
+x = \sum_{\tau = -\infty}^{\infty} x(\tau) \sigma^{-\tau}\delta = x \star \delta \label{dt}\tag{\(\delta\)-train}
+\end{equation}
+<p>
+Note: No computation required!
+</p>
+</li>
+<li>discrete Fourier transform
+\begin{equation}
+x = \frac{1}{T} \sum_{k=0}^{T-1} X(k) \exp_{\mathbf{i} \omega_k}, \qquad \omega_{k} := \frac{2\pi k}{T} \label{dft}\tag{DFT}
+\end{equation}
+<p>
+Note 1: Computation is required.
+</p>
+</li>
+</ul>
+</li>
+<li>Measuring the size of a signal (\(x\) with domain \([0,\infty)\))
+<ul class="org-ul">
+<li>total energy: \(\int_{0}^{\infty} x^{2}(\tau)\,d\tau\)
+</li>
+<li>peak value: \(\max_{t\geq0} |x|(t)\)
+</li>
+<li>root-mean-square (RMS) value 
+    \[\sqrt{\lim_{t\to\infty}\frac{1}{t} \int_{0}^{t} x^{2}(\tau)} \,d\tau\]
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3" class="outline-3">
+<h3 id="sec-2-3">Dynamical systems</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="outline-container-sec-2-3-1" class="outline-4">
+<h4 id="sec-2-3-1">Examples of "physical" systems</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<ul class="org-ul">
+<li>electrical circuits
+</li>
+<li>chemical processes
+</li>
+<li>stock markets
+</li>
+<li>the solar system
+</li>
+</ul>
+<p>
+Note: when a "physical" systems is described by a mathematical model (a dynamical system), specify what aspects of the "physical" systems are described (what is the physical meaning of the model variables).
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-2" class="outline-4">
+<h4 id="sec-2-3-2"><a href="./behavioral-approach-jan.pdf">Behavioral approach</a></h4>
+<div class="outline-text-4" id="text-2-3-2">
+<ul class="org-ul">
+<li>manifest variables \(w\) 
+</li>
+<li>the universal set \(\cal U\)
+</li>
+<li>behavior: the set of (allowed) signals \(\mathcal{B}\) (the system is a prohibition rule)
+  \[w \in \mathcal{B} \quad\iff\quad \text{\(w\) is a trajectory of $\mathcal{B}$} \]
+</li>
+<li>example: the solar system, the prohibition rule are Kepler's laws<br  />
+  (gravitational law + Newton's laws \(\quad\leftrightarrow\quad\) Kepler's laws \(\quad\leftarrow\quad\) observations)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-3" class="outline-4">
+<h4 id="sec-2-3-3">A "signal processor" view of a system: map from an input signal to an output signal (an operator)</h4>
+<div class="outline-text-4" id="text-2-3-3">
+<ul class="org-ul">
+<li>notation: \(y = S(u)\)
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<tbody>
+<tr>
+<td class="left">\(u\)</td>
+<td class="left">---</td>
+<td class="left">input</td>
+</tr>
+
+<tr>
+<td class="left">\(y\)</td>
+<td class="left">---</td>
+<td class="left">output</td>
+</tr>
+
+<tr>
+<td class="left">\(S\)</td>
+<td class="left">---</td>
+<td class="left">system</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>block diagram: building complicated systems with interconnections (summation and multiplication, SIMULINK)
+</li>
+<li>examples
+<ul class="org-ul">
+<li>scaling system: \(y = au\), \(a\) is called the gain
+<ul class="org-ul">
+<li>amplifier if \(|a|>1\)
+</li>
+<li>attenuator if \(|a|<1\)
+</li>
+<li>inverter if \(a < 0\)
+</li>
+</ul>
+</li>
+<li>differentiator: \(y = u'\)
+</li>
+<li>integrator: \(y = \int u(\tau)d\tau\)
+</li>
+<li>time delay: \(y = \sigma^{d} u\)
+</li>
+<li>convolution system: \(y = h\star u\), \(h\) is a given function
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-3-4" class="outline-4">
+<h4 id="sec-2-3-4">Properties of dynamical systems</h4>
+<div class="outline-text-4" id="text-2-3-4">
+<ul class="org-ul">
+<li>static (memory-less) vs dynamic (with memory)
+</li>
+<li>linear vs nonlinear
+<ul class="org-ul">
+<li>classical definition of a linear system
+<ol class="org-ol">
+<li><i>homogeneity:</i> \(S(au) = aS(u)\), for all \(a\) 
+
+<p>
+Interpretation: scaling the signal before or after the system has the same effect.
+</p>
+</li>
+<li><i>superposition:</i> \(S(u_1 + u_2) = S(u_1) + S(u_2)\) 
+
+<p>
+Interpretation: summing the signals before or after the system has the same effect.
+</p>
+</li>
+</ol>
+<p>
+Note: the classical definition assumes signals over two-sided infinite intervals (time axis \(\mathbb{Z}\) or \(\mathbb{R}\)) or else one sided infinite (time axis \(\mathbb{Z}_{+}\) or \(\mathbb{R}_{+}\)) <i>and</i> zero initial conditions.
+</p>
+</li>
+<li>behavioral definition
+<ol class="org-ol">
+<li><i>homogeneity:</i> if \(w\in\mathcal{B}\) then \(aw\in\mathcal{B}\), for all \(a\)
+</li>
+<li><i>superposition:</i> if \(w^{1}\in\mathcal{B}\) and \(w^{2}\in\mathcal{B}\) then \(w^{1} + w^{2} \in \mathcal{B}\)
+</li>
+</ol>
+</li>
+</ul>
+</li>
+<li>time-invariant vs time-varying: if \(w\in\mathcal{B}\), then \(\sigma^{\tau}\in\mathcal{B}\), for all \(\tau\)
+</li>
+<li>autonomous vs open: autonomous systems have no inputs
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-2-4" class="outline-3">
+<h3 id="sec-2-4">Response of a linear time-invariant system</h3>
+<div class="outline-text-3" id="text-2-4">
+<ul class="org-ul">
+<li>convolution of the input with the impulse response function
+  \[\begin{array}{lll}
+  y &= S(u) \\
+    &= S\left( \sum_{\tau} u(\tau) \sigma^{-\tau} \delta \right) & \text{(representation of \(u\) in a basis of shifted delta functions)} \\
+    &= \sum_{\tau} u(\tau) S\big(\sigma^{-\tau} \delta\big) & \text{(by the linearity property of \(S\))}\\
+    &= \sum_{\tau} u(\tau) \sigma^{-\tau} S\big(\delta\big) & \text{(by the time-invariance property of \(S\))}\\
+    &= \sum_{\tau} u(\tau) \sigma^{-\tau} h & \text{(\(h\) is the impulse response of \(S\))}\\
+    &= h \star u & \text{(by the definition of the convolution operator)} 
+  \end{array}\]
+</li>
+<li>multiplication of the Fourier transform of the input with the frequency response function
+  \[\begin{array}{lll}
+  y &= S(u) \\ 
+    &= S\left( \sum_{k} U(k) \exp_{\mathbf{i}\omega_k} \right) & \text{(representation of \(u\) in a basis of complex exponentials)} \\
+    &= \sum_{k} U(k) S( \exp_{\mathbf{i}\omega_k} ) & \text{(by the linearity property of \(S\))}\\
+    &= \sum_{k} U(k) H(k) \exp_{\mathbf{i}\omega_k} & \text{(by the fact that \(\exp_{\mathbf{i}\omega_k}\) are eigen functions of LTI systems)}\\
+    &= F^{-1}\big( U(k) H(k) \big) & \text{(\(F^{-1}\) is the inverse Fourier transform)}
+  \end{array}\]
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5" class="outline-3">
+<h3 id="sec-2-5">Exercises&#xa0;&#xa0;&#xa0;<span class="tag"><span class="HW">HW</span></span></h3>
+<div class="outline-text-3" id="text-2-5">
+</div><div id="outline-container-sec-2-5-1" class="outline-4">
+<h4 id="sec-2-5-1">Optional reading assignments</h4>
+<div class="outline-text-4" id="text-2-5-1">
+<ul class="org-ul">
+<li>section 1.1 (classification of signals), 1.2 (classification of systems), and chapter 2 (representation of signals and systems) from A. Oppenheim and A. Willsky, Signals and Systems 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-2-5-2" class="outline-4">
+<h4 id="sec-2-5-2">Problems</h4>
+<div class="outline-text-4" id="text-2-5-2">
+</div><ul class="org-ul"><li><b>System classification</b><br  /><ul class="org-ul"><li>Give specific examples of:<br  /><div class="outline-text-6" id="text-2-5-2-1-1">
+<ul class="org-ul">
+<li>linear static system
+</li>
+<li>nonlinear static system
+</li>
+<li>linear time-invariant dynamical systems
+<ul class="org-ul">
+<li>finite impulse response (FIR)
+</li>
+<li>infinite impulse response (IIR)
+</li>
+<li>scalar
+</li>
+<li>multivariable
+</li>
+</ul>
+</li>
+<li>linear time-varying dynamical systems
+</li>
+<li>nonlinear time-invariant dynamical systems
+</li>
+<li>nonlinear time-varying dynamical systems 
+</li>
+</ul>
+</div>
+</li></ul>
+</li>
+
+<li><b>Response of an LTI system</b><br  /><div class="outline-text-5" id="text-2-5-2-2">
+<ol class="org-ol">
+<li>Find analytically the response of 1st and 2nd order autonomous linear time-invariant systems.
+</li>
+<li>Write a function that computes the response.
+</li>
+<li>Test the function on a numerical example and compare the result with the one obtained via the function <code>lsim</code> from Control Toolbox of Matlab.
+</li>
+<li>Generalize 1&#x2013;3 for a general \(n\)th order linear time-invariant autonomous systems.
+</li>
+</ol>
+</div>
+</li></ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> <a href="./repr.pdf">Representations of LTI systems</a></h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><a href="./basis.pdf">Review of matrix algebra</a></h3>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">Representation of static systems</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li>function vs relation
+</li>
+<li>image representation
+</li>
+<li>kernel representation
+</li>
+<li>input/output representation
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">Representation of linear time-invariant systems</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>difference/differential equations
+\[\sum_{\tau = 1}^{n} a_{\tau} y(t-\tau) = \sum_{\tau=1}^{m} b_{\tau}u(t-\tau)\]
+special case
+\[y(t) = \sum_{\tau=1}^{m} b_{\tau}u(t-\tau)\]
+<ul class="org-ul">
+<li>the differentiation (continuous-time systems) / shift (discrete-time systems) operator \(\sigma\)
+</li>
+<li>initial conditions (free response)
+</li>
+<li>systems with inputs
+</li>
+<li>linear constant coefficient ordinary differential equation
+</li>
+<li>example mass-spring-damper
+</li>
+</ul>
+</li>
+<li>transfer function (forced response)
+<ul class="org-ul">
+<li>rational \(=\) finite order
+</li>
+</ul>
+</li>
+<li>state space
+<ul class="org-ul">
+<li>nonuniqueness
+</li>
+<li>realization problem
+</li>
+<li>matrix exponential
+</li>
+</ul>
+</li>
+<li>convolution
+<ul class="org-ul">
+<li>properties
+<ul class="org-ul">
+<li>\(x\star h = h\star x\)
+</li>
+<li>\((x\star h_{1}) \star h_{2} = x \star (h_{1} \star h_{2})\)
+</li>
+<li>\(x\star (h_{1} + h_{2}) = x \star h_{1} + x \star h_{2}\)
+</li>
+</ul>
+</li>
+<li>the deconvolution problem
+</li>
+</ul>
+</li>
+<li>convolution systems
+<ul class="org-ul">
+<li>impulse response and step response
+</li>
+<li>convolution theorem: \(y = h\star u \leftrightarrow Y = HU \qquad\)
+<div class="center">
+<img src="CD.png" style="width: 15%; height: 15%">
+</div>
+</li>
+<li>infinite impulse response (IIR) systems
+</li>
+<li>finite impulse response (FIR) systems
+</li>
+<li>DC gain
+    \[H(0) = \int_{0}^{\infty} h(\tau)d\tau = \lim_{\tau\to\infty} s(\tau) \qquad\text{(continuous-time)}\] 
+    \[H(1) = \sum_{\tau = 0}^{\infty} h(\tau) d\tau \qquad\text{(discrete-time)}\]
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><a href="./l3.pdf">Autonomous systems</a></h3>
+<div class="outline-text-3" id="text-3-4">
+<ul class="org-ul">
+<li>Section 3.2 in <a href="http://wwwhome.math.utwente.nl/~poldermanjw/onderwijs/DISC/mathmod/book.pdf">(Polderman and Willems)</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5">Links among representations</h3>
+<div class="outline-text-3" id="text-3-5">
+<div class="center">
+<img src="links.png" style="width: 75%; height: 75%">
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><a href="./deterministic-realization-theory.pdf">Realization theory</a></h3>
+<div class="outline-text-3" id="text-3-6">
+<ul class="org-ul">
+<li>Sections 2.2 and 3.1 from <a href="http://homepages.vub.ac.be/~imarkovs/book.html">(Markovsky)</a> 
+</li>
+<li><a href="./deterministic-realization-theory.pdf">Sections 6.5&#x2013;8</a> from <a href="http://www.math.rutgers.edu/~sontag/mct.html">(Sontag)</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7">Exercises&#xa0;&#xa0;&#xa0;<span class="tag"><span class="HW">HW</span></span></h3>
+<div class="outline-text-3" id="text-3-7">
+</div><div id="outline-container-sec-3-7-1" class="outline-4">
+<h4 id="sec-3-7-1">Additional reading</h4>
+<div class="outline-text-4" id="text-3-7-1">
+<p>
+Chapters 1 (behavioral models) and 4 (state-space representation) from <a href="http://wwwhome.math.utwente.nl/~poldermanjw/onderwijs/DISC/mathmod/book.pdf">(Polderman and Willems)</a>
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7-2" class="outline-4">
+<h4 id="sec-3-7-2">Problems</h4>
+<div class="outline-text-4" id="text-3-7-2">
+</div><ul class="org-ul"><li><b>Matrix representation of the discrete Fourier transform</b><br  /><div class="outline-text-5" id="text-3-7-2-1">
+<ol class="org-ol">
+<li>Find a matrix representation \(F\) of the discrete Fourier transform 
+\[\hat x(k) = \sum_{t = 0}^{T-1} x(t) e^{-\mathbf{i} 2\pi tk / T}, \qquad\text{for } k = 0,1,\ldots,T-1\]
+of signal \(x = \big( x(0), \ldots, x(T-1) \big)\).
+</li>
+<li>What is the number of multiplications needed to compute \(\hat x = Fx\) by matrix-vector multiplication? Compare this number with the \(T\log_{2}(T)\) multiplications needed for the same computation by the fast Fourier transform.
+</li>
+<li>Using \matlab's <code>tic</code> and <code>toc</code> functions measure the computation times of the matrix-vector multiplication and the fast Fourier transform methods for the computation of the discrete Fourier transform of \(x\). (Use a random \(x\).) Repeat the experiment for different size \(n\) of \(x\) and plot the results. 
+</li>
+<li>Do the empirical observations match the theoretical predictions? Justify your answer by fitting the observed computation times to the analytical expressions.
+</li>
+</ol>
+</div>
+</li>
+<li><b>Matrix representation of the convolution operation</b><br  /><div class="outline-text-5" id="text-3-7-2-2">
+<ol class="org-ol">
+<li>Find a matrix representation \(M_{h}\) of the convolution operator
+\[(h\star x)(t) := \sum_{\tau = 1}^{n} h(\tau) x(t - \tau), \qquad\text{for } t = 1,\ldots,T\] 
+of the signals 
+\[h = \big( h(1), \ldots, h(n) \big) \quad\text{and}\quad x = \big( x(-n+1), \ldots, x(0), x(1), \ldots, x(T) \big).\]
+</li>
+<li>What is the number of multiplications needed to compute \(y = M_{h}x\) by matrix-vector multiplication? 
+</li>
+<li>Propose a method for convolution based on the fast Fourier transform. What is the computational cost of this method?
+</li>
+<li>Can you propose another fast method for convolution in the case when \(h\) is a sum of exponentials? 
+</li>
+</ol>
+</div>
+</li></ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Stochastic models</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1">Convolution of probabilities</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>consider discrete random variables \(X\)
+</li>
+<li>let \(p_i = \text{prob}(X = i)\) be the probability of the event that \(X=i\) 
+</li>
+<li>we have that \(0\leq p_i\leq 1\) and \(\sum p_i = 1\)
+</li>
+<li>\(p\) is called the <i>probability density function (pdf)</i> of \(X\)
+</li>
+<li>consider <i>independent identically distributed (i.i.d.)</i> random variables \(X_1\) and \(X_2\) with pdf's \(p^{(1)}\) and \(p^{(2)}\)
+</li>
+<li>problem: find the pdf of \(X_1 + X_2\), i.e., find the probabilities \(\text{prob}(X_1 + X_2 = k)\)
+</li>
+<li>example: dice trowing \(p^{(j)}_{i} = 1/6\), for \(j=1,2\) and \(i = 1,\ldots,6\)
+</li>
+<li>we have \(\text{prob}(X_1 = i \text{ and } X_2 = j) = p^{(1)}_ip^{(2)}_j\)
+</li>
+<li>\(X_1 + X_2 = k\) is a union of mutually exclusive events: \(X_1 = i\) and \(X_2 = k - i\), which probability is \(p^{(1)}_ip^{(2)}_{k-i}\)
+</li>
+<li>therefore
+  \[\text{prob}(X_1 + X_2 = k) = \sum p^{(1)}_ip^{(2)}_{k-i} = (p^{(1)} \star p^{(2)})(k)\]
+</li>
+<li>back to the dice example:
+  \[\frac{1}{6} (1,1,1,1,1,1) \star \frac{1}{6} (1,1,1,1,1,1) = \frac{1}{36} (1,2,3,4,5,6,5,4,3,2,1)\]
+</li>
+<li>note: a box convolved with a box results to a hat
+</li>
+<li>convolution of the box \(N\geq 2\) times with itself 
+<div class="org-src-container">
+
+<pre class="src src-matlab">n = 7; T = 20; N = 5; box = zeros(1, T); box((round(T<span style="color: #98fb98;">/</span>2) <span style="color: #98fb98;">-</span> n)<span style="color: #98fb98;">:</span>(round(T<span style="color: #98fb98;">/</span>2) <span style="color: #98fb98;">+</span> n)) = 1; 
+p = box; <span style="color: #98fb98;">figure</span>(1), stem(p), pause(1), print_fig(<span style="color: #ff7f24;">'conv0'</span>)
+<span style="color: #00ffff;">for</span> <span style="color: #eedd82;">i</span> = <span style="color: #7fffd4;">1:N</span>, p = conv(p, box); stem(p), pause(1), print_fig([<span style="color: #ff7f24;">'conv'</span> int2str(<span style="color: #7fffd4;">i</span>)]), <span style="color: #00ffff;">end</span>
+</pre>
+</div>
+<p>
+<a href="./conv.pdf">convergence to Gaussian distribution</a>
+</p>
+</li>
+<li>central limit theorem: sum of independently distributed random variables converges to a normally distributed random variable
+</li>
+<li>another solution using the <i>generating function</i>
+  \[p(z) = p_1z + p_2z^2 + \cdots + p_nz^n\]
+</li>
+<li>the generating function of \(X_1 + X_2\) is \(p^{(1)}p^{(2)}\)
+</li>
+<li>product of polynomials is a convolution of their coefficients 
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2">Gaussian distribution (second order process)</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>notation: \(x\sim\mathbf{N}(\mu,\sigma^2)\)
+     \[p(x) = \frac{1}{\sqrt{2\pi}\sigma} \exp\left( -\frac{1}{2} \left(\frac{x - \mu_{x}}{\sigma_{x}}\right)^{2}\right)\]
+</li>
+<li>Gaussian random vector \(x\sim\mathbf{N}(\mu,V)\)
+     \[p(x) = \frac{1}{(2\pi)^{n/2}\sqrt{\det(V)}} \exp\left( -\frac{1}{2} (x-\mu)^{\top}V^{-1}(x-\mu)\right)\]
+<ul class="org-ul">
+<li>diagonal \(V\) &#x2014; uncorrelated RV
+</li>
+</ul>
+</li>
+<li>affine transformation of a Gaussian random vector \(y = Ax + b\), \(y\sim\mathbf{N}(A\mu+b,AVA^{\top})\)
+<ul class="org-ul">
+<li>of particular interest is a transformation \(A\) that de-correlates (whitens) \(x\)
+       \[AVA^{\top} = D \qquad\text{\(D\) --- diagonal}\]
+</li>
+<li>Cholesky decomposition of a positive definite matrix \(V = LDL^{\top}\), \(L\) &#x2014; lower triangular with ones on the diagonal, then \(A = L^{-1}\)
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3">Random processes</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li>a discrete-time random process (signal) \(y\) is a sequence of random variables
+<ul class="org-ul">
+<li>example white Gaussian process
+</li>
+<li>Markov chains
+</li>
+</ul>
+</li>
+<li>the mean of \(y\) is the sequence of the means 
+</li>
+<li>covariance matrix (assuming zero mean process) 
+  \[R_{y} = \big[ \underbrace{\mathbf{E}\big( y(i) y(j)}_{r_{y}(i,j)} \big]_{i,j=1}^{m} = \mathbf{E} \begin{bmatrix} y(1)\\ y(0)\\\vdots\\ y(-m)\end{bmatrix} \begin{bmatrix} y(1) & y(0) & \cdots & y(-m)\end{bmatrix} \]
+<ul class="org-ul">
+<li>property: positive semi-definite matrix
+</li>
+<li>intuition: rate of variation of the signal (show diagrams)
+</li>
+</ul>
+</li>
+<li><i>stationary process (signal):</i> 
+<ul class="org-ul">
+<li>strict sense stationary
+</li>
+<li>wide sense stationary: \(\mathbf{E}(y)\) is a constant and \(r_{y}(i,j)\)'s depends only on \(\tau = i - j\)
+<ul class="org-ul">
+<li>then \(R_{y}\) is a Toeplitz structured matrix
+</li>
+</ul>
+<p>
+\[r_{y}(\tau) = E\big(y(t)y(t-\tau)\big)\]
+</p>
+<ul class="org-ul">
+<li>properties of correlation function
+<ul class="org-ul">
+<li>\(r_{y}(\tau) = r_{y}(-\tau)\)
+</li>
+<li>\(r_{y}(0) \geq \left| r_{y}(\tau) \right|\), for all \(\tau\)
+</li>
+</ul>
+</li>
+<li>link to convolution: \(r_{y} = y \star \text{rev}(y)\), where "rev" is the time reversal
+      \[\big(\text{rev}(y)\big)(t) = y(-t)\]
+</li>
+<li>power spectral density 
+</li>
+<li>note that with probability one a realization of a random process has no finite energy and therefore no Fourier transform
+</li>
+<li>random processes however usually have finite average power and can be characterized by the average power spectral density
+</li>
+<li>Fourier transform of the covariance function 
+      \[\phi_y(\omega) = \sum_{k=-\infty}^{\infty} r_{y}(k) e^{-\mathbf{i}\omega k}\]
+</li>
+<li>properties
+<ul class="org-ul">
+<li>\(\phi_y(\omega)\geq0\), for all \(\omega\)
+</li>
+<li>if \(y\) is real, \(\phi_y(\omega)=\phi_y(-\omega)\)
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Parseval's theorem: energy preservation in time and frequency domain
+    \[\sum_{t=-\infty}^{\infty} = \frac{1}{2\pi} \int_{-\pi}^{\pi} \phi_y(\omega)d\omega\]
+</li>
+<li>ergodic process: expectation can be computed by time averaging
+    \[r_y(\tau) = \lim_{T\to\infty} \frac{1}{T} \sum_{t = 1}^{T} y(t)y(t-\tau)\]
+</li>
+</ul>
+</li>
+<li>transformation of the power spectral density by an LTI system
+  \[\phi_{y}(\omega) = |H(\omega)|^{2} \phi_{u}(\omega)\]
+<ul class="org-ul">
+<li>show first that 
+    \[r_{y}(\tau) = \int\int h(\alpha)h(\beta) r_{u}(\tau+\alpha-\beta)d\alpha d\beta\]
+</li>
+<li>using \(\phi_{y}(\omega) = \int r_{y}(\tau) e^{-\mathbf{i}\omega\tau}d\tau\) and the change of variables \(\lambda = \tau + \alpha - \beta\), we have
+    \[\begin{split}
+    \phi_{y}(\omega) &= \int\int\int h(\alpha)h(\beta)r_{u}(\tau+\alpha-\beta)e^{-\mathbf{i}\omega\tau}d\alpha d\beta d\tau\\
+    &= \int\int\int h(\alpha) h(\beta)r_{u}(\tau+\alpha-\beta)e^{-\mathbf{i}\omega(\lambda - \alpha + \beta)}d\alpha d\beta d\lambda\\
+    &= \int h(\alpha) e^{-\mathbf{i}\omega\alpha} d\alpha \int h(\beta) e^{-\mathbf{i}\omega\beta} d\beta \int r_{u}(\lambda)e^{-\mathbf{i}\omega\lambda} d\lambda\\
+    &= H(-\omega)H(\omega) \phi_{u}(\omega)\\
+    &= |H(\omega)|^{2} \phi_{u}(\omega)
+    \end{split}\]
+</li>
+</ul>
+</li>
+<li>another formula \(\phi_{uy}(\omega) = H(\omega) \phi_{u}(\omega)\)
+</li>
+<li>white Gaussian noise
+<ul class="org-ul">
+<li>power spectrum \(\phi_{u}(\omega) = 1\), for all \(\omega\)
+</li>
+</ul>
+</li>
+<li>shaping filter
+</li>
+<li>spectral factorization problem
+</li>
+<li>parametrized random processes
+<ol class="org-ol">
+<li>moving average (MA)
+</li>
+<li>auto regressive (AR)
+</li>
+<li>auto regressive moving average (ARMA)
+</li>
+<li>auto regressive moving average exogenous (ARMAX)
+</li>
+</ol>
+</li>
+<li>realization of stochastic systems
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4">Wiener-Khintchine theorem</h3>
+<div class="outline-text-3" id="text-4-4">
+<ul class="org-ul">
+<li>consider a random process \(y\)
+</li>
+<li>Fourier transform of the autocorrelation function \(r\) is the power spectral density \(\phi_y\)
+<ul class="org-ul">
+<li>definition: \(\phi_{y} := F(y)F^{*}(y) = |F(y)|^{2}\)
+</li>
+<li>theorem: \(\phi_{y} = F(r_{y})\)
+</li>
+<li>the proof is based on the following properties: 
+<ul class="org-ul">
+<li>\(F(y\star y) = F(y)F(y)\) 
+</li>
+<li>\(F\big(\text{rev}(y)\big) = F^{*}(y)\)
+</li>
+<li>\(y\star \text{rev}(y) = r_{y}\)
+</li>
+</ul>
+<p>
+\[\phi_{y} = F(y)F^{*}(y) = F(y) F\big(\text{rev}(y)\big) = F\big(y\star \text{rev}(y)\big) = F(r_{y})\]
+</p>
+</li>
+</ul>
+</li>
+<li>note: direct computation requires \(O(n^2)\) flops, FFT computation requires \(O(n\log(n))\)
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-5" class="outline-3">
+<h3 id="sec-4-5">Estimation principles</h3>
+<div class="outline-text-3" id="text-4-5">
+<ul class="org-ul">
+<li>conditional expectation
+<ul class="org-ul">
+<li>consider two RV \(x\) and \(y\) with joint pdf \(p_{x,y}\)
+</li>
+<li>we want to infer \(x\) from observations of \(y\)
+</li>
+<li>estimator: \(\hat x = h(y)\)
+</li>
+<li>if \(x\) and \(y\) are independent, nothing can be said about \(x\), seeing \(y\)
+</li>
+<li>optimal estimator: \(\hat x = \mathbf{E}(x | y)\) &#x2014; conditional expectation of \(x\), given \(y\)
+</li>
+<li>important special case: linear estimators and Gaussian pdf
+</li>
+</ul>
+</li>
+<li>maximum likelihood: parameter dependent pdf \(p(x,\theta)\)
+<ul class="org-ul">
+<li>substitute the observed data in \(p(x,\theta)\) and view the resulting function \(L(\theta)\) in \(\theta\) as the "likelihood" for the occurrence of the data, given the parameters \(\theta\) 
+</li>
+<li>maximize the likelihood for all admissible parameter values \(\theta\in\Theta\)
+</li>
+</ul>
+</li>
+<li>minimization of the MSE: \(\mathbf{E}\big((\theta - \hat\theta)^{2}\big)\)   
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-4-6" class="outline-3">
+<h3 id="sec-4-6">Spectral estimation</h3>
+<div class="outline-text-3" id="text-4-6">
+<ul class="org-ul">
+<li>basic problem: determine the spectral content of a signal (random process) based on finite set of observations
+</li>
+<li>PSD function describes the distribution of power of the signal with frequency
+</li>
+<li>"physical way of doing it": 1) filter with a sufficiently narrow band-pass filter centered at \(f=f_0\) and measure the power of the output. 2) divide the power by the filter width, 3) repeat the process for different \(f_{0}\)
+</li>
+<li>traditionally based on the Fourier transform
+</li>
+<li>since 1980 new "modern"/"high resolution" approaches were developed
+</li>
+<li>in the last 10 years compressive sensing is taking over
+</li>
+</ul>
+<ul class="org-ul">
+<li>The task of estimating the spectral density based on finite data is impossible. At best we can estimate a subset of the most significant values, which are assumed to be the \(M\) leading coefficients. If the process exhibits strong correlations for lags \(k > M\), the results are heavily biased.
+</li>
+<li>The "impossibility problem" can be resolved by postulating specific forms of the spectral density, e.g., rational form. The process is parameterized by a finite (and small) number of coefficients. The spectral estimation problem becomes the one of parameter estimation. It is important however that the model is an accurate representation of the true spectral density.
+</li>
+<li>nonparameteric methods
+<ul class="org-ul">
+<li>periodogram \[\hat \phi(\omega) = \frac{1}{N} \left| \sum_{t=1}^{T} y(t) e^{-\mathbf{i}\omega t}\right|^{2}\]
+Square the absolute value of the DFT on the process.
+</li>
+<li>correlogram \[\hat \phi(\omega) = \sum_{k=-(N-1)}^{N-1} \hat r_{y}(k) e^{-\mathbf{i}\omega k} \]
+Apply the DFT on the estimated autocorrelation sequence
+\[\hat r_{y}(k) = \frac{1}{T} \sum_{t=k+1}^{N} y(t)y(t-k), \qquad\text{for } 0\leq k\leq T-1\]
+For negative lags \(\hat r_{y}(-k) = \hat r_{y}(k)\), \(k = 0,\ldots,T-1\).
+</li>
+<li>maximum likelihood
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> <a href="./lin-alg.pdf">Least-squares estimation</a></h2>
+<div class="outline-text-2" id="text-5">
+</div></div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Quizzes, tests, practice problems</h2>
+<div class="outline-text-2" id="text-6">
+<ul class="org-ul">
+<li><a href="./quiz0.pdf">Quiz on linear algebra</a>
+</li>
+<li><a href="./quiz1.pdf">Quiz on LTI systems</a>
+</li>
+<li><a href="./quiz2.pdf">Quiz on LTI system representations</a>
+</li>
+<li><a href="./test.pdf">Test</a> and <a href="./test-sol.pdf">solutions</a>
+</li>
+<li><a href="./problems.pdf">Practice problems</a> 
+</li>
+</ul>
+</div>
+</div>
+</div>
+</body>
+</html>

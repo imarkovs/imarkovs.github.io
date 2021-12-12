@@ -1,0 +1,16 @@
+= Software
+
+The computational algorithms, described in my publications, are implemented and the software is available together with the pdf files of the papers. This makes the reported simulation results [http://reproducibleresearch.net reproducible]. Since 2008, I've been using the [http://www.literateprogramming.com/ literate programming] style and the [http://www.cs.tufts.edu/~nr/noweb/ noweb system] for literate programming.
+
+- [book/code.tgz Code from the book "Low Rank Approximation: Algorithms, Implementation, Applications"]
+- [http://eprints.ecs.soton.ac.uk/18296/ Algorithms and literate programs for weighted low-rank approximation with missing data]
+- [http://eprints.ecs.soton.ac.uk/21936/ Data modeling using the nuclear norm heuristic]
+- [http://eprints.ecs.soton.ac.uk/17440/ Approximate low-rank factorization with structured factors]
+- [http://eprints.ecs.soton.ac.uk/16868/ Closed-loop data-driven simulation]
+- [http://eprints.ecs.soton.ac.uk/16829/ Least squares contour alignment]
+- [http://eprints.ecs.soton.ac.uk/17224/ Matrix centering and low-rank approximation]
+- [ftp://ftp.esat.kuleuven.ac.be/pub/SISTA/markovsky/abstracts/03-136.html Software for structured total least squares estimation]
+- [ftp://ftp.esat.kuleuven.ac.be/pub/SISTA/markovsky/abstracts/04-221.html Software for approximate linear system identification]
+- [ftp://ftp.esat.kuleuven.ac.be/pub/SISTA/markovsky/abstracts/05-122.html Software for deterministic subspace identification]
+- [ftp://ftp.esat.kuleuven.ac.be/pub/SISTA/markovsky/abstracts/04-220.html A Matlab toolbox for weighted total least squares approximation]
+- [ftp://ftp.esat.kuleuven.ac.be/pub/SISTA/markovsky/reports/02-116b.m Matlab function for ellipsoid estimation]
