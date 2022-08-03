@@ -3,13 +3,102 @@
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="hankel-ode">1</a>]
+[<a name="florian">1</a>]
+</td>
+<td class="bibtexitem">
+F.&nbsp;Dörfler, J.&nbsp;Coulson, and I.&nbsp;Markovsky.
+ Bridging direct &amp; indirect data-driven control formulations via
+  regularizations and relaxations.
+ <em>IEEE Trans. Automat. Contr.</em>, 2023.
+[&nbsp;<a href="j_bib.html#florian">bib</a>&nbsp;| 
+<a href="https://arxiv.org/abs/2101.01273">pdf</a>&nbsp;]
+<blockquote>
+We discuss connections between sequential system identification and control for linear time-invariant systems, which we term indirect data-driven control, as well as a direct data-driven control approach seeking an optimal decision compatible with recorded data assembled in a Hankel matrix and robustified through suitable regularizations. We formulate these two problems in the language of behavioral systems theory and parametric mathematical programs, and we bridge them through a multi-criteria formulation trading off system identification and control objectives. We illustrate our results with two methods from subspace identification and control: namely, subspace predictive control and low-rank approximation which constrain trajectories to be consistent with a non-parametric predictor derived from (respectively, the column span of) a data Hankel matrix. In both cases we conclude that direct and regularized data-driven control can be derived as convex relaxation of the indirect approach, and the regularizations account for an implicit identification step. Our analysis further reveals a novel regularizer and sheds light on the remarkable performance of direct methods on nonlinear systems.
+</blockquote>
+<p><blockquote>
+Keywords: multi-objective optimization, system identification, data-driven control, DeePC, behavioral system theory
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="ddsim-narx">2</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky.
+ Data-driven simulation of nonlinear systems via linear time-invariant
+  embedding.
+ <em>IEEE Trans. Automat. Contr.</em>, 2023.
+[&nbsp;<a href="j_bib.html#ddsim-narx">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/TAC.2022.3146726">DOI</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/ddsim-narx.pdf">pdf</a>&nbsp;| 
+<a href="https://imarkovs.github.io/software/ddsim.tar">software</a>&nbsp;]
+<blockquote>
+Nonparameteric representations of linear time-invariant systems that use Hankel matrices constructed from data are the basis for data-driven signal processing and control methods of linear time-invariant systems. This paper extends the approach to data-driven simulation of a class of nonlinear systems. The key step of the generalization is an embedding result that is also of independent interest. The behavior of a polynomial time-invariant system is included into the behavior of a linear time-invariant system. A subclass of polynomial time-invariant systems that leads to a computationally tractable data-driven simulation problem is generalized bilinear. It includes Hammerstein, finite-lag Volterra, and biliner systems. The method proposed is illustrated and compared with the classical model-based method on simulation examples in the errors-invariables setup as well as benchmark real-life data sets.
+</blockquote>
+<p><blockquote>
+Keywords: behavioral approach, system identification, data-driven methods, nonlinear systems.
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="ddint">3</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky and F.&nbsp;Dörfler.
+ Data-driven dynamic interpolation and approximation.
+ <em>Automatica</em>, 135:110008, 2022.
+[&nbsp;<a href="j_bib.html#ddint">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1016/j.automatica.2021.110008">DOI</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/ddint.pdf">pdf</a>&nbsp;]
+<blockquote>
+The behavioral system theory and in particular a result that became known as the "fundamental lemma" give the theoretical foundation for nonparameteric representations of linear time-invariant systems based on Hankel matrices constructed from data. These "data-driven" representations led in turn to new system identification, signal processing, and control methods. This paper shows how the approach can be used further on for solving interpolation, extrapolation, and smoothing problems. The solution proposed and the resulting method are general---can deal simultaneously with missing, exact, and noisy data of multivariable systems---and simple---require only the solution of a linear system of equations. In the case of exact data, we provide conditions for existence and uniqueness of solution. In the case of noisy data, we propose an approximation procedure based on <I>_1</I>-norm regularization and validate its performance on real-life datasets. The method proposed outperforms model-based approaches. Procedures used in subspace identification, such as computation of a set of free responses and zero-initial conditions responses, are recovered as special cases of the data-driven interpolation method in the paper. The results have application in missing data estimation and trajectory planning. They open a practical computational way of doing system theory and signal processing directly from data without identification of a transfer function or state-space system representation.
+</blockquote>
+<p><blockquote>
+Keywords: behavioral approach, system identification, data-driven methods, dynamic interpolation, missing data estimation, smoothing
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="bias-correction-vandermonde-matrix">4</a>]
+</td>
+<td class="bibtexitem">
+A.&nbsp;Fazzi, A.&nbsp;Kukush, and I.&nbsp;Markovsky.
+ Bias correction for vandermonde low-rank approximation.
+ <em>Econometrics and Statistics</em>, 2022.
+[&nbsp;<a href="j_bib.html#bias-correction-vandermonde-matrix">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1016/j.ecosta.2021.09.001">DOI</a>&nbsp;]
+<blockquote>
+The low-rank approximation problem, that is  the problem of approximating a given matrix with a matrix of lower rank, appears in many scientific fields. In some applications the given matrix is structured and the approximation is required to have the same structure. Examples of linear structures are Hankel, Toeplitz, and Sylvester. Currently, there are only a few results for nonlinearly structured low-rank approximation problems.  The problem of Vandermonde structured low-rank approximation is considered. The high condition number of the Vandermonde matrix, in combination with the noise in the data, makes the problem challenging. A numerical method based on a bias correction procedure is proposed and its properties  are shown. The performance of the method is illustrated on numerical results.
+</blockquote>
+<p><blockquote>
+Keywords: Vandermonde matrix, bias removal, adjusted least squares,  structured matrix perturbation
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="hankel-ode">5</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Fazzi, N.&nbsp;Guglielmi, and I.&nbsp;Markovsky.
  A gradient system approach for Hankel structured low-rank
   approximation.
- <em>Linear Algebra Appl.</em>, 2021.
+ <em>Linear Algebra Appl.</em>, 623:236--257, 2021.
 [&nbsp;<a href="j_bib.html#hankel-ode">bib</a>&nbsp;| 
 <a href="http://dx.doi.org/10.1016/j.laa.2020.11.016">DOI</a>&nbsp;| 
 <a href="https://arxiv.org/abs/2002.06621v3">pdf</a>&nbsp;]
@@ -26,7 +115,7 @@ Keywords: Hankel matrix, low-rank approximation, gradient system, structured mat
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="set-exact-models">2</a>]
+[<a name="set-exact-models">6</a>]
 </td>
 <td class="bibtexitem">
 V.&nbsp;Mishra and I.&nbsp;Markovsky.
@@ -49,13 +138,13 @@ Keywords: Behaviors, exact system identification, Hankel matrix, most powerful u
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="agcd-matrix">3</a>]
+[<a name="agcd-matrix">7</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Fazzi, N.&nbsp;Guglielmi, and I.&nbsp;Markovsky.
  Generalized algorithms for the approximate matrix polynomial GCD of
   reducing data uncertainties with application to MIMO system and control.
- <em>J. Comput. Appl. Math.</em>, 2021.
+ <em>J. Comput. Appl. Math.</em>, 393:113499, 2021.
 [&nbsp;<a href="j_bib.html#agcd-matrix">bib</a>&nbsp;| 
 <a href="http://dx.doi.org/10.1016/j.cam.2021.113499">DOI</a>&nbsp;| 
 <a href="https://arxiv.org/abs/1907.13101">pdf</a>&nbsp;]
@@ -72,50 +161,7 @@ Keywords: matrix polynomials, approximate GCD, subspace method, matrix ODE
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="ddint">4</a>]
-</td>
-<td class="bibtexitem">
-I.&nbsp;Markovsky and F.&nbsp;Dörfler.
- Data-driven dynamic interpolation and approximation.
- <em>Automatica</em>, 2021.
-[&nbsp;<a href="j_bib.html#ddint">bib</a>&nbsp;| 
-<a href="http://dx.doi.org/10.1016/j.automatica.2021.110008">DOI</a>&nbsp;| 
-<a href="https://imarkovs.github.io/publications/ddint.pdf">pdf</a>&nbsp;]
-<blockquote>
-The behavioral system theory and in particular a result that became known as the "fundamental lemma" give the theoretical foundation for nonparameteric representations of linear time-invariant systems based on Hankel matrices constructed from data. These "data-driven" representations led in turn to new system identification, signal processing, and control methods. This paper shows how the approach can be used further on for solving interpolation, extrapolation, and smoothing problems. The solution proposed and the resulting method are general---can deal simultaneously with missing, exact, and noisy data of multivariable systems---and simple---require only the solution of a linear system of equations. In the case of exact data, we provide conditions for existence and uniqueness of solution. In the case of noisy data, we propose an approximation procedure based on <I>_1</I>-norm regularization and validate its performance on real-life datasets. The method proposed outperforms model-based approaches. Procedures used in subspace identification, such as computation of a set of free responses and zero-initial conditions responses, are recovered as special cases of the data-driven interpolation method in the paper. The results have application in missing data estimation and trajectory planning. They open a practical computational way of doing system theory and signal processing directly from data without identification of a transfer function or state-space system representation.
-</blockquote>
-<p><blockquote>
-Keywords: behavioral approach, system identification, data-driven methods, dynamic interpolation, missing data estimation, smoothing
-</blockquote>
-
-</td>
-</tr>
-
-
-<tr valign="top">
-<td align="right" class="bibtexnumber">
-[<a name="bias-correction-vandermonde-matrix">5</a>]
-</td>
-<td class="bibtexitem">
-A.&nbsp;Fazzi, A.&nbsp;Kukush, and I.&nbsp;Markovsky.
- Bias correction for vandermonde low-rank approximation.
- <em>Econometrics and Statistics</em>, 2021.
-[&nbsp;<a href="j_bib.html#bias-correction-vandermonde-matrix">bib</a>&nbsp;| 
-<a href="http://dx.doi.org/10.1016/j.ecosta.2021.09.001">DOI</a>&nbsp;]
-<blockquote>
-The low-rank approximation problem, that is  the problem of approximating a given matrix with a matrix of lower rank, appears in many scientific fields. In some applications the given matrix is structured and the approximation is required to have the same structure. Examples of linear structures are Hankel, Toeplitz, and Sylvester. Currently, there are only a few results for nonlinearly structured low-rank approximation problems.  The problem of Vandermonde structured low-rank approximation is considered. The high condition number of the Vandermonde matrix, in combination with the noise in the data, makes the problem challenging. A numerical method based on a bias correction procedure is proposed and its properties  are shown. The performance of the method is illustrated on numerical results.
-</blockquote>
-<p><blockquote>
-Keywords: Vandermonde matrix, bias removal, adjusted least squares,  structured matrix perturbation
-</blockquote>
-
-</td>
-</tr>
-
-
-<tr valign="top">
-<td align="right" class="bibtexnumber">
-[<a name="overview-ddctr">6</a>]
+[<a name="overview-ddctr">8</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and F.&nbsp;Dörfler.
@@ -138,7 +184,7 @@ Keywords: Behavioral systems theory, data-driven control, missing data estimatio
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="gustavo-tim">7</a>]
+[<a name="gustavo-tim">9</a>]
 </td>
 <td class="bibtexitem">
 G.&nbsp;Q. Carapia, I.&nbsp;Markovsky, R.&nbsp;Pintelon, P.&nbsp;Csurcsia, and D.&nbsp;Verbeke.
@@ -162,7 +208,7 @@ Keywords: Metrology, Dynamic measurement, Cramér-Rao lower bound, Data-driven s
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="gustavo-csda">8</a>]
+[<a name="gustavo-csda">10</a>]
 </td>
 <td class="bibtexitem">
 G.&nbsp;Q. Carapia, I.&nbsp;Markovsky, R.&nbsp;Pintelon, P.&nbsp;Csurcsia, and D.&nbsp;Verbeke.
@@ -185,7 +231,7 @@ Keywords: structured errors-in-variables problems, least-squares estimation, Cra
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="gustavo-measurement">9</a>]
+[<a name="gustavo-measurement">11</a>]
 </td>
 <td class="bibtexitem">
 G.&nbsp;Q. Carapia and I.&nbsp;Markovsky.
@@ -207,7 +253,7 @@ Keywords: Affine input estimation, Subspace estimation method, Maximum-likelihoo
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="cd-est">10</a>]
+[<a name="cd-est">12</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, T.&nbsp;Liu, and A.&nbsp;Takeda.
@@ -231,7 +277,7 @@ Keywords: Hankel structured low-rank approximation, Subspace system identificati
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="ddctr-test">11</a>]
+[<a name="ddctr-test">13</a>]
 </td>
 <td class="bibtexitem">
 V.&nbsp;Mishra, I.&nbsp;Markovsky, and B.&nbsp;Grossmann.
@@ -250,7 +296,7 @@ The fundamental lemma due to Willems et al. plays an important role in system id
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="cd-est-simax">12</a>]
+[<a name="cd-est-simax">14</a>]
 </td>
 <td class="bibtexitem">
 T.&nbsp;Liu, I.&nbsp;Markovsky, T.-K. Pong, and A.&nbsp;Takeda.
@@ -273,7 +319,7 @@ Keywords: Hankel-structure, system identification, hybrid penalty method, pseudo
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="miaomiao">13</a>]
+[<a name="miaomiao">15</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Zhang, I.&nbsp;Markovsky, C.&nbsp;Schretter, and J.&nbsp;D'hooge.
@@ -297,7 +343,7 @@ Keywords: compressive sensing, matrix completion, low-rank and joint-sparse mode
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="aut-wiener">14</a>]
+[<a name="aut-wiener">16</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -319,7 +365,7 @@ Keywords: Nonlinear system identification, Block-oriented models, Wiener system
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="agcd-ode">15</a>]
+[<a name="agcd-ode">17</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Fazzi, N.&nbsp;Guglielmi, and I.&nbsp;Markovsky.
@@ -342,7 +388,7 @@ Keywords: Sylvester matrix, iterative methods, Approximate GCD, polynomials
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="ddsp">16</a>]
+[<a name="ddsp">18</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -365,7 +411,7 @@ Keywords: data-driven, Kalman filtering, structured low-rank approximation, miss
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="slra-agcd">17</a>]
+[<a name="slra-agcd">19</a>]
 </td>
 <td class="bibtexitem">
 K.&nbsp;Usevich and I.&nbsp;Markovsky.
@@ -385,7 +431,7 @@ We consider the problem of finding for a given <em>N</em>-tuple of polynomials t
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="pk">18</a>]
+[<a name="pk">20</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and G.&nbsp;Mercère.
@@ -408,7 +454,7 @@ Keywords: system identification, subspace methods, prior knowledge, behavioral a
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="dist-uncontr">19</a>]
+[<a name="dist-uncontr">21</a>]
 </td>
 <td class="bibtexitem">
 N.&nbsp;Guglielmi and I.&nbsp;Markovsky.
@@ -432,7 +478,7 @@ Keywords: GCD, Sylvester matrix, structured pseudospectrum, structured low-rank 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="als-kdu">20</a>]
+[<a name="als-kdu">22</a>]
 </td>
 <td class="bibtexitem">
 K.&nbsp;Usevich and I.&nbsp;Markovsky.
@@ -454,7 +500,7 @@ Keywords: hypersurface fitting; curve fitting; statistical estimation, errors-in
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="jan">21</a>]
+[<a name="jan">23</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -477,7 +523,7 @@ Keywords: most powerful unfalsified model, exact system identification, subspace
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="sensor-ieee">22</a>]
+[<a name="sensor-ieee">24</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -501,7 +547,7 @@ Keywords: subspace methods, total least squares, adaptive filtering, model-free 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="slra-consistency">23</a>]
+[<a name="slra-consistency">25</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and R.&nbsp;Pintelon.
@@ -524,7 +570,7 @@ Keywords: maximum likelihood system identification, sum-of-damped exponentials m
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="sensor-cep">24</a>]
+[<a name="sensor-cep">26</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -547,7 +593,7 @@ Keywords: system identification, behavioral approach, Kalman filtering, metrolog
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="slra-efficient">25</a>]
+[<a name="slra-efficient">27</a>]
 </td>
 <td class="bibtexitem">
 K.&nbsp;Usevich and I.&nbsp;Markovsky.
@@ -571,7 +617,7 @@ Keywords: Structured low-rank approximation; Variable projection; Mosaic Hankel 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="slra-software">26</a>]
+[<a name="slra-software">28</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and K.&nbsp;Usevich.
@@ -599,7 +645,7 @@ It implements a variable projection type algorithm and allows the user to choose
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="overview">27</a>]
+[<a name="overview">29</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -620,7 +666,7 @@ Rank deficiency of a data matrix is equivalent to the existence of an exact line
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="UM12-aut">28</a>]
+[<a name="UM12-aut">30</a>]
 </td>
 <td class="bibtexitem">
 K.&nbsp;Usevich and I.&nbsp;Markovsky.
@@ -644,7 +690,7 @@ Keywords: system identification, over-parameterized models, Grassmann manifold, 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="pltv">29</a>]
+[<a name="pltv">31</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, J.&nbsp;Goos, K.&nbsp;Usevich, and R.&nbsp;Pintelon.
@@ -669,7 +715,7 @@ Keywords: linear periodically time-varying systems, lifting, realization, Kung's
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="rslra">30</a>]
+[<a name="rslra">32</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Ishteva, K.&nbsp;Usevich, and I.&nbsp;Markovsky.
@@ -693,7 +739,7 @@ Keywords: low-rank approximation, affine structure, regularization, system ident
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="rgtls">31</a>]
+[<a name="rgtls">33</a>]
 </td>
 <td class="bibtexitem">
 S.&nbsp;Rhode, K.&nbsp;Usevich, I.&nbsp;Markovsky, and F.&nbsp;Gauterin.
@@ -716,7 +762,7 @@ Keywords: total least squares, generalized total least squares, restricted total
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="slra-ext">32</a>]
+[<a name="slra-ext">34</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and K.&nbsp;Usevich.
@@ -739,7 +785,7 @@ Keywords: low-rank approximation, missing data, variable projection, system iden
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="ident">33</a>]
+[<a name="ident">35</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -763,7 +809,7 @@ Keywords: system identification; model reduction; behavioral approach; missing d
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="LMFR12">34</a>]
+[<a name="LMFR12">36</a>]
 </td>
 <td class="bibtexitem">
 F.&nbsp;Le, I.&nbsp;Markovsky, C.&nbsp;Freeman, and E.&nbsp;Rogers.
@@ -786,7 +832,7 @@ Keywords: recursive identification; Hammerstein system; muscle model; functional
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="complex-ls">35</a>]
+[<a name="complex-ls">37</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -809,7 +855,7 @@ Keywords: Linear system of equations, Phase constraint, Low-rank approximation, 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="M08b">36</a>]
+[<a name="M08b">38</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -833,7 +879,7 @@ Keywords: System identification; Subspace methods; Persistency of excitation; Da
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MSV09">37</a>]
+[<a name="MSV09">39</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, D.&nbsp;Sima, and S.&nbsp;Van Huffel.
@@ -853,7 +899,7 @@ Recent advances in total least squares approaches for solving various errors-in-
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="LMFR08">38</a>]
+[<a name="LMFR08">40</a>]
 </td>
 <td class="bibtexitem">
 F.&nbsp;Le, I.&nbsp;Markovsky, C.&nbsp;Freeman, and E.&nbsp;Rogers.
@@ -876,7 +922,7 @@ Keywords: System identification; Hammerstein system; Muscle models; Alternating 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="M10">39</a>]
+[<a name="M10">41</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -897,7 +943,7 @@ Keywords: total least squares, errors-in-variables, singular spectrum analysis
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MM08">40</a>]
+[<a name="MM08">42</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and S.&nbsp;Mahmoodi.
@@ -920,7 +966,7 @@ Keywords: Contour alignment, image registration, translation, rotation, scaling,
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MR07">41</a>]
+[<a name="MR07">43</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and P.&nbsp;Rapisarda.
@@ -942,7 +988,7 @@ Keywords: simulation, data-driven control, output matching, linear quadratic tra
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="M07">42</a>]
+[<a name="M07">44</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -966,7 +1012,7 @@ Keywords: Low-rank approximation, total least squares, system identification, er
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MN08">43</a>]
+[<a name="MN08">45</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and M.&nbsp;Niranjan.
@@ -990,7 +1036,7 @@ Keywords: rank revealing factorization; numerical rank; low-rank approximation; 
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MV05">44</a>]
+[<a name="MV05">46</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
@@ -1012,7 +1058,7 @@ Keywords: Total least squares; Orthogonal regression; Errors-in-variables model;
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="SKMV05">45</a>]
+[<a name="SKMV05">47</a>]
 </td>
 <td class="bibtexitem">
 S.&nbsp;Shklyar, A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
@@ -1034,7 +1080,7 @@ Keywords: Adjusted least squares; Conic fitting; Consistent estimator; Ellipsoid
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MV05c">46</a>]
+[<a name="MV05c">48</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
@@ -1058,7 +1104,7 @@ Keywords: Weighted low-rank approximation, total least squares, parameter optimi
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="SMV06">47</a>]
+[<a name="SMV06">49</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Schuermans, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
@@ -1082,7 +1128,7 @@ Keywords: EW-TLS; MLPCA; Rank reduction; Measurement errors
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="KMV07">48</a>]
+[<a name="KMV07">50</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
@@ -1105,7 +1151,7 @@ Keywords: Linear errors-in-variables model; Corrected objective function; Cluste
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MRPKV02">49</a>]
+[<a name="MRPKV02">51</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, M.&nbsp;Rastello, A.&nbsp;Premoli, A.&nbsp;Kukush, and S.&nbsp;Van Huffel.
@@ -1128,7 +1174,7 @@ Keywords: Total least squares; Multivariate errors-in-variables model; Unequally
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="KMV02e">50</a>]
+[<a name="KMV02e">52</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
@@ -1151,7 +1197,7 @@ Keywords: Block-Hankel/Toeplitz structure; Consistency; Dynamic errors-in-variab
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MV03a">51</a>]
+[<a name="MV03a">53</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, S.&nbsp;Van Huffel, and R.&nbsp;Pintelon.
@@ -1174,7 +1220,7 @@ Keywords: Parameter estimation, Total least squares, Structured total least squa
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MDM03">52</a>]
+[<a name="MDM03">54</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and B.&nbsp;De Moor.
@@ -1195,7 +1241,7 @@ Keywords: errors-in-variables, Kalman filtering, optimal smoothing, misfit, late
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MWRDM04">53</a>]
+[<a name="MWRDM04">55</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, J.&nbsp;C. Willems, P.&nbsp;Rapisarda, and B.&nbsp;De Moor.
@@ -1218,7 +1264,7 @@ Keywords: Exact deterministic subspace identification; Balanced model reduction;
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MPV04a">54</a>]
+[<a name="MPV04a">56</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, J.&nbsp;C. Willems, S.&nbsp;Van Huffel, B.&nbsp;De Moor, and R.&nbsp;Pintelon.
@@ -1243,7 +1289,7 @@ Keywords: Errors-in-variables, system identification, model reduction, structure
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="WRMDM04">55</a>]
+[<a name="WRMDM04">57</a>]
 </td>
 <td class="bibtexitem">
 J.&nbsp;C. Willems, P.&nbsp;Rapisarda, I.&nbsp;Markovsky, and B.&nbsp;De Moor.
@@ -1265,7 +1311,7 @@ Keywords: Behavioral systems, persistency of excitation, lags, annihilators, sys
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MV04">56</a>]
+[<a name="MV04">58</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
@@ -1290,7 +1336,7 @@ Keywords: Parameter estimation; Structured total least squares; Deconvolution; S
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="SMWV04">57</a>]
+[<a name="SMWV04">59</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Schuermans, I.&nbsp;Markovsky, P.&nbsp;Wentzell, and S.&nbsp;Van Huffel.
@@ -1313,7 +1359,7 @@ Keywords: TLS; MLPCA; Rank reduction; Measurement errors
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="KMV02c">58</a>]
+[<a name="KMV02c">60</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
@@ -1337,7 +1383,7 @@ Keywords: Adjusted least squares; Conic fitting; Consistent estimator; Ellipsoid
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MKV02d">59</a>]
+[<a name="MKV02d">61</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, A.&nbsp;Kukush, and S.&nbsp;Van Huffel.
@@ -1360,7 +1406,7 @@ Keywords: adjusted least squares -- consistent estimator -- ellipsoid fitting --
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MVK02">60</a>]
+[<a name="MVK02">62</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, S.&nbsp;Van Huffel, and A.&nbsp;Kukush.
@@ -1383,7 +1429,7 @@ Keywords: parameter estimation; total least squares; structured total least squa
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="KMV01c">61</a>]
+[<a name="KMV01c">63</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
@@ -1406,7 +1452,7 @@ Keywords: linear errors-in-variables model, elementwise-weighted total least squ
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="KMV01b">62</a>]
+[<a name="KMV01b">64</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
@@ -1429,7 +1475,7 @@ Keywords: bilinear multivariate measurement error models, errors-in-variables mo
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="LHM99">63</a>]
+[<a name="LHM99">65</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Lemmon, K.&nbsp;He, and I.&nbsp;Markovsky.

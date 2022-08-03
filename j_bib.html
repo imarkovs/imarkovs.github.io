@@ -944,9 +944,8 @@ It implements a variable projection type algorithm and allows the user to choose
   author = {A. Fazzi and N. Guglielmi and I. Markovsky},
   title = {A gradient system approach for {H}ankel structured low-rank approximation},
   year = {2021},
-  optvolume = {},
-  optissue = {},
-  optpages = {--},
+  volume = {623},
+  pages = {236--257},
   journal = {Linear Algebra Appl.},
   abstract = {Rank deficient Hankel matrices are at the core of several applications. However, in practice, the coefficients of these matrices are noisy due to e.g. measurements errors and computational errors, so generically the involved matrices are full rank. This motivates the problem of Hankel structured low-rank approximation. Structured low-rank approximation problems, in general, do not have a global and efficient solution technique. In this paper we propose a local optimization approach based on a two-levels iteration. Experimental results show that the proposed algorithm usually achieves good accuracy and shows a higher robustness with respect to the initial approximation, compared to alternative approaches.},
   keywords = {Hankel matrix, low-rank approximation, gradient system, structured matrix perturbation},
@@ -976,9 +975,8 @@ It implements a variable projection type algorithm and allows the user to choose
   author = {A. Fazzi and N. Guglielmi and I. Markovsky},
   title = {Generalized algorithms for the approximate matrix polynomial {GCD} of reducing data uncertainties with application to {MIMO} system and control},
   journal = {J. Comput. Appl. Math.},
-  optvolume = {},
-  optissue = {},
-  optpages = {--},
+  volume = {393},
+  pages = {113499},
   year = {2021},
   abstract = {Computation of (approximate) polynomials common factors is an important problem in several fields of science, like control theory and signal processing. While the problem has been widely studied for scalar polynomials, the scientific literature in the framework of matrix polynomials seems to be limited to the problem of exact greatest common divisors computation. In this paper, we generalize two algorithms from scalar to matrix polynomials. The first one is fast and simple. The second one is more accurate but computationally more expensive. We test the performances of the two algorithms and observe similar behavior to the one in the scalar case. Finally we describe an application to multi-input multi-output linear time-invariant dynamical systems.},
   doi = {10.1016/j.cam.2021.113499},
@@ -991,11 +989,10 @@ It implements a variable projection type algorithm and allows the user to choose
 @article{<a href="j.html#ddint">ddint</a>,
   author = {I. Markovsky and F. Dörfler},
   title = {Data-driven dynamic interpolation and approximation},
-  year = {2021},
+  year = {2022},
   journal = {Automatica},
-  optvolume = {},
-  optissue = {},
-  optpages = {--},
+  volume = {135},
+  pages = {110008},
   pdf = {<a href="https://imarkovs.github.io/publications/ddint.pdf">https://imarkovs.github.io/publications/ddint.pdf</a>},
   abstract = {The behavioral system theory and in particular a result that became known as the "fundamental lemma" give the theoretical foundation for nonparameteric representations of linear time-invariant systems based on Hankel matrices constructed from data. These "data-driven" representations led in turn to new system identification, signal processing, and control methods. This paper shows how the approach can be used further on for solving interpolation, extrapolation, and smoothing problems. The solution proposed and the resulting method are general---can deal simultaneously with missing, exact, and noisy data of multivariable systems---and simple---require only the solution of a linear system of equations. In the case of exact data, we provide conditions for existence and uniqueness of solution. In the case of noisy data, we propose an approximation procedure based on \(\ell_1\)-norm regularization and validate its performance on real-life datasets. The method proposed outperforms model-based approaches. Procedures used in subspace identification, such as computation of a set of free responses and zero-initial conditions responses, are recovered as special cases of the data-driven interpolation method in the paper. The results have application in missing data estimation and trajectory planning. They open a practical computational way of doing system theory and signal processing directly from data without identification of a transfer function or state-space system representation.},
   keywords = {behavioral approach, system identification, data-driven methods, dynamic interpolation, missing data estimation, smoothing},
@@ -1011,7 +1008,7 @@ It implements a variable projection type algorithm and allows the user to choose
   optvolume = {},
   optissue = {},
   optpages = {--},
-  year = {2021},
+  year = {2022},
   abstract = {The low-rank approximation problem, that is  the problem of approximating a given matrix with a matrix of lower rank, appears in many scientific fields. In some applications the given matrix is structured and the approximation is required to have the same structure. Examples of linear structures are Hankel, Toeplitz, and Sylvester. Currently, there are only a few results for nonlinearly structured low-rank approximation problems.  The problem of Vandermonde structured low-rank approximation is considered. The high condition number of the Vandermonde matrix, in combination with the noise in the data, makes the problem challenging. A numerical method based on a bias correction procedure is proposed and its properties  are shown. The performance of the method is illustrated on numerical results.},
   doi = {10.1016/j.ecosta.2021.09.001},
   keywords = {Vandermonde matrix, bias removal, adjusted least squares,  structured matrix perturbation},
@@ -1025,7 +1022,6 @@ It implements a variable projection type algorithm and allows the user to choose
   title = {Behavioral systems theory in data-driven analysis, signal processing, and control},
   journal = {Annual Reviews in Control},
   volume = {52},
-  issue = {},
   pages = {42--64},
   year = {2021},
   pdf = {<a href="https://imarkovs.github.io/publications/overview-ddctr.pdf">https://imarkovs.github.io/publications/overview-ddctr.pdf</a>},
@@ -1033,6 +1029,32 @@ It implements a variable projection type algorithm and allows the user to choose
   abstract = {The behavioral approach to systems theory, put forward 40 years ago by Jan C. Willems, remained till recently an esoteric niche of research. The renewed interest in the last years is because of its unique suitability for the newly emerged data-driven paradigm, specifically the representation-free perspective on dynamical systems as sets of trajectories. A result derived in the behavioral setting that became known as the fundamental lemma started a new class of subspace-type data-driven methods. The fundamental lemma gives conditions for a non-parametric representation of a linear time-invariant system by the image of a Hankel matrix constructed from raw time series data. This paper reviews the fundamental lemma, its generalizations, and related data-driven analysis, signal processing, and control methods. A prototypical signal processing problem, reviewed in the paper, is missing data estimation. It includes simulation, state estimation, and output tracking control as special cases. The direct data-driven control methods using the fundamental lemma and the non-parametric representation are loosely classified as implicit and explicit approaches. Representative examples are data-enabled predictive control (an implicit method) and data-driven linear quadratic regulation (an explicit method). These methods are equally amenable to certainty-equivalence as well as to robust control. Emphasis is put on the robustness of the methods under noise. The methods allow for theoretical certification, they are computationally tractable, in comparison with machine learning methods require small amount of data, and are robustly implementable in real-time on complex physical systems.},
   keywords = {Behavioral systems theory, data-driven control, missing data estimation, system identification},
   doi = {10.1016/j.arcontrol.2021.09.005}
+}
+</pre>
+
+<a name="florian"></a><pre>
+@article{<a href="j.html#florian">florian</a>,
+  author = {F. Dörfler and J. Coulson and I. Markovsky},
+  title = {Bridging direct \& indirect data-driven control formulations via regularizations and relaxations},
+  journal = {IEEE Trans. Automat. Contr.},
+  year = {2023},
+  pdf = {<a href="https://arxiv.org/abs/2101.01273">https://arxiv.org/abs/2101.01273</a>},
+  abstract = {We discuss connections between sequential system identification and control for linear time-invariant systems, which we term indirect data-driven control, as well as a direct data-driven control approach seeking an optimal decision compatible with recorded data assembled in a Hankel matrix and robustified through suitable regularizations. We formulate these two problems in the language of behavioral systems theory and parametric mathematical programs, and we bridge them through a multi-criteria formulation trading off system identification and control objectives. We illustrate our results with two methods from subspace identification and control: namely, subspace predictive control and low-rank approximation which constrain trajectories to be consistent with a non-parametric predictor derived from (respectively, the column span of) a data Hankel matrix. In both cases we conclude that direct and regularized data-driven control can be derived as convex relaxation of the indirect approach, and the regularizations account for an implicit identification step. Our analysis further reveals a novel regularizer and sheds light on the remarkable performance of direct methods on nonlinear systems.},
+  keywords = {multi-objective optimization, system identification, data-driven control, DeePC, behavioral system theory}
+}
+</pre>
+
+<a name="ddsim-narx"></a><pre>
+@article{<a href="j.html#ddsim-narx">ddsim-narx</a>,
+  author = {I. Markovsky},
+  title = {Data-driven simulation of nonlinear systems via linear time-invariant embedding},
+  journal = {IEEE Trans. Automat. Contr.},
+  year = {2023},
+  pdf = {<a href="https://imarkovs.github.io/publications/ddsim-narx.pdf">https://imarkovs.github.io/publications/ddsim-narx.pdf</a>},
+  software = {<a href="https://imarkovs.github.io/software/ddsim.tar">https://imarkovs.github.io/software/ddsim.tar</a>},
+  abstract = {Nonparameteric representations of linear time-invariant systems that use Hankel matrices constructed from data are the basis for data-driven signal processing and control methods of linear time-invariant systems. This paper extends the approach to data-driven simulation of a class of nonlinear systems. The key step of the generalization is an embedding result that is also of independent interest. The behavior of a polynomial time-invariant system is included into the behavior of a linear time-invariant system. A subclass of polynomial time-invariant systems that leads to a computationally tractable data-driven simulation problem is generalized bilinear. It includes Hammerstein, finite-lag Volterra, and biliner systems. The method proposed is illustrated and compared with the classical model-based method on simulation examples in the errors-invariables setup as well as benchmark real-life data sets.},
+  keywords = {behavioral approach, system identification, data-driven methods, nonlinear systems.},
+  doi = {10.1109/TAC.2022.3146726}
 }
 </pre>
 
