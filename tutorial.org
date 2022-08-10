@@ -1,0 +1,26 @@
+#+TITLE: Matlab/Simulink code reproducing the examples in
+#+SUBTITLE: "Data-driven control based on behavioral approach: From theory to applications in power systems"
+#+HTML_HEADER: <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}}); </script> <script type="text/javascript" src="/home/im/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+# #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="jemdoc.css" />
+# #+HTML_MATHJAX: mathml:t path:"/home/im/MathJax/MathJax.js"
+
+- [[~/webpage/tutorial/code-data-driven-interpolation-approximation.tgz][Data-Driven Interpolation and Approximation of Trajectories]]
+- [[~/webpage/tutorial/code-applications-power-systems.zip][Application to Control of Power Electronics Dominated Power Systems]]
+
+* preamble								 :NP:
+#+AUTHOR: 
+# Ivan Markovsky
+#+DATE:
+#+CREATOR:  
+#+OPTIONS:     num:nil toc:nil html-postamble:nil
+#+LaTeX_CLASS_OPTIONS: [11pt,a4paper]
+#+LaTeX_HEADER: \input{/home/im/texinputs/mystyle-org.tex}\usepackage[final]{pdfpages}
+# #+LaTeX_HEADER: \usepackage[backend=biber]{biblatex}\bibliography{bib-new,bib,mypapers}
+#+LaTeX_HEADER: \newcommand{\quotebib}[1]{\begin{quote}\small\bibentry{#1}\end{quote}}
+#+LaTeX_HEADER: \topmargin=-1.5cm  \oddsidemargin=-1cm \evensidemargin=-1cm 
+#+LaTeX_HEADER: \textheight=25cm   \textwidth=18cm
+#+EXCLUDE_TAGS: NP SOL
+#+SELECT_TAGS: 
+#+DESCRIPTION:
+##+INFOJS_OPT: view:info toc:nil ltoc:t
+
