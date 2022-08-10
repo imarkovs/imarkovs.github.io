@@ -4,8 +4,8 @@
 # #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="jemdoc.css" />
 # #+HTML_MATHJAX: mathml:t path:"/home/im/MathJax/MathJax.js"
 
-- [[~/webpage/tutorial/code-data-driven-interpolation-approximation.tgz][Data-Driven Interpolation and Approximation of Trajectories]]
-- [[~/webpage/tutorial/code-applications-power-systems.zip][Application to Control of Power Electronics Dominated Power Systems]]
+- [[https://imarkovs.github.io/tutorial/code-data-driven-interpolation-approximation.tgz][Data-driven interpolation and approximation of trajectories]]
+- [[https://imarkovs.github.io/tutorial/code-applications-power-systems.zip][Application to control of power electronics dominated power systems]]
 
 * preamble								 :NP:
 #+AUTHOR: 

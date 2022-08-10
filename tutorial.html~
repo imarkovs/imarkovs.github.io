@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-08-10 Wed 16:45 -->
+<!-- 2022-08-10 Wed 16:46 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Matlab/Simulink code reproducing the examples in</title>
@@ -245,15 +245,10 @@ for the JavaScript code in this tag.
 <br />
 <span class="subtitle">&ldquo;Data-driven control based on behavioral approach: From theory to applications in power systems&rdquo;</span>
 </h1>
-
-
-
-<div id="outline-container-org9371eed" class="outline-2">
-<h2 id="org9371eed"><a href="file:///home/im/webpage/tutorial/code-data-driven-interpolation-approximation.tgz">Section &ldquo;Data-Driven Interpolation and Approximation of Trajectories&rdquo;</a></h2>
-</div>
-<div id="outline-container-orgd4abc65" class="outline-2">
-<h2 id="orgd4abc65"><a href="file:///home/im/webpage/tutorial/code-applications-power-systems.zip">Section &ldquo;Application to Control of Power Electronics Dominated Power Systems&rdquo;</a></h2>
-</div>
+<ul class="org-ul">
+<li><a href="file:///home/im/webpage/tutorial/code-data-driven-interpolation-approximation.tgz">Data-Driven Interpolation and Approximation of Trajectories</a></li>
+<li><a href="file:///home/im/webpage/tutorial/code-applications-power-systems.zip">Application to Control of Power Electronics Dominated Power Systems</a></li>
+</ul>
 </div>
 </body>
 </html>
