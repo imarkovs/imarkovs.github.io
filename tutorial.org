@@ -1,5 +1,5 @@
 #+TITLE: Matlab/Simulink code reproducing the examples in
-#+SUBTITLE: "Data-driven control based on behavioral approach: From theory to applications in power systems"
+#+SUBTITLE: [[https://imarkovs.github.io/tutorial.pdf]["Data-driven control based on behavioral approach: From theory to applications in power systems"]]
 #+HTML_HEADER: <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}}); </script> <script type="text/javascript" src="/home/im/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
 # #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="jemdoc.css" />
 # #+HTML_MATHJAX: mathml:t path:"/home/im/MathJax/MathJax.js"
