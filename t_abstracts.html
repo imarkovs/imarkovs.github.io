@@ -3,23 +3,21 @@
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="identifiability">1</a>]
+[<a name="tutorial">1</a>]
 </td>
 <td class="bibtexitem">
-I.&nbsp;Markovsky and F.&nbsp;Dörfler.
- Identifiability in the behavioral setting.
- Technical report, Vrije Universiteit Brussel, 2020.
-[&nbsp;<a href="t_bib.html#identifiability">bib</a>&nbsp;| 
-<a href="https://imarkovs.github.io/publications/identifiability.pdf">pdf</a>&nbsp;| 
-<a href="https://imarkovs.github.io/software/identifiability-code.pdf">software</a>&nbsp;]
+I.&nbsp;Markovsky, L.&nbsp;Huang, and F.&nbsp;Dörfler.
+ Data-driven control based on behavioral approach: From theory to
+  applications in power systems.
+ Technical report, 2022.
+[&nbsp;<a href="t_bib.html#tutorial">bib</a>&nbsp;| 
+<a href="https://imarkovs.github.io/tutorial.pdf">pdf</a>&nbsp;| 
+<a href="https://imarkovs.github.io/tutorial">software</a>&nbsp;]
 <blockquote>
-The behavioral approach to system identification starts from a given time series without a priori separation of the variables into inputs and outputs. The available identifiability conditions however require persistency of excitation of an input component of the time series which implicitly assumes that an input/output partitioning of the variables is given. In addition, a standard identifiability assumption is that the true data generating system is controllable. The conditions of controllability and persistency of excitation are sufficient but not necessary.<p>
-Motivated by the need to infer linear-time invariant models from rank deficient Hankel matrices and to use such matrices as data-driven predictors in signal processing and control, we derive necessary and sufficient identifiability conditions that do not require a priori given input/output partitioning of the variables nor controllability of the true system. The prior knowledge needed for identifiability is the number of inputs, lag, and order of the true system. The results are based on a modification of the notion of a most powerful unfalsified model for finite data and a novel algorithm for its computation. <p>
-The results in the paper are derived assuming exact data, however, low-rank approximation allows their application in the case of noisy data. We compare empirically low-rank approximation of the Hankel, Page, and trajectory matrices in the errors-in-variables setting. Although the Page and trajectory matrices are unstructured, the parameter estimates obtained from them are less accurate than the one obtained from the Hankel matrix.
-
+Behavioral systems theory decouples the behavior of a system from its representation. A key result is that, under a persistency of excitation condition, the image of a Hankel matrix constructed from the data equals the set of finite-length trajectories of a linear time-variant system. The result is the cornerstone of a recently emerged approach to direct data-driven control. This self-contained tutorial reviews its foundations and shows how they can be leveraged for data-driven control. We present a generic data-driven interpolation / approximation formulation encompassing many well known problem instances, among others finite-horizon data-driven control. We embed this problem formulation into a predictive control setting, robustify it to inexact data by means of regularizations, and apply the resulting methods in the context of power electronics dominated power systems.
 </blockquote>
 <p><blockquote>
-Keywords: Behavioral system theory, System identification, Most powerful unfalsified model, Hankel matrix.
+Keywords: Data-driven control, Behavioral system theory, System identification, Power electronics.
 </blockquote>
 
 </td>
@@ -28,7 +26,30 @@ Keywords: Behavioral system theory, System identification, Most powerful unfalsi
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="sem">2</a>]
+[<a name="frest">2</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky and H.&nbsp;Ossareh.
+ A direct data-driven method for frequency response estimation using
+  finite data.
+ Technical report, 2022.
+[&nbsp;<a href="t_bib.html#frest">bib</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/frest.pdf">pdf</a>&nbsp;| 
+<a href="https://imarkovs.github.io/frest">software</a>&nbsp;]
+<blockquote>
+The existing nonparametric frequency response estimation methods suffer from leakage and have limited frequency resolution. Due to the leakage and interpolation errors these methods do not yield the correct result in case of exact data of a linear time-invariant system. Our main contribution is a nonparameteric direct data-driven frequency response estimation method that in case of exact data satisfying standard persistency of excitation condition eliminates the leakage and has infinite frequency resolution. The method is derived in the behavioral setting. It requires solving a system of linear equations and has no hyper-parameters. In case of noisy data, a modification of the method with low-rank approximation result in an effective frequency response estimator.
+</blockquote>
+<p><blockquote>
+Keywords: direct data-driven methods, frequency response estimation, behavioral approach, leakage elimination.
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="sem">3</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and D.&nbsp;Toon Verbeke.
@@ -50,7 +71,7 @@ Keywords: system identification, sum-of-exponentials modeling, low-rank approxim
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="uncontr">3</a>]
+[<a name="uncontr">4</a>]
 </td>
 <td class="bibtexitem">
 N.&nbsp;Guglielmi and I.&nbsp;Markovsky.
@@ -72,7 +93,7 @@ Keywords: Sylvester matrix, structured pseudospectrum, structured low-rank appro
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="M08">4</a>]
+[<a name="M08">5</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky.
@@ -89,7 +110,7 @@ I.&nbsp;Markovsky.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MVV06">5</a>]
+[<a name="MVV06">6</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, R.&nbsp;J. Vaccaro, and S.&nbsp;Van Huffel.
@@ -104,7 +125,7 @@ I.&nbsp;Markovsky, R.&nbsp;J. Vaccaro, and S.&nbsp;Van Huffel.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="wtls">6</a>]
+[<a name="wtls">7</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
@@ -119,7 +140,7 @@ I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="detss-software">7</a>]
+[<a name="detss-software">8</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, J.&nbsp;C. Willems, P.&nbsp;Rapisarda, and B.&nbsp;De Moor.
@@ -134,7 +155,7 @@ I.&nbsp;Markovsky, J.&nbsp;C. Willems, P.&nbsp;Rapisarda, and B.&nbsp;De Moor.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MV03b">8</a>]
+[<a name="MV03b">9</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
@@ -149,7 +170,7 @@ I.&nbsp;Markovsky and S.&nbsp;Van Huffel.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="KMV02a">9</a>]
+[<a name="KMV02a">10</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
@@ -165,7 +186,7 @@ A.&nbsp;Kukush, I.&nbsp;Markovsky, and S.&nbsp;Van Huffel.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="MSV00">10</a>]
+[<a name="MSV00">11</a>]
 </td>
 <td class="bibtexitem">
 I.&nbsp;Markovsky, J.&nbsp;Suykens, and S.&nbsp;Van Huffel.

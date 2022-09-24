@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-09-24 Sat 18:13 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Matlab code for data-driven frequency response estimation</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Ivan Markovsky" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2019 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Matlab code for data-driven frequency response estimation</h1>
+<p>
+The code presented below implements the method for data-driven frequency response estimation of 
+</p>
+<blockquote>
+<p>
+<a href="https://imarkovs.github.io/publications/frest.pdf">I. Markovsky and H. Ossareh. A direct data-driven method for frequency response estimation using finite data. Technical report, 2022.</a>
+</p>
+</blockquote>
+<p>
+and reproduces the simulation results in the paper. An archive file of all functions and scripts can be downloaded from <a href="./code-frest.tar">here</a>.
+</p>
+
+<div id="outline-container-orgb2f1c76" class="outline-2">
+<h2 id="orgb2f1c76">Main function <code>dd_frest</code></h2>
+<div class="outline-text-2" id="text-orgb2f1c76">
+<div class="org-src-container">
+<pre class="src src-matlab"><span style="color: #00ffff;">function</span> <span style="color: #eedd82;">Hh</span> = <span style="color: #ffffff; text-decoration: underline;">dd_frest</span>(<span style="color: #eedd82;">ud</span>, <span style="color: #eedd82;">yd</span>, <span style="color: #eedd82;">z</span>, <span style="color: #eedd82;">n</span>) 
+T = n <span style="color: #98fb98;">+</span> 1; t = (1<span style="color: #98fb98;">:</span>T)'; m = size(ud, 2); p = size(yd, 2);
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% preprocessing by low-rank approximation</span>
+H = [moshank(ud, T); moshank(yd, T)];
+[U, <span style="color: #98fb98;">~</span>, <span style="color: #98fb98;">~</span>] = svd(H); P = U(<span style="color: #98fb98;">:</span>, 1<span style="color: #98fb98;">:</span>m <span style="color: #98fb98;">*</span> T <span style="color: #98fb98;">+</span> n); 
+
+<span style="color: #00ffff;">for</span> <span style="color: #eedd82;">k</span> = <span style="color: #7fffd4;">1:length(z)</span>
+  <span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% form and solve the system of equations</span>
+  A  = [[zeros(m <span style="color: #98fb98;">*</span> T, p); <span style="color: #98fb98;">-</span>kron(z(k) <span style="color: #98fb98;">.^</span> t, eye(p))] P];
+  hg = A <span style="color: #98fb98;">\</span> [kron(z(k) <span style="color: #98fb98;">.^</span> t, eye(m)); zeros(p <span style="color: #98fb98;">*</span> T, m)]; 
+  Hh(<span style="color: #98fb98;">:</span>, <span style="color: #98fb98;">:</span>, k) = hg(1<span style="color: #98fb98;">:</span>p, <span style="color: #98fb98;">:</span>); 
+<span style="color: #00ffff;">end</span>
+</pre>
+</div>
+
+<p>
+<code>dd_frest</code> uses the auxiliary functions for mosaic-Hankel matrix construction
+</p>
+
+<div class="org-src-container">
+<pre class="src src-matlab"><span style="color: #00ffff;">function</span> <span style="color: #eedd82;">H</span> = <span style="color: #ffffff; text-decoration: underline;">moshank</span>(<span style="color: #eedd82;">w</span>, <span style="color: #eedd82;">i</span>)
+<span style="color: #00ffff;">if</span> iscell(w)
+  N = length(w); H = []; <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">k</span> = <span style="color: #7fffd4;">1:N</span>, H = [H blkhank(w{k}, <span style="color: #7fffd4;">i</span>)]; <span style="color: #00ffff;">end</span>
+<span style="color: #00ffff;">else</span>
+  H = blkhank(w, <span style="color: #7fffd4;">i</span>);
+<span style="color: #00ffff;">end</span>
+</pre>
+</div>
+
+<p>
+and block-Hankel matrix construction
+</p>
+
+<div class="org-src-container">
+<pre class="src src-matlab"><span style="color: #00ffff;">function</span> <span style="color: #eedd82;">H</span> = <span style="color: #ffffff; text-decoration: underline;">blkhank</span>(<span style="color: #eedd82;">w</span>, <span style="color: #eedd82;">i</span>, <span style="color: #eedd82;">j</span>)
+<span style="color: #00ffff;">if</span> length(size(w)) <span style="color: #98fb98;">==</span> 3 
+  [q, N, T]  = size(w);
+  <span style="color: #00ffff;">if</span> nargin <span style="color: #98fb98;">&lt;</span> 3 <span style="color: #98fb98;">|</span> isempty(<span style="color: #7fffd4;">j</span>), <span style="color: #7fffd4;">j</span> = T <span style="color: #98fb98;">-</span> <span style="color: #7fffd4;">i</span> <span style="color: #98fb98;">+</span> 1; <span style="color: #00ffff;">end</span>
+  <span style="color: #00ffff;">if</span> <span style="color: #7fffd4;">j</span> <span style="color: #98fb98;">&lt;=</span> 0, error(<span style="color: #ff7f24;">'Not enough data.'</span>), <span style="color: #00ffff;">end</span>
+  H = zeros(<span style="color: #7fffd4;">i</span> <span style="color: #98fb98;">*</span> q, <span style="color: #7fffd4;">j</span> <span style="color: #98fb98;">*</span> N);
+  <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">ii</span> = <span style="color: #7fffd4;">1:i</span>
+    <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">jj</span> = <span style="color: #7fffd4;">1:j</span>
+      H(((ii <span style="color: #98fb98;">-</span> 1) <span style="color: #98fb98;">*</span> q <span style="color: #98fb98;">+</span> 1)<span style="color: #98fb98;">:</span>(ii <span style="color: #98fb98;">*</span> q), <span style="text-decoration: underline;">...</span>
+        ((jj <span style="color: #98fb98;">-</span> 1) <span style="color: #98fb98;">*</span> N <span style="color: #98fb98;">+</span> 1)<span style="color: #98fb98;">:</span>(jj <span style="color: #98fb98;">*</span> N)) = w(<span style="color: #98fb98;">:</span> ,<span style="color: #98fb98;">:</span>, ii <span style="color: #98fb98;">+</span> jj <span style="color: #98fb98;">-</span> 1);
+    <span style="color: #00ffff;">end</span>
+  <span style="color: #00ffff;">end</span>
+<span style="color: #00ffff;">else</span>
+  [q, T] = size(w); <span style="color: #00ffff;">if</span> T <span style="color: #98fb98;">&lt;</span> q, w = w'; [q, T] = size(w); <span style="color: #00ffff;">end</span>
+  <span style="color: #00ffff;">if</span> nargin <span style="color: #98fb98;">&lt;</span> 3 <span style="color: #98fb98;">|</span> isempty(<span style="color: #7fffd4;">j</span>), <span style="color: #7fffd4;">j</span> = T <span style="color: #98fb98;">-</span> <span style="color: #7fffd4;">i</span> <span style="color: #98fb98;">+</span> 1; <span style="color: #00ffff;">end</span>
+  <span style="color: #00ffff;">if</span> <span style="color: #7fffd4;">j</span> <span style="color: #98fb98;">&lt;=</span> 0, error(<span style="color: #ff7f24;">'Not enough data.'</span>), <span style="color: #00ffff;">end</span>
+  H = zeros(<span style="color: #7fffd4;">i</span> <span style="color: #98fb98;">*</span> q, <span style="color: #7fffd4;">j</span>); 
+  <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">ii</span> = <span style="color: #7fffd4;">1:i</span>
+    H(((ii <span style="color: #98fb98;">-</span> 1) <span style="color: #98fb98;">*</span> q <span style="color: #98fb98;">+</span> 1)<span style="color: #98fb98;">:</span>(ii <span style="color: #98fb98;">*</span> q), <span style="color: #98fb98;">:</span>) = w(<span style="color: #98fb98;">:</span>, ii<span style="color: #98fb98;">:</span>(ii <span style="color: #98fb98;">+</span> <span style="color: #7fffd4;">j</span> <span style="color: #98fb98;">-</span> 1));
+  <span style="color: #00ffff;">end</span>
+<span style="color: #00ffff;">end</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org1608b5e" class="outline-3">
+<h3 id="org1608b5e">Example of using <code>dd_frest</code></h3>
+<div class="outline-text-3" id="text-org1608b5e">
+<div class="org-src-container">
+<pre class="src src-matlab"><span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% simulation setup</span>
+m = 2; p = 3; n = 10; Td = 200; 
+omega = <span style="color: #7fffd4;">pi</span> <span style="color: #98fb98;">/</span> 4; <span style="color: #ee0000;">% frequencies over which to estimate the frequency response</span>
+B = drss(n, p, m); <span style="color: #ee0000;">% data-generating system </span>
+h0 = freqresp(B, omega); <span style="color: #ee0000;">% true frequency response</span>
+e = @(hh) 100 <span style="color: #98fb98;">*</span> norm(h0 <span style="color: #98fb98;">-</span> hh) <span style="color: #98fb98;">/</span> norm(h0); <span style="color: #ee0000;">% relative estimation error</span>
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% true and noisy data</span>
+ud0 = rand(Td, m); yd0 = lsim(B, ud0); 
+ud = ud0 <span style="color: #98fb98;">+</span> 0.1 <span style="color: #98fb98;">*</span> randn(size(ud0));
+yd = yd0 <span style="color: #98fb98;">+</span> 0.1 <span style="color: #98fb98;">*</span> randn(size(yd0));
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% frequency response estimation with the proposed method</span>
+hh_dd = dd_frest(ud0, yd0, exp(<span style="color: #7fffd4;">i</span> <span style="color: #98fb98;">*</span> omega), n); e_dd = e(hh_dd)
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdeb1765" class="outline-2">
+<h2 id="orgdeb1765">Numerical examples in the paper</h2>
+<div class="outline-text-2" id="text-orgdeb1765">
+<p>
+The numerical examples in this section compare the data-driven method <code>dd_frest</code> with the maximum-likelihood estimator implemented in the function <code>ident</code>, and an alternative direct data-driven estimator <code>spa__</code> with the Welch method to calculate spectral densities.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-matlab"><span style="color: #00ffff;">function</span> <span style="color: #eedd82;">G</span> = <span style="color: #ffffff; text-decoration: underline;">spa__</span>(<span style="color: #eedd82;">yd0</span>, <span style="color: #eedd82;">ud0</span>, <span style="color: #eedd82;">omega</span>) 
+    omega = [0 omega(<span style="color: #98fb98;">:</span>)'];
+    phi_yu = cpsd(yd0, ud0, [], [], omega);
+    phi_uu = pwelch(ud0,    [], [], omega);
+    G = phi_yu <span style="color: #98fb98;">./</span> phi_uu;
+    G = G(2<span style="color: #98fb98;">:</span>end);
+<span style="color: #00ffff;">end</span>
+</pre>
+</div>
+
+<p>
+The simulation is in the errors-in-variables setup. First, we show the estimated frequency response function by the methods for a single noise realization. Then, we show the average performance of the methods obtained by Monte Carlo simulation.
+</p>
+</div>
+
+<div id="outline-container-org5376504" class="outline-3">
+<h3 id="org5376504">Estimation of the frequency response function <code>dd_frest_test1.m</code></h3>
+<div class="outline-text-3" id="text-org5376504">
+<div class="org-src-container">
+<pre class="src src-matlab">clear all
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% benchmark-system</span>
+Q = [0 0 0 0.28261 0.50666]; 
+P = [1 <span style="color: #98fb98;">-</span>1.41833 1.58939 <span style="color: #98fb98;">-</span>1.31608 0.88642];
+B = ss(tf(Q, P, <span style="color: #98fb98;">-</span>1)); n = order(B); 
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% exact frequency response</span>
+[h0, Omega] = freqresp(B);
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% exact and noisy data trajectories</span>
+Td = 1000; ud0 = rand(Td, 1); yd0 = lsim(B, ud0); wd0 = [ud0 yd0];
+s = 0.1;  wt = randn(Td, 2); wd = wd0 <span style="color: #98fb98;">+</span> s <span style="color: #98fb98;">*</span> norm(wd0) <span style="color: #98fb98;">*</span> wt <span style="color: #98fb98;">/</span> norm(wt); 
+ud = wd(<span style="color: #98fb98;">:</span>, 1); yd = wd(<span style="color: #98fb98;">:</span>, 2);
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% do the estimation with the didfferent methods</span>
+hh_dd = dd_frest(ud, yd, exp(<span style="color: #7fffd4;">i</span> <span style="color: #98fb98;">*</span> Omega), n); 
+Bh = ident(wd, 1, n); hh_ident = freqresp(Bh, Omega); 
+Bh = n4sid(iddata(yd, ud), n); hh_n4sid = freqresp(Bh, Omega); 
+hh_spa = spa__(yd, ud, Omega);
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% plot the results</span>
+<span style="color: #98fb98;">figure</span>(1)
+plot(Omega, abs(h0(<span style="color: #98fb98;">:</span>)), <span style="color: #ff7f24;">'-k'</span>), hold on, 
+plot(Omega, abs(hh_dd(<span style="color: #98fb98;">:</span>)), <span style="color: #ff7f24;">'--b'</span>)
+plot(Omega, abs(hh_ident(<span style="color: #98fb98;">:</span>)), <span style="color: #ff7f24;">'-.b'</span>)
+plot(Omega, abs(hh_spa(<span style="color: #98fb98;">:</span>)), <span style="color: #ff7f24;">':r'</span>)
+box off; h = gca; ax = <span style="color: #98fb98;">axis</span>;
+h.XTick = [ax(1) ax(2)];
+h.YTick = [ax(3) ax(4)];
+xlabel(<span style="color: #ff7f24;">'frequency'</span>), ylabel(<span style="color: #ff7f24;">'amplitude'</span>)
+legend(<span style="color: #ff7f24;">'exact'</span>, <span style="color: #ff7f24;">'proposed'</span>, <span style="color: #ff7f24;">'ident'</span>, <span style="color: #ff7f24;">'spa'</span>, <span style="color: #ff7f24;">'location'</span>, <span style="color: #ff7f24;">'best'</span>, <span style="color: #ff7f24;">'box'</span>, <span style="color: #ff7f24;">'off'</span>)
+
+<span style="color: #98fb98;">figure</span>(2)
+plot(Omega, angle(h0(<span style="color: #98fb98;">:</span>)), <span style="color: #ff7f24;">'-k'</span>), hold on, 
+plot(Omega, angle(hh_dd(<span style="color: #98fb98;">:</span>)), <span style="color: #ff7f24;">'--b'</span>)
+plot(Omega, angle(hh_ident(<span style="color: #98fb98;">:</span>)), <span style="color: #ff7f24;">'-.b'</span>)
+plot(Omega, angle(hh_spa(<span style="color: #98fb98;">:</span>)), <span style="color: #ff7f24;">':r'</span>)
+box off; h = gca; ax = <span style="color: #98fb98;">axis</span>; 
+h.XTick = [ax(1) ax(2)];
+h.YTick = [ax(3) ax(4)];
+xlabel(<span style="color: #ff7f24;">'frequency'</span>), ylabel(<span style="color: #ff7f24;">'phase'</span>)
+legend(<span style="color: #ff7f24;">'exact'</span>, <span style="color: #ff7f24;">'proposed'</span>, <span style="color: #ff7f24;">'ident'</span>, <span style="color: #ff7f24;">'spa'</span>, <span style="color: #ff7f24;">'location'</span>, <span style="color: #ff7f24;">'best'</span>, <span style="color: #ff7f24;">'box'</span>, <span style="color: #ff7f24;">'off'</span>)
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc06a9d8" class="outline-3">
+<h3 id="orgc06a9d8">Monte Carlo simulation <code>dd_frest_test2.m</code></h3>
+<div class="outline-text-3" id="text-orgc06a9d8">
+<p>
+We show the performance of the methods as a function of the noise variance as well as the number of data points. 
+</p>
+
+<div class="org-src-container">
+<pre class="src src-matlab">clear all
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% benchmark-system</span>
+Q = [0 0 0 0.28261 0.50666]; 
+P = [1 <span style="color: #98fb98;">-</span>1.41833 1.58939 <span style="color: #98fb98;">-</span>1.31608 0.88642];
+B = ss(tf(Q, P, <span style="color: #98fb98;">-</span>1)); n = order(B); 
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% Simulation parameters</span>
+omega = <span style="color: #7fffd4;">pi</span> <span style="color: #98fb98;">/</span> 4; h0 = freqresp(B, omega); 
+ea = @(hh) 100 <span style="color: #98fb98;">*</span> abs(abs(h0) <span style="color: #98fb98;">-</span> abs(hh)) <span style="color: #98fb98;">/</span> abs(h0);
+ep = @(hh) 100 <span style="color: #98fb98;">*</span> abs(angle(h0) <span style="color: #98fb98;">-</span> angle(hh)) <span style="color: #98fb98;">/</span> angle(h0);
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% True data</span>
+Td = 500; ud0 = rand(Td, 1); yd0 = lsim(B, ud0); wd0 = [ud0 yd0];
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% MC simulation over different noise levels</span>
+K = 11; S = linspace(0, 0.1, K); N = 100; 
+<span style="color: #00ffff;">for</span> <span style="color: #eedd82;">k</span> = <span style="color: #7fffd4;">1:K</span>
+  s = S(k)
+  <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">i</span> = <span style="color: #7fffd4;">1:N</span>
+    wt = randn(Td, 2); wd = wd0 <span style="color: #98fb98;">+</span> s <span style="color: #98fb98;">*</span> norm(wd0) <span style="color: #98fb98;">*</span> wt <span style="color: #98fb98;">/</span> norm(wt); 
+
+    hh_dd = dd_frest(wd(<span style="color: #98fb98;">:</span>, 1), wd(<span style="color: #98fb98;">:</span>, 2), exp(<span style="color: #7fffd4;">j</span> <span style="color: #98fb98;">*</span> omega), n); 
+    Bh = ident(wd, 1, n); hh_ident = freqresp(Bh, omega);
+    hh_spa = spa__(wd(<span style="color: #98fb98;">:</span>, 2), wd(<span style="color: #98fb98;">:</span>, 1), omega);
+
+    Ea_dd(<span style="color: #7fffd4;">i</span>, k)    = ea(hh_dd);    Ep_dd(<span style="color: #7fffd4;">i</span>, k)    = ep(hh_dd);    
+    Ea_ident(<span style="color: #7fffd4;">i</span>, k) = ea(hh_ident); Ep_ident(<span style="color: #7fffd4;">i</span>, k) = ep(hh_ident); 
+    Ea_spa(<span style="color: #7fffd4;">i</span>, k)   = ea(hh_spa);   Ep_spa(<span style="color: #7fffd4;">i</span>, k)   = ep(hh_spa);   
+  <span style="color: #00ffff;">end</span>
+<span style="color: #00ffff;">end</span>
+ea_dd    = mean(Ea_dd);    ep_dd    = mean(Ep_dd);    
+ea_ident = mean(Ea_ident); ep_ident = mean(Ep_ident); 
+ea_spa   = mean(Ea_spa);   ep_spa   = mean(Ep_spa);    
+
+<span style="color: #98fb98;">figure</span>(1), hold on, S = S <span style="color: #98fb98;">*</span> 100;
+plot(S, ea_dd, <span style="color: #ff7f24;">'b--'</span>)
+plot(S, ea_ident, <span style="color: #ff7f24;">'b-.'</span>)
+plot(S, ea_spa, <span style="color: #ff7f24;">'r:'</span>)
+box off; h = gca; <span style="color: #98fb98;">axis</span>([S(1) S(end) 0 ceil(max(ea_spa))])
+h.XTick = [S(1) S(end)];
+h.YTick = [0 ceil(max(ea_spa))];
+xlabel(<span style="color: #ff7f24;">'noise level, \%'</span>), ylabel(<span style="color: #ff7f24;">'error $e_a$, \%'</span>)
+legend(<span style="color: #ff7f24;">'proposed'</span>, <span style="color: #ff7f24;">'ident'</span>, <span style="color: #ff7f24;">'spa'</span>, <span style="color: #ff7f24;">'location'</span>, <span style="color: #ff7f24;">'best'</span>, <span style="color: #ff7f24;">'box'</span>, <span style="color: #ff7f24;">'off'</span>)
+
+<span style="color: #98fb98;">figure</span>(2), hold on
+plot(S, ep_dd, <span style="color: #ff7f24;">'b--'</span>)
+plot(S, ep_ident, <span style="color: #ff7f24;">'b-.'</span>)
+plot(S, ep_spa, <span style="color: #ff7f24;">'r:'</span>)
+box off; h = gca; <span style="color: #98fb98;">axis</span>([S(1) S(end) 0 ceil(max(ep_spa))])
+h.XTick = [S(1) S(end)];
+h.YTick = [0 ceil(max(ep_spa))];
+xlabel(<span style="color: #ff7f24;">'noise level, \%'</span>), ylabel(<span style="color: #ff7f24;">'error $e_p$, \%'</span>)
+legend(<span style="color: #ff7f24;">'proposed'</span>, <span style="color: #ff7f24;">'ident'</span>, <span style="color: #ff7f24;">'spa'</span>, <span style="color: #ff7f24;">'location'</span>, <span style="color: #ff7f24;">'best'</span>, <span style="color: #ff7f24;">'box'</span>, <span style="color: #ff7f24;">'off'</span>)
+
+<span style="color: #ee0000; font-weight: bold; text-decoration: overline;">%% MC simulation over different data lengths</span>
+Tmax = 1000; ud0 = rand(Tmax, 1); yd0 = lsim(B, ud0); wd0 = [ud0 yd0];
+K = 10; TT = round(linspace(100, Tmax, K)); N = 100; s = 0.05;
+<span style="color: #00ffff;">for</span> <span style="color: #eedd82;">k</span> = <span style="color: #7fffd4;">1:K</span>
+    T = TT(k)
+    <span style="color: #00ffff;">for</span> <span style="color: #eedd82;">i</span> = <span style="color: #7fffd4;">1:N</span>
+      wt = randn(T, 2); wd = wd0(1<span style="color: #98fb98;">:</span>T, <span style="color: #98fb98;">:</span>) <span style="color: #98fb98;">+</span> s <span style="color: #98fb98;">*</span> norm(wd0(1<span style="color: #98fb98;">:</span>T, <span style="color: #98fb98;">:</span>)) <span style="color: #98fb98;">*</span> wt <span style="color: #98fb98;">/</span> norm(wt); 
+
+      hh_dd = dd_frest(wd(<span style="color: #98fb98;">:</span>, 1), wd(<span style="color: #98fb98;">:</span>, 2), exp(<span style="color: #7fffd4;">j</span> <span style="color: #98fb98;">*</span> omega), n); 
+      Bh = ident(wd, 1, n); hh_ident = freqresp(Bh, omega);
+      hh_spa = spa__(wd(<span style="color: #98fb98;">:</span>, 2), wd(<span style="color: #98fb98;">:</span>, 1), omega);
+
+      Ea_dd(<span style="color: #7fffd4;">i</span>, k)    = ea(hh_dd);    Ep_dd(<span style="color: #7fffd4;">i</span>, k)    = ep(hh_dd);    
+      Ea_ident(<span style="color: #7fffd4;">i</span>, k) = ea(hh_ident); Ep_ident(<span style="color: #7fffd4;">i</span>, k) = ep(hh_ident); 
+      Ea_spa(<span style="color: #7fffd4;">i</span>, k)   = ea(hh_spa);   Ep_spa(<span style="color: #7fffd4;">i</span>, k)   = ep(hh_spa);   
+    <span style="color: #00ffff;">end</span>
+<span style="color: #00ffff;">end</span>
+ea_dd    = mean(Ea_dd);    ep_dd    = mean(Ep_dd);    
+ea_ident = mean(Ea_ident); ep_ident = mean(Ep_ident); 
+ea_spa   = mean(Ea_spa);   ep_spa   = mean(Ep_spa);    
+
+<span style="color: #98fb98;">figure</span>(3), hold on
+plot(TT, ea_dd(1<span style="color: #98fb98;">:</span>K), <span style="color: #ff7f24;">'b--'</span>)
+plot(TT, ea_ident(1<span style="color: #98fb98;">:</span>K), <span style="color: #ff7f24;">'b-.'</span>)
+plot(TT, ea_spa(1<span style="color: #98fb98;">:</span>K), <span style="color: #ff7f24;">'r:'</span>)
+box off; h = gca; <span style="color: #98fb98;">axis</span>([TT(1) TT(end) 0 ceil(max(ea_spa))])
+h.XTick = [TT(1) TT(end)];
+h.YTick = [0 ceil(max(ea_spa))];
+xlabel(<span style="color: #ff7f24;">'number of samples $T$'</span>), ylabel(<span style="color: #ff7f24;">'error $e_a$, \%'</span>)
+legend(<span style="color: #ff7f24;">'proposed'</span>, <span style="color: #ff7f24;">'ident'</span>, <span style="color: #ff7f24;">'spa'</span>, <span style="color: #ff7f24;">'location'</span>, <span style="color: #ff7f24;">'best'</span>, <span style="color: #ff7f24;">'box'</span>, <span style="color: #ff7f24;">'off'</span>)
+
+<span style="color: #98fb98;">figure</span>(4), hold on
+plot(TT, ep_dd(1<span style="color: #98fb98;">:</span>K), <span style="color: #ff7f24;">'b--'</span>)
+plot(TT, ep_ident(1<span style="color: #98fb98;">:</span>K), <span style="color: #ff7f24;">'b-.'</span>)
+plot(TT, ep_spa(1<span style="color: #98fb98;">:</span>K), <span style="color: #ff7f24;">'r:'</span>)
+box off; h = gca; <span style="color: #98fb98;">axis</span>([TT(1) TT(end) 0 ceil(max(ep_spa))])
+h.XTick = [TT(1) TT(end)];
+h.YTick = [0 ceil(max(ep_spa))];
+xlabel(<span style="color: #ff7f24;">'number of samples $T$'</span>), ylabel(<span style="color: #ff7f24;">'error $e_p$, \%'</span>)
+legend(<span style="color: #ff7f24;">'proposed'</span>, <span style="color: #ff7f24;">'ident'</span>, <span style="color: #ff7f24;">'spa'</span>, <span style="color: #ff7f24;">'location'</span>, <span style="color: #ff7f24;">'best'</span>, <span style="color: #ff7f24;">'box'</span>, <span style="color: #ff7f24;">'off'</span>)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Ivan Markovsky</p>
+<p class="date">Created: 2022-09-24 Sat 18:13</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
