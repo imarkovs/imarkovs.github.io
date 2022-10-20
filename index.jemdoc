@@ -13,29 +13,35 @@ www: [https://imarkovs.github.io/ +https://imarkovs.github.io+]
 == News
 
 - November--December 2022: teaching an [https://sites.uclouvain.be/socn/ SOCN] course [https://sites.uclouvain.be/socn/drupal/socn/node/313 Behavioral approach to system theory]
-- January 2023: starting a new position as an [https://www.icrea.cat/en ICREA professor] at the [https://www.cimne.com/ International Centre for Numerical Methods in Engineering (CIMNE)] in Barcelona
+- January 2023: joining the [https://www.cimne.com/ International Centre for Numerical Methods in Engineering (CIMNE)] 
 
 == Research
 
-My research is in the areas of system theory, signal processing, and control. Its distinct feature is using behavioral approach, developed 40 years ago by Jan C. Willems, see the [https://imarkovs.github.io/publications/overview-ddctr.pdf 2021 ARC overview paper] and the [https://imarkovs.github.io/book/book2e-2x1.pdf 2019 Springer monograph]. Technical keywords related to my research are:
-~~~
-{}{img_left}{erc-logo.gif}{ERC logo}{75px}{75px}{}
+My research is in the areas of system theory, signal processing, and control. Its distinct feature is using behavioral approach, developed 40 years ago by Jan C. Willems, see
+- [https://imarkovs.github.io/publications/tutorial.pdf 2022 IEEE Control Systems Magazine tutorial], 
+- [https://imarkovs.github.io/publications/overview-ddctr.pdf 2021 Annual Reviews in Control overview], and
+- [https://imarkovs.github.io/book/book2e-2x1.pdf 2019 Springer monograph].
+
+More specifically, my expertise is in 
+# ~~~
+# {}{img_left}{erc-logo.gif}{ERC logo}{75px}{75px}{}
 - [http://slra.github.io structured low-rank approximation and completion,]
-- data-driven signal processing and control, and 
+- direct data-driven methods, and 
 - system identification.
-~~~
+# ~~~
 
 == Teaching
 
+- [https://sites.uclouvain.be/socn/drupal/socn/node/313 Behavioral approach to system theory], 2022
 - [./sysid/index.html System identification], 2021--2022
 - [./nsysid/index.html Selected topics in nonlinear system identification], 2018--2022
-- [https://caliweb.cumulus.vub.ac.be/caliweb/?page=course-offer&id=007047&anchor=1&target=pr&year=1718&language=en&output=html Telephony and navigation], 2018--2022
-- [http://homepages.vub.ac.be/~imarkovs/laa/ Linear algebra], 2012--2022
-- [http://homepages.vub.ac.be/~imarkovs/st/ Signal theory, part 1], 2012--2018
-- ELEC spring school, [http://homepages.vub.ac.be/~imarkovs/doctoral-school.html System identification in the behavioral setting], July, 2017 and 2019
+# - [https://caliweb.cumulus.vub.ac.be/caliweb/?page=course-offer&id=007047&anchor=1&target=pr&year=1718&language=en&output=html Telephony and navigation], 2018--2022
+- [https://imarkovs.github.io/laa/ Linear algebra], 2012--2022
+- [https://imarkovs.github.io/st/ Signal theory, part 1], 2012--2018
+- ELEC spring school, [https://imarkovs.github.io/doctoral-school.html System identification in the behavioral setting], July, 2017 and 2019
 - [https://fwn06.housing.rug.nl/mtns2014/ MTNS], [mtns-mini-course.pdf mini-course], July, 2014
-- [http://sites.uclouvain.be/socn/Courses/Courses2013-4 SOCN], [http://homepages.vub.ac.be/~imarkovs/dysco doctoral school course], March 2014
-- [http://www.elecdoctoralschool.be/?menu=program&submenu=program_invited_lecture_2013 ELEC doctoral school], [http://homepages.vub.ac.be/~imarkovs/doctoral-school-2013.html invited lecture], May 2013
+- [http://sites.uclouvain.be/socn/Courses/Courses2013-4 SOCN], [https://imarkovs.github.io/dysco doctoral school course], March 2014
+- [http://www.elecdoctoralschool.be/?menu=program&submenu=program_invited_lecture_2013 ELEC doctoral school], [https://imarkovs.github.io/doctoral-school-2013.html invited lecture], May 2013
 - [lego.html Lego Mindstorms laboratory], 2009--2012
 - [elec3035.html ELEC 3035: Control System Design], 2007--2011
   
@@ -51,7 +57,7 @@ My research is in the areas of system theory, signal processing, and control. It
 - [http://events.math.unipd.it/drwa13/ DRWA], [http://slra.github.io/drwa13.html working group], September, 2013
 - [http://www.esat.kuleuven.be/sista/ROKS2013/committee.php ROKS] editorial board member, July, 2013
 - [http://dx.doi.org/10.1016/j.sigpro.2007.04.008 Signal Processing] guest editor, October 2007
-- [http://homepages.vub.ac.be/~imarkovs/workshop.html 4th International Workshop on Total Least Squares and Errors-in-Variables Modeling], co-chair, August 2006
+- [https://imarkovs.github.io/workshop.html 4th International Workshop on Total Least Squares and Errors-in-Variables Modeling], co-chair, August 2006
 
 \n[cv.pdf Short CV (pdf)], [cv-long.pdf Long CV (pdf)], [publications.pdf list of publications (pdf)]
 

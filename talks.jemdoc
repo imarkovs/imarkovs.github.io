@@ -4,6 +4,8 @@
 
 == 2022
 
+- [talks/ifa-tutorial.pdf Tutorial on the behavioral approach to systems theory]\n
+  Tutorial given at the Ifa seminar, ETH-Zurich, Switzerland, 18 October
 - [talks/selma-poster.pdf System theory without state-space and transfer functions? Yes, it’s possible!]\n
   Poster to be presented at the [https://www.esat.kuleuven.be/stadius/ERNSI2022/ Workshop of the European Research Network on System Identification (ERNSI)], Leuven, Belgium, 18--21 September​
 - [talks/mtns22.pdf Constructive proof of the fundamental lemma]\n
@@ -15,18 +17,18 @@
 
 == 2021
 
-- System theory without transfer functions and state-space? Yes, it's possible! \n
+- [talks/fields.pdf System theory without transfer functions and state-space? Yes, it's possible!] \n
   Talk given at the [https://2021.ieeecdc.org/ 60th IEEE conference on Decision and Control], Austin, USA, 13--17 December
 - [talks/teaching.pdf Deep learning using the human brain] \n
   Talk given at the [https://vubirelec.be/education/seminars ELEC seminar], Brussels, 29 September
 - [talks/teaching.pdf Deep learning using the human brain] \n
   Invited lecture at the [https://e-university.tu-sofia.bg/e-conf/?r=514 International Conference of Automatics], Sozopol, Bulgaria, 3--7 September
-- Data-driven dynamic interpolation and approximation: System theory without transfer function and state space representations \n
+- [talks/fields.pdf Data-driven dynamic interpolation and approximation: System theory without transfer function and state space representations] \n
   Invited lecture at the [http://www.fields.utoronto.ca/activities/20-21/constraint-rank Mini-symposium on Applications of Low Rank Matrix Completion], The Fields Institute, Canada, 9--11 June 
 - Data-driven signal processing \n
-  Talk given at the Division of Mathematics, Gran Sasso Science Institute, L'Aquila., online, 31 March
+  Talk given at the division of mathematics, Gran Sasso Science Institute, L'Aquila., online, 31 March
 - Dynamic measurement \n
-  Talk given at the Division of automatic control systems, Technical UNiversity of Sofia, online, 16 March
+  Talk given at the division of automatic control systems, Technical University of Sofia, online, 16 March
 
 == 2020
 
