@@ -8,3 +8,7 @@ undate-webpage:
 	jemdoc doctoral-school
 	jemdoc doctoral-school-2013
 	jemdoc book
+push:
+	git add --all
+	git commit -m "update"
+	git push
