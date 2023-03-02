@@ -1054,6 +1054,9 @@ It implements a variable projection type algorithm and allows the user to choose
   title = {Bridging direct \& indirect data-driven control formulations via regularizations and relaxations},
   journal = {IEEE Trans. Automat. Contr.},
   year = {2023},
+  volume = {68},
+  issue = {2},
+  pages = {883--897},
   doi = {10.1109/TAC.2022.3148374},
   pdf = {<a href="https://arxiv.org/abs/2101.01273">https://arxiv.org/abs/2101.01273</a>},
   abstract = {We discuss connections between sequential system identification and control for linear time-invariant systems, which we term indirect data-driven control, as well as a direct data-driven control approach seeking an optimal decision compatible with recorded data assembled in a Hankel matrix and robustified through suitable regularizations. We formulate these two problems in the language of behavioral systems theory and parametric mathematical programs, and we bridge them through a multi-criteria formulation trading off system identification and control objectives. We illustrate our results with two methods from subspace identification and control: namely, subspace predictive control and low-rank approximation which constrain trajectories to be consistent with a non-parametric predictor derived from (respectively, the column span of) a data Hankel matrix. In both cases we conclude that direct and regularized data-driven control can be derived as convex relaxation of the indirect approach, and the regularizations account for an implicit identification step. Our analysis further reveals a novel regularizer and sheds light on the remarkable performance of direct methods on nonlinear systems.},
@@ -1066,12 +1069,15 @@ It implements a variable projection type algorithm and allows the user to choose
   author = {I. Markovsky},
   title = {Data-driven simulation of generalized bilinear systems via linear time-invariant embedding},
   journal = {IEEE Trans. Automat. Contr.},
+  volume = {68},
+  issue = {2},
+  pages = {1101--1106},
   year = {2023},
+  doi = {10.1109/TAC.2022.3146726},
   pdf = {<a href="https://imarkovs.github.io/publications/ddsim-narx.pdf">https://imarkovs.github.io/publications/ddsim-narx.pdf</a>},
   software = {<a href="https://imarkovs.github.io/software/ddsim.tar">https://imarkovs.github.io/software/ddsim.tar</a>},
   abstract = {Nonparameteric representations of linear time-invariant systems that use Hankel matrices constructed from data are the basis for data-driven signal processing and control methods of linear time-invariant systems. This paper extends the approach to data-driven simulation of a class of nonlinear systems. The key step of the generalization is an embedding result that is also of independent interest. The behavior of a polynomial time-invariant system is included into the behavior of a linear time-invariant system. A subclass of polynomial time-invariant systems that leads to a computationally tractable data-driven simulation problem is generalized bilinear. It includes Hammerstein, finite-lag Volterra, and biliner systems. The method proposed is illustrated and compared with the classical model-based method on simulation examples in the errors-invariables setup as well as benchmark real-life data sets.},
-  keywords = {behavioral approach, system identification, data-driven methods, nonlinear systems.},
-  doi = {10.1109/TAC.2022.3146726}
+  keywords = {behavioral approach, system identification, data-driven methods, nonlinear systems.}
 }
 </pre>
 
@@ -1081,7 +1087,9 @@ It implements a variable projection type algorithm and allows the user to choose
   title = {On the persistency of excitation},
   journal = {Automatica},
   year = {2023},
-  optdoi = {},
+  doi = {10.1016/j.automatica.2022.110657},
+  vol = {147},
+  pages = {110657},
   pdf = {<a href="https://imarkovs.github.io/publications/fl-rev.pdf">https://imarkovs.github.io/publications/fl-rev.pdf</a>},
   abstract = {The result of J.C. Willems et al. “A note on persistency of excitation”, System \& Control Letters, 2005 gives identifiability conditions for system identification as well as data-driven representations for data-driven control. The existing proofs however are proofs by contradiction and do not give insight into the assumptions of controllability and persistency of excitation of the input. Moreover, the existing proofs do not clarify how conservative the assumptions are. We provide an alternative constructive proof that reduces the required order of persistency of excitation to the time horizon of the data-driven representation plus the controllability index of the system. The nongeneric case in which persistency of excitation of order more than the time horizon is needed corresponds to special initial condition. It is explicitly characterized in terms of the solution of a Sylvester equation. Another contribution of the paper is a representation of a persistently exciting input of a specified order as an output of an autonomous linear time-invariant system. The result can be used for input design with constraints on the input.},
   keywords = {behavioral approach; exact identification; identifiability; persistency of excitation; input design}
@@ -1093,6 +1101,9 @@ It implements a variable projection type algorithm and allows the user to choose
   author = {I. Markovsky and F. Dörfler},
   title = {Identifiability in the Behavioral Setting},
   journal = {IEEE Trans. Automat. Contr.},
+  volume = {68},
+  issue = {3},
+  pages = {1667--1677},
   year = {2023},
   pdf = {<a href="https://imarkovs.github.io/publications/identifiability.pdf">https://imarkovs.github.io/publications/identifiability.pdf</a>},
   abstract = {The behavioral approach to system identification starts from a given time series without a priori separation of the variables into inputs and outputs. The available identifiability conditions however require persistency of excitation of an input component of the time series which implicitly assumes that an input/output partitioning of the variables is given. In addition, a standard identifiability assumption is that the true data generating system is controllable. The conditions of controllability and persistency of excitation are sufficient but not necessary.
@@ -1105,6 +1116,20 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   software = {<a href="https://imarkovs.github.io/software/identifiability-code.pdf">https://imarkovs.github.io/software/identifiability-code.pdf</a>},
   optnote = {Available at \url{https://imarkovs.github.io/publications/identifiability.pdf}},
   doi = {10.1109/TAC.2022.3209954}
+}
+</pre>
+
+<a name="tutorial"></a><pre>
+@article{<a href="j.html#tutorial">tutorial</a>,
+  author = {I. Markovsky and L. Huang and F. Dörfler},
+  title = {Data-driven control based on behavioral approach: From theory to applications in power systems},
+  journal = {IEEE Control Systems Magazine},
+  year = {2023},
+  pdf = {<a href="https://imarkovs.github.io/tutorial.pdf">https://imarkovs.github.io/tutorial.pdf</a>},
+  abstract = {Behavioral systems theory decouples the behavior of a system from its representation. A key result is that, under a persistency of excitation condition, the image of a Hankel matrix constructed from the data equals the set of finite-length trajectories of a linear time-variant system. The result is the cornerstone of a recently emerged approach to direct data-driven control. This self-contained tutorial reviews its foundations and shows how they can be leveraged for data-driven control. We present a generic data-driven interpolation / approximation formulation encompassing many well known problem instances, among others finite-horizon data-driven control. We embed this problem formulation into a predictive control setting, robustify it to inexact data by means of regularizations, and apply the resulting methods in the context of power electronics dominated power systems.},
+  keywords = {Data-driven control, Behavioral system theory, System identification, Power electronics.},
+  software = {<a href="https://imarkovs.github.io/tutorial">https://imarkovs.github.io/tutorial</a>},
+  optnote = {Available at \url{https://imarkovs.github.io/tutorial.pdf}}
 }
 </pre>
 
