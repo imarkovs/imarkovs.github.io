@@ -1124,11 +1124,15 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   title = {Data-driven control based on behavioral approach: From theory to applications in power systems},
   journal = {IEEE Control Systems Magazine},
   year = {2023},
+  volume = {43},
+  issue = {5},
+  pages = {28--68},
   pdf = {<a href="https://imarkovs.github.io/tutorial.pdf">https://imarkovs.github.io/tutorial.pdf</a>},
   abstract = {Behavioral systems theory decouples the behavior of a system from its representation. A key result is that, under a persistency of excitation condition, the image of a Hankel matrix constructed from the data equals the set of finite-length trajectories of a linear time-variant system. The result is the cornerstone of a recently emerged approach to direct data-driven control. This self-contained tutorial reviews its foundations and shows how they can be leveraged for data-driven control. We present a generic data-driven interpolation / approximation formulation encompassing many well known problem instances, among others finite-horizon data-driven control. We embed this problem formulation into a predictive control setting, robustify it to inexact data by means of regularizations, and apply the resulting methods in the context of power electronics dominated power systems.},
   keywords = {Data-driven control, Behavioral system theory, System identification, Power electronics.},
   software = {<a href="https://imarkovs.github.io/tutorial">https://imarkovs.github.io/tutorial</a>},
-  optnote = {Available at \url{https://imarkovs.github.io/tutorial.pdf}}
+  optnote = {Available at \url{https://imarkovs.github.io/tutorial.pdf}},
+  doi = {10.1109/MCS.2023.3291638}
 }
 </pre>
 
@@ -1143,6 +1147,34 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   year = {2023},
   abstract = {Motivated by the distance to uncontrollability problem, we define a distance between finite-length linear timeinvariant systems. The method proposed in this paper for computing the distance exploits the principal angles associated with structured matrices representing the systems.},
   doi = {10.1016/j.ejcon.2023.100832}
+}
+</pre>
+
+<a name="frest"></a><pre>
+@article{<a href="j.html#frest">frest</a>,
+  author = {I. Markovsky and H. Ossareh},
+  title = {A direct data-driven method for frequency response estimation using finite data},
+  journal = {Automatica},
+  year = {2023},
+  abstract = {The existing nonparametric frequency response estimation methods suffer from leakage and have limited frequency resolution. Due to the leakage and interpolation errors these methods do not yield the correct result in case of exact data of a linear time-invariant system. Our main contribution is a nonparameteric direct data-driven frequency response estimation method that in case of exact data satisfying standard persistency of excitation condition eliminates the leakage and has infinite frequency resolution. The method is derived in the behavioral setting. It requires solving a system of linear equations and has no hyper-parameters. In case of noisy data, a modification of the method with low-rank approximation result in an effective frequency response estimator.},
+  keywords = {direct data-driven methods, frequency response estimation, behavioral approach, leakage elimination.},
+  software = {<a href="https://imarkovs.github.io/frest">https://imarkovs.github.io/frest</a>},
+  pdf = {<a href="https://imarkovs.github.io/publications/frest.pdf">https://imarkovs.github.io/publications/frest.pdf</a>},
+  optnote = {Available at \url{https://imarkovs.github.io/publications/frest.pdf}}
+}
+</pre>
+
+<a name="addition-and-intersection"></a><pre>
+@article{<a href="j.html#addition-and-intersection">addition-and-intersection</a>,
+  author = {A. Fazzi and I. Markovsky},
+  title = {Addition and intersection of linear time-invariant behaviors},
+  journal = {IFAC Journal of Systems and Control},
+  optvolume = {},
+  optnumber = {},
+  optpages = {--},
+  year = {2023},
+  abstract = {We define and analyze the operations of addition and intersection of linear time-invariant systems in the behavioral setting, where systems are viewed as sets of trajectories rather than input-output maps. The classical definition of addition of input-output systems is addition of the outputs with the inputs being equal. In the behavioral setting, addition of systems is defined as addition of all variables. Intersection of linear time-invariant systems was considered before only for the autonomous case in the context of "common dynamics" estimation. We generalize the notion of common dynamics to open systems (systems with inputs) as intersection of behaviors. This is done by proposing a trajectory-based definition of these two basic operations. The main results of the paper are 1) characterization of the link between  the complexities (number of inputs and order) of the sum and intersection systems, 2) algorithms for computing their kernel and image representations and 3) show a duality property of the two operations. Despite these operations not being new to the literature, we highlight that the proposed approach is different, and based on polynomial computations and linear algebra.},
+  optdoi = {}
 }
 </pre>
 
