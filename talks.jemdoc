@@ -4,6 +4,8 @@
 
 == 2023
 
+- System theory without state-space and transfer functions? Yes, it’s possible!\n
+  Talk given at STADIUS, K.U.Leuven, Belgium, 4 December
 - Optimization problems in data-driven control\n
   Invited talk at the "Optimization days" workshop, University of Southampton, 28 September
 - Direct data-driven analysis, signal processing, and control\n
@@ -20,7 +22,7 @@
 - [talks/selma-poster.pdf System theory without state-space and transfer functions? Yes, it’s possible!]\n
   Poster presented at the [https://www.esat.kuleuven.be/stadius/ERNSI2022/ Workshop of the European Research Network on System Identification (ERNSI)], Leuven, Belgium, 18--21 September​
 - [talks/mtns22.pdf Constructive proof of the fundamental lemma]\n
-  Talk presented at the [https://www.mtns2022.uni-bayreuth.de/en/index.html International Symposium on Mathematical Theory of Networks and Systems (MTNS)], Bayreuth, Germany, Leuven, 12--16 September
+  Talk given at the [https://www.mtns2022.uni-bayreuth.de/en/index.html International Symposium on Mathematical Theory of Networks and Systems (MTNS)], Bayreuth, Germany, Leuven, 12--16 September
 - [talks/kul.pdf Tutorial on the behavioral approach to data-driven system theory and control]\n
   Lecture delivered at the [https://elo-x.eu/?p=987 First ELO-X Seasonal School and Workshop], Leuven, Belgium, 25 March  
 - behavioral approach to data-driven control\n
