@@ -1,0 +1,26 @@
+#+TITLE: The Behavioral Toolbox
+#+HTML_HEADER: <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}}); </script> <script type="text/javascript" src="/home/im/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
+# #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="jemdoc.css" />
+# #+HTML_MATHJAX: mathml:t path:"/home/im/MathJax/MathJax.js"
+
+- [[./bt/bt.tar][code (m-files)]]
+- [[./bt/bt.pdf][documentation]]
+- [[https://imarkovs.github.io/publications/bt-l4dc.pdf][paper]]
+
+* preamble								 :NP:
+#+AUTHOR: 
+# Ivan Markovsky
+#+DATE:
+#+CREATOR:  
+#+OPTIONS:     num:nil toc:nil html-postamble:nil
+#+LaTeX_CLASS_OPTIONS: [11pt,a4paper]
+#+LaTeX_HEADER: \input{/home/im/texinputs/mystyle-org.tex}\usepackage[final]{pdfpages}
+# #+LaTeX_HEADER: \usepackage[backend=biber]{biblatex}\bibliography{bib-new,bib,mypapers}
+#+LaTeX_HEADER: \newcommand{\quotebib}[1]{\begin{quote}\small\bibentry{#1}\end{quote}}
+#+LaTeX_HEADER: \topmargin=-1.5cm  \oddsidemargin=-1cm \evensidemargin=-1cm 
+#+LaTeX_HEADER: \textheight=25cm   \textwidth=18cm
+#+EXCLUDE_TAGS: NP SOL
+#+SELECT_TAGS: 
+#+DESCRIPTION:
+##+INFOJS_OPT: view:info toc:nil ltoc:t
+
