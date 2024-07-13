@@ -1,11 +1,11 @@
-#+TITLE: Matlab/Simulink code reproducing the examples in
-#+SUBTITLE: [[https://imarkovs.github.io/tutorial.pdf]["Data-driven control based on behavioral approach: From theory to applications in power systems"]]
+#+TITLE: The Behavioral Toolbox
 #+HTML_HEADER: <script type="text/x-mathjax-config"> MathJax.Hub.Config({tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}}); </script> <script type="text/javascript" src="/home/im/MathJax/MathJax.js?config=TeX-AMS_HTML-full"></script>
 # #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="jemdoc.css" />
 # #+HTML_MATHJAX: mathml:t path:"/home/im/MathJax/MathJax.js"
 
-- [[https://imarkovs.github.io/tutorial/code-data-driven-interpolation-approximation.tgz][Data-driven interpolation and approximation of trajectories]]
-- [[https://imarkovs.github.io/tutorial/code-applications-power-systems.zip][Application to control of power electronics dominated power systems]]
+- [[./bt.tar][code (m-files)]]
+- [[./bt.pdf][documentation]]
+- [[https://imarkovs.github.io/publications/bt-l4dc.pdf][paper]]
 
 * preamble								 :NP:
 #+AUTHOR: 
