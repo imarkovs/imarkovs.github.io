@@ -4,11 +4,11 @@
 
 == 2024
 
-- Behavioral approach to system identification and data-driven control, 
-  Invited Lecture at the [https://sites.google.com/rug.nl/cdc24-workshop/home Workshop on Data-driven control: theory and applications,]
-  2024 Conference on Decision and Control, Milan, Italy, 15 December
-- Data-driven systems theory, signal processing, and control\n
-  Lectures at the [https://sites.google.com/view/ukacm-semni-autumnschool UKACM-SEMNI Autumn school,] 16--19 September
+- Behavioral approach to system identification and data-driven control,\n
+  Invited Lecture at the [https://sites.google.com/rug.nl/cdc24-workshop/home Workshop on data-driven control: theory and applications,]\n
+  Conference on Decision and Control, Milan, Italy, 15 December
+- [ukacm/index.html Data-driven systems theory, signal processing, and control]\n
+  Mini-course given at the [https://sites.google.com/view/ukacm-semni-autumnschool UKACM-SEMNI Autumn school,] 16--19 September
 - Data-driven dynamic interpolation and approximation\n
   Poster presented at the [https://sites.google.com/view/dwcaa24/home-page Dolomites Workshop on Constructive Approximation and Applications], Canazei, Italy, ​9--13 September
 - [talks/bt-poster.pdf The Behavioral Toolbox]\n
