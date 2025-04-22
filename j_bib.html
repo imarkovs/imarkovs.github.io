@@ -1228,8 +1228,38 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   volume = {60},
   number = {2},
   optpages = {??},
-  year = {2005},
+  year = {2025},
   doi = {10.1007/s10092-024-00623-y}
+}
+</pre>
+
+<a name="uq"></a><pre>
+@article{<a href="j.html#uq">uq</a>,
+  author = {F. Kaviani and I. Markovsky and H. Ossareh},
+  title = {Uncertainty Quantification of Data-Driven Output Predictors in the Output Error Setting},
+  journal = {IEEE Trans. Automat. Contr.},
+  optvolume = {},
+  optpages = {},
+  year = {2026},
+  optdoi = {},
+  abstract = {We revisit the problem of predicting the output of an LTI system directly using offline input-output data (and without the use of a parametric model) in the behavioral setting. Existing works calculate the output predictions by projecting the recent samples of the input and output signals onto the column span of a Hankel matrix consisting of the offline input-output data. However, if the offline data is corrupted by noise, the output prediction is no longer exact. While some prior works propose mitigating noisy data through matrix low-ranking approximation heuristics, such as truncated singular value decomposition, the ensuing prediction accuracy remains unquantified. This paper fills these gaps by introducing two upper bounds on the prediction error under the condition that the noise is sufficiently small relative to the offline data’s magnitude. The first bound pertains to prediction using the raw offline data directly, while the second one applies to the case of a low-ranking approximation heuristic. Notably, the bounds do not require the ground truth about the system output, relying solely on noisy measurements with a known noise level and system order. Extensive numerical simulations show that both bounds decrease monotonically (and linearly) as a function of the noise level. Furthermore, our results demonstrate that applying the de-noising heuristic in the output error setup does not generally lead to a better prediction accuracy as compared to using raw data directly, nor a smaller upper bound on the prediction error. However, it allows for a more general upper bound, as the first upper bound requires a specific condition on the partitioning of the Hankel matrix.},
+  keywords = {Uncertainty quantification, data-driven control, output prediction error bounds, truncated singular value decomposition de-noising},
+  optpdf = {https://imarkovs.github.io/publications/uc.pdf}
+}
+</pre>
+
+<a name="lpv-fl"></a><pre>
+@article{<a href="j.html#lpv-fl">lpv-fl</a>,
+  author = {C. Verhook and I. Markovsky and S. Haesaert and R. Toth},
+  title = {The behavioral approach for {LPV} data-driven representations},
+  journal = {IEEE Trans. Automat. Contr.},
+  optvolume = {},
+  optnumber = {},
+  optpages = {},
+  year = {2026},
+  abstract = {This paper uses the behavioral approach for linear parameter-varying (LPV) systems to develop a data-driven representation of the finite-horizon behavior of an LPV system with shifted-affine scheduling dependence. We present a necessary and sufficient condition to verify whether a system trajectory is sufficiently rich to represent the full finite-horizon behavior. This condition is a simple rank condition on a matrix constructed from the data and is thus directly verifiable from data. The result is used to solve the LPV data-driven simulation problem and a simulation example is presented.},
+  keywords = {behavioral systems theory, linear parameter-varying systems, data-driven simulation and control},
+  optdoi = {}
 }
 </pre>
 
