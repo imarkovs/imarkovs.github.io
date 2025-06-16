@@ -1241,7 +1241,7 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   optvolume = {},
   optpages = {},
   year = {2026},
-  optdoi = {},
+  doi = {10.1109/TAC.2025.3573151},
   abstract = {We revisit the problem of predicting the output of an LTI system directly using offline input-output data (and without the use of a parametric model) in the behavioral setting. Existing works calculate the output predictions by projecting the recent samples of the input and output signals onto the column span of a Hankel matrix consisting of the offline input-output data. However, if the offline data is corrupted by noise, the output prediction is no longer exact. While some prior works propose mitigating noisy data through matrix low-ranking approximation heuristics, such as truncated singular value decomposition, the ensuing prediction accuracy remains unquantified. This paper fills these gaps by introducing two upper bounds on the prediction error under the condition that the noise is sufficiently small relative to the offline data’s magnitude. The first bound pertains to prediction using the raw offline data directly, while the second one applies to the case of a low-ranking approximation heuristic. Notably, the bounds do not require the ground truth about the system output, relying solely on noisy measurements with a known noise level and system order. Extensive numerical simulations show that both bounds decrease monotonically (and linearly) as a function of the noise level. Furthermore, our results demonstrate that applying the de-noising heuristic in the output error setup does not generally lead to a better prediction accuracy as compared to using raw data directly, nor a smaller upper bound on the prediction error. However, it allows for a more general upper bound, as the first upper bound requires a specific condition on the partitioning of the Hankel matrix.},
   keywords = {Uncertainty quantification, data-driven control, output prediction error bounds, truncated singular value decomposition de-noising},
   optpdf = {https://imarkovs.github.io/publications/uc.pdf}
@@ -1250,7 +1250,7 @@ The results in the paper are derived assuming exact data, however, low-rank appr
 
 <a name="lpv-fl"></a><pre>
 @article{<a href="j.html#lpv-fl">lpv-fl</a>,
-  author = {C. Verhook and I. Markovsky and S. Haesaert and R. Toth},
+  author = {C. Verhoek and I. Markovsky and S. Haesaert and R. Toth},
   title = {The behavioral approach for {LPV} data-driven representations},
   journal = {IEEE Trans. Automat. Contr.},
   optvolume = {},
@@ -1260,6 +1260,37 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   abstract = {This paper uses the behavioral approach for linear parameter-varying (LPV) systems to develop a data-driven representation of the finite-horizon behavior of an LPV system with shifted-affine scheduling dependence. We present a necessary and sufficient condition to verify whether a system trajectory is sufficiently rich to represent the full finite-horizon behavior. This condition is a simple rank condition on a matrix constructed from the data and is thus directly verifiable from data. The result is used to solve the LPV data-driven simulation problem and a simulation example is presented.},
   keywords = {behavioral systems theory, linear parameter-varying systems, data-driven simulation and control},
   optdoi = {}
+}
+</pre>
+
+<a name="nn-kdu"></a><pre>
+@article{<a href="j.html#nn-kdu">nn-kdu</a>,
+  author = {K. Usevich and J. Gillard and P. Dreesen and I. Markovsky},
+  title = {Structured nuclear norm matrix completion: {G}uaranteeing exact recovery via block-column scaling},
+  journal = {Numerical Linear Algebra with Applications},
+  optvolume = {},
+  optnumber = {},
+  optpages = {},
+  year = {2026},
+  abstract = {The goal of low-rank matrix completion is to minimize the rank of a matrix while adhering to the constraint that known (non-missing) elements are fixed in the approximation. Minimizing rank is a difficult, non-convex, NP-hard problem, often addressed by substituting rank with the nuclear norm to achieve a convex relaxation. We focus on structured matrices for completion, where in addition to the constraints described earlier, matrices also adhere to a predefined structure. We propose a technique that ensures the exact recovery of missing entries by minimizing the nuclear norm of a matrix where the non-missing entries are first subject to block-column scaling. We provide the proofs for exact recovery and propose a way for choosing the scaling parameter to ensure exact recovery. The method is demonstrated in several numerical examples, showing the usefulness of the proposed technique.},
+  optkeywords = {},
+  optdoi = {}
+}
+</pre>
+
+<a name="ati-sysid"></a><pre>
+@article{<a href="j.html#ati-sysid">ati-sysid</a>,
+  author = {I. Markovsky and J. Eising and A. Padoan},
+  title = {How to represent and identify affine time-invariant systems?},
+  journal = {Control Systems Letters},
+  optvolume = {},
+  optnumber = {},
+  optpages = {},
+  year = {2026},
+  abstract = {Affine systems are ubiquitous in modeling and emerge naturally from the linearization of nonlinear dynamics. Despite their relevance in applications, their identification remains largely ad hoc, relying on centering the data before applying linear identification methods. This heuristic approach assumes constant offset and can introduce bias. We develop a dedicated framework for affine system identification, deriving identifiability conditions and identification methods based on difference equation representations. Unlike the classical two-step approach, our method identifies the data-generating system under conditions verifiable from data and system complexity. For noisy data in the errors-in-variables setting, we recast the problem as a structured low-rank approximation, leveraging existing optimization techniques for efficient computation.},
+  keywords = {System identification, behavioral approach, affine systems, low-rank approximation.},
+  doi = {10.1109/LCSYS.2025.3579393},
+  url = {https://imarkovs.github.io/publications/ati-sysid.pdf}
 }
 </pre>
 
