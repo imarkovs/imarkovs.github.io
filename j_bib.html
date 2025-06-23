@@ -1146,7 +1146,7 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   year = {2023},
   abstract = {Motivated by the distance to uncontrollability problem, we define a distance between finite-length linear timeinvariant systems. The method proposed in this paper for computing the distance exploits the principal angles associated with structured matrices representing the systems.},
   doi = {10.1016/j.ejcon.2023.100832},
-  optpdf = {}
+  pdf = {<a href="https://imarkovs.github.io/publications/antonio-dist.pdf">https://imarkovs.github.io/publications/antonio-dist.pdf</a>}
 }
 </pre>
 
@@ -1177,8 +1177,8 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   year = {2023},
   abstract = {We define and analyze the operations of addition and intersection of linear time-invariant systems in the behavioral setting, where systems are viewed as sets of trajectories rather than input-output maps. The classical definition of addition of input-output systems is addition of the outputs with the inputs being equal. In the behavioral setting, addition of systems is defined as addition of all variables. Intersection of linear time-invariant systems was considered before only for the autonomous case in the context of "common dynamics" estimation. We generalize the notion of common dynamics to open systems (systems with inputs) as intersection of behaviors. This is done by proposing a trajectory-based definition of these two basic operations. The main results of the paper are 1) characterization of the link between  the complexities (number of inputs and order) of the sum and intersection systems, 2) algorithms for computing their kernel and image representations and 3) show a duality property of the two operations. Despite these operations not being new to the literature, we highlight that the proposed approach is different, and based on polynomial computations and linear algebra.},
   doi = {10.1016/j.ifacsc.2023.100233},
-  keywords = {System identification, Missing data, Behavioral approach, Lifting},
-  abstract = {The identification problem in case of data with missing values is challenging and currently not fully understood. For example, there are no general nonconservative identifiability results, nor provably correct data efficient methods. In this paper, we consider a special case of periodically missing output samples, where all but one output sample per period may be missing. The novel idea is to use a lifting operation that converts the original problem with missing data into an equivalent standard identification problem. The key step is the inverse transformation from the lifted to the original system, which requires computation of a matrix root. The well-posedness of the inverse transformation depends on the eigenvalues of the system. Under an assumption on the eigenvalues, which is not verifiable from the data, and a persistency of excitation-type assumption on the data, the method based on lifting recovers the data-generating system.}
+  keywords = {behavioral approach, addition of behaviors, common dynamics},
+  pdf = {<a href="https://imarkovs.github.io/publications/antonio-add.pdf">https://imarkovs.github.io/publications/antonio-add.pdf</a>}
 }
 </pre>
 
@@ -1295,6 +1295,22 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   keywords = {System identification, behavioral approach, affine systems, low-rank approximation.},
   doi = {10.1109/LCSYS.2025.3579393},
   pdf = {<a href="https://imarkovs.github.io/publications/ati-sysid.pdf">https://imarkovs.github.io/publications/ati-sysid.pdf</a>}
+}
+</pre>
+
+<a name="dd-sdr"></a><pre>
+@article{<a href="j.html#dd-sdr">dd-sdr</a>,
+  author = {J. Yan and I. Markovsky and J. Lygeros},
+  title = {Secure Data Reconstruction: A Direct Data-Driven Approach},
+  journal = {IEEE Trans. Automat. Contr.},
+  optvolume = {},
+  optnumber = {},
+  optpages = {},
+  year = {2025},
+  abstract = {This paper addresses the problem of secure data reconstruction for unknown systems, where data collected from the system are susceptible to malicious manipulation. We aim to recover the real trajectory without prior knowledge of the system model. To achieve this, a behavioral language is used to represent the system, describing it using input/output trajectories instead of state-space models. We consider two attack scenarios. In the first scenario, up to k entries of the collected data are malicious. On the other hand, the second scenario assumes that at most k channels from sensors or actuators can be compromised, implying that any data collected from these channels might be falsified. For both scenarios, we formulate the trajectory recovery problem as an optimization problem and introduce sufficient conditions to ensure successful recovery of the true data. Since finding exact solutions to these problems can be computationally inefficient, we further approximate them using an ℓ1-norm and group Least Absolute Shrinkage and Selection Operator (LASSO). We demonstrate that under certain conditions, these approximation problems also find the true trajectory while maintaining low computation complexity. Finally, we extend the proposed algorithms to noisy data. By reconstructing the secure trajectory, this work serves as a safeguard mechanism for subsequent data-driven control methods.},
+  keywords = {secure data reconstruction, data-driven control, behavioral language},
+  optdoi = {10.1109/LCSYS.2025.3579393},
+  pdf = {<a href="https://arxiv.org/pdf/2502.00436">https://arxiv.org/pdf/2502.00436</a>}
 }
 </pre>
 
