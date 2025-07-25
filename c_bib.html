@@ -748,7 +748,7 @@ The main result shows that the parameter estimation by minimization of the 2-nor
   pages = {130--141},
   year = {2024},
   pdf = {<a href="https://proceedings.mlr.press/v242/markovsky24a/markovsky24a.pdf">https://proceedings.mlr.press/v242/markovsky24a/markovsky24a.pdf</a>},
-  url = {https://proceedings.mlr.press/v242/markovsky24a/markovsky24a.pdf},
+  opturl = {https://proceedings.mlr.press/v242/markovsky24a/markovsky24a.pdf},
   software = {<a href="http://imarkovs.github.io/bt/bt.tar">http://imarkovs.github.io/bt/bt.tar</a>}
 }
 </pre>
@@ -770,9 +770,21 @@ The main result shows that the parameter estimation by minimization of the 2-nor
   booktitle = {Proc of the Conf. on Decision and Control},
   year = {2025},
   abstract = {Affine systems are ubiquitous in modeling and emerge naturally from the linearization of nonlinear dynamics. Despite their relevance in applications, their identification remains largely ad hoc, relying on centering the data before applying linear identification methods. This heuristic approach assumes constant offset and can introduce bias. We develop a dedicated framework for affine system identification, deriving identifiability conditions and identification methods based on difference equation representations. Unlike the classical two-step approach, our method identifies the data-generating system under conditions verifiable from data and system complexity. For noisy data in the errors-in-variables setting, we recast the problem as a structured low-rank approximation, leveraging existing optimization techniques for efficient computation.},
-  keywords = {System identification, behavioral approach, affine systems, low-rank approximation.},
+  keywords = {System identification, behavioral approach, affine systems, low-rank approximation},
   optdoi = {},
   url = {https://imarkovs.github.io/publications/ati-sysid.pdf}
+}
+</pre>
+
+<a name="gaussian-behaviors"></a><pre>
+@inproceedings{<a href="c.html#gaussian-behaviors">gaussian-behaviors</a>,
+  author = {A. Sasfi and I. Markovsky and A. Padoan and F. Dörfler},
+  title = {Gaussian behaviors: {R}epresentations and data-driven control},
+  booktitle = {Proc of the Conf. on Decision and Control},
+  year = {2025},
+  abstract = {We propose a modeling framework for stochastic systems based on Gaussian processes. Finite-length trajectories of the system are modeled as random vectors from a Gaussian distribution, which we call a Gaussian behavior. The proposed model naturally quantifies the uncertainty in the trajectories, yet it is simple enough to allow for tractable formulations. We relate the proposed model to existing descriptions of dynamical systems including deterministic and stochastic behaviors, and linear time-invariant (LTI) state-space models with Gaussian process and measurement noise. Gaussian behaviors can be estimated directly from observed data as the empirical sample covariance under the assumption that the measured trajectories are from independent experiments. The distribution of future outputs conditioned on inputs and past outputs provides a predictive model that can be incorporated in predictive control frameworks. We show that subspace predictive control (SPC) is a certainty-equivalence control formulation with the estimated Gaussian behavior. Furthermore, the regularized data-enabled predictive control (DeePC) method is shown to be a distributionally optimistic formulation that optimistically accounts for uncertainty in the Gaussian behavior. To mitigate the excessive optimism of DeePC, we propose a novel distributionally robust control formulation, and provide a convex reformulation allowing for efficient implementation.},
+  optkeywords = {},
+  url = {https://arxiv.org/abs/2504.15838}
 }
 </pre>
 

@@ -3,30 +3,7 @@
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="uq">1</a>]
-</td>
-<td class="bibtexitem">
-F.&nbsp;Kaviani, I.&nbsp;Markovsky, and H.&nbsp;Ossareh.
- Uncertainty quantification of data-driven output predictors in the
-  output error setting.
- <em>IEEE Trans. Automat. Contr.</em>, 2026.
-[&nbsp;<a href="j_bib.html#uq">bib</a>&nbsp;| 
-<a href="http://dx.doi.org/10.1109/TAC.2025.3573151">DOI</a>&nbsp;| 
-<a href="https://arxiv.org/pdf/2404.15098">pdf</a>&nbsp;]
-<blockquote>
-We revisit the problem of predicting the output of an LTI system directly using offline input-output data (and without the use of a parametric model) in the behavioral setting. Existing works calculate the output predictions by projecting the recent samples of the input and output signals onto the column span of a Hankel matrix consisting of the offline input-output data. However, if the offline data is corrupted by noise, the output prediction is no longer exact. While some prior works propose mitigating noisy data through matrix low-ranking approximation heuristics, such as truncated singular value decomposition, the ensuing prediction accuracy remains unquantified. This paper fills these gaps by introducing two upper bounds on the prediction error under the condition that the noise is sufficiently small relative to the offline data’s magnitude. The first bound pertains to prediction using the raw offline data directly, while the second one applies to the case of a low-ranking approximation heuristic. Notably, the bounds do not require the ground truth about the system output, relying solely on noisy measurements with a known noise level and system order. Extensive numerical simulations show that both bounds decrease monotonically (and linearly) as a function of the noise level. Furthermore, our results demonstrate that applying the de-noising heuristic in the output error setup does not generally lead to a better prediction accuracy as compared to using raw data directly, nor a smaller upper bound on the prediction error. However, it allows for a more general upper bound, as the first upper bound requires a specific condition on the partitioning of the Hankel matrix.
-</blockquote>
-<p><blockquote>
-Keywords: Uncertainty quantification, data-driven control, output prediction error bounds, truncated singular value decomposition de-noising
-</blockquote>
-
-</td>
-</tr>
-
-
-<tr valign="top">
-<td align="right" class="bibtexnumber">
-[<a name="lpv-fl">2</a>]
+[<a name="lpv-fl">1</a>]
 </td>
 <td class="bibtexitem">
 C.&nbsp;Verhoek, I.&nbsp;Markovsky, S.&nbsp;Haesaert, and R.&nbsp;Toth.
@@ -47,48 +24,7 @@ Keywords: behavioral systems theory, linear parameter-varying systems, data-driv
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="nn-kdu">3</a>]
-</td>
-<td class="bibtexitem">
-K.&nbsp;Usevich, J.&nbsp;Gillard, P.&nbsp;Dreesen, and I.&nbsp;Markovsky.
- Structured nuclear norm matrix completion: Guaranteeing exact
-  recovery via block-column scaling.
- <em>Numerical Linear Algebra with Applications</em>, 2026.
-[&nbsp;<a href="j_bib.html#nn-kdu">bib</a>&nbsp;| 
-<a href="https://imarkovs.github.io/publications/nn-kdu.pdf">pdf</a>&nbsp;]
-<blockquote>
-The goal of low-rank matrix completion is to minimize the rank of a matrix while adhering to the constraint that known (non-missing) elements are fixed in the approximation. Minimizing rank is a difficult, non-convex, NP-hard problem, often addressed by substituting rank with the nuclear norm to achieve a convex relaxation. We focus on structured matrices for completion, where in addition to the constraints described earlier, matrices also adhere to a predefined structure. We propose a technique that ensures the exact recovery of missing entries by minimizing the nuclear norm of a matrix where the non-missing entries are first subject to block-column scaling. We provide the proofs for exact recovery and propose a way for choosing the scaling parameter to ensure exact recovery. The method is demonstrated in several numerical examples, showing the usefulness of the proposed technique.
-</blockquote>
-<p>
-</td>
-</tr>
-
-
-<tr valign="top">
-<td align="right" class="bibtexnumber">
-[<a name="ati-sysid">4</a>]
-</td>
-<td class="bibtexitem">
-I.&nbsp;Markovsky, J.&nbsp;Eising, and A.&nbsp;Padoan.
- How to represent and identify affine time-invariant systems?
- <em>Control Systems Letters</em>, 2026.
-[&nbsp;<a href="j_bib.html#ati-sysid">bib</a>&nbsp;| 
-<a href="http://dx.doi.org/10.1109/LCSYS.2025.3579393">DOI</a>&nbsp;| 
-<a href="https://imarkovs.github.io/publications/ati-sysid.pdf">pdf</a>&nbsp;]
-<blockquote>
-Affine systems are ubiquitous in modeling and emerge naturally from the linearization of nonlinear dynamics. Despite their relevance in applications, their identification remains largely ad hoc, relying on centering the data before applying linear identification methods. This heuristic approach assumes constant offset and can introduce bias. We develop a dedicated framework for affine system identification, deriving identifiability conditions and identification methods based on difference equation representations. Unlike the classical two-step approach, our method identifies the data-generating system under conditions verifiable from data and system complexity. For noisy data in the errors-in-variables setting, we recast the problem as a structured low-rank approximation, leveraging existing optimization techniques for efficient computation.
-</blockquote>
-<p><blockquote>
-Keywords: System identification, behavioral approach, affine systems, low-rank approximation.
-</blockquote>
-
-</td>
-</tr>
-
-
-<tr valign="top">
-<td align="right" class="bibtexnumber">
-[<a name="jan-new">5</a>]
+[<a name="jan-new">2</a>]
 </td>
 <td class="bibtexitem">
 M.&nbsp;Alsalti, I.&nbsp;Markovsky, V.&nbsp;G. Lopez, and M.&nbsp;A. Müller.
@@ -104,7 +40,7 @@ M.&nbsp;Alsalti, I.&nbsp;Markovsky, V.&nbsp;G. Lopez, and M.&nbsp;A. Müller.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
-[<a name="ode-improved">6</a>]
+[<a name="ode-improved">3</a>]
 </td>
 <td class="bibtexitem">
 A.&nbsp;Fazzi, K.&nbsp;Usevich, and I.&nbsp;Markovsky.
@@ -121,6 +57,71 @@ A.&nbsp;Fazzi, K.&nbsp;Usevich, and I.&nbsp;Markovsky.
 
 <tr valign="top">
 <td align="right" class="bibtexnumber">
+[<a name="uq">4</a>]
+</td>
+<td class="bibtexitem">
+F.&nbsp;Kaviani, I.&nbsp;Markovsky, and H.&nbsp;Ossareh.
+ Uncertainty quantification of data-driven output predictors in the
+  output error setting.
+ <em>IEEE Trans. Automat. Contr.</em>, 2025.
+[&nbsp;<a href="j_bib.html#uq">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/TAC.2025.3573151">DOI</a>&nbsp;| 
+<a href="https://arxiv.org/pdf/2404.15098">pdf</a>&nbsp;]
+<blockquote>
+We revisit the problem of predicting the output of an LTI system directly using offline input-output data (and without the use of a parametric model) in the behavioral setting. Existing works calculate the output predictions by projecting the recent samples of the input and output signals onto the column span of a Hankel matrix consisting of the offline input-output data. However, if the offline data is corrupted by noise, the output prediction is no longer exact. While some prior works propose mitigating noisy data through matrix low-ranking approximation heuristics, such as truncated singular value decomposition, the ensuing prediction accuracy remains unquantified. This paper fills these gaps by introducing two upper bounds on the prediction error under the condition that the noise is sufficiently small relative to the offline data’s magnitude. The first bound pertains to prediction using the raw offline data directly, while the second one applies to the case of a low-ranking approximation heuristic. Notably, the bounds do not require the ground truth about the system output, relying solely on noisy measurements with a known noise level and system order. Extensive numerical simulations show that both bounds decrease monotonically (and linearly) as a function of the noise level. Furthermore, our results demonstrate that applying the de-noising heuristic in the output error setup does not generally lead to a better prediction accuracy as compared to using raw data directly, nor a smaller upper bound on the prediction error. However, it allows for a more general upper bound, as the first upper bound requires a specific condition on the partitioning of the Hankel matrix.
+</blockquote>
+<p><blockquote>
+Keywords: Uncertainty quantification, data-driven control, output prediction error bounds, truncated singular value decomposition de-noising
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="nn-kdu">5</a>]
+</td>
+<td class="bibtexitem">
+K.&nbsp;Usevich, J.&nbsp;Gillard, P.&nbsp;Dreesen, and I.&nbsp;Markovsky.
+ Structured nuclear norm matrix completion: Guaranteeing exact
+  recovery via block-column scaling.
+ <em>Numerical Linear Algebra with Applications</em>, 32(4):e70031, 2025.
+[&nbsp;<a href="j_bib.html#nn-kdu">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1002/nla.70031">DOI</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/nn-kdu.pdf">pdf</a>&nbsp;]
+<blockquote>
+The goal of low-rank matrix completion is to minimize the rank of a matrix while adhering to the constraint that known (non-missing) elements are fixed in the approximation. Minimizing rank is a difficult, non-convex, NP-hard problem, often addressed by substituting rank with the nuclear norm to achieve a convex relaxation. We focus on structured matrices for completion, where in addition to the constraints described earlier, matrices also adhere to a predefined structure. We propose a technique that ensures the exact recovery of missing entries by minimizing the nuclear norm of a matrix where the non-missing entries are first subject to block-column scaling. We provide the proofs for exact recovery and propose a way for choosing the scaling parameter to ensure exact recovery. The method is demonstrated in several numerical examples, showing the usefulness of the proposed technique.
+</blockquote>
+<p>
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
+[<a name="ati-sysid">6</a>]
+</td>
+<td class="bibtexitem">
+I.&nbsp;Markovsky, J.&nbsp;Eising, and A.&nbsp;Padoan.
+ How to represent and identify affine time-invariant systems?
+ <em>Control Systems Letters</em>, 9:1207--1212, 2025.
+[&nbsp;<a href="j_bib.html#ati-sysid">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/LCSYS.2025.3579393">DOI</a>&nbsp;| 
+<a href="https://imarkovs.github.io/publications/ati-sysid.pdf">pdf</a>&nbsp;]
+<blockquote>
+Affine systems are ubiquitous in modeling and emerge naturally from the linearization of nonlinear dynamics. Despite their relevance in applications, their identification remains largely ad hoc, relying on centering the data before applying linear identification methods. This heuristic approach assumes constant offset and can introduce bias. We develop a dedicated framework for affine system identification, deriving identifiability conditions and identification methods based on difference equation representations. Unlike the classical two-step approach, our method identifies the data-generating system under conditions verifiable from data and system complexity. For noisy data in the errors-in-variables setting, we recast the problem as a structured low-rank approximation, leveraging existing optimization techniques for efficient computation.
+</blockquote>
+<p><blockquote>
+Keywords: System identification, behavioral approach, affine systems, low-rank approximation.
+</blockquote>
+
+</td>
+</tr>
+
+
+<tr valign="top">
+<td align="right" class="bibtexnumber">
 [<a name="dd-sdr">7</a>]
 </td>
 <td class="bibtexitem">
@@ -128,6 +129,7 @@ J.&nbsp;Yan, I.&nbsp;Markovsky, and J.&nbsp;Lygeros.
  Secure data reconstruction: A direct data-driven approach.
  <em>IEEE Trans. Automat. Contr.</em>, 2025.
 [&nbsp;<a href="j_bib.html#dd-sdr">bib</a>&nbsp;| 
+<a href="http://dx.doi.org/10.1109/TAC.2025.3585652">DOI</a>&nbsp;| 
 <a href="https://arxiv.org/pdf/2502.00436">pdf</a>&nbsp;]
 <blockquote>
 This paper addresses the problem of secure data reconstruction for unknown systems, where data collected from the system are susceptible to malicious manipulation. We aim to recover the real trajectory without prior knowledge of the system model. To achieve this, a behavioral language is used to represent the system, describing it using input/output trajectories instead of state-space models. We consider two attack scenarios. In the first scenario, up to k entries of the collected data are malicious. On the other hand, the second scenario assumes that at most k channels from sensors or actuators can be compromised, implying that any data collected from these channels might be falsified. For both scenarios, we formulate the trajectory recovery problem as an optimization problem and introduce sufficient conditions to ensure successful recovery of the true data. Since finding exact solutions to these problems can be computationally inefficient, we further approximate them using an ℓ1-norm and group Least Absolute Shrinkage and Selection Operator (LASSO). We demonstrate that under certain conditions, these approximation problems also find the true trajectory while maintaining low computation complexity. Finally, we extend the proposed algorithms to noisy data. By reconstructing the secure trajectory, this work serves as a safeguard mechanism for subsequent data-driven control methods.
