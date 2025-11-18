@@ -1223,12 +1223,12 @@ The results in the paper are derived assuming exact data, however, low-rank appr
 
 <a name="ode-improved"></a><pre>
 @article{<a href="j.html#ode-improved">ode-improved</a>,
-  author = {A. Fazzi and K. Usevich and I. Markovsky},
+  author = {A. Fazzi and I. Markovsky and K. Usevich},
   title = {Implementation improvements and extensions of an {ODE}-based algorithm for structured low-rank approximation},
   journal = {Calcolo},
-  volume = {60},
-  number = {2},
-  optpages = {??},
+  volume = {62},
+  optnumber = {},
+  optpages = {},
   year = {2025},
   doi = {10.1007/s10092-024-00623-y},
   pdf = {<a href="https://imarkovs.github.io/publications/calcolo.pdf">https://imarkovs.github.io/publications/calcolo.pdf</a>}
@@ -1240,8 +1240,8 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   author = {F. Kaviani and I. Markovsky and H. Ossareh},
   title = {Uncertainty Quantification of Data-Driven Output Predictors in the Output Error Setting},
   journal = {IEEE Trans. Automat. Contr.},
-  optvolume = {},
-  optpages = {},
+  volume = {70},
+  pages = {7588--7595},
   year = {2025},
   doi = {10.1109/TAC.2025.3573151},
   abstract = {We revisit the problem of predicting the output of an LTI system directly using offline input-output data (and without the use of a parametric model) in the behavioral setting. Existing works calculate the output predictions by projecting the recent samples of the input and output signals onto the column span of a Hankel matrix consisting of the offline input-output data. However, if the offline data is corrupted by noise, the output prediction is no longer exact. While some prior works propose mitigating noisy data through matrix low-ranking approximation heuristics, such as truncated singular value decomposition, the ensuing prediction accuracy remains unquantified. This paper fills these gaps by introducing two upper bounds on the prediction error under the condition that the noise is sufficiently small relative to the offline data’s magnitude. The first bound pertains to prediction using the raw offline data directly, while the second one applies to the case of a low-ranking approximation heuristic. Notably, the bounds do not require the ground truth about the system output, relying solely on noisy measurements with a known noise level and system order. Extensive numerical simulations show that both bounds decrease monotonically (and linearly) as a function of the noise level. Furthermore, our results demonstrate that applying the de-noising heuristic in the output error setup does not generally lead to a better prediction accuracy as compared to using raw data directly, nor a smaller upper bound on the prediction error. However, it allows for a more general upper bound, as the first upper bound requires a specific condition on the partitioning of the Hankel matrix.},
@@ -1341,6 +1341,33 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   abstract = {The most powerful unfalsified model (MPUM), i.e., the least complex exact model for the given data, is well established for linear time-invariant (LTI) systems. It has not been generalized for linear parameter-varying (LPV) systems. In order to do this, we define the notions of complexity for LPV systems with shifted-affine scheduling dependence. The MPUM leads to identifiability conditions and a method for exact LPV system identification. The method is based on lifting the LPV system to a higher dimensional space and LTI embedding in the lifted space. It is made rigorous by proving a formal connection between the parameters of the LTI embedding and the original LPV system.},
   keywords = {Most powerful unfalsified model, behavioral approach, linear parameter-varying, system identification.},
   url = {https://imarkovs.github.io/publications/lpv-sysid.pdf}
+}
+</pre>
+
+<a name="jia-jfi"></a><pre>
+@article{<a href="j.html#jia-jfi">jia-jfi</a>,
+  author = {J. Wang and L. Hemelhof and I. Markovsky and P. Patrinos},
+  title = {Fast data-driven iterative learning control for linear system with output disturbance},
+  journal = {Journal of the Franklin Institute},
+  year = {2026},
+  optvolume = {??},
+  optpages = {??--??},
+  pdf = {<a href="https://arxiv.org/pdf/2312.14326">https://arxiv.org/pdf/2312.14326</a>},
+  keywords = {Data-driven control; iterative learning control; convergence analysis; system identification},
+  abstract = {This paper studies data-driven iterative learning control (ILC) for linear timeinvariant (LTI) systems with unknown dynamics, output disturbances and input box-constraints. Our main contributions are: 1) using a non-parametric data-driven representation of the system dynamics, for dealing with the unknown system dynamics in the context of ILC, 2) design of a fast ILC method for dealing with output disturbances, model uncertainty and input constraints. A complete design method is given in this paper, which consists of the data-driven representation, controller formulation, acceleration strategy and convergence analysis. A batch of numerical experiments and a case study on a high-precision robotic motion system are given in the end to show the effectiveness of the proposed method.},
+  optdoi = {??}
+}
+</pre>
+
+<a name="andras-great"></a><pre>
+@article{<a href="j.html#andras-great">andras-great</a>,
+  author = {A. Sasfi and A. Padoan and I. Markovsky and F. Dörfler},
+  title = {{GREAT}: {G}rassmannian {RE}cursive {A}lgorithm for {T}racking & Online System Identification},
+  journal = {IEEE Trans. Automat. Contr.},
+  year = {2026},
+  abstract = {This paper introduces an online approach for identifying time-varying subspaces defined by linear dynamical systems. The approach of representing linear systems by non-parametric subspace models has received significant interest in the field of data-driven control recently. This system representation enables us to provide rigorous guarantees for linear time-varying systems, which are difficult to obtain for parametric system models. The proposed method leverages optimization on the Grassmann manifold leading to the Grassmannian Recursive Algorithm for Tracking (GREAT). We view subspaces as points on the Grassmann manifold and adapt the estimate based on online data by performing optimization on the manifold. At each time step, a single measurement from the current subspace corrupted by a bounded error is available. The subspace estimate is updated online using Grassmannian gradient descent on a cost function incorporating a window of the most recent data. Under suitable assumptions on the signal-to-noise ratio of the online data and the subspace's rate of change, we establish theoretical guarantees for the resulting algorithm. More specifically, we prove an exponential convergence rate and provide an uncertainty quantification of the estimates in terms of an upper bound on their distance to the true subspace. The applicability of the proposed algorithm is demonstrated by means of numerical examples.},
+  keywords = {System identification, time-varying systems, subspace methods, behavioral systems, manifold optimization},
+  url = {https://arxiv.org/pdf/2412.09052}
 }
 </pre>
 
