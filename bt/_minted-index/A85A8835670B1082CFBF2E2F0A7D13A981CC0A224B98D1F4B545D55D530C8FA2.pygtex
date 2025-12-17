@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{yf} \PYG{p}{=} \PYG{n}{u2y}\PYG{p}{(}\PYG{n}{BT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{,} \PYG{n}{w}\PYG{p}{(:,} \PYG{l+m+mi}{1}\PYG{p}{:}\PYG{n}{m}\PYG{p}{),} \PYG{n}{wini}\PYG{p}{);} \PYG{n}{check}\PYG{p}{(}\PYG{n}{w}\PYG{p}{(:,} \PYG{n}{m}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{:}\PYG{k}{end}\PYG{p}{)} \PYG{o}{\PYGZhy{}} \PYG{n}{yf}\PYG{p}{)}
+\end{Verbatim}

@@ -1,0 +1,457 @@
+% Created 2025-12-17 Wed 08:20
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage{minted}
+\input{/home/im/texinputs/mystyle-org.tex}\usepackage[final]{pdfpages}
+\newcommand{\quotebib}[1]{\begin{quote}\small\bibentry{#1}\end{quote}}
+\topmargin=-1.5cm  \oddsidemargin=-1cm \evensidemargin=-1cm
+\textheight=25cm   \textwidth=18cm
+\author{Ivan Markovsky}
+\date{}
+\title{The Behavioral Toolbox}
+\begin{document}
+
+\maketitle
+
+\section*{Summary and downloads}
+\label{sec:org3a9c686}
+
+The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems.
+\begin{itemize}
+\item \href{./bt.tar}{tar file of the functions}
+\item \href{./bt.pdf}{documentation}
+\item \href{https://imarkovs.github.io/publications/bt-l4dc.pdf}{paper}
+\end{itemize}
+
+\section*{Tutorial}
+\label{sec:org1ff4cb2}
+
+In order to make the behavioral approach computationally feasible, we consider discrete-time systems and restrict the behavior to a finite horizon. The restricted behavior of a linear time-invariant system is a shift-invariant subspace. The methods developed in the toolbox use a basis for this subspace as a nonparametric representation of the system. The system analysis, signal processing, and control methods take as an input a basis. The identification methods take as an input a trajectory of the system. The code is extracted in a script file \texttt{demo.m}. 
+
+\subsection*{Nonparameteric representation of the restricted behavior}
+\label{sec:orgafc17d0}
+
+This section introduces the functions of the toolbox for creating and using the nonparametric representation of the system. In order to demonstrate and test these functions on numerical examples, we create a random linear time-invariant system defined by an input/state/output representation---a Matlab's \texttt{ss} object \texttt{B}:  
+\begin{minted}[]{matlab}
+m = 2; p = 1; q = m + p; n = 3; B = drss(n, p, m);
+\end{minted}
+The construction of the orthonormal basis \texttt{BT} for the finite-horizon behavior from an input/state/output representation of the system is done by the function \texttt{B2BT}:
+\begin{minted}[]{matlab}
+T = 10; BT = B2BT(B, T); 
+\end{minted}
+
+The function \texttt{B2BT} implements a data-driven approach. Instead of using the parameters of the state-space representation of the system, it computes a random trajectory (using \texttt{lsim}), forms a Hankel matrix (using the toolbox's function \texttt{hank}), and computes an orthonormal basis for its image (using \texttt{svd}). Alternative functions to \texttt{B2BT} that implement the model-based approach are \texttt{ss2BT} and \texttt{R2BT}. As the names suggest, \texttt{ss2BT} uses a state-space representation, while \texttt{R2BT} uses a kernel representation to compute the basis.
+
+In order to verify that the output \texttt{BT} of \texttt{B2BT} is correct, first, we verify that its dimension is correct:
+\begin{minted}[]{matlab}
+check(size(BT, 2) == m * T + n) 
+\end{minted}
+The function \texttt{check} prints ``PASS'' if its argument is true and ``FAIL'' otherwise. 
+
+Then, we check that a random trajectory of the system is in the image of \texttt{BT}. The function \texttt{B2w} selects a random trajectory of \texttt{B}. Its output is a \(T\times q\) matrix, where \(T\) is the number of samples and \(q\) is the number of variables. Checking if \(w\) is a trajectory is a common task and is implemented in a function \texttt{w\_in\_B}:
+\begin{minted}[]{matlab}
+w = B2w(B, T); check(w_in_B(w, B))
+\end{minted}
+The columns of \texttt{BT} are finite trajectories of the system. The function \texttt{BT2W} extracts them into a cell array \texttt{W}:
+\begin{minted}[]{matlab}
+W = BT2W(BT, q); check(all(w_in_B(W, B)))
+\end{minted}
+The function \texttt{w\_in\_B} as well as many other functions of the toolbox allow specification of multiple trajectories by a cell array as well as a single trajectory.
+
+A \(q\)-variate, \(T\)-samples long signal \(w := \big(w(1),\ldots,w(T)\big)\) is represented in the toolbox by: 
+\begin{itemize}
+\item \(T\times q\) matrix \texttt{w}, where \texttt{w(t, :)} \(= w^\top(t)\) or
+\item \(qT\times 1\) vector \texttt{w} with the stacked consequitive samples.
+\end{itemize}
+The matrix format has the advantage that the number of variables \(q\) can be deduced from the size. However, it is incompatible with the data-driven representation, which uses the vector format. The conversion from the matrix to the vector format is done by \texttt{vec(w')}, where \texttt{vec} is column-wise vectorization, and the conversion from the vector to the matrix format is done by \texttt{reshape(w, q, T)'}. Functions accepting \(B_T\) as an input require \(q\) to be passed as an extra input argument.
+
+When the \(T\times q\) matrix representation is used, multiple trajectories are stored in a cell array with \(N\) elements, the \(i\)th element of which is a \(T_i\times q\) matrix representing the \(i\)th trajectory \(w^i\).  
+When the \(Tq\times1\) vector representation is used and \(T_1=\cdots=T_N=:T\), multiple trajectories are stored in a \(qT\times N\) matrix, the \(i\)th column of which represents the \(i\)th trajectory \(w^i\).  
+
+The computation of a basis \(B_T\) from a trajectory of the system requires finding the dimension of of the finite-horizon behavior \(\mathcal{B}|_T\). \danger Under standard conditions on \({w_\text{d}}\) that are almost certainly satisfied for a sufficiently long random trajectory \({w_\text{d}}\in\mathcal{B}|_T\), 
+\[
+\dim\,\mathcal{B}|_T = \text{rank}\,\mathcal{H}_T({w_\text{d}}). 
+\]
+Thus, \(\dim\,\mathcal{B}|_T\) can be found by rank computation. A robust way of computing \(\text{rank}\,\mathcal{H}_T({w_\text{d}})\) is thresholding the singular values of \(\mathcal{H}_T({w_\text{d}})\). The functions of the toolbox that construct \(B_T\) from data therefore have an optional threshold parameter \texttt{tol} with default value:
+\begin{minted}[]{matlab}
+if ~exist('tol', 'var') || isempty(tol), tol = 1e-8; end % <default-tol>
+\end{minted}
+Alternatively, the user can specify the model's complexity, in which case the dimension is computed as \(mT+n\).
+
+\subsection*{Input/output partitionings}
+\label{sec:org3e1dc7a}
+A partitioning of the variables \(w(t)\) into inputs \(u(t)\) and outputs \(y(t)\) is defined by a permutation matrix \(\Pi\in\mathbb{R}^{q\times q}\) as follows:
+\begin{equation} 
+w\mapsto(u,y): \ \begin{bmatrix} u\\y\end{bmatrix} := \Pi w \qquad\text{and}\qquad (u,y)\mapsto w: \ w = \Pi^\top \begin{bmatrix} u\\y\end{bmatrix}. 
+\end{equation}
+\(\Pi w\) reorders the variables \(w\), so that the first \(m\) variables are the inputs and the remaining \(p:=q-m\) variables are the outputs. The permutation matrix \(\Pi\) is specified in the functions of the toolbox by a vector \texttt{io}, such that \texttt{w(io)} \(\mapsto\) \texttt{[u; y]}. The restricted behavior with permuted variables is created with the function \texttt{BT2BT}:
+\begin{minted}[]{matlab}
+io = flip(1:q); BTp = BT2BT(BT, q, io);
+\end{minted}
+Indeed, the trajectory \(w':=\Pi w\) with permuted variables belongs to the image of \texttt{BTp}: 
+\begin{minted}[]{matlab}
+check(w_in_B(w(:, io), BTp))
+\end{minted}
+The function \texttt{BT2UYT} extracts from the basis of the restricted behavior \(\mathcal{B}|_T\) its input and output components:
+\begin{minted}[]{matlab}
+[UT, YT] = BT2UYT(BT, m, p);
+\end{minted}
+
+\texttt{BT2UYT} and other functions of the toolbox that require an input/output partitioning but do not accept a specification for it assume \(\Pi = I_q\):
+\begin{minted}[]{matlab}
+if ~exist('io', 'var') || isempty(io), io = 1:q; end % <default-io>
+\end{minted}
+For a general input/output partitioning, defined by \texttt{io}, call the functions with input \texttt{BT2BT(BT, q, io)} instead of \texttt{BT}.
+
+The inverse transformation \texttt{UYT2BT} reconstructs \(\mathcal{B}|_T\) from its input and output components:
+\begin{minted}[]{matlab}
+check(norm(BT - UYT2BT(UT, YT, m, p)) == 0)
+\end{minted}
+
+The number of inputs \(m\) is uniquely defined by the behavior. However, an input/output partitioning of the variables is in general not unique. The currently available methods in the literature for finding an input/output partitioning of a system \(\mathcal{B}\) are based on parametric representations of the system (\eg, the kernel representation). The toolbox implements a data-driven method for finding an input/output partitioning directly from the finite-horizon behavior \(\mathcal{B}|_T\). The function \texttt{is\_io} checks if a given partitioning of the variables is a possible input/output partitioning and the function \texttt{BT2IO} finds all possible input/output partitionings of the system. In order to test \texttt{is\_io} and \texttt{BT2IO}, consider the following single-input single-output system 
+\begin{minted}[]{matlab}
+Bp = ss(tf([0 1], [1 1], 1));
+\end{minted}
+that has an input/output partitioning \(w = \left[\begin{smallmatrix} u\\y \end{smallmatrix}\right]\) but not \(w = \left[\begin{smallmatrix} y\\u \end{smallmatrix}\right]\).
+\begin{minted}[]{matlab}
+BpT = B2BT(Bp, T);
+check(is_io(BpT, 2, [1 2]) == true)
+check(is_io(BpT, 2, [2 1]) == false)
+check(all(BT2IO(BpT, 2) == [1 2]))
+\end{minted}
+
+\subsection*{Subbehaviors}
+\label{sec:org920a4f4}
+The following subbehaviors of \(\mathcal{B}\) are of special interest:
+\begin{itemize}
+\item \(\mathcal{Y}_0\) --- \emph{zero-input subbehavior}, \ie, the set of transient responses,
+\item \(\mathcal{U}_0\) --- \emph{zero-output subbehavior}, \ie, the set of inputs blocked by the system,
+\item \(\mathcal{B}_0\)          --- \emph{zero initial conditions subbehavior}, \ie, the set of zero initial conditions trajectories,
+\item \(\mathcal{B}_\text{c}\)   --- \emph{controllable subbehavior}, \ie, the set of trajectories that are patchable with zero past trajectory, and
+\item \(\mathcal{B}_\text{p}\)   --- \emph{periodic subbehavior}, \ie, the set of periodic trajectories.
+\end{itemize}
+Orthonormal bases for their restrictions to \([1,T]\) are computed from \(\mathcal{B}|_T\) by the following functions:
+\begin{minted}[]{matlab}
+Y0 = BT2Y0(BT, q);
+U0 = BT2U0(BT, q);
+B0 = BT2B0(BT, q);
+BC = BT2BC(BT, q);
+%BP = BT2BP(BT, q); TODO
+\end{minted}
+
+Let's verify that a free response of \(\mathcal{B}\) is in the image of \texttt{Y0}:
+\begin{minted}[]{matlab}
+y0 = initial(B, rand(n, 1), T-1); check(w_in_B(y0, Y0))
+\end{minted}
+Next, we verify that \(w = \left[\begin{smallmatrix} u\\ 0 \end{smallmatrix}\right]\) with \(u\) in the image of \texttt{U0} is a trajectory of the system:
+\begin{minted}[]{matlab}
+u0 = reshape(U0 * rand(size(U0, 2), 1), m, T)';
+w0 = [u0 zeros(T, p)]; check(w_in_B(w0, BT))
+\end{minted}
+Next, we verify that the initial conditions of a random trajectory in the zero initial conditions subbehavior are zero
+\begin{minted}[]{matlab}
+T0 = size(B0, 1) / q;
+w0 = reshape(B0 * rand(size(B0, 2), 1), q, T0)'; 
+xini = w2xini(w0, B); check(norm(xini) < tol)
+\end{minted}
+
+Using the zero initial conditions subbehavior \(\mathcal{B}_0\subset\mathcal{B}|_T\), we can find the zero initial conditions input-to-output map \(H_T : u|_T \mapsto y|_T\). Let \(B_0\) be the matrix of the basis vectors for \(\mathcal{B}_0\) and let \(U_0\), \(Y_0\) be the submatrices of \(B_0\) corresponding to the inputs and the outputs. Then, \(H_T = Y_0 U_0^{-1}\). The method is implemented in the function \texttt{BT2HT}:
+\begin{minted}[]{matlab}
+[HT, T] = BT2HT(BT, q);
+\end{minted}
+The \(pT\times mT\) matrix \(H_T\) is the finite-horizon representation of the transfer function \(H(z)\) of the system \(\mathcal{B}\) corresponding to the input/output partitioning. In particular, it has lower-triangular block-Toeplitz structure:
+\begin{minted}[]{matlab}
+check(norm(HT - convm(B, T)) < tol)
+\end{minted}
+
+\subsection*{Analysis}
+\label{sec:org4af3c21}
+In this section, we find properties of the system directly from its restricted behavior, rather than from parametric representations as done by classical analysis methods. The properties considered are: complexity, controllability, \(H_\infty\)-norm, and distance between systems. 
+
+\subsubsection*{System's complexity}
+\label{sec:org77b43b9}
+
+The complexity \(\invc(\mathcal{B})\) of a linear time-invariant system \(\mathcal{B}\) is defined as the triple: number of inputs \(\invm(\mathcal{B})\), lag \(\invl(\mathcal{B})\), and order \(\invn(\mathcal{B})\). Although in the classical setting the order \(\invn(\mathcal{B})\) is defined via a minimal state-space representation, it is a property of the system \(\mathcal{B}\) and can be computed directly from the restricted behavior \(\mathcal{B}|_T\) (provided \(T\geq\invl(\mathcal{B})+1\)). Also, the number of inputs \(\invm(\mathcal{B})\) can be computed from \(\mathcal{B}|_T\) without reference to a particular input/output representation. The method for finding \(\invm(\mathcal{B})\) and \(\invn(\mathcal{B})\) from \(\mathcal{B}|_T\) is based on the theoretical dimension \(mT+n\). Evaluating \(\dim\,\mathcal{B}|_{t_i}\) for \(t_1\neq t_2\geq\invl(\mathcal{B})\), \eg, \(t_1=T\) and \(t_2=T-1\), we obtain the system of equations
+\[\begin{bmatrix} T & 1\\ T-1 & 1 \end{bmatrix} \begin{bmatrix} m\\ n \end{bmatrix} = \begin{bmatrix} \dim\,\mathcal{B}|_T\\ \dim\,\mathcal{B}|_{T-1} \end{bmatrix},\]
+from which \(m=\invm(\mathcal{B})\) and \(n=\invn(\mathcal{B})\) can be found. The resulting method is implemented in the function \texttt{BT2c}:
+\begin{minted}[]{matlab}
+[ch, mh, ellh, nh] = BT2c(BT, q); check(all([mh nh] == [m n]))
+\end{minted}
+A model-based method for computing the lag of the system is implemented in the function \texttt{lag}:
+\begin{minted}[]{matlab}
+ell = lag(B); check(ellh == ell)
+\end{minted}
+As discussed in the next section, the complexity connects nonparameteric and parametric representations and is a critical first step in finding a parametric representation of the system. 
+
+\texttt{BT2c} finds \(\dim\,\mathcal{B}|_{T-1}\) and \(\dim\,\mathcal{B}|_{T}\) by rank computation, \ie, thresholding of the singular values using \danger a user defined threshold \texttt{tol}. 
+
+\subsubsection*{Distance between systems}
+\label{sec:org8963aa8}
+
+The function \texttt{Bdist} computes distance between systems. The distance is defined as the principal angle between the finite-horizon behaviors of the systems with default horizon \(T=100\). Here is an example:
+\begin{minted}[]{matlab}
+Bp = B; Bp.a = Bp.a + 0.01 * randn(n); d = Bdist(B, Bp);
+\end{minted}
+The distance measure \texttt{Bdist} is used by the function \texttt{equal} for checking if two systems are equal:
+\begin{minted}[]{matlab}
+Bp = ss2ss(B, rand(n)); check(equal(B, Bp))
+\end{minted}
+
+\subsubsection*{Controllability}
+\label{sec:org5b0adee}
+
+The controllable subbehavior \(\mathcal{B}_c\subset\mathcal{B}|_T\) for \(T\geq\invl(\mathcal{B})\) is \(mT+n\)-dimensional if and only if \(\mathcal{B}\) is controllable. This leads to a data-driven controllability test that is implemented in the function \texttt{isunctr}:
+\begin{minted}[]{matlab}
+Bp = ss([0.5 1; 0 0.25], [1; 0], [1 1], 1, -1); 
+n_unctr = isunctr(Bp); check(n_unctr == 1) 
+\end{minted}
+Moreover, \(mT + n - \dim\,\mathcal{B}_c|_T\) is the number of uncontrollable modes of \(\mathcal{B}\). Based on \(\mathcal{B}_c\), a quantitative test for controllability---a distance to uncontrollability---is implemented in the function \texttt{distunctr}. Here is an example:
+\begin{minted}[]{matlab}
+Bp = ss([0.5 1; 0 0.25], [1; 1e-5], [1 1], 1, -1); 
+d = distunctr(Bp); % -> 1e-7
+\end{minted}
+
+\subsubsection*{\(H_\infty\)-norm}
+\label{sec:orgd924868}
+
+Using the zero initial conditions input-to-output map \(H_T\) of \(\mathcal{B}\) for a given input/output partitioning allows us to compute the finite-horizon \(H_\infty\)-norm of \(\mathcal{B}\). The method is implemented in the function \texttt{BT2Hinf}:
+\begin{minted}[]{matlab}
+[Hinf, ~, uinf] = BT2Hinf(BT, q); C = convm(B, T);
+check(abs(Hinf - norm(C)) / norm(C) < tol)
+\end{minted}
+
+
+\subsection*{Parametric representations}
+\label{sec:org4d22646}
+So far, the tutorial reviewed functions related to and based on the nonparametric representation of the restricted behavior \(\mathcal{B}|_T\). This section shows an application of the approach for computing parametric representations.
+
+Computing a kernel representation from \(\mathcal{B}|_T\) is essentially applying the \texttt{null} function on \(B^\top_{\ell+1}\). The method is implemented in the functions \texttt{B2R} and \texttt{BT2R} (\texttt{B2R} constructs \texttt{BT} from \texttt{B} and calls \texttt{BT2R}):
+\begin{minted}[]{matlab}
+R = B2R(B); R = BT2R(BT, q); 
+\end{minted}
+The inverse operation---finding the restricted behavior from a kernel or a state-space representation---is done by the functions \texttt{R2BT} and \texttt{ss2BT}, which implement the model-based approach, \ie, they construct \(B_T\) from the model parameters \(R\) and \((A,B,C,D)\), respectively. 
+\begin{minted}[]{matlab}
+BT_ = R2BT(B2R(B), q, T); check(equal(B, BT_))
+BT_ = ss2BT(B, T);        check(equal(B, BT_))
+\end{minted}
+The basis computed by \texttt{ss2BT} is not orthonormal. It consists of observability and convolution matrices.
+
+Contrary to \texttt{BT2R} (which is essentially Matlab's \texttt{null} function), computing a state-space representation from the restricted behavior is nontrivial. Indeed, it requires to do 1) state construction and 2) detect a possible input/output partitioning of the variables. The data-driven approach for these operations is implemented in the function \texttt{BT2ss}:
+\begin{minted}[]{matlab}
+check(equal(B, BT2ss(BT, q)))
+\end{minted}
+Similarly, the transformation from a kernel representation to a state-space representation is nontrivial. A data-driven method for this operation is implemented in the function \texttt{R2ss}:
+\begin{minted}[]{matlab}
+check(equal(B, R2ss(R, q)))
+\end{minted}
+
+For multi-output systems, the function \texttt{B2R} computes a \emph{nonminimal} kernel representation. Computing a minimal kernel representation or converting a nonminimal kernel representation to a minimal one are also nontrivial operations. Data-driven methods for them are implemented in the functions \texttt{BT2Rmin} and \texttt{R2Rmin}:
+\begin{minted}[]{matlab}
+Rmin = BT2Rmin(BT, q); check(equal(BT, R2BT(Rmin, q, T), q))
+Rmin = R2Rmin(R, q);   check(equal(BT, R2BT(Rmin, q, T), q))
+\end{minted}
+
+The dichotomy of parametric vs nonparametric representations is misleading---there is a range of nonminimal parametric representations that cover the gap between minimal parametric and nonparametric representations. The problem of detecting when a parametric representation is minimal is equivalent to the one of finding the model's complexity. It is also essential in the case of identification from noisy data where the key issue is the one of achieving an accuracy--complexity trade-off.
+
+All functions of the toolbox computing model's complexity accept as an optional input argument a tolerance for thresholding the singular values. Alternatively, the user may specify the model's complexity \texttt{[m, ell, n]} by \texttt{ctol}. If \texttt{ctol} is a scalar, it is used as a threshold \texttt{tol} for rank estimation. Otherwise, \texttt{ctol} should be the vector of integers specifying the model's complexity. 
+
+\subsection*{Signal processing and open-loop control}
+\label{sec:org7632d57}
+This section collects operations on signals by a dynamical system. The operations implemented are: projection of a signal on a system, computing initial conditions for a signal, simulation, and inference of one variable from another. They are special cases of a signal processing problem, called \emph{interpolation and approximation of trajectories} \cite{ddint}.
+
+\subsubsection*{Projection}
+\label{sec:org2c07bba}
+
+The basic operation of projection of a signal \(w\in(\mathbb{R}^q)^T\) on the behavior \(\mathcal{B}|_T\) of a system \(\mathcal{B}\in\calL^q\) is equivalent to computing the \emph{distance from \(w\) to \(\mathcal{B}\)}. The same operation is equivalent to (errors-in-variables) Kalman smoothing \cite{eivkf}: the projection \(\hat w\) is the \emph{smoothed version} of \(w\). The problem is solved by the function \texttt{dist}:
+\begin{minted}[]{matlab}
+[d, wh] = dist(w, B);
+\end{minted}
+The distance \texttt{d} from \(w\) to \(\mathcal{B}|_T\) is zero if and only if \(w\in\mathcal{B}|_T\), so that \texttt{dist} is a robust way of checking if \(w\) is an exact trajectory of \(\mathcal{B}\). (It is used in the implementation of \texttt{w\_in\_B}.) 
+
+\subsubsection*{Initial conditions estimation}
+\label{sec:org062ffe4}
+
+For \({w_\text{d}}\in\mathcal{B}|_T\), there is a corresponding initial conditions. 
+If \(\mathcal{B}\) is defined by an input/state/output representation, the initial conditions can be specified by the initial state \(x_\ini = x(1)\). The initial state \(x_\ini\) corresponding to a trajectory \(w\) can be found with the function \texttt{w2xini}:
+\begin{minted}[]{matlab}
+[xini, e] = w2xini(w, B); check(norm(w - B2w(B, T, xini, w(:, 1:m))) < tol) 
+\end{minted}
+The output argument \texttt{e} is zero when \(w\in\mathcal{B}|_T\) and nonzero otherwise.
+
+The initial conditions can be specified in a representation free way by an initial trajectory \(w_\ini\) of length \(T_{\ini}\geq\invl(\mathcal{B})\). An initial trajectory \(w_\ini\) of corresponding to a given trajectory \(w\) can be computed by the function \texttt{w2wini}:
+\begin{minted}[]{matlab}
+BT = B2BT(B, ell + size(w,1));
+[wini, e] = w2wini(w, BT, ell); check(w_in_B([wini; w], B))
+\end{minted}
+
+\subsubsection*{Simulation}
+\label{sec:orge52bdf3}
+
+The classical simulation problem: given initial conditions and input, find the corresponding output is solved by \texttt{u2y}:
+\begin{minted}[]{matlab}
+yf = u2y(BT, q, w(:, 1:m), wini); check(w(:, m+1:end) - yf)
+\end{minted}
+
+As another example, next, we use \texttt{u2y} in order to find the first \texttt{Tf} samples of the impulse response of the system:
+\begin{minted}[]{matlab}
+Tf = 3; u1 = [[1; zeros(q * Tf - 1, 1)] zeros(q * Tf, m - 1)];
+h1 = u2y(BT, q, u1); h = lsim(B, u1); check(h1 - h < tol)
+\end{minted}
+
+\subsubsection*{Observer}
+\label{sec:org6e21afb}
+
+Consider a linear time-invariant system \(\mathcal{B}\in\calL^q\). The variables \(w\) of \(\mathcal{B}\) are partitioned into given/observed variables \(w_\g\) with dimension \(q_\g\) and missing/to-be-estimated variables \(w_\m\) with dimension \(q_\m = q - q_\g\). Without loss of generality, we assume that \(w = \left[\begin{smallmatrix} w_\g\\ w_m \end{smallmatrix}\right]\). The problem considered is: Given a system \(\mathcal{B}\in\calL^q\) and observed part \(w_\g\) of a trajectory \(w\in\mathcal{B}|_T\), find the missing part \(w_\m\) of \(w\).
+
+The solution is based on the finite-horizon nonparameteric representation of \(\mathcal{B}\). Let \(B_\g\) be the submatrix of \(B_T\) corresponding to \(w_\g\) and \(B_\m\) be the submatrix corresponding to \(w_\m\). Then, there is a \(g\), such that 
+\[w_\g = B_\g g \quad\text{and}\quad w_\m = B_\m g.\]
+Solving for \(g\) the first equation and substituting into the second one, we have the following estimate of \(w_\m\):
+\[\hat w_\m := B_\m B_\g^+ w_\g.\]
+It can be shown that, when \(\text{rank}\,B_\g = \invm(\mathcal{B})T+\invn(\mathcal{B})\), \(\hat w_\m\) is exact, \ie, of \(\hat w_\m=w_\m\). 
+
+Special cases of the observer problem are estimation of the input given the output (which is also a system inversion problem) and estimation of a second input, \eg, disturbance, given the input and the output. 
+
+The solution of the observer problem is implemented in the function \texttt{wgiven2wmissing}. Here is an example verifying the method for disturbance estimation:
+\begin{minted}[]{matlab}
+qg = 2; qm = 2; q = qm + qg; m = 1; p = q - m; n = 5; B = drss(n, p, m);
+T = 20; w = B2w(B, T); wg = w(:, 1:qg); wm = w(:, qg+1:q);
+wmh = wgiven2wmissing(wg, B); check(norm(wm - wmh) / norm(wm) < tol)
+\end{minted}
+
+\subsubsection*{Open-loop control}
+\label{sec:org363a490}
+
+The control problem considered is open-loop linear quadratic tracking: Given a system \(\mathcal{B}\in\calL^q\), to-be-tracked trajectory \(w_\rmr\in(\mathbb{R}^q)^{T_\rmr}\), and tracking criterion 
+\(\norm{e}_v := \norm{v \otimes e},\)
+where \(v\in(\mathbb{R}_+^q)^{T_\rmr}\) and \(\otimes\) is the element product, 
+\[
+\minimize \quad \text{over $\hat w\in(\mathbb{R}^q)^{T_\rmr}$} \quad \norm{w_\rmr - \hat w}_v \quad\St\quad \hat w \in \mathcal{B}|_{T_\rmr}.
+\]
+
+A variation of the problem is to specify initial and final conditions for the control trajectory \(\hat w\) via ``past'' and ``future'' trajectories \(w_\p\in(\mathbb{R}^q)^{T_\p}\) and \(w_\f\in(\mathbb{R}^q)^{T_\f}\):
+\begin{equation}
+\minimize \quad \text{over $\hat w\in(\mathbb{R}^q)^{T_\rmr}$} \quad \norm{w_\rmr - \hat w}_v \quad\St\quad w_\p {w_\text{d}}edge \hat w {w_\text{d}}edge w_\f \in \mathcal{B}|_{T_\p+T_\rmr+T_\f}. 
+\end{equation}
+This allows us to solve optimal state transfer problems, \ie, find a trajectory of the system that achieves optimal transition from the given initial state to the given final state. The solution exists for any initial and final states if and only if the system \(\mathcal{B}\) is controllable and the state transfer is at least \(\invl(\mathcal{B})\)-samples long.
+
+The function in the toolbox solving the open-loop linear quadratic tracking control problem is 
+\begin{minted}[]{matlab}
+wh = lqctr(B, wr, v, wp, wf);
+\end{minted}
+The input parameters \texttt{v}, \texttt{wp}, and \texttt{wf} are optional. The default value of \texttt{v} is \texttt{ones(Tr, q)}, \ie, uniform weights for all variables and all moments of time. If \texttt{wp} and/or \texttt{wf} is not specified, then the corresponding constraints are dropped, \ie, the corresponding initial or final condition is free.
+
+Here is an example of linear quadratic tracking with free initial and final condition:
+\begin{minted}[]{matlab}
+m = 1; p = 1; n = 3; q = m + p; B = drss(n, p, m); 
+Tr = 10; wr = [zeros(Tr, m) ones(Tr, p)]; ell = lag(B);
+v = [1e-2 * ones(Tr, m), ones(Tr, p)]; wh = lqctr(B, wr, v);
+\end{minted}
+
+In order to solve the optimal state transfer problem with specified initial and final states, first we check controllability of the system. The solution is verified by showing that \(w_\p{w_\text{d}}edge \hat w{w_\text{d}}edge w_\f \in \mathcal{B}|_{T_\p+T_\rmr+T_\f}\).
+\begin{minted}[]{matlab}
+if ~isunctr(B)
+  Tr = ell; wr = zeros(Tr, q);
+  wp = B2w(B, ell); wf = zeros(ell, q); 
+  wh = lqctr(B, wr, [], wp, wf);
+  check(w_in_B([wp; wh; wf], B))
+end
+\end{minted}
+
+\subsubsection*{Control as interconnection}
+\label{sec:orgb500ec7}
+
+In the following example the plant \(\mathcal{B}\) is a \(4\)th order single-input single-output system, defined by the transfer function
+\[H(z) =  \frac{0.2826z + 0.5067z^2}{1 - 1.4183z + 1.5894z^2 -1.3161z^3 + 0.8864z^4}.\]
+\begin{minted}[]{matlab}
+Q = [0 0 0 0.28261 0.50666]; P = [1 -1.41833 1.58939 -1.31608 0.88642];
+B = ss(tf(Q, P, -1)); 
+\end{minted}
+The controller \(\mathcal{B}_\text{c}\) is obtained with the function \texttt{h2syn} from the Robust Control Toolbox of Matlab
+\begin{minted}[]{matlab}
+Bc = h2syn(B, 1, 1); 
+\end{minted}
+It leads to the closed-loop system \(\mathcal{B}_\text{cl}\)
+\begin{minted}[]{matlab}
+B_ = ss(B.a, B.b, [B.c; B.c], [B.d; B.d], 1); Bcl = lft(B_, Bc); 
+\end{minted}
+
+The closed-loop system \(\mathcal{B}_\text{cl}\) can be obtained alternatively by projecting on the \(y\)-variable the interconnection of the plant \(\mathcal{B}\) and the control \(\mathcal{B}_\text{c}\) with flipped inputs and outputs:
+\[
+\mathcal{B}_\text{cl} = \Pi_y \big( \mathcal{B} \cap \left[\begin{smallmatrix} 0&1\\ 1&0 \end{smallmatrix}\right] \mathcal{B}_\text{c} \big).
+\]
+\begin{minted}[]{matlab}
+T = 10; BT = B2BT(B, T); BcT = B2BT(Bc, T); 
+Bcl_wT = BTintersect(BT, BT2BT(BcT, q, [2 1])); 
+[Bcl_uT, Bcl_yT] = BT2UYT(Bcl_wT, 1, 1); 
+equal(Bcl, Bcl_yT, q) % -> 1
+\end{minted}
+
+\subsection*{Identification}
+\label{sec:org3491b1d}
+The functions presented in the previous sections of the tutorial use the nonparameteric representation of a linear time-invariant system \(\mathcal{B}\in\calL_c^q\). In this section, the system \(\mathcal{B}\) is implicitly specified by a trajectory \({w_\text{d}}\in\mathcal{B}|_\Td\)
+\begin{minted}[]{matlab}
+Td = 100; wd = B2w(B, Td); 
+\end{minted}
+A necessary and sufficient condition for \({w_\text{d}}\) to define \(\mathcal{B}\in\calL^q_c\) is the \emph{identifiability condition} \cite{identifiability}:
+\begin{equation}
+\text{rank} \, \mathcal{H}_{\invl(\mathcal{B})+1}({w_\text{d}}) = \invm(\mathcal{B})\big(\invl(\mathcal{B})+1\big) + \invn(\mathcal{B}).
+\end{equation}
+This is a \emph{generalized persistency of excitation} condition on the data \({w_\text{d}}\) and requires prior knowledge of the complexity \(\invc(\mathcal{B})\) of the data-generating system \(\mathcal{B}\). 
+
+When the GPE condition is satisfied, \(\mathcal{B}\) can be recovered from the data \({w_\text{d}}\). This is done by finding the \emph{most powerful unfalsified model} \(\mathcal{B}_\mpum({w_\text{d}})\) for \({w_\text{d}}\). \(\mathcal{B}_\mpum({w_\text{d}})\) is the least complicated exact model for \({w_\text{d}}\) in the class of linear time-invariant systems \(\calL^q\). Note that \(\mathcal{B}_\mpum({w_\text{d}})\) is well defined (\ie, it exists and is unique) for any \({w_\text{d}}\in(\mathbb{R}^q)^\Td\), independently of whether or not the GPE condition holds. Also, finding \(\mathcal{B}_\mpum({w_\text{d}})\) from \({w_\text{d}}\) does not require priori knowledge of \(\invc(\mathcal{B})\): \(\mathcal{B}_\mpum({w_\text{d}})\) is a computational construct that has theoretical guarantees to recover the data-generating system under the GPE condition. 
+
+For \(T\geq\invl(\mathcal{B})\), under the stronger generalized persistency of excitation condition 
+\begin{equation}
+\text{rank} \, \mathcal{H}_{T}({w_\text{d}}) = \invm(\mathcal{B})T + \invn(\mathcal{B}),
+\end{equation}
+the data-driven representation holds. A necessary condition for the GPE condition is that the length \(T_\rd\) of \({w_\text{d}}\) must satisfy the lower bound
+\begin{equation}
+T_{\rd} \geq T_{\min} := (m+1)T+n-1,
+\end{equation}
+\begin{minted}[]{matlab}
+Tmin = @(T) (m + 1) * T + n - 1; %% <define-Tmin>
+\end{minted}
+Thus, \texttt{Tmin} quantifies the statement ``\({w_\text{d}}\) is long enough for recovering the data-generating system''.
+
+An analog of \texttt{BT2c} for complexity computation from data \({w_\text{d}}\) is \texttt{c\_mpum}, which computes \(\invc\big(\mathcal{B}_\mpum({w_\text{d}})\big)\) without explicitly identifying \(\mathcal{B}_\mpum({w_\text{d}})\):
+\begin{minted}[]{matlab}
+ch = c_mpum(wd); check(all(ch == [m, lag(B), n]))
+\end{minted}
+The function \texttt{w2BT} computes a basis \(B_T\) for \(\mathcal{B}_\mpum({w_\text{d}})|_T\) from data \({w_\text{d}}\) 
+\begin{minted}[]{matlab}
+BhT = w2BT(wd, T);
+\end{minted}
+Once \(\hat B_T\) is obtained from \({w_\text{d}}\), the non-parametric analysis functions from the previous sections can be used. 
+
+The second parameter of \texttt{w2BT} allows specification of an upper bound \texttt{[m, ell, n]} on the model's complexity, in which case unstructured low-rank approximation is used to enforce the bound. Alternatively, the second parameter of \texttt{w2BT} can be a tolerance \texttt{tol} for the estimation of the complexity by singular values thresholding. Unlike the function \texttt{slra}, which imposes both rank and structure constraints, \texttt{w2BT} doesn't impose shift-invariance structure on \texttt{BT}.
+
+\texttt{c\_mpum} and \texttt{w2BT} detect, respectively, \(\invc\big(\mathcal{B}_\mpum({w_\text{d}})\big)\) and \(\dim\,\mathcal{B}_\mpum({w_\text{d}})\) from the data \({w_\text{d}}\) by rank computation with a user defined tolerance. \danger Alternatively, the user may specify directly a complexity bound. When the complexity is wrongly estimated or misspecified, there may be no \(\hat\mathcal{B}\in\calL^q_{(m,\ell,n)}\) that corresponds to \(\image\, B_T\). 
+
+The following functions compute parametric representations of \(\mathcal{B}_\mpum({w_\text{d}})\) and thus by construction impose both the bounded complexity and LTI structure. A kernel representation of \(\mathcal{B}_\mpum({w_\text{d}})\) is obtained by the function \texttt{w2R}:
+\begin{minted}[]{matlab}
+R = w2R(wd); check(w_in_B(wd, R2BT(R, q, Td)))
+\end{minted}
+and a state-space representation by the function \texttt{w2ss}:
+\begin{minted}[]{matlab}
+Bh = w2ss(wd); check(w_in_B(wd, Bh))
+\end{minted}
+A lag recursive method for computing a \emph{minimal} kernel representation of \(\mathcal{B}_\mpum({w_\text{d}})\) (\cite[Algorithm 1]{identifiability}) is implemented in the function \texttt{mpum}:
+\begin{minted}[]{matlab}
+R_ = mpum(wd); check(w_in_B(wd, R2BT(R_, q, Td)))
+\end{minted}
+
+\texttt{c\_mpum}, \texttt{w2R}, \texttt{w2ss}, and \texttt{mpum} use the same methods as \texttt{BT2c}, \texttt{BT2R}, \texttt{BT2ss}, and \texttt{BT2Rmin}, respectively. \danger The former operate on \(B_T\) while the latter on \(\mathcal{H}_T({w_\text{d}})\). For exact data satisfying the GPE condition, \(\image\,B_T=\image\,\mathcal{H}_T({w_\text{d}})\) and the functions yield the same result. For inexact data, an approximation of \(\image\,\mathcal{H}_\Td({w_\text{d}})\) by a low-dimensional linear time-invariant structured subspace is needed. This is a nontrivial operation that makes system identification problems harder than corresponding analysis problems.
+\end{document}

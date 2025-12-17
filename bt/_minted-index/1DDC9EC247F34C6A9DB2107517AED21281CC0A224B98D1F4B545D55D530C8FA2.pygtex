@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{[}\PYG{n}{ch}\PYG{p}{,} \PYG{n}{mh}\PYG{p}{,} \PYG{n}{ellh}\PYG{p}{,} \PYG{n}{nh}\PYG{p}{]} \PYG{p}{=} \PYG{n}{BT2c}\PYG{p}{(}\PYG{n}{BT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{);} \PYG{n}{check}\PYG{p}{(}\PYG{n}{all}\PYG{p}{([}\PYG{n}{mh} \PYG{n}{nh}\PYG{p}{]} \PYG{o}{==} \PYG{p}{[}\PYG{n}{m} \PYG{n}{n}\PYG{p}{]))}
+\end{Verbatim}

@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{BT\PYGZus{}} \PYG{p}{=} \PYG{n}{R2BT}\PYG{p}{(}\PYG{n}{B2R}\PYG{p}{(}\PYG{n}{B}\PYG{p}{),} \PYG{n}{q}\PYG{p}{,} \PYG{n}{T}\PYG{p}{);} \PYG{n}{check}\PYG{p}{(}\PYG{n}{equal}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,} \PYG{n}{BT\PYGZus{}}\PYG{p}{))}
+\PYG{n}{BT\PYGZus{}} \PYG{p}{=} \PYG{n}{ss2BT}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,} \PYG{n}{T}\PYG{p}{);}        \PYG{n}{check}\PYG{p}{(}\PYG{n}{equal}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,} \PYG{n}{BT\PYGZus{}}\PYG{p}{))}
+\end{Verbatim}

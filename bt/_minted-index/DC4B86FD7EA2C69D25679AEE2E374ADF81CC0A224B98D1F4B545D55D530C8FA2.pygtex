@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Bh} \PYG{p}{=} \PYG{n}{w2ss}\PYG{p}{(}\PYG{n}{wd}\PYG{p}{);} \PYG{n}{check}\PYG{p}{(}\PYG{n}{w\PYGZus{}in\PYGZus{}B}\PYG{p}{(}\PYG{n}{wd}\PYG{p}{,} \PYG{n}{Bh}\PYG{p}{))}
+\end{Verbatim}

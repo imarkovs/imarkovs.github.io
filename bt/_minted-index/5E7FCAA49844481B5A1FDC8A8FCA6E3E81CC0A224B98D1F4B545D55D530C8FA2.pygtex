@@ -1,0 +1,4 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{p}{[}\PYG{n}{Hinf}\PYG{p}{,} \PYG{o}{\PYGZti{}}\PYG{p}{,} \PYG{n}{uinf}\PYG{p}{]} \PYG{p}{=} \PYG{n}{BT2Hinf}\PYG{p}{(}\PYG{n}{BT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{);} \PYG{n}{C} \PYG{p}{=} \PYG{n}{convm}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,} \PYG{n}{T}\PYG{p}{);}
+\PYG{n}{check}\PYG{p}{(}\PYG{n+nb}{abs}\PYG{p}{(}\PYG{n}{Hinf} \PYG{o}{\PYGZhy{}} \PYG{n}{norm}\PYG{p}{(}\PYG{n}{C}\PYG{p}{))} \PYG{o}{/} \PYG{n}{norm}\PYG{p}{(}\PYG{n}{C}\PYG{p}{)} \PYG{o}{\PYGZlt{}} \PYG{n}{tol}\PYG{p}{)}
+\end{Verbatim}

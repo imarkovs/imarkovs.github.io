@@ -1,0 +1,6 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Y0} \PYG{p}{=} \PYG{n}{BT2Y0}\PYG{p}{(}\PYG{n}{BT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{);}
+\PYG{n}{U0} \PYG{p}{=} \PYG{n}{BT2U0}\PYG{p}{(}\PYG{n}{BT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{);}
+\PYG{n}{B0} \PYG{p}{=} \PYG{n}{BT2B0}\PYG{p}{(}\PYG{n}{BT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{);}
+\PYG{n}{BC} \PYG{p}{=} \PYG{n}{BT2BC}\PYG{p}{(}\PYG{n}{BT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{);}
+\end{Verbatim}

@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{ell} \PYG{p}{=} \PYG{n}{lag}\PYG{p}{(}\PYG{n}{B}\PYG{p}{);} \PYG{n}{check}\PYG{p}{(}\PYG{n}{ellh} \PYG{o}{==} \PYG{n}{ell}\PYG{p}{)}
+\end{Verbatim}

@@ -4,6 +4,8 @@
 
 The computational algorithms described in my [publications.html publications] are implemented and the software is available together with the pdf files of the papers. This makes the reported simulation results [http://reproducibleresearch.net reproducible]. Since 2008, I've been using the [http://www.literateprogramming.com/ literate programming] style and the [http://www.cs.tufts.edu/~nr/noweb/ noweb system] for literate programming. The perfect reproducible research solution for me is [http://orgmode.org/worg/org-contrib/babel/ org-babel], which combines literate programming with noweb and code evaluation within the document, see [talks/tools-seminar-org-mode.pdf this presentation].
 
+== [http://slra.github.io/bt The Behavioral Toolbox]
+
 == [http://slra.github.io/software.html Software for structured low-rank approximation]
 
 == Software prior to 2012
