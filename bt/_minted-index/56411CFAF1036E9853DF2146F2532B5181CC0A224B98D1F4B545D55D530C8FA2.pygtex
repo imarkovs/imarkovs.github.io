@@ -1,3 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{B\PYGZus{}} \PYG{p}{=} \PYG{n}{ss}\PYG{p}{(}\PYG{n}{B}\PYG{p}{.}\PYG{n}{a}\PYG{p}{,} \PYG{n}{B}\PYG{p}{.}\PYG{n}{b}\PYG{p}{,} \PYG{p}{[}\PYG{n}{B}\PYG{p}{.}\PYG{n}{c}\PYG{p}{;} \PYG{n}{B}\PYG{p}{.}\PYG{n}{c}\PYG{p}{],} \PYG{p}{[}\PYG{n}{B}\PYG{p}{.}\PYG{n}{d}\PYG{p}{;} \PYG{n}{B}\PYG{p}{.}\PYG{n}{d}\PYG{p}{],} \PYG{l+m+mi}{1}\PYG{p}{);} \PYG{n}{Bcl} \PYG{p}{=} \PYG{n}{lft}\PYG{p}{(}\PYG{n}{B\PYGZus{}}\PYG{p}{,} \PYG{n}{Bc}\PYG{p}{);}
-\end{Verbatim}

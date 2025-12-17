@@ -1,6 +1,0 @@
-\begin{Verbatim}[commandchars=\\\{\}]
-\PYG{n}{T} \PYG{p}{=} \PYG{l+m+mi}{10}\PYG{p}{;} \PYG{n}{BT} \PYG{p}{=} \PYG{n}{B2BT}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,} \PYG{n}{T}\PYG{p}{);} \PYG{n}{BcT} \PYG{p}{=} \PYG{n}{B2BT}\PYG{p}{(}\PYG{n}{Bc}\PYG{p}{,} \PYG{n}{T}\PYG{p}{);}
-\PYG{n}{Bcl\PYGZus{}wT} \PYG{p}{=} \PYG{n}{BTintersect}\PYG{p}{(}\PYG{n}{BT}\PYG{p}{,} \PYG{n}{BT2BT}\PYG{p}{(}\PYG{n}{BcT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{,} \PYG{p}{[}\PYG{l+m+mi}{2} \PYG{l+m+mi}{1}\PYG{p}{]));}
-\PYG{p}{[}\PYG{n}{Bcl\PYGZus{}uT}\PYG{p}{,} \PYG{n}{Bcl\PYGZus{}yT}\PYG{p}{]} \PYG{p}{=} \PYG{n}{BT2UYT}\PYG{p}{(}\PYG{n}{Bcl\PYGZus{}wT}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{1}\PYG{p}{);}
-\PYG{n}{equal}\PYG{p}{(}\PYG{n}{Bcl}\PYG{p}{,} \PYG{n}{Bcl\PYGZus{}yT}\PYG{p}{,} \PYG{n}{q}\PYG{p}{)} \PYG{c}{\PYGZpc{} \PYGZhy{}\PYGZgt{} 1}
-\end{Verbatim}
