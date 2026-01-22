@@ -1,0 +1,7 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{m} \PYG{p}{=} \PYG{l+m+mi}{3}\PYG{p}{;} \PYG{n}{p} \PYG{p}{=} \PYG{l+m+mi}{4}\PYG{p}{;} \PYG{n}{n} \PYG{p}{=} \PYG{l+m+mi}{5}\PYG{p}{;} \PYG{n}{Td} \PYG{p}{=} \PYG{l+m+mi}{100}\PYG{p}{;}  \PYG{c}{\PYGZpc{} simulation parameters}
+\PYG{n}{B} \PYG{p}{=} \PYG{n}{drss}\PYG{p}{(}\PYG{n}{n}\PYG{p}{,} \PYG{n}{p}\PYG{p}{,} \PYG{n}{m}\PYG{p}{);}              \PYG{c}{\PYGZpc{} random stable LTI system}
+\PYG{n}{wd} \PYG{p}{=} \PYG{n}{B2w}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,} \PYG{n}{Td}\PYG{p}{);}                \PYG{c}{\PYGZpc{} random data trajectory}
+\PYG{p}{[}\PYG{n}{c}\PYG{p}{,} \PYG{n}{mh}\PYG{p}{,} \PYG{n}{ell}\PYG{p}{,} \PYG{n}{nh}\PYG{p}{]} \PYG{p}{=} \PYG{n}{w2c}\PYG{p}{(}\PYG{n}{wd}\PYG{p}{);}     \PYG{c}{\PYGZpc{} direct data\PYGZhy{}driven computation}
+\PYG{p}{[}\PYG{n}{m} \PYG{o}{==} \PYG{n}{mh}\PYG{p}{,} \PYG{n}{n} \PYG{o}{==} \PYG{n}{nh}\PYG{p}{]} \PYG{c}{\PYGZpc{} \PYGZhy{}\PYGZgt{} [1 1]   \PYGZpc{} check if the computed result is correct}
+\end{Verbatim}

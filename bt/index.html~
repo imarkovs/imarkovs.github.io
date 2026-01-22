@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-22 Thu 15:29 -->
+<!-- 2026-01-22 Thu 15:27 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Behavioral Toolbox</title>
@@ -286,19 +286,19 @@ I. Markovsky. <a href="https://imarkovs.github.io/publications/bt-l4dc.pdf">The 
 </pre>
 </blockquote>
 
-<div id="outline-container-org8bfce71" class="outline-2">
-<h2 id="org8bfce71">Examples</h2>
-<div class="outline-text-2" id="text-org8bfce71">
+<div id="outline-container-org5ff1e72" class="outline-2">
+<h2 id="org5ff1e72">Examples</h2>
+<div class="outline-text-2" id="text-org5ff1e72">
 <p>
 In the examples shown below, the given data is a trajectory of an underlying data-generating  system. This trajectory is not partitioned into an input signal and an output signal and is assumed that it fully specifies the system. The goal then is to find a property of the (unknown) data-generating system or solve a problem involving the system directly from the data. 
 </p>
 </div>
 
-<div id="outline-container-org3a1edb9" class="outline-3">
-<h3 id="org3a1edb9">Finding the number of inputs and the order</h3>
-<div class="outline-text-3" id="text-org3a1edb9">
+<div id="outline-container-org677e88a" class="outline-3">
+<h3 id="org677e88a">Finding the number of inputs and the order</h3>
+<div class="outline-text-3" id="text-org677e88a">
 <p>
-The number of inputs and the order are properties of the system. Their importance is due to the fact that they determine the system&rsquo;s complexity: The more variables are inputs and the higher the order is, the more complex the system is. 
+The number of inputs and the order are properties of the system. Theie importance is due to the fact that they determine the system&rsquo;s complexity: The more variables are inputs and the higher the order is, the more complex the system is. 
 </p>
 
 <p>
@@ -318,9 +318,9 @@ A sufficiently long random trajectory almost surely fully specifies the system. 
 </div>
 </div>
 
-<div id="outline-container-orged82224" class="outline-3">
-<h3 id="orged82224">Finding an input/output partitioning of the variables</h3>
-<div class="outline-text-3" id="text-orged82224">
+<div id="outline-container-orgd2dfd3e" class="outline-3">
+<h3 id="orgd2dfd3e">Finding an input/output partitioning of the variables</h3>
+<div class="outline-text-3" id="text-orgd2dfd3e">
 <p>
 In general, a system with inputs (called an open system) admits multiple input/output partitionings. The function <code>BT2IO</code> finds all valid input/output partitionings for a system specified by an non-parametric representation of the finite-horizon behavior. This representation is the main one used in the toolbox and can be computed from given data or from another representation of the system. 
 </p>
