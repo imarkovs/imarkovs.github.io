@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{B} \PYG{o}{==} \PYG{n}{Bp} \PYG{c}{\PYGZpc{} \PYGZhy{}\PYGZgt{} Operator \PYGZsq{}==\PYGZsq{} is not supported for operands of type \PYGZsq{}ss\PYGZsq{}.}
+\end{Verbatim}

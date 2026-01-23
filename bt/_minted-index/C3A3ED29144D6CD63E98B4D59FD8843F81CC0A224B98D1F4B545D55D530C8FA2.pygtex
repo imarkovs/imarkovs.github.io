@@ -1,0 +1,3 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{n}{Bp} \PYG{p}{=} \PYG{n}{ss2ss}\PYG{p}{(}\PYG{n}{B}\PYG{p}{,} \PYG{n+nb}{rand}\PYG{p}{(}\PYG{n}{n}\PYG{p}{));}
+\end{Verbatim}

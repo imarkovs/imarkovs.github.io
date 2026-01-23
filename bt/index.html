@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-22 Thu 15:29 -->
+<!-- 2026-01-23 Fri 17:31 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Behavioral Toolbox</title>
@@ -266,7 +266,7 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">The Behavioral Toolbox</h1>
 <p>
-The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the <a href="./bt.tar">archive file of the functions</a>. A tutorial for its usage (and implementation details) are given in <a href="./bt.pdf">this document</a>. In order to cite it, please refer to:
+The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the <a href="./bt.tar">archive file of the functions</a>. A tutorial for its usage is given in Section 3 of the <a href="./bt.pdf">documentation</a>. In order to cite it, please use:
 </p>
 <blockquote>
 <p>
@@ -286,76 +286,100 @@ I. Markovsky. <a href="https://imarkovs.github.io/publications/bt-l4dc.pdf">The 
 </pre>
 </blockquote>
 
-<div id="outline-container-org8bfce71" class="outline-2">
-<h2 id="org8bfce71">Examples</h2>
-<div class="outline-text-2" id="text-org8bfce71">
+<div id="outline-container-orgd525ace" class="outline-2">
+<h2 id="orgd525ace">Examples</h2>
+<div class="outline-text-2" id="text-orgd525ace">
 <p>
-In the examples shown below, the given data is a trajectory of an underlying data-generating  system. This trajectory is not partitioned into an input signal and an output signal and is assumed that it fully specifies the system. The goal then is to find a property of the (unknown) data-generating system or solve a problem involving the system directly from the data. 
+In the examples shown below, a trajectory of a discrete-time linear time-invariant system---<i>the data</i>&#x2014;is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the <a href="./bt.pdf">documentation</a>).
 </p>
 </div>
 
-<div id="outline-container-org3a1edb9" class="outline-3">
-<h3 id="org3a1edb9">Finding the number of inputs and the order</h3>
-<div class="outline-text-3" id="text-org3a1edb9">
+<div id="outline-container-orgb3c3621" class="outline-3">
+<h3 id="orgb3c3621">Finding the number of inputs</h3>
+<div class="outline-text-3" id="text-orgb3c3621">
 <p>
-The number of inputs and the order are properties of the system. Their importance is due to the fact that they determine the system&rsquo;s complexity: The more variables are inputs and the higher the order is, the more complex the system is. 
+The data is a vector time series containing the observed variables of the system. Since these variables are not partitioned into inputs and outputs, which variables are inputs is not known. Also, how many variables are inputs is not known. It is possible however to fining the number of inputs from the given data. The function of the toolbox that does this is <code>w2c</code>. In addition to finding the number of inputs \(m\), it finds also the order \(n\) and the lag \(\ell\) of the underlying data-generating system. 
 </p>
 
 <p>
-The function <code>w2c</code> of the toolbox computes the number of inputs and the order directly from data. Here is an example: 
+Here is an example:
 </p>
+<ul class="org-ul">
+<li>specify the simulation parameters&#x2014;number of variables <code>q</code>, number of inputs <code>m</code>, lag <code>ell</code>, order <code>n</code>, and number of data samples <code>Td</code></li>
+</ul>
 <div class="org-src-container">
-<pre class="src src-matlab">m = 1; p = 2; n = 3; Td = 100;  <span style="color: #ee0000;">% simulation parameters</span>
-B = drss(n, p, m);              <span style="color: #ee0000;">% random stable LTI system</span>
-wd = B2w(B, Td);                <span style="color: #ee0000;">% random data trajectory </span>
-[c, mh, ell, nh] = w2c(wd);     <span style="color: #ee0000;">% direct data-driven computation</span>
-[m <span style="color: #98fb98;">==</span> mh, n <span style="color: #98fb98;">==</span> nh] <span style="color: #ee0000;">% -&gt; [1 1]   % check if the computed result is correct</span>
+<pre class="src src-matlab">q = 3; m = 1; ell = 2; n = 3; Td = 100; 
+</pre>
+</div>
+<ul class="org-ul">
+<li>generate a random linear time-invariant system with the specified parameters</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-matlab">B = randB(q, [m, ell, n]); 
+</pre>
+</div>
+<ul class="org-ul">
+<li>generate a random trajectory of the system with the specified number of samples</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-matlab">wd = B2w(B, Td); 
+</pre>
+</div>
+<ul class="org-ul">
+<li>call the <code>w2c</code> function</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-matlab">[<span style="color: #98fb98;">~</span>, mh, ellh, nh] = w2c(wd);
+</pre>
+</div>
+<ul class="org-ul">
+<li>check if the computed result is correct</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-matlab">[m <span style="color: #98fb98;">==</span> mh, ell <span style="color: #98fb98;">==</span> ellh, n <span style="color: #98fb98;">==</span> nh] <span style="color: #ee0000;">% -&gt; [1 1 1]  </span>
+</pre>
+</div>
+
+<p>
+<i>But what about the assumption?</i> A &ldquo;sufficiently long&rdquo; random trajectory almost surely fully specifies the system. Quantifying what &ldquo;sufficiently long&rdquo; means, however, requires knowledge of \(m\) and \(n\). There is no way out of the dilemma, either we have to assume that the data fully specifies the system, or we have to know \(m\) and \(n\), in which case we can check the condition.
+</p>
+
+<p>
+<i>Exercise:</i> Change the simulation parameters and find out empirically when the data is &ldquo;sufficiently long&rdquo;.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org46ea7c1" class="outline-3">
+<h3 id="org46ea7c1">Finding an input/output partitioning of the variables</h3>
+<div class="outline-text-3" id="text-org46ea7c1">
+<p>
+We&rsquo;ve seen that we can find the number of inputs \(m\) from the data. Can we find also <i>the</i> input variables \(u\)? No, in general, we can not do this because different sets of variables can act as inputs. The function of the toolbox that finds all possibilities of partitioning the variables into inputs and outputs is <code>BT2IO</code>. 
+</p>
+
+<p>
+<code>BT2IO</code> (as well as other functions of the toolbox) takes as an input argument a matrix \(B_T\) that can be obtained from the data using <code>w2BT</code>. \(B_T\) defines a non-parametric representation of the finite-horizon behavior \(\mathcal{B}|_T\). The horizon \(T\) is a problem dependent. For <code>BT2IO</code> the required horizon is \(T = 2\ell+1\).
+</p>
+
+<p>
+Continuing the example above, 
+</p>
+<ul class="org-ul">
+<li>first, we obtain the matrix \(B_T\):</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-matlab">T = 2 <span style="color: #98fb98;">*</span> ell <span style="color: #98fb98;">+</span> 1; BT = w2BT(wd, T, [m ell n]);
+</pre>
+</div>
+<ul class="org-ul">
+<li>then, we call <code>BT2IO</code>:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-matlab">IO = BT2IO(BT, q)
 </pre>
 </div>
 <p>
-A sufficiently long random trajectory almost surely fully specifies the system. Quantifying what sufficiently long means, however, requires knowledge of the model&rsquo;s complexity (which is precisely what we aim to compute in this case). There is no way out of the dilemma: We either have to assume that the data fully specifies the system, or else, we have to know the complexity so that we can check whether the data fully specifies the system.
-</p>
-</div>
-</div>
-
-<div id="outline-container-orged82224" class="outline-3">
-<h3 id="orged82224">Finding an input/output partitioning of the variables</h3>
-<div class="outline-text-3" id="text-orged82224">
-<p>
-In general, a system with inputs (called an open system) admits multiple input/output partitionings. The function <code>BT2IO</code> finds all valid input/output partitionings for a system specified by an non-parametric representation of the finite-horizon behavior. This representation is the main one used in the toolbox and can be computed from given data or from another representation of the system. 
-</p>
-
-<p>
-Continuing the example above, first, we obtain the non-parametric representation of the data-generating system from the given data using the function <code>w2BT</code>: 
-</p>
-<div class="org-src-container">
-<pre class="src src-matlab">T = 2 <span style="color: #98fb98;">*</span> ell <span style="color: #98fb98;">+</span> 1; BT = w2BT(wd, T, c);
-</pre>
-</div>
-<p>
-The horizon \(T\) should be chosen &ldquo;sufficiently&rdquo; large for the problem at hand. For find input/output partitionings of the variables, the horizon should be at least \(2\ell+1\), where \(\ell\) is the lag the system&#x2014;another property of the system related to its complexity. Since the lag was already computed by the function <code>w2c</code> in the previous example, we reuse it here. 
-</p>
-
-<p>
-Once the representation <code>BT</code> is computed, we call <code>BT2IO</code> for finding all valid input/output partitionings of the variables:
-</p>
-<div class="org-src-container">
-<pre class="src src-matlab">IO = BT2IO(BT, m <span style="color: #98fb98;">+</span> p)
-</pre>
-</div>
-<p>
-Its output <code>IO</code> is a matrix, the rows of which indicate the valid input/output partitionings as follows: has as first \(m\) variables <code>IO(:, 1:m)</code> indicate the indeces of the input variables and the remaining \(p\) variables <code>IO(:, m+1:end)</code> indicate the indeces of the output variables. For example,
-</p>
-<div class="org-src-container">
-<pre class="src src-matlab">ud = wd(<span style="color: #98fb98;">:</span>, IO(1, 1<span style="color: #98fb98;">:</span>m)); yd = wd(<span style="color: #98fb98;">:</span>, IO(1, m<span style="color: #98fb98;">+</span>1<span style="color: #98fb98;">:</span>end)); 
-</pre>
-</div>
-<p>
-is the first input/output partitioning obtained.
-</p>
-
-<p>
-For a random example with \(m=1\) inputs and \(p=2\) outputs, a possible output may be:
+Its output 
 </p>
 <div class="org-src-container">
 <pre class="src src-matlab">IO =
@@ -364,10 +388,99 @@ For a random example with \(m=1\) inputs and \(p=2\) outputs, a possible output 
      1     3     2
      2     1     3
      2     3     1
+     3     1     2
+     3     2     1
 </pre>
 </div>
 <p>
-which shows that variables 1 and 2 but not 3 can be inputs.
+is a matrix, the rows of which indicate the possible input/output partitionings, e.g., 
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">ud = wd(<span style="color: #98fb98;">:</span>, IO(1, 1<span style="color: #98fb98;">:</span>m)); yd = ud = wd(<span style="color: #98fb98;">:</span>, IO(<span style="color: #98fb98;">:</span>, m<span style="color: #98fb98;">+</span>1<span style="color: #98fb98;">:</span>end));
+</pre>
+</div>
+<p>
+is the first input/output partitioning.
+</p>
+
+<p>
+<i>Exercise:</i> In the example above, all partitionings of the variables are valid input/output partitionings. Create an example where this is not the case.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org46307d4" class="outline-3">
+<h3 id="org46307d4">Distance of a signal to a system</h3>
+<div class="outline-text-3" id="text-org46307d4">
+<p>
+A useful operation is computing distance between data and system. In particular, it allows us to check if a given signal is a valid trajectory of the system. In case it is not, the distance computation returns the best approximation of this signal by a trajectory of the system. This operation is called smoothing. 
+</p>
+
+<p>
+The distance computation is implemented in the function <code>dist</code>. As a specification of the system, it accepts both <code>lti</code> object as well as (\(B_T\)), in which case the horizon \(T\) should be at least the length of the signal.
+</p>
+
+<p>
+Continuing the example above, first, we generate a random trajectory and compute its distance to the system:
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">T = 100; w0 = B2w(B, T); dist(w0, B) <span style="color: #ee0000;">% -&gt; 0</span>
+</pre>
+</div>
+<p>
+Then, we add a perturbation and compute its distance to the system:
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">w = w0 <span style="color: #98fb98;">+</span> randn(size(w0)); [d, wh] = dist(w, B);
+</pre>
+</div>
+<p>
+The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">[norm(w0 <span style="color: #98fb98;">-</span> wh) norm(w0 <span style="color: #98fb98;">-</span> w)]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8ae6d9c" class="outline-3">
+<h3 id="org8ae6d9c">Distance between systems</h3>
+<div class="outline-text-3" id="text-org8ae6d9c">
+<p>
+How to check if two systems are equal. For example, by construction the system
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">Bp = ss2ss(B, rand(n));
+</pre>
+</div>
+<p>
+is equal to <code>B</code>, however, the Control Toolbox of matlab does not allow us to infer this by 
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">B <span style="color: #98fb98;">==</span> Bp <span style="color: #ee0000;">% -&gt; Operator '==' is not supported for operands of type 'ss'.</span>
+</pre>
+</div>
+<p>
+Instead, we can check the norm of difference:
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">norm(Bp <span style="color: #98fb98;">-</span> B) <span style="color: #ee0000;">% -&gt; 0</span>
+</pre>
+</div>
+<p>
+This, however, is restricted to stable systems only. 
+</p>
+
+<p>
+The function <code>Bdist</code> of the toolbox computes distance between systems defined as the angle between the corresponding behaviors:
+</p>
+<div class="org-src-container">
+<pre class="src src-matlab">Bdist(Bp, B) <span style="color: #ee0000;">% -&gt; 0</span>
+</pre>
+</div>
+<p>
+This distance measure is not restricted to stable systems.
 </p>
 </div>
 </div>

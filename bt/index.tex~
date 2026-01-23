@@ -1,4 +1,4 @@
-% Created 2026-01-22 Thu 15:21
+% Created 2026-01-22 Thu 15:27
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
@@ -43,12 +43,12 @@ I. Markovsky. \href{https://imarkovs.github.io/publications/bt-l4dc.pdf}{The beh
 \end{quote}
 
 \section*{Examples}
-\label{sec:org3d26de3}
+\label{sec:org4db5226}
 
 In the examples shown below, the given data is a trajectory of an underlying data-generating  system. This trajectory is not partitioned into an input signal and an output signal and is assumed that it fully specifies the system. The goal then is to find a property of the (unknown) data-generating system or solve a problem involving the system directly from the data. 
 
 \subsection*{Finding the number of inputs and the order}
-\label{sec:org3b64d96}
+\label{sec:orgfa72a18}
 
 The number of inputs and the order are properties of the system. Theie importance is due to the fact that they determine the system's complexity: The more variables are inputs and the higher the order is, the more complex the system is. 
 
@@ -60,18 +60,18 @@ wd = B2w(B, Td);                % random data trajectory
 [c, mh, ell, nh] = w2c(wd);     % direct data-driven computation
 [m == mh, n == nh] % -> [1 1]   % check if the computed result is correct
 \end{minted}
-A sufficiently long random trajectory almost surely fully specifies the system. Quantifying what sufficiently long means, however, requires knowledge of the model's complexity (which is precisely what we aim to compute in this case). There is no way out of the dilemma: We either have to assume that the data fully specifies the system or else we have to assume that the complexity is given and then we can check whether the data fully specifies the system.
+A sufficiently long random trajectory almost surely fully specifies the system. Quantifying what sufficiently long means, however, requires knowledge of the model's complexity (which is precisely what we aim to compute in this case). There is no way out of the dilemma: We either have to assume that the data fully specifies the system, or else, we have to know the complexity so that we can check whether the data fully specifies the system.
 
 \subsection*{Finding an input/output partitioning of the variables}
-\label{sec:org1aaf22a}
+\label{sec:org5cf279d}
 
-In general, a system with inputs (called an open system) admits multiple input/output partitionings. The function \texttt{BT2IO} finds all possible input/output partitionings. 
+In general, a system with inputs (called an open system) admits multiple input/output partitionings. The function \texttt{BT2IO} finds all valid input/output partitionings for a system specified by an non-parametric representation of the finite-horizon behavior. This representation is the main one used in the toolbox and can be computed from given data or from another representation of the system. 
 
-Continuing the example above, first, using the function \texttt{w2BT}, we obtain a non-parametric representation of the data-generating system from the given data:
+Continuing the example above, first, we obtain the non-parametric representation of the data-generating system from the given data using the function \texttt{w2BT}: 
 \begin{minted}[]{matlab}
 T = 2 * ell + 1; BT = w2BT(wd, T, c);
 \end{minted}
-The finite-horizon non-parametric representation is the main one used in the toolbox. The horizon \(T\) should be chosen ``sufficiently'' large for solving the problem at hand. For find input/output partitionings of the variables, it should be at least \(2\ell+1\), where \(\ell\) is the lag the system---another property of the system related to its complexity. Since the lag was already computed by using the function \texttt{w2c} in the previous example, we reuse it here. 
+The horizon \(T\) should be chosen ``sufficiently'' large for the problem at hand. For find input/output partitionings of the variables, the horizon should be at least \(2\ell+1\), where \(\ell\) is the lag the system---another property of the system related to its complexity. Since the lag was already computed by the function \texttt{w2c} in the previous example, we reuse it here. 
 
 Once the representation \texttt{BT} is computed, we call \texttt{BT2IO} for finding all valid input/output partitionings of the variables:
 \begin{minted}[]{matlab}
@@ -93,15 +93,4 @@ IO =
      2     3     1
 \end{minted}
 which shows that variables 1 and 2 but not 3 can be inputs.
-
-\subsection*{Distance of a signal to a system}
-\label{sec:org5f5cbf2}
-
-
-
-\subsection*{Distance between systems}
-\label{sec:orgf759500}
-
-\subsection*{Distance of a signal to being a trajectory of a bounded complexity system}
-\label{sec:org89b191c}
 \end{document}
