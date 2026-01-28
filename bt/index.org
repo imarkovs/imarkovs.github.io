@@ -3,7 +3,7 @@
 # #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="jemdoc.css" />
 # #+HTML_MATHJAX: mathml:t path:"/home/im/MathJax/MathJax.js"
 
-The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the [[./bt.tar][archive file of the functions]]. A tutorial for its usage is given in Section 3 of the [[./bt.pdf][documentation]]. In order to cite it, please use:
+The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the [[./bt.tar][archive file]]. A tutorial is given in Section 3 of the [[./bt.pdf][documentation]]. In order to cite it, please use:
 #+begin_quote
 I. Markovsky. [[https://imarkovs.github.io/publications/bt-l4dc.pdf][The behavioral toolbox]]. In Proc. of Machine Learning Research, volume 242, pages 130--141, 2024.
 #+end_quote
@@ -22,7 +22,7 @@ I. Markovsky. [[https://imarkovs.github.io/publications/bt-l4dc.pdf][The behavio
 
 * Examples
 
-In the examples shown below, a trajectory of a discrete-time linear time-invariant system---/the data/---is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the [[./bt.pdf][documentation]]).
+In the examples shown below, a trajectory of a discrete-time linear time-invariant system --- /the data/ --- is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the [[./bt.pdf][documentation]]).
 
 ** Finding the number of inputs
 # Their importance is due to the fact that they determine the system's complexity: The more variables are inputs and the higher the order is, the more complex the system is. 
@@ -95,30 +95,30 @@ is the first input/output partitioning.
 
 ** Distance of a signal to a system
 
-A useful operation is computing distance between data and system. In particular, it allows us to check if a given signal is a valid trajectory of the system. In case it is not, the distance computation returns the best approximation of this signal by a trajectory of the system. This operation is called smoothing. 
+The distance of a signal $w$ to a system $\mathcal{B}$ has the familiar definition and geometrical interpretation: $\min_{\hat w \in \mathcal{B}} \| w - \hat w \|$. It's computation is implemented in the function =dist=. As a specification of $\mathcal{B}$, =dist= accepts an =lti= object as well as the finite-horizon representation $B_T$ with horizon $T$ the length of $w$.
 
-The distance computation is implemented in the function =dist=. As a specification of the system, it accepts both =lti= object as well as ($B_T$), in which case the horizon $T$ should be at least the length of the signal.
+Finding the distance of a signal to a system is useful in particular for checking if the signal is a valid trajectory of the system:
+#+begin_src matlab
+dist(wd, B) % -> 0
+#+end_src
 
-Continuing the example above, first, we generate a random trajectory and compute its distance to the system:
+The function =dist= returns also the projection $\hat w$ of $w$ in $\mathcal{B}$. The signal $\hat w$ is useful because it the best approximation of $w$ by a trajectory of the system. It is called the smoothed signal. Here is an example.
+- We add a perturbation on the trajectory and compute its distance to the system:
 #+begin_src matlab :tangle examples.m
-T = 100; w0 = B2w(B, T); dist(w0, B) % -> 0
+wd_noisy = wd + randn(size(wd)); [d, wdh] = dist(wd_noisy, B);
 #+end_src
-Then, we add a perturbation and compute its distance to the system:
+- The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:
 #+begin_src matlab :tangle examples.m
-w = w0 + randn(size(w0)); [d, wh] = dist(w, B);
-#+end_src
-The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:
-#+begin_src matlab :tangle examples.m
-[norm(w0 - wh) norm(w0 - w)]
+[norm(wd - wdh) norm(wd - wd_noisy)] / norm(wd)
 #+end_src
 
 ** Distance between systems
 
-How to check if two systems are equal. For example, by construction the system
+How to check if two systems are equal? By construction the system 
 #+begin_src matlab
 Bp = ss2ss(B, rand(n));
 #+end_src
-is equal to =B=, however, the Control Toolbox of matlab does not allow us to infer this by 
+is equal to =B=. However, the Control Systems Toolbox of Matlab does not allow us to infer it by 
 #+begin_src matlab
 B == Bp % -> Operator '==' is not supported for operands of type 'ss'.
 #+end_src
@@ -126,13 +126,13 @@ Instead, we can check the norm of difference:
 #+begin_src matlab
 norm(Bp - B) % -> 0
 #+end_src
-This, however, is restricted to stable systems only. 
+The norm computation, however, is restricted to stable systems. 
 
-The function =Bdist= of the toolbox computes distance between systems defined as the angle between the corresponding behaviors:
+The function =Bdist= computes a distance between systems defined as the angle between the corresponding behaviors:
 #+begin_src matlab
 Bdist(Bp, B) % -> 0
 #+end_src
-This distance measure is not restricted to stable systems.
+This distance measure is applicable also to stable systems.
 
 ** Distance of a signal to being a trajectory of a bounded complexity system :NP:
 

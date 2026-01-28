@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-23 Fri 17:31 -->
+<!-- 2026-01-26 Mon 08:58 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Behavioral Toolbox</title>
@@ -266,7 +266,7 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">The Behavioral Toolbox</h1>
 <p>
-The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the <a href="./bt.tar">archive file of the functions</a>. A tutorial for its usage is given in Section 3 of the <a href="./bt.pdf">documentation</a>. In order to cite it, please use:
+The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the <a href="./bt.tar">archive file</a>. A tutorial for its usage is given in Section 3 of the <a href="./bt.pdf">documentation</a>. In order to cite it, please use:
 </p>
 <blockquote>
 <p>
@@ -286,17 +286,17 @@ I. Markovsky. <a href="https://imarkovs.github.io/publications/bt-l4dc.pdf">The 
 </pre>
 </blockquote>
 
-<div id="outline-container-orgd525ace" class="outline-2">
-<h2 id="orgd525ace">Examples</h2>
-<div class="outline-text-2" id="text-orgd525ace">
+<div id="outline-container-orgbfeedf2" class="outline-2">
+<h2 id="orgbfeedf2">Examples</h2>
+<div class="outline-text-2" id="text-orgbfeedf2">
 <p>
-In the examples shown below, a trajectory of a discrete-time linear time-invariant system---<i>the data</i>&#x2014;is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the <a href="./bt.pdf">documentation</a>).
+In the examples shown below, a trajectory of a discrete-time linear time-invariant system &#x2014; <i>the data</i> &#x2014; is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the <a href="./bt.pdf">documentation</a>).
 </p>
 </div>
 
-<div id="outline-container-orgb3c3621" class="outline-3">
-<h3 id="orgb3c3621">Finding the number of inputs</h3>
-<div class="outline-text-3" id="text-orgb3c3621">
+<div id="outline-container-org383e0b8" class="outline-3">
+<h3 id="org383e0b8">Finding the number of inputs</h3>
+<div class="outline-text-3" id="text-org383e0b8">
 <p>
 The data is a vector time series containing the observed variables of the system. Since these variables are not partitioned into inputs and outputs, which variables are inputs is not known. Also, how many variables are inputs is not known. It is possible however to fining the number of inputs from the given data. The function of the toolbox that does this is <code>w2c</code>. In addition to finding the number of inputs \(m\), it finds also the order \(n\) and the lag \(\ell\) of the underlying data-generating system. 
 </p>
@@ -350,9 +350,9 @@ Here is an example:
 </div>
 </div>
 
-<div id="outline-container-org46ea7c1" class="outline-3">
-<h3 id="org46ea7c1">Finding an input/output partitioning of the variables</h3>
-<div class="outline-text-3" id="text-org46ea7c1">
+<div id="outline-container-org377043a" class="outline-3">
+<h3 id="org377043a">Finding an input/output partitioning of the variables</h3>
+<div class="outline-text-3" id="text-org377043a">
 <p>
 We&rsquo;ve seen that we can find the number of inputs \(m\) from the data. Can we find also <i>the</i> input variables \(u\)? No, in general, we can not do this because different sets of variables can act as inputs. The function of the toolbox that finds all possibilities of partitioning the variables into inputs and outputs is <code>BT2IO</code>. 
 </p>
@@ -409,53 +409,53 @@ is the first input/output partitioning.
 </div>
 </div>
 
-<div id="outline-container-org46307d4" class="outline-3">
-<h3 id="org46307d4">Distance of a signal to a system</h3>
-<div class="outline-text-3" id="text-org46307d4">
+<div id="outline-container-orgd7ac458" class="outline-3">
+<h3 id="orgd7ac458">Distance of a signal to a system</h3>
+<div class="outline-text-3" id="text-orgd7ac458">
 <p>
-A useful operation is computing distance between data and system. In particular, it allows us to check if a given signal is a valid trajectory of the system. In case it is not, the distance computation returns the best approximation of this signal by a trajectory of the system. This operation is called smoothing. 
+The distance of a signal \(w\) to a system \(\mathcal{B}\) has the familiar definition and geometrical interpretation: \(\min_{\hat w \in \mathcal{B}} \| w - \hat w \|\). It&rsquo;s computation is implemented in the function <code>dist</code>. As a specification of \(\mathcal{B}\), <code>dist</code> accepts an <code>lti</code> object as well as the finite-horizon representation \(B_T\) with horizon \(T\) the length of \(w\).
 </p>
 
 <p>
-The distance computation is implemented in the function <code>dist</code>. As a specification of the system, it accepts both <code>lti</code> object as well as (\(B_T\)), in which case the horizon \(T\) should be at least the length of the signal.
+Finding the distance of a signal to a system is useful in particular for checking if the signal is a valid trajectory of the system:
 </p>
+<div class="org-src-container">
+<pre class="src src-matlab">dist(wd, B) <span style="color: #ee0000;">% -&gt; 0</span>
+</pre>
+</div>
 
 <p>
-Continuing the example above, first, we generate a random trajectory and compute its distance to the system:
+The function <code>dist</code> returns also the projection \(\hat w\) of \(w\) in \(\mathcal{B}\). The signal \(\hat w\) is useful because it the best approximation of \(w\) by a trajectory of the system. It is called the smoothed signal. Here is an example.
 </p>
+<ul class="org-ul">
+<li>We add a perturbation on the trajectory and compute its distance to the system:</li>
+</ul>
 <div class="org-src-container">
-<pre class="src src-matlab">T = 100; w0 = B2w(B, T); dist(w0, B) <span style="color: #ee0000;">% -&gt; 0</span>
+<pre class="src src-matlab">wd_noisy = wd <span style="color: #98fb98;">+</span> randn(size(wd)); [d, wdh] = dist(wd_noisy, B);
 </pre>
 </div>
-<p>
-Then, we add a perturbation and compute its distance to the system:
-</p>
+<ul class="org-ul">
+<li>The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:</li>
+</ul>
 <div class="org-src-container">
-<pre class="src src-matlab">w = w0 <span style="color: #98fb98;">+</span> randn(size(w0)); [d, wh] = dist(w, B);
-</pre>
-</div>
-<p>
-The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:
-</p>
-<div class="org-src-container">
-<pre class="src src-matlab">[norm(w0 <span style="color: #98fb98;">-</span> wh) norm(w0 <span style="color: #98fb98;">-</span> w)]
+<pre class="src src-matlab">[norm(wd <span style="color: #98fb98;">-</span> wdh) norm(wd <span style="color: #98fb98;">-</span> wd_noisy)] <span style="color: #98fb98;">/</span> norm(wd)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-org8ae6d9c" class="outline-3">
-<h3 id="org8ae6d9c">Distance between systems</h3>
-<div class="outline-text-3" id="text-org8ae6d9c">
+<div id="outline-container-org65d0d2e" class="outline-3">
+<h3 id="org65d0d2e">Distance between systems</h3>
+<div class="outline-text-3" id="text-org65d0d2e">
 <p>
-How to check if two systems are equal. For example, by construction the system
+How to check if two systems are equal? By construction the system 
 </p>
 <div class="org-src-container">
 <pre class="src src-matlab">Bp = ss2ss(B, rand(n));
 </pre>
 </div>
 <p>
-is equal to <code>B</code>, however, the Control Toolbox of matlab does not allow us to infer this by 
+is equal to <code>B</code>. However, the Control Systems Toolbox of Matlab does not allow us to infer it by 
 </p>
 <div class="org-src-container">
 <pre class="src src-matlab">B <span style="color: #98fb98;">==</span> Bp <span style="color: #ee0000;">% -&gt; Operator '==' is not supported for operands of type 'ss'.</span>
@@ -469,18 +469,18 @@ Instead, we can check the norm of difference:
 </pre>
 </div>
 <p>
-This, however, is restricted to stable systems only. 
+The norm computation, however, is restricted to stable systems. 
 </p>
 
 <p>
-The function <code>Bdist</code> of the toolbox computes distance between systems defined as the angle between the corresponding behaviors:
+The function <code>Bdist</code> computes a distance between systems defined as the angle between the corresponding behaviors:
 </p>
 <div class="org-src-container">
 <pre class="src src-matlab">Bdist(Bp, B) <span style="color: #ee0000;">% -&gt; 0</span>
 </pre>
 </div>
 <p>
-This distance measure is not restricted to stable systems.
+This distance measure is applicable also to stable systems.
 </p>
 </div>
 </div>

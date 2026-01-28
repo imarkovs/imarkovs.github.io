@@ -3,14 +3,14 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-23 Fri 16:31 -->
+<!-- 2026-01-24 Sat 16:43 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Behavioral Toolbox</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Ivan Markovsky" />
-<style type="text/css">
- <!--/*--><![CDATA[/*><!--*/
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
   .title  { text-align: center;
              margin-bottom: .2em; }
   .subtitle { text-align: center;
@@ -31,8 +31,9 @@
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
   pre {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
     padding: 8pt;
     font-family: monospace;
     overflow: auto;
@@ -40,22 +41,22 @@
   }
   pre.src {
     position: relative;
-    overflow: visible;
-    padding-top: 1.2em;
+    overflow: auto;
   }
   pre.src:before {
     display: none;
     position: absolute;
-    background-color: white;
-    top: -10px;
-    right: 10px;
+    top: -8px;
+    right: 12px;
     padding: 3px;
-    border: 1px solid black;
+    color: #555;
+    background-color: #f2f2f299;
   }
-  pre.src:hover:before { display: inline;}
+  pre.src:hover:before { display: inline; margin-top: 14px;}
   /* Languages per Org manual */
   pre.src-asymptote:before { content: 'Asymptote'; }
   pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
   pre.src-C:before { content: 'C'; }
   /* pre.src-C++ doesn't work in CSS */
   pre.src-clojure:before { content: 'Clojure'; }
@@ -190,80 +191,43 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
-  .org-svg { width: 90%; }
-  /*]]>*/-->
+  .org-svg { }
 </style>
-<script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012-2019 Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
-<!--/*--><![CDATA[/*><!--*/
- function CodeHighlightOn(elem, id)
- {
-   var target = document.getElementById(id);
-   if(null != target) {
-     elem.cacheClassElem = elem.className;
-     elem.cacheClassTarget = target.className;
-     target.className = "code-highlighted";
-     elem.className   = "code-highlighted";
-   }
- }
- function CodeHighlightOff(elem, id)
- {
-   var target = document.getElementById(id);
-   if(elem.cacheClassElem)
-     elem.className = elem.cacheClassElem;
-   if(elem.cacheClassTarget)
-     target.className = elem.cacheClassTarget;
- }
-/*]]>*///-->
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
 </script>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        displayAlign: "center",
-        displayIndent: "0em",
 
-        "HTML-CSS": { scale: 100,
-                        linebreaks: { automatic: "false" },
-                        webFont: "TeX"
-                       },
-        SVG: {scale: 100,
-              linebreaks: { automatic: "false" },
-              font: "TeX"},
-        NativeMML: {scale: 100},
-        TeX: { equationNumbers: {autoNumber: "AMS"},
-               MultLineWidth: "85%",
-               TagSide: "right",
-               TagIndent: ".8em"
-             }
-});
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-<script type="text/javascript"
-        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
-<div id="content">
+<div id="content" class="content">
 <h1 class="title">The Behavioral Toolbox</h1>
 <p>
 The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the <a href="./bt.tar">archive file of the functions</a>. A tutorial for its usage is given in Section 3 of the <a href="./bt.pdf">documentation</a>. In order to cite it, please use:
@@ -286,17 +250,17 @@ I. Markovsky. <a href="https://imarkovs.github.io/publications/bt-l4dc.pdf">The 
 </pre>
 </blockquote>
 
-<div id="outline-container-org27d27e7" class="outline-2">
-<h2 id="org27d27e7">Examples</h2>
-<div class="outline-text-2" id="text-org27d27e7">
+<div id="outline-container-org36de867" class="outline-2">
+<h2 id="org36de867">Examples</h2>
+<div class="outline-text-2" id="text-org36de867">
 <p>
 In the examples shown below, a trajectory of a discrete-time linear time-invariant system---<i>the data</i>&#x2014;is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the <a href="./bt.pdf">documentation</a>).
 </p>
 </div>
 
-<div id="outline-container-org073839d" class="outline-3">
-<h3 id="org073839d">Finding the number of inputs</h3>
-<div class="outline-text-3" id="text-org073839d">
+<div id="outline-container-orgdb77a04" class="outline-3">
+<h3 id="orgdb77a04">Finding the number of inputs</h3>
+<div class="outline-text-3" id="text-orgdb77a04">
 <p>
 The data is a vector time series containing the observed variables of the system. Since these variables are not partitioned into inputs and outputs, which variables are inputs is not known. Also, how many variables are inputs is not known. It is possible however to fining the number of inputs from the given data. The function of the toolbox that does this is <code>w2c</code>. In addition to finding the number of inputs \(m\), it finds also the order \(n\) and the lag \(\ell\) of the underlying data-generating system. 
 </p>
@@ -329,14 +293,14 @@ Here is an example:
 <li>call the <code>w2c</code> function</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-matlab">[<span style="color: #98fb98;">~</span>, mh, ellh, nh] = w2c(wd);
+<pre class="src src-matlab">[<span style="color: #b0c4de;">~</span>, mh, ellh, nh] = w2c(wd);
 </pre>
 </div>
 <ul class="org-ul">
 <li>check if the computed result is correct</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-matlab">[m <span style="color: #98fb98;">==</span> mh, ell <span style="color: #98fb98;">==</span> ellh, n <span style="color: #98fb98;">==</span> nh] <span style="color: #ee0000;">% -&gt; [1 1 1]  </span>
+<pre class="src src-matlab">[m <span style="color: #b0c4de;">==</span> mh, ell <span style="color: #b0c4de;">==</span> ellh, n <span style="color: #b0c4de;">==</span> nh] <span style="color: #ee0000;">% </span><span style="color: #ee0000;">-&gt; [1 1 1]  </span>
 </pre>
 </div>
 
@@ -350,9 +314,9 @@ Here is an example:
 </div>
 </div>
 
-<div id="outline-container-orgd19f08f" class="outline-3">
-<h3 id="orgd19f08f">Finding an input/output partitioning of the variables</h3>
-<div class="outline-text-3" id="text-orgd19f08f">
+<div id="outline-container-orgd960f38" class="outline-3">
+<h3 id="orgd960f38">Finding an input/output partitioning of the variables</h3>
+<div class="outline-text-3" id="text-orgd960f38">
 <p>
 We&rsquo;ve seen that we can find the number of inputs \(m\) from the data. Can we find also <i>the</i> input variables \(u\)? No, in general, we can not do this because different sets of variables can act as inputs. The function of the toolbox that finds all possibilities of partitioning the variables into inputs and outputs is <code>BT2IO</code>. 
 </p>
@@ -368,7 +332,7 @@ Continuing the example above,
 <li>first, we obtain the matrix \(B_T\):</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-matlab">T = 2 <span style="color: #98fb98;">*</span> ell <span style="color: #98fb98;">+</span> 1; BT = w2BT(wd, T, [m ell n]);
+<pre class="src src-matlab">T = 2 <span style="color: #b0c4de;">*</span> ell <span style="color: #b0c4de;">+</span> 1; BT = w2BT(wd, T, [m ell n]);
 </pre>
 </div>
 <ul class="org-ul">
@@ -396,7 +360,7 @@ Its output
 is a matrix, the rows of which indicate the possible input/output partitionings, e.g., 
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab">ud = wd(<span style="color: #98fb98;">:</span>, IO(1, 1<span style="color: #98fb98;">:</span>m)); yd = ud = wd(<span style="color: #98fb98;">:</span>, IO(<span style="color: #98fb98;">:</span>, m<span style="color: #98fb98;">+</span>1<span style="color: #98fb98;">:</span>end));
+<pre class="src src-matlab">ud = wd(<span style="color: #b0c4de;">:</span>, IO(1, 1<span style="color: #b0c4de;">:</span>m)); yd = ud = wd(<span style="color: #b0c4de;">:</span>, IO(<span style="color: #b0c4de;">:</span>, m<span style="color: #b0c4de;">+</span>1<span style="color: #b0c4de;">:</span>end));
 </pre>
 </div>
 <p>
@@ -409,44 +373,44 @@ is the first input/output partitioning.
 </div>
 </div>
 
-<div id="outline-container-org45a0c8a" class="outline-3">
-<h3 id="org45a0c8a">Distance of a signal to a system</h3>
-<div class="outline-text-3" id="text-org45a0c8a">
+<div id="outline-container-org5302068" class="outline-3">
+<h3 id="org5302068">Distance of a signal to a system</h3>
+<div class="outline-text-3" id="text-org5302068">
 <p>
-A useful operation is computing distance between data and system. In particular, it allows us to check if a given signal is a valid trajectory of the system. In case it is not, the distance computation returns the best approximation of this signal by a trajectory of the system. This operation is called smoothing. 
+The distance of a signal \(w\) to a system \(\mathcal{B}\) has the familiar definition and geometrical interpretation: \(\min_{\hat w \in \mathcal{B}} \| w - \hat w \|\). It&rsquo;s computation is implemented in the function <code>dist</code>. As a specification of \(\mathcal{B}\), <code>dist</code> accepts an <code>lti</code> object as well as the finite-horizon representation \(B_T\) with horizon \(T\) the length of \(w\).
 </p>
 
 <p>
-The distance computation is implemented in the function <code>dist</code>. As a specification of the system, it accepts both <code>lti</code> object as well as (\(B_T\)), in which case the horizon \(T\) should be at least the length of the signal.
+Finding the distance of a signal to a system is useful in particular for checking if the signal is a valid trajectory of the system:
 </p>
+<div class="org-src-container">
+<pre class="src src-matlab">dist(wd, B) <span style="color: #ee0000;">% </span><span style="color: #ee0000;">-&gt; 0</span>
+</pre>
+</div>
 
 <p>
-Continuing the example above, first, we generate a random trajectory and compute its distance to the system:
+The function <code>dist</code> returns also the projection \(\hat w\) of \(w\) in $\mathcal{B},$ which is the best approximation of \(w\) by a trajectory of the system. This operation is called smoothing. Here is an example.
 </p>
+<ul class="org-ul">
+<li>We add a perturbation on the trajectory and compute its distance to the system:</li>
+</ul>
 <div class="org-src-container">
-<pre class="src src-matlab">T = 100; w0 = B2w(B, T); dist(w0, B) <span style="color: #ee0000;">% -&gt; 0</span>
+<pre class="src src-matlab">wd_noisy = wd <span style="color: #b0c4de;">+</span> randn(size(wd)); [d, wdh] = dist(wd_noisy, B);
 </pre>
 </div>
-<p>
-Then, we add a perturbation and compute its distance to the system:
-</p>
+<ul class="org-ul">
+<li>The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:</li>
+</ul>
 <div class="org-src-container">
-<pre class="src src-matlab">w = w0 <span style="color: #98fb98;">+</span> randn(size(w0)); [d, wh] = dist(w, B);
-</pre>
-</div>
-<p>
-The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:
-</p>
-<div class="org-src-container">
-<pre class="src src-matlab">[norm(w0 <span style="color: #98fb98;">-</span> wh) norm(w0 <span style="color: #98fb98;">-</span> w)]
+<pre class="src src-matlab">[norm(wd <span style="color: #b0c4de;">-</span> wdh) norm(wd <span style="color: #b0c4de;">-</span> wd_noisy)] <span style="color: #b0c4de;">/</span> norm(wd)
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-orgc506999" class="outline-3">
-<h3 id="orgc506999">Distance between systems</h3>
-<div class="outline-text-3" id="text-orgc506999">
+<div id="outline-container-org8d0b73e" class="outline-3">
+<h3 id="org8d0b73e">Distance between systems</h3>
+<div class="outline-text-3" id="text-org8d0b73e">
 <p>
 How to check if two systems are equal. For example, by construction the system
 </p>
@@ -458,14 +422,14 @@ How to check if two systems are equal. For example, by construction the system
 is equal to <code>B</code>, however, the Control Toolbox of matlab does not allow us to infer this by 
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab">B <span style="color: #98fb98;">==</span> Bp <span style="color: #ee0000;">% -&gt; Operator '==' is not supported for operands of type 'ss'.</span>
+<pre class="src src-matlab">B <span style="color: #b0c4de;">==</span> Bp <span style="color: #ee0000;">% </span><span style="color: #ee0000;">-&gt; Operator '==' is not supported for operands of type 'ss'.</span>
 </pre>
 </div>
 <p>
 Instead, we can check the norm of difference:
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab">norm(Bp <span style="color: #98fb98;">-</span> B) <span style="color: #ee0000;">% -&gt; 0</span>
+<pre class="src src-matlab">norm(Bp <span style="color: #b0c4de;">-</span> B) <span style="color: #ee0000;">% </span><span style="color: #ee0000;">-&gt; 0</span>
 </pre>
 </div>
 <p>
@@ -476,22 +440,11 @@ This, however, is restricted to stable systems only.
 The function <code>Bdist</code> of the toolbox computes distance between systems defined as the angle between the corresponding behaviors:
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab">Bdist(Bp, B) <span style="color: #ee0000;">% -&gt; 0</span>
+<pre class="src src-matlab">Bdist(Bp, B) <span style="color: #ee0000;">% </span><span style="color: #ee0000;">-&gt; 0</span>
 </pre>
 </div>
 <p>
 This distance measure is not restricted to stable systems.
-</p>
-</div>
-</div>
-
-<div id="outline-container-org1261e88" class="outline-3">
-<h3 id="org1261e88">Distance of a signal to being a trajectory of a bounded complexity system</h3>
-<div class="outline-text-3" id="text-org1261e88">
-<p>
-In the previous sections we considered distance of a signal to a system and distance between systems. 
-In this section, we consider another distance problem: the distance of a given signal to a system in a class of linear time-invariant systems with bounded complexity. 
-This is actually a model identification problem. Zero distance means that there is an exact model of bounded complexity. Nonzero distance delivers as a by-product a system with bounded complexity that certifies the reported distance. Since the problem is non-convex there is no grantee that the obtained distance is globally minimal.
 </p>
 </div>
 </div>
