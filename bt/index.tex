@@ -1,4 +1,4 @@
-% Created 2026-01-23 Fri 16:30
+% Created 2026-01-30 Fri 10:16
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
@@ -25,7 +25,7 @@
 \begin{document}
 
 \maketitle
-The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the \href{./bt.tar}{archive file of the functions}. A tutorial for its usage is given in Section 3 of the \href{./bt.pdf}{documentation}. In order to cite it, please use:
+The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the \href{./bt.tar}{archive file}. A tutorial is given in Section 3 of the \href{./bt.pdf}{documentation}. In order to cite it, please use:
 \begin{quote}
 I. Markovsky. \href{https://imarkovs.github.io/publications/bt-l4dc.pdf}{The behavioral toolbox}. In Proc. of Machine Learning Research, volume 242, pages 130--141, 2024.
 \end{quote}
@@ -43,12 +43,12 @@ I. Markovsky. \href{https://imarkovs.github.io/publications/bt-l4dc.pdf}{The beh
 \end{quote}
 
 \section*{Examples}
-\label{sec:orge9bb74f}
+\label{sec:org8b8e69a}
 
-In the examples shown below, a trajectory of a discrete-time linear time-invariant system---\emph{the data}---is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the \href{./bt.pdf}{documentation}).
+In the examples shown below, a trajectory of a discrete-time linear time-invariant system --- \emph{the data} --- is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the \href{./bt.pdf}{documentation}).
 
 \subsection*{Finding the number of inputs}
-\label{sec:org06cd12e}
+\label{sec:org5bbc360}
 The data is a vector time series containing the observed variables of the system. Since these variables are not partitioned into inputs and outputs, which variables are inputs is not known. Also, how many variables are inputs is not known. It is possible however to fining the number of inputs from the given data. The function of the toolbox that does this is \texttt{w2c}. In addition to finding the number of inputs \(m\), it finds also the order \(n\) and the lag \(\ell\) of the underlying data-generating system. 
 
 Here is an example:
@@ -56,7 +56,7 @@ Here is an example:
 \item specify the simulation parameters---number of variables \texttt{q}, number of inputs \texttt{m}, lag \texttt{ell}, order \texttt{n}, and number of data samples \texttt{Td}
 \end{itemize}
 \begin{minted}[]{matlab}
-q = 3; m = 1; ell = 2; n = 3; Td = 100; 
+q = 3; m = 1; ell = 2; n = 3; Td = 20; 
 \end{minted}
 \begin{itemize}
 \item generate a random linear time-invariant system with the specified parameters
@@ -80,7 +80,7 @@ wd = B2w(B, Td);
 \item check if the computed result is correct
 \end{itemize}
 \begin{minted}[]{matlab}
-[m == mh, ell == ellh, n == nh] % -> [1 1 1]  
+[m == mh, ell == ellh, n == nh] % -> [true true true]  
 \end{minted}
 
 \emph{But what about the assumption?} A ``sufficiently long'' random trajectory almost surely fully specifies the system. Quantifying what ``sufficiently long'' means, however, requires knowledge of \(m\) and \(n\). There is no way out of the dilemma, either we have to assume that the data fully specifies the system, or we have to know \(m\) and \(n\), in which case we can check the condition.
@@ -88,7 +88,7 @@ wd = B2w(B, Td);
 \emph{Exercise:} Change the simulation parameters and find out empirically when the data is ``sufficiently long''.
 
 \subsection*{Finding an input/output partitioning of the variables}
-\label{sec:org6067d52}
+\label{sec:orge16666e}
 
 We've seen that we can find the number of inputs \(m\) from the data. Can we find also \emph{the} input variables \(u\)? No, in general, we can not do this because different sets of variables can act as inputs. The function of the toolbox that finds all possibilities of partitioning the variables into inputs and outputs is \texttt{BT2IO}. 
 
@@ -126,34 +126,63 @@ is the first input/output partitioning.
 
 \emph{Exercise:} In the example above, all partitionings of the variables are valid input/output partitionings. Create an example where this is not the case.
 
+\subsection*{The data-generating system may be unstable (but it's OK)}
+\label{sec:org43019bc}
+
+In the examples above, we've used the function \texttt{randB} for obtaining a random data-generating system \texttt{B} and the function \texttt{B2w} for obtaining a random trajectory of that system. 
+\begin{itemize}
+\item \texttt{randB} constructs a kernel representation \texttt{R} corresponding to the specified structure (number of variables, number of inputs, lag, and order) with nonzero elements generated as random uniformly distributed in the interval \([0,1]\). The kernel representation \texttt{R} is then converted to an input/state/output representation \texttt{B}.
+\item \texttt{B2w} uses the function \texttt{lsim} from the Control System Toolbox of Matlab in order to simulate a trajectory of \texttt{B} under random initial conditions and a random input.
+\end{itemize}
+
+The system produced by \texttt{randB} may be unstable:
+\begin{minted}[]{matlab}
+[B, R] = randB(q, [m, ell, n]); any(abs(eig(B)) > 1) % -> true
+\end{minted}
+When \texttt{B} is unstable, the trajectory obtained from random input and initial conditions is almost surely exponentially diverging
+\begin{minted}[]{matlab}
+T = 300; w = B2w(B, T); max(w(:)) % -> large
+\end{minted}
+Generating a ``sufficiently long well behaved'' random trajectory from unstable system requires special case (e.g., design of a stabilizing controller).
+
+An alternative way to generate a random trajectory of the system is using the nonparameteric representation \(B_T\) of the finite-horizon behavior. For a random vector \(g\in\mathbb{R}^{mT+n}\), we obtain a random trajectory \(w = B_T g\). When \(||g||\) is bounded (e.g., its elements are uniformly distributed in the interval \([0,1]\)), since by construction the matrix \(B_T\) is orthonormal, the resulting trajectory \(w\) is also bounded. 
+\begin{minted}[]{matlab}
+BT = B2BT(B, T); w = BT * rand(size(BT, 2), 1); max(w) % -> small
+\end{minted}
+Thus, using the nonparameteric representation \(B_T\) of the finite-horizon behavior, standard linear algebra (computation of an orthonormal basis) allows us to obtain ``sufficiently long well behaved'' trajectories of unstable systems.
+
 \subsection*{Distance of a signal to a system}
-\label{sec:org0da7432}
+\label{sec:org59bd1f3}
 
-A useful operation is computing distance between data and system. In particular, it allows us to check if a given signal is a valid trajectory of the system. In case it is not, the distance computation returns the best approximation of this signal by a trajectory of the system. This operation is called smoothing. 
+The distance of a signal \(w\) to a system \(\mathcal{B}\) has the familiar definition and geometrical interpretation: \(\min_{\hat w \in \mathcal{B}} \| w - \hat w \|\). It's computation is implemented in the function \texttt{dist}. As a specification of \(\mathcal{B}\), \texttt{dist} accepts an \texttt{lti} object as well as the finite-horizon representation \(B_T\) with horizon \(T\) the length of \(w\).
 
-The distance computation is implemented in the function \texttt{dist}. As a specification of the system, it accepts both \texttt{lti} object as well as (\(B_T\)), in which case the horizon \(T\) should be at least the length of the signal.
-
-Continuing the example above, first, we generate a random trajectory and compute its distance to the system:
+Finding the distance of a signal to a system is useful in particular for checking if the signal is a valid trajectory of the system:
 \begin{minted}[]{matlab}
-T = 100; w0 = B2w(B, T); dist(w0, B) % -> 0
+dist(wd, B) % -> 0
 \end{minted}
-Then, we add a perturbation and compute its distance to the system:
+
+The function \texttt{dist} returns also the projection \(\hat w\) of \(w\) in \(\mathcal{B}\). The signal \(\hat w\) is useful because it the best approximation of \(w\) by a trajectory of the system. It is called the smoothed signal. Here is an example.
+\begin{itemize}
+\item We add a perturbation on the trajectory and compute its distance to the system:
+\end{itemize}
 \begin{minted}[]{matlab}
-w = w0 + randn(size(w0)); [d, wh] = dist(w, B);
+wd_noisy = wd + randn(size(wd)); [d, wdh] = dist(wd_noisy, B);
 \end{minted}
-The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:
+\begin{itemize}
+\item The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:
+\end{itemize}
 \begin{minted}[]{matlab}
-[norm(w0 - wh) norm(w0 - w)]
+[norm(wd - wdh) norm(wd - wd_noisy)] / norm(wd)
 \end{minted}
 
 \subsection*{Distance between systems}
-\label{sec:org2db7394}
+\label{sec:org27c9d83}
 
-How to check if two systems are equal. For example, by construction the system
+How to check if two systems are equal? By construction the system 
 \begin{minted}[]{matlab}
 Bp = ss2ss(B, rand(n));
 \end{minted}
-is equal to \texttt{B}, however, the Control Toolbox of matlab does not allow us to infer this by 
+is equal to \texttt{B}. However, the Control Systems Toolbox of Matlab does not allow us to infer it by 
 \begin{minted}[]{matlab}
 B == Bp % -> Operator '==' is not supported for operands of type 'ss'.
 \end{minted}
@@ -161,18 +190,11 @@ Instead, we can check the norm of difference:
 \begin{minted}[]{matlab}
 norm(Bp - B) % -> 0
 \end{minted}
-This, however, is restricted to stable systems only. 
+The norm computation, however, is restricted to stable systems. 
 
-The function \texttt{Bdist} of the toolbox computes distance between systems defined as the angle between the corresponding behaviors:
+The function \texttt{Bdist} computes a distance between systems defined as the angle between the corresponding behaviors:
 \begin{minted}[]{matlab}
 Bdist(Bp, B) % -> 0
 \end{minted}
-This distance measure is not restricted to stable systems.
-
-\subsection*{Distance of a signal to being a trajectory of a bounded complexity system}
-\label{sec:org4c310dc}
-
-In the previous sections we considered distance of a signal to a system and distance between systems. 
-In this section, we consider another distance problem: the distance of a given signal to a system in a class of linear time-invariant systems with bounded complexity. 
-This is actually a model identification problem. Zero distance means that there is an exact model of bounded complexity. Nonzero distance delivers as a by-product a system with bounded complexity that certifies the reported distance. Since the problem is non-convex there is no grantee that the obtained distance is globally minimal.
+This distance measure is applicable also to stable systems.
 \end{document}

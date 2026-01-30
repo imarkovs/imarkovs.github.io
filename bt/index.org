@@ -32,7 +32,7 @@ The data is a vector time series containing the observed variables of the system
 Here is an example:
 - specify the simulation parameters---number of variables =q=, number of inputs =m=, lag =ell=, order =n=, and number of data samples =Td=
 #+BEGIN_SRC matlab :tangle examples.m
-q = 3; m = 1; ell = 2; n = 3; Td = 100; 
+q = 3; m = 1; ell = 2; n = 3; Td = 20; 
 #+END_SRC
 - generate a random linear time-invariant system with the specified parameters
 #+BEGIN_SRC matlab :tangle examples.m
@@ -48,7 +48,7 @@ wd = B2w(B, Td);
 #+END_SRC
 - check if the computed result is correct
 #+BEGIN_SRC matlab :tangle examples.m
-[m == mh, ell == ellh, n == nh] % -> [1 1 1]  
+[m == mh, ell == ellh, n == nh] % -> [true true true]  
 #+END_SRC
 
 /But what about the assumption?/ A "sufficiently long" random trajectory almost surely fully specifies the system. Quantifying what "sufficiently long" means, however, requires knowledge of $m$ and $n$. There is no way out of the dilemma, either we have to assume that the data fully specifies the system, or we have to know $m$ and $n$, in which case we can check the condition.
@@ -89,10 +89,29 @@ is the first input/output partitioning.
 
 /Exercise:/ In the example above, all partitionings of the variables are valid input/output partitionings. Create an example where this is not the case.
 
+** The data-generating system may be unstable (but it's OK)
+
+In the examples above, we've used the function =randB= for obtaining a random data-generating system =B= and the function =B2w= for obtaining a random trajectory of that system. 
+- =randB= constructs a kernel representation =R= corresponding to the specified structure (number of variables, number of inputs, lag, and order) with nonzero elements generated as random uniformly distributed in the interval $[0,1]$. The kernel representation =R= is then converted to an input/state/output representation =B=.
+- =B2w= uses the function =lsim= from the Control System Toolbox of Matlab in order to simulate a trajectory of =B= under random initial conditions and a random input.
+
+The system produced by =randB= may be unstable:
+#+begin_src matlab
+[B, R] = randB(q, [m, ell, n]); any(abs(eig(B)) > 1) % -> true
+#+end_src
+When =B= is unstable, the trajectory obtained from random input and initial conditions is almost surely exponentially diverging
+#+begin_src matlab
+T = 300; w = B2w(B, T); max(w(:)) % -> large
+#+end_src
+Generating a "sufficiently long well behaved" random trajectory from unstable system requires special case (e.g., design of a stabilizing controller).
+
+An alternative way to generate a random trajectory of the system is using the nonparameteric representation $B_T$ of the finite-horizon behavior. For a random vector $g\in\mathbb{R}^{mT+n}$, we obtain a random trajectory $w = B_T g$. When $||g||$ is bounded (e.g., its elements are uniformly distributed in the interval $[0,1]$), since by construction the matrix $B_T$ is orthonormal, the resulting trajectory $w$ is also bounded. 
+#+begin_src matlab
+BT = B2BT(B, T); w = BT * rand(size(BT, 2), 1); max(w) % -> small
+#+end_src
+Thus, using the nonparameteric representation $B_T$ of the finite-horizon behavior, standard linear algebra (computation of an orthonormal basis) allows us to obtain "sufficiently long well behaved" trajectories of unstable systems.
+
 ** Checking controllability                                             :NP:
-
-
-
 ** Distance of a signal to a system
 
 The distance of a signal $w$ to a system $\mathcal{B}$ has the familiar definition and geometrical interpretation: $\min_{\hat w \in \mathcal{B}} \| w - \hat w \|$. It's computation is implemented in the function =dist=. As a specification of $\mathcal{B}$, =dist= accepts an =lti= object as well as the finite-horizon representation $B_T$ with horizon $T$ the length of $w$.
