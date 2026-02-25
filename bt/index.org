@@ -40,7 +40,7 @@ B = randB(q, [m, ell, n]);
 #+END_SRC
 - generate a random trajectory of the system with the specified number of samples
 #+BEGIN_SRC matlab :tangle examples.m
-wd = B2w(B, Td); 
+wd = ss2w(B, Td); 
 #+END_SRC
 - call the =w2c= function
 #+BEGIN_SRC matlab :tangle examples.m
@@ -91,9 +91,9 @@ is the first input/output partitioning.
 
 ** The data-generating system may be unstable (but it's OK)
 
-In the examples above, we've used the function =randB= for obtaining a random data-generating system =B= and the function =B2w= for obtaining a random trajectory of that system. 
+In the examples above, we've used the function =randB= for obtaining a random data-generating system =B= and the function =ss2w= for obtaining a random trajectory of that system. 
 - =randB= constructs a kernel representation =R= corresponding to the specified structure (number of variables, number of inputs, lag, and order) with nonzero elements generated as random uniformly distributed in the interval $[0,1]$. The kernel representation =R= is then converted to an input/state/output representation =B=.
-- =B2w= uses the function =lsim= from the Control System Toolbox of Matlab in order to simulate a trajectory of =B= under random initial conditions and a random input.
+- =ss2w= uses the function =lsim= from the Control System Toolbox of Matlab in order to simulate a trajectory of =B= under random initial conditions and a random input.
 
 The system produced by =randB= may be unstable:
 #+begin_src matlab
@@ -101,9 +101,9 @@ The system produced by =randB= may be unstable:
 #+end_src
 When =B= is unstable, the trajectory obtained from random input and initial conditions is almost surely exponentially diverging
 #+begin_src matlab
-T = 300; w = B2w(B, T); max(w(:)) % -> large
+T = 300; w = ss2w(B, T); max(w(:)) % -> large
 #+end_src
-Generating a "sufficiently long well behaved" random trajectory from unstable system requires special case (e.g., design of a stabilizing controller).
+Generating a "sufficiently long well behaved" random trajectory from unstable system requires special care (e.g., design of a stabilizing controller).
 
 An alternative way to generate a random trajectory of the system is using the nonparameteric representation $B_T$ of the finite-horizon behavior. For a random vector $g\in\mathbb{R}^{mT+n}$, we obtain a random trajectory $w = B_T g$. When $||g||$ is bounded (e.g., its elements are uniformly distributed in the interval $[0,1]$), since by construction the matrix $B_T$ is orthonormal, the resulting trajectory $w$ is also bounded. 
 #+begin_src matlab
@@ -188,9 +188,9 @@ check(size(BT, 2) == m * T + n) % -> PASS
 #+end_src
 The function =check= prints "PASS" if its argument is true and "FAIL" otherwise. 
 
-Then, we check that a random trajectory of the system is in the image of =BT=. The function =B2w= selects a random trajectory of =B=. Its output is a $T\times q$ matrix, where $T$ is the number of samples and $q$ is the number of variables. Checking if $w$ is a trajectory is a common task and is implemented in a function =w_in_B=:
+Then, we check that a random trajectory of the system is in the image of =BT=. The function =ss2w= selects a random trajectory of =B=. Its output is a $T\times q$ matrix, where $T$ is the number of samples and $q$ is the number of variables. Checking if $w$ is a trajectory is a common task and is implemented in a function =w_in_B=:
 #+begin_src matlab :tangle demo.m
-w = B2w(B, T); check(w_in_B(w, B)) % -> PASS
+w = ss2w(B, T); check(w_in_B(w, B)) % -> PASS
 #+end_src
 The columns of =BT= are finite trajectories of the system. The function =BT2W= extracts them into a cell array =W=:
 #+begin_src matlab :tangle demo.m
@@ -423,7 +423,7 @@ The distance =d= from $w$ to $\mathcal{B}|_T$ is zero if and only if $w\in\mathc
 For ${w_\text{d}}\in\mathcal{B}|_T$, there is a corresponding initial conditions. 
 If $\mathcal{B}$ is defined by an input/state/output representation, the initial conditions can be specified by the initial state $x_\text{ini} = x(1)$. The initial state $x_\text{ini}$ corresponding to a trajectory $w$ can be found with the function =w2xini=:
 #+begin_src matlab :tangle demo.m
-[xini, e] = w2xini(w, B); check(norm(w - B2w(B, T, xini, w(:, 1:m))) < tol)  % -> PASS
+[xini, e] = w2xini(w, B); check(norm(w - ss2w(B, T, xini, w(:, 1:m))) < tol)  % -> PASS
 #+end_src
 The output argument =e= is zero when $w\in\mathcal{B}|_T$ and nonzero otherwise.
 
@@ -461,7 +461,7 @@ Special cases of the observer problem are estimation of the input given the outp
 The solution of the observer problem is implemented in the function =wgiven2wmissing=. Here is an example verifying the method for disturbance estimation:
 #+begin_src matlab :tangle demo.m
 qg = 2; qm = 2; q = qm + qg; m = 1; p = q - m; n = 5; B = drss(n, p, m);
-T = 20; w = B2w(B, T); wg = w(:, 1:qg); wm = w(:, qg+1:q);
+T = 20; w = ss2w(B, T); wg = w(:, 1:qg); wm = w(:, qg+1:q);
 wmh = wgiven2wmissing(wg, B); check(norm(wm - wmh) / norm(wm) < tol) % -> PASS
 #+end_src
 
@@ -500,7 +500,7 @@ In order to solve the optimal state transfer problem with specified initial and 
 #+begin_src matlab :tangle demo.m
 if ~isunctr(B)
   Tr = ell; wr = zeros(Tr, q);
-  wp = B2w(B, ell); wf = zeros(ell, q); 
+  wp = ss2w(B, ell); wf = zeros(ell, q); 
   wh = lqctr(B, wr, [], wp, wf);
   check(w_in_B([wp; wh; wf], B))
 end
@@ -544,7 +544,7 @@ equal(Bcl, Bcl_yT, q) % -> 1
 
 The functions presented in the previous sections of the tutorial use the nonparameteric representation of a linear time-invariant system $\mathcal{B}\in\mathcal{L}_c^q$. In this section, the system $\mathcal{B}$ is implicitly specified by a trajectory $w_{\text{d}}\in\mathcal{B}|_{T_{text{d}}}$
 #+begin_src matlab :tangle demo.m
-Td = 100; wd = B2w(B, Td); 
+Td = 100; wd = ss2w(B, Td); 
 #+end_src
 A necessary and sufficient condition for ${w_\text{d}}$ to define $\mathcal{B}\in\mathcal{L}^q_c$ is the /identifiability condition/:
 \]
