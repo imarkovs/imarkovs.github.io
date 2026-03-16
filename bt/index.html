@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-01-30 Fri 10:16 -->
+<!-- 2026-03-16 Mon 13:00 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Behavioral Toolbox</title>
@@ -266,7 +266,7 @@ for the JavaScript code in this tag.
 <div id="content">
 <h1 class="title">The Behavioral Toolbox</h1>
 <p>
-The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the <a href="./bt.tar">archive file</a>. A tutorial is given in Section 3 of the <a href="./bt.pdf">documentation</a>. In order to cite it, please use:
+The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the <a href="./bt.tar">archive file</a>. In order to cite it, please use:
 </p>
 <blockquote>
 <p>
@@ -286,17 +286,17 @@ I. Markovsky. <a href="https://imarkovs.github.io/publications/bt-l4dc.pdf">The 
 </pre>
 </blockquote>
 
-<div id="outline-container-orgf0ba9b0" class="outline-2">
-<h2 id="orgf0ba9b0">Examples</h2>
-<div class="outline-text-2" id="text-orgf0ba9b0">
+<div id="outline-container-orgc21405b" class="outline-2">
+<h2 id="orgc21405b">Examples</h2>
+<div class="outline-text-2" id="text-orgc21405b">
 <p>
-In the examples shown below, a trajectory of a discrete-time linear time-invariant system &#x2014; <i>the data</i> &#x2014; is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the <a href="./bt.pdf">documentation</a>).
+In the examples shown below, a trajectory of a discrete-time linear time-invariant system &#x2014; <i>the data</i> &#x2014; is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see <a href="https://imarkovs.github.io/publications/identifiability.pdf">Section 5</a>).
 </p>
 </div>
 
-<div id="outline-container-org3e8b8df" class="outline-3">
-<h3 id="org3e8b8df">Finding the number of inputs</h3>
-<div class="outline-text-3" id="text-org3e8b8df">
+<div id="outline-container-orgf85e5e2" class="outline-3">
+<h3 id="orgf85e5e2">Finding the number of inputs</h3>
+<div class="outline-text-3" id="text-orgf85e5e2">
 <p>
 The data is a vector time series containing the observed variables of the system. Since these variables are not partitioned into inputs and outputs, which variables are inputs is not known. Also, how many variables are inputs is not known. It is possible however to fining the number of inputs from the given data. The function of the toolbox that does this is <code>w2c</code>. In addition to finding the number of inputs \(m\), it finds also the order \(n\) and the lag \(\ell\) of the underlying data-generating system. 
 </p>
@@ -322,7 +322,7 @@ Here is an example:
 <li>generate a random trajectory of the system with the specified number of samples</li>
 </ul>
 <div class="org-src-container">
-<pre class="src src-matlab">wd = B2w(B, Td); 
+<pre class="src src-matlab">wd = ss2w(B, Td); 
 </pre>
 </div>
 <ul class="org-ul">
@@ -350,9 +350,9 @@ Here is an example:
 </div>
 </div>
 
-<div id="outline-container-org0f33c4f" class="outline-3">
-<h3 id="org0f33c4f">Finding an input/output partitioning of the variables</h3>
-<div class="outline-text-3" id="text-org0f33c4f">
+<div id="outline-container-org5f12755" class="outline-3">
+<h3 id="org5f12755">Finding an input/output partitioning of the variables</h3>
+<div class="outline-text-3" id="text-org5f12755">
 <p>
 We&rsquo;ve seen that we can find the number of inputs \(m\) from the data. Can we find also <i>the</i> input variables \(u\)? No, in general, we can not do this because different sets of variables can act as inputs. The function of the toolbox that finds all possibilities of partitioning the variables into inputs and outputs is <code>BT2IO</code>. 
 </p>
@@ -409,15 +409,15 @@ is the first input/output partitioning.
 </div>
 </div>
 
-<div id="outline-container-org63e1460" class="outline-3">
-<h3 id="org63e1460">The data-generating system may be unstable (but it&rsquo;s OK)</h3>
-<div class="outline-text-3" id="text-org63e1460">
+<div id="outline-container-orgb36c2c1" class="outline-3">
+<h3 id="orgb36c2c1">The data-generating system may be unstable (but it&rsquo;s OK)</h3>
+<div class="outline-text-3" id="text-orgb36c2c1">
 <p>
-In the examples above, we&rsquo;ve used the function <code>randB</code> for obtaining a random data-generating system <code>B</code> and the function <code>B2w</code> for obtaining a random trajectory of that system. 
+In the examples above, we&rsquo;ve used the function <code>randB</code> for obtaining a random data-generating system <code>B</code> and the function <code>ss2w</code> for obtaining a random trajectory of that system. 
 </p>
 <ul class="org-ul">
 <li><code>randB</code> constructs a kernel representation <code>R</code> corresponding to the specified structure (number of variables, number of inputs, lag, and order) with nonzero elements generated as random uniformly distributed in the interval \([0,1]\). The kernel representation <code>R</code> is then converted to an input/state/output representation <code>B</code>.</li>
-<li><code>B2w</code> uses the function <code>lsim</code> from the Control System Toolbox of Matlab in order to simulate a trajectory of <code>B</code> under random initial conditions and a random input.</li>
+<li><code>ss2w</code> uses the function <code>lsim</code> from the Control System Toolbox of Matlab in order to simulate a trajectory of <code>B</code> under random initial conditions and a random input.</li>
 </ul>
 
 <p>
@@ -431,11 +431,11 @@ The system produced by <code>randB</code> may be unstable:
 When <code>B</code> is unstable, the trajectory obtained from random input and initial conditions is almost surely exponentially diverging
 </p>
 <div class="org-src-container">
-<pre class="src src-matlab">T = 300; w = B2w(B, T); max(w(<span style="color: #98fb98;">:</span>)) <span style="color: #ee0000;">% -&gt; large</span>
+<pre class="src src-matlab">T = 300; w = ss2w(B, T); max(w(<span style="color: #98fb98;">:</span>)) <span style="color: #ee0000;">% -&gt; large</span>
 </pre>
 </div>
 <p>
-Generating a &ldquo;sufficiently long well behaved&rdquo; random trajectory from unstable system requires special case (e.g., design of a stabilizing controller).
+Generating a &ldquo;sufficiently long well behaved&rdquo; random trajectory from unstable system requires special care (e.g., design of a stabilizing controller).
 </p>
 
 <p>
@@ -451,9 +451,9 @@ Thus, using the nonparameteric representation \(B_T\) of the finite-horizon beha
 </div>
 </div>
 
-<div id="outline-container-orge800c4f" class="outline-3">
-<h3 id="orge800c4f">Distance of a signal to a system</h3>
-<div class="outline-text-3" id="text-orge800c4f">
+<div id="outline-container-org113bcfd" class="outline-3">
+<h3 id="org113bcfd">Distance of a signal to a system</h3>
+<div class="outline-text-3" id="text-org113bcfd">
 <p>
 The distance of a signal \(w\) to a system \(\mathcal{B}\) has the familiar definition and geometrical interpretation: \(\min_{\hat w \in \mathcal{B}} \| w - \hat w \|\). It&rsquo;s computation is implemented in the function <code>dist</code>. As a specification of \(\mathcal{B}\), <code>dist</code> accepts an <code>lti</code> object as well as the finite-horizon representation \(B_T\) with horizon \(T\) the length of \(w\).
 </p>
@@ -486,9 +486,9 @@ The function <code>dist</code> returns also the projection \(\hat w\) of \(w\) i
 </div>
 </div>
 
-<div id="outline-container-org0cf637a" class="outline-3">
-<h3 id="org0cf637a">Distance between systems</h3>
-<div class="outline-text-3" id="text-org0cf637a">
+<div id="outline-container-org491ab68" class="outline-3">
+<h3 id="org491ab68">Distance between systems</h3>
+<div class="outline-text-3" id="text-org491ab68">
 <p>
 How to check if two systems are equal? By construction the system 
 </p>

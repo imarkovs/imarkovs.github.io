@@ -3,7 +3,7 @@
 # #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="jemdoc.css" />
 # #+HTML_MATHJAX: mathml:t path:"/home/im/MathJax/MathJax.js"
 
-The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the [[./bt.tar][archive file]]. A tutorial is given in Section 3 of the [[./bt.pdf][documentation]]. In order to cite it, please use:
+The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the [[./bt.tar][archive file]]. In order to cite it, please use:
 #+begin_quote
 I. Markovsky. [[https://imarkovs.github.io/publications/bt-l4dc.pdf][The behavioral toolbox]]. In Proc. of Machine Learning Research, volume 242, pages 130--141, 2024.
 #+end_quote
@@ -22,7 +22,7 @@ I. Markovsky. [[https://imarkovs.github.io/publications/bt-l4dc.pdf][The behavio
 
 * Examples
 
-In the examples shown below, a trajectory of a discrete-time linear time-invariant system --- /the data/ --- is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see Section 3.7 in the [[./bt.pdf][documentation]]).
+In the examples shown below, a trajectory of a discrete-time linear time-invariant system --- /the data/ --- is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see [[https://imarkovs.github.io/publications/identifiability.pdf][Section 5]]).
 
 ** Finding the number of inputs
 # Their importance is due to the fact that they determine the system's complexity: The more variables are inputs and the higher the order is, the more complex the system is. 
