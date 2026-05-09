@@ -1084,10 +1084,10 @@ It implements a variable projection type algorithm and allows the user to choose
   author = {I. Markovsky and E. Prieto-Araujo and F. Dörfler},
   title = {On the persistency of excitation},
   journal = {Automatica},
-  year = {2023},
-  doi = {10.1016/j.automatica.2022.110657},
   vol = {147},
   pages = {110657},
+  year = {2023},
+  doi = {10.1016/j.automatica.2022.110657},
   pdf = {<a href="https://imarkovs.github.io/publications/fl-rev.pdf">https://imarkovs.github.io/publications/fl-rev.pdf</a>},
   abstract = {The result of J.C. Willems et al. “A note on persistency of excitation”, System \& Control Letters, 2005 gives identifiability conditions for system identification as well as data-driven representations for data-driven control. The existing proofs however are proofs by contradiction and do not give insight into the assumptions of controllability and persistency of excitation of the input. Moreover, the existing proofs do not clarify how conservative the assumptions are. We provide an alternative constructive proof that reduces the required order of persistency of excitation to the time horizon of the data-driven representation plus the controllability index of the system. The nongeneric case in which persistency of excitation of order more than the time horizon is needed corresponds to special initial condition. It is explicitly characterized in terms of the solution of a Sylvester equation. Another contribution of the paper is a representation of a persistently exciting input of a specified order as an output of an autonomous linear time-invariant system. The result can be used for input design with constraints on the input.},
   keywords = {behavioral approach; exact identification; identifiability; persistency of excitation; input design}
@@ -1233,7 +1233,7 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   title = {Implementation improvements and extensions of an {ODE}-based algorithm for structured low-rank approximation},
   journal = {Calcolo},
   volume = {62},
-  optnumber = {},
+  number = {2},
   optpages = {},
   year = {2025},
   doi = {10.1007/s10092-024-00623-y},
@@ -1264,10 +1264,10 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   author = {C. Verhoek and I. Markovsky and S. Haesaert and R. Toth},
   title = {The behavioral approach for {LPV} data-driven representations},
   journal = {IEEE Trans. Automat. Contr.},
-  optvolume = {},
-  optnumber = {},
-  optpages = {},
-  year = {2025},
+  volume = 71,
+  number = 3,
+  pages = {1616--1629},
+  year = {2026},
   abstract = {In this paper, we present a data-driven representation for linear parameter-varying (LPV) systems, which can be used for direct data-driven analysis and control of such systems. Specifically, we use the behavioral approach to develop a data-driven representation of the finite-horizon behavior of LPV systems for which there exists a kernel representation with shifted-affine scheduling dependence. Moreover, we provide a necessary and sufficient rank-based test on the available data that concludes whether the data fully represents the finite-horizon LPV behavior. Using the proposed data-driven representation, we also solve the data-driven simulation problem for LPV systems. Through multiple examples, we demonstrate that the results in this paper allow us to formulate a novel set of direct data-driven analysis and control methods for LPV systems, which are also applicable for LPV embeddings of nonlinear systems.},
   keywords = {Behavioral systems theory, linear parameter-varying systems, data-driven simulation and control},
   doi = {https://doi.org/10.1109/TAC.2025.3613909},
@@ -1328,8 +1328,8 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   author = {I. Markovsky},
   title = {Project-based teaching: {A} case study of learning systems theory and signal processing by a dynamic measurements project},
   journal = {IEEE Control Systems Magazine},
-  optvolume = {},
-  optnumber = {},
+  volume = {46},
+  number = {4},
   optpages = {},
   year = {2026},
   abstract = {Research shows that, in learning science and engineering, guided project work leads to deeper understanding of theoretical concepts (as well as acquisition of hands-on skills) than the classical approach of textbook reading and attending lectures. In an approach to education based on project work, the role of the teacher is to create a stimulating learning environment and to supervise the students in accomplishing their objectives. The main challenge is to come up with projects that are engaging, diverse, and feasible in view of limited time and resources. In this paper, we describe such a signal processing project. The task is to improve the speed and accuracy characteristics of a sensor by real-time signal processing. It turns out that this is an application of Kalman filtering however the students need to identify a model of the sensor and implement the Kalman filter on a DSP. The project consists of three main tasks: 1) mathematical formalization of the problem, 2) development of solution methods, and 3) implementation and testing of the methods. The testing is done on an inexpensive laboratory setup, using the Lego Mindstorms educational kit in combination with a temperature sensor. The learning outcomes are understanding of model representations, system identification, and state estimation, as well as implementation in Matlab and C of real-time signal processing algorithms. Possible extensions are adaptive signal processing, multiple sensors data fusion, and non-constant measured value estimation.},
@@ -1390,7 +1390,7 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   author = {C. Verhoek and I. Markovsky and R. Toth},
   title = {Direct data-driven interpolation and approximation of linear parameter-varying system trajectories},
   journal = {IFAC Journal of Systems and Control},
-  optvolume = {},
+  volume = {35},
   optnumber = {},
   optpages = {},
   year = {2026},
@@ -1413,6 +1413,21 @@ The results in the paper are derived assuming exact data, however, low-rank appr
   year = {2026},
   url = {https://imarkovs.github.io/publications/dd-fd.pdf},
   doi = {10.1016/j.ymssp.2025.113802}
+}
+</pre>
+
+<a name="lpv-slra"></a><pre>
+@article{<a href="j.html#lpv-slra">lpv-slra</a>,
+  author = {L. Hemelhof and C. Verhoek and R. Tóth and I. Markovsky and P. Patrinos},
+  title = {Identification of Shifted-Affine Linear Parameter-Varying Models in the Errors-In-Variables Setting},
+  journal = {Int. Journal of Robust and Nonlinear Control},
+  optvolume = {},
+  optpages = {},
+  abstract = {This paper presents an identification method for linear parameter-varying (LPV) models with affine dependence on the scheduling variables, referred to as shifted-affine linear parameter-varying (SALPV) models. Utilizing recent work extending the Fundamental Lemma by Willems et al. to LPV models, the identification problem is shown to be equivalent to a structured low-rank approximation problem and is solved using a variable projection method. The proposed method exploits the Kronecker-Hankel structure, a block Hankel matrix where each block element is the Kronecker product of a known vector with an unknown vector, which is a structure not previously considered in related literature. We consider noise on both the input and output signal, and noise-free scheduling variables, which corresponds to the errors-in-variables (EIV) setting in the linear time-invariant (LTI) literature, a setting which is not typically considered in existing LPV identification methods. The proposed method is guaranteed to converge to a stationary point of the cost function, which is proportional to the log-likelihood under the considered noise setting, and has a runtime per iteration that scales linearly with the number of samples. Extensions of the proposed method are introduced to allow for additional freedom in the problem definition, including missing and fixed elements and a weighted cost function. The proposed method is compared to state-of-the-art methods on a simulated mass-spring-damper system.},
+  keywords = {System identification, Linear parameter-varying systems, Behavioral approach, Structured low-rank approximation},
+  year = {2026},
+  opturl = {},
+  doi = {10.1002/rnc.70554}
 }
 </pre>
 

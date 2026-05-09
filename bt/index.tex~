@@ -1,4 +1,4 @@
-% Created 2026-04-20 Mon 11:49
+% Created 2026-04-20 Mon 11:46
 % Intended LaTeX compiler: pdflatex
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
@@ -32,7 +32,7 @@
 
 
 \section*{Overview}
-\label{sec:org0926428}
+\label{sec:org696b8e1}
 
 The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the \href{./bt.tar}{archive file}. In order to cite it, please use:
 \begin{quote}
@@ -52,7 +52,7 @@ I. Markovsky. \href{https://imarkovs.github.io/publications/bt-l4dc.pdf}{The Beh
 \end{quote}
 
 \section*{Functions}
-\label{sec:org5c94651}
+\label{sec:org5ba110e}
 
 The Behavioral Toolbox supports the following representations:
 \begin{itemize}
@@ -84,7 +84,7 @@ The functions of the toolbox that make transitions among the representations hav
 \node[box, above=of bt]  (ss)  {state-space};
 \node[box, right=of C]   (ker) {\re{ker}};
 \node[box, above=of ker] (slk) {shortest-lag};
-\node[box, below=of C]   (raw) {raw data $\mathcal{W}_\rd$\\ \re{ddr}};
+\node[box, below=of C]   (raw) {raw data $\mathcal{W}_\rd$};
 \node[box2, left=of ss, yshift=-.5cm]  (ells) {structure\\ $(\ell_1,\ldots,\ell_p)$};
 \node[box2, below=of ells]  (dummy) {};
 \node[box2, below=of dummy, yshift=2cm] (raw2)  {non-minimal\\ non-parametric\\ data-driven};
@@ -99,8 +99,8 @@ The functions of the toolbox that make transitions among the representations hav
 \draw[<->] (slk) -- node[lbl] {ss2Rp/Rp2ss} (ss);
 \draw[<->] (raw) -- node[lbl] {u2y/w2BT} (bt);
 \draw[<->] (raw) -- node[lbl] {R2w/w2R} (ker);
-\draw[<->] (ss) to[bend right=60] node[lbl] {B2w/w2ss} (raw);
-\draw[->] (raw) to[bend right=60] node[lbl] {w2Rp} (slk);
+\draw[<->] (ss) to[bend right=55] node[lbl] {B2w/w2ss} (raw);
+\draw[->] (raw) to[bend right=55] node[lbl] {w2Rp} (slk);
 \draw[->] (raw2)    -- node[lbl2] {structure detection} (ells);
 \draw[->] (dd)      -- node[lbl2] {identification} (non-par);
 \draw[->] (non-par) -- (par);
@@ -115,7 +115,7 @@ The functions of the toolbox that make transitions among the representations hav
 In addition to the functions for transformations among representations, the toolbox offers functions for finding input/output partitionings of variables, computation of subbehaviors, analysis, signal processing, open-loop control, identification, and interconnection. A full list of functions is available in \href{./list-of-functions.pdf}{pdf}.
 
 \section*{Examples}
-\label{sec:org82babc3}
+\label{sec:orgb4e6107}
 
 \startcontents[level-1]
 \printcontents[level-1]{}{0}{\setcounter{tocdepth}{3}}
@@ -123,7 +123,9 @@ In addition to the functions for transformations among representations, the tool
 In the examples shown below, a trajectory of a discrete-time linear time-invariant system --- \emph{the data} --- is given and the goal is to find some property of the data-generating system or solve a problem involving the data-generating system. The data is assumed to fully specify the system --- a condition that is verifiable from the data and the system's complexity (number of inputs and order).
 
 \subsection*{Finding the number of inputs}
-\label{sec:orga1bab9a}
+\label{sec:org8cdd0f0}
+\la{ex1}
+
 The data is a vector time series containing the observed variables of the system. Since these variables are not partitioned into inputs and outputs, which variables are inputs is not known. Also, how many variables are inputs is not known. It is possible however to fining the number of inputs from the given data. The function of the toolbox that does this is \texttt{w2c}. In addition to finding the number of inputs \(m\), it finds also the order \(n\) and the lag \(\ell\) of the underlying data-generating system. 
 
 Here is an example:
@@ -163,7 +165,7 @@ wd = ss2w(B, Td);
 \emph{Exercise:} Change the simulation parameters and find out empirically when the data is ``sufficiently long''.
 
 \subsection*{Finding an input/output partitioning of the variables}
-\label{sec:org7fc0da8}
+\label{sec:orga0e8fde}
 
 We've seen that we can find the number of inputs \(m\) from the data. Can we find also \emph{the} input variables \(u\)? No, in general, we can not do this because different sets of variables can act as inputs. The function of the toolbox that finds all possibilities of partitioning the variables into inputs and outputs is \texttt{BT2IO}. 
 
@@ -202,7 +204,7 @@ is the first input/output partitioning.
 \emph{Exercise:} In the example above, all partitionings of the variables are valid input/output partitionings. Create an example where this is not the case.
 
 \subsection*{The data-generating system may be unstable (but it's OK)}
-\label{sec:org74639fe}
+\label{sec:org1dc7e52}
 
 In the examples above, we've used the function \texttt{randB} for obtaining a random data-generating system \texttt{B} and the function \texttt{ss2w} for obtaining a random trajectory of that system. 
 \begin{itemize}
@@ -227,7 +229,7 @@ BT = B2BT(B, T); w = BT * rand(size(BT, 2), 1); max(w) % -> small
 Thus, using the nonparameteric representation \(B_T\) of the finite-horizon behavior, standard linear algebra (computation of an orthonormal basis) allows us to obtain ``sufficiently long well behaved'' trajectories of unstable systems.
 
 \subsection*{Distance of a signal to a system}
-\label{sec:org6c8e5df}
+\label{sec:org3693612}
 
 The distance of a signal \(w\) to a system \(\mathcal{B}\) has the familiar definition and geometrical interpretation: \(\min_{\hat w \in \mathcal{B}} \| w - \hat w \|\). It's computation is implemented in the function \texttt{dist}. As a specification of \(\mathcal{B}\), \texttt{dist} accepts an \texttt{lti} object as well as the finite-horizon representation \(B_T\) with horizon \(T\) the length of \(w\).
 
@@ -251,7 +253,7 @@ wd_noisy = wd + randn(size(wd)); [d, wdh] = dist(wd_noisy, B);
 \end{minted}
 
 \subsection*{Distance between systems}
-\label{sec:org89f52bf}
+\label{sec:orgb1fb11d}
 
 How to check if two systems are equal? By construction the system 
 \begin{minted}[]{matlab}
@@ -274,7 +276,7 @@ Bdist(Bp, B) % -> 0
 This distance measure is applicable also to stable systems.
 
 \subsection*{Extra examples}
-\label{sec:org55a1d13}
+\label{sec:orgf181a93}
 The package contains scripts showing the following examples:
 \begin{tabular}{ll}
 script name & example\\

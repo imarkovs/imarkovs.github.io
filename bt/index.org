@@ -3,9 +3,11 @@
 # #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="jemdoc.css" />
 # #+HTML_MATHJAX: mathml:t path:"/home/im/MathJax/MathJax.js"
 
+* Overview
+
 The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the [[./bt.tar][archive file]]. In order to cite it, please use:
 #+begin_quote
-I. Markovsky. [[https://imarkovs.github.io/publications/bt-l4dc.pdf][The behavioral toolbox]]. In Proc. of Machine Learning Research, volume 242, pages 130--141, 2024.
+I. Markovsky. [[https://imarkovs.github.io/publications/bt-l4dc.pdf][The Behavioral Toolbox]]. In Proc. of Machine Learning Research, volume 242, pages 130--141, 2024.
 #+end_quote
 #+begin_quote
 #+begin_src 
@@ -20,34 +22,108 @@ I. Markovsky. [[https://imarkovs.github.io/publications/bt-l4dc.pdf][The behavio
 #+end_src
 #+end_quote
 
-* Examples
+# In memory of Jan C. Willems (1937–2012) who shaped my thinking and whose vision of rethinking systems theory continues to live on.
 
-In the examples shown below, a trajectory of a discrete-time linear time-invariant system --- /the data/ --- is given and the goal is to find some property of the data-generating system or solve a problem with the data-generating. It is assumed that the data fully specifies the system (see [[https://imarkovs.github.io/publications/identifiability.pdf][Section 5]]).
+* Functions
+
+The Behavioral Toolbox supports the following representations:
+  - =ss= : inputs/state/output, 
+  - =R=  : kernel 
+    \[\mathcal{B} = \text{ker}\,R(\sigma) := \{\, w \ | \ R(\sigma)w = 0 \,\}, \tag{KER}\label{ker}\]
+  - =Rp= : shortest-lag kernel, 
+  - =BT= : basis for the finite-horizon behavior
+    \[\mathcal{B}|_T = \text{image} \, B_T, \qquad\text{where } B_T^\top B_T = I_{r}, \text{ with } r := \dim\,\mathcal{B}|_T, \tag{$B_T$}\label{BT}\]
+  - =w=  : raw data
+    \[\mathcal{B}|_T = \text{image} \, \mathcal{H}_T(\mathcal{W}_\text{d}). \label{ddr}\tag{DDR}\]
+
+The functions of the toolbox that make transitions among the representations have names =x2y= where =x= is the given representation and =y= is the desired one.
+
+#+begin_export latex
+\begin{figure}[htb!]
+\centering 
+\usetikzlibrary{positioning}
+\begin{tikzpicture}[
+    >=latex,
+    node distance=3cm and 2.5cm,
+    box/.style={rectangle, rounded corners=5pt, minimum width=1cm, minimum height=.8cm, align=center, fill=blue!10}, % draw, dotted, 
+    box2/.style={rectangle, rounded corners=5pt, minimum width=1cm, minimum height=.8cm, align=center}, % draw, dotted, 
+    lbl/.style={midway, fill=white, inner sep=3pt, font=\small\ttfamily, sloped},
+    lbl2/.style={midway, fill=white, inner sep=3pt, font=\small, sloped},
+]
+\node[]                  (C)   {};
+\node[box, left=of C]    (bt)  {\re{BT}};
+\node[box, above=of bt]  (ss)  {state-space};
+\node[box, right=of C]   (ker) {\re{ker}};
+\node[box, above=of ker] (slk) {shortest-lag};
+\node[box, below=of C]   (raw) {raw data $\mathcal{W}_\rd$\\ \re{ddr}};
+\node[box2, left=of ss, yshift=-.5cm]  (ells) {structure\\ $(\ell_1,\ldots,\ell_p)$};
+\node[box2, below=of ells]  (dummy) {};
+\node[box2, below=of dummy, yshift=2cm] (raw2)  {non-minimal\\ non-parametric\\ data-driven};
+\node[box2, right=of slk, yshift=-.25cm, xshift=-.35cm] (par) {parametric};
+\node[box2, right=of ker, yshift=.5cm]   (non-par) {non-minimal};
+\node[box2, below=of non-par, yshift=.25cm]   (dd) {non-parametric\\ data-driven};
+\draw[<->] (ss) -- node[lbl] {ss2BT/BT2ss} (bt);
+\draw[<->] (ss) to[bend right=25] node[lbl] {ss2R/R2ss} (ker);
+\draw[<->] (bt) to[bend  left=20] node[lbl] {BT2Rp/Rp2BT} (slk);
+\draw[<->] (ker) -- node[lbl] {BT2R/R2BT} (bt);
+\draw[<->] (slk) -- node[lbl] {Rp2R/R2Rp} (ker);
+\draw[<->] (slk) -- node[lbl] {ss2Rp/R2ss} (ss);
+\draw[<->] (raw) -- node[lbl] {u2y/w2BT} (bt);
+\draw[<->] (raw) -- node[lbl] {R2w/w2R} (ker);
+\draw[<->] (ss) to[bend right=60] node[lbl] {B2w/w2ss} (raw);
+\draw[->] (raw) to[bend right=60] node[lbl] {w2Rp} (slk);
+\draw[->] (raw2)    -- node[lbl2] {structure detection} (ells);
+\draw[->] (dd)      -- node[lbl2] {identification} (non-par);
+\draw[->] (non-par) -- (par);
+\end{tikzpicture}
+\caption{The Behavioral Toolbox supports five LTI system's representations---state-space, shortest-lag kernel, kernel, orthogonal basis for the finite-horizon behavior \re{BT}, and data-driven \re{ddr}. The state-space and shortest-lag kernel representations are parametric, while \re{BT} and \re{ddr} are non-parametric. The function converting representation \texttt{x} to representation \texttt{y} is named \texttt{x2y}. The shortest-lag kernel representation reveals the system's structure $(\ell_1,\ldots,\ell_p)$. Going "up" in the diagram from a less structured to a more structured representation requires structure detection.}\la{f-diagram}
+\end{figure}
+#+end_export
+
+#+ATTR_HTML: :style width:1000px; height:auto;
+[[file:diagram.svg]]
+
+In addition to the functions for transformations among representations, the toolbox offers functions for finding input/output partitionings of variables, computation of subbehaviors, analysis, signal processing, open-loop control, identification, and interconnection. A full list of functions is available in [[./list-of-functions.pdf][pdf]].
+
+* Examples
+#+begin_src matlab :exports none :tangle examples_web.m
+clear all, clc, echo on
+#+end_src
+
+#+TOC: headlines 2 local
+
+In the examples shown below, a trajectory of a discrete-time linear time-invariant system --- /the data/ --- is given and the goal is to find some property of the data-generating system or solve a problem involving the data-generating system. The data is assumed to fully specify the system --- a condition that is verifiable from the data and the system's complexity (number of inputs and order). 
+
+The code of the examples is should be run sequentially (data generated from one example is used in the following examples). It is extracted in the script file [[./examples_web.m][=examples_web.m=]]. 
 
 ** Finding the number of inputs
+#+begin_src matlab :exports none :tangle examples_web.m
+%% Finding the number of inputs
+#+end_src
+
 # Their importance is due to the fact that they determine the system's complexity: The more variables are inputs and the higher the order is, the more complex the system is. 
 
 The data is a vector time series containing the observed variables of the system. Since these variables are not partitioned into inputs and outputs, which variables are inputs is not known. Also, how many variables are inputs is not known. It is possible however to fining the number of inputs from the given data. The function of the toolbox that does this is =w2c=. In addition to finding the number of inputs $m$, it finds also the order $n$ and the lag $\ell$ of the underlying data-generating system. 
 
 Here is an example:
 - specify the simulation parameters---number of variables =q=, number of inputs =m=, lag =ell=, order =n=, and number of data samples =Td=
-#+BEGIN_SRC matlab :tangle examples.m
+#+BEGIN_SRC matlab :tangle examples_web.m
 q = 3; m = 1; ell = 2; n = 3; Td = 20; 
 #+END_SRC
 - generate a random linear time-invariant system with the specified parameters
-#+BEGIN_SRC matlab :tangle examples.m
-B = randB(q, [m, ell, n]); 
+#+BEGIN_SRC matlab :tangle examples_web.m
+Rp = randB(q, [m, ell, n]); 
 #+END_SRC
 - generate a random trajectory of the system with the specified number of samples
-#+BEGIN_SRC matlab :tangle examples.m
-wd = ss2w(B, Td); 
+#+BEGIN_SRC matlab :tangle examples_web.m
+wd = R2w(Rp, q, Td); 
 #+END_SRC
 - call the =w2c= function
-#+BEGIN_SRC matlab :tangle examples.m
+#+BEGIN_SRC matlab :tangle examples_web.m
 [~, mh, ellh, nh] = w2c(wd);
 #+END_SRC
 - check if the computed result is correct
-#+BEGIN_SRC matlab :tangle examples.m
+#+BEGIN_SRC matlab :tangle examples_web.m
 [m == mh, ell == ellh, n == nh] % -> [true true true]  
 #+END_SRC
 
@@ -55,7 +131,14 @@ wd = ss2w(B, Td);
 
 /Exercise:/ Change the simulation parameters and find out empirically when the data is "sufficiently long".
 
+#+begin_src matlab :exports none :tangle examples_web.m
+pause
+#+end_src
+
 ** Finding an input/output partitioning of the variables
+#+begin_src matlab :exports none :tangle examples_web.m
+%% Finding an input/output partitioning of the variables
+#+end_src
 
 We've seen that we can find the number of inputs $m$ from the data. Can we find also /the/ input variables $u$? No, in general, we can not do this because different sets of variables can act as inputs. The function of the toolbox that finds all possibilities of partitioning the variables into inputs and outputs is =BT2IO=. 
 
@@ -63,11 +146,11 @@ We've seen that we can find the number of inputs $m$ from the data. Can we find 
 
 Continuing the example above, 
 - first, we obtain the matrix $B_T$: 
-#+begin_src matlab :tangle examples.m
+#+begin_src matlab :tangle examples_web.m
 T = 2 * ell + 1; BT = w2BT(wd, T, [m ell n]);
 #+end_src
 - then, we call =BT2IO=:
-#+begin_src matlab :tangle examples.m
+#+begin_src matlab :tangle examples_web.m
 IO = BT2IO(BT, q)
 #+end_src
 Its output 
@@ -82,82 +165,196 @@ IO =
      3     2     1
 #+end_src
 is a matrix, the rows of which indicate the possible input/output partitionings, e.g., 
-#+begin_src matlab
-ud = wd(:, IO(1, 1:m)); yd = ud = wd(:, IO(:, m+1:end));
+#+begin_src matlab :tangle examples_web.m
+ud = wd(:, IO(1, 1:m)); yd = wd(:, IO(:, m+1:end));
 #+end_src
 is the first input/output partitioning.
 
 /Exercise:/ In the example above, all partitionings of the variables are valid input/output partitionings. Create an example where this is not the case.
 
-** The data-generating system may be unstable (but it's OK)
-
-In the examples above, we've used the function =randB= for obtaining a random data-generating system =B= and the function =ss2w= for obtaining a random trajectory of that system. 
-- =randB= constructs a kernel representation =R= corresponding to the specified structure (number of variables, number of inputs, lag, and order) with nonzero elements generated as random uniformly distributed in the interval $[0,1]$. The kernel representation =R= is then converted to an input/state/output representation =B=.
-- =ss2w= uses the function =lsim= from the Control System Toolbox of Matlab in order to simulate a trajectory of =B= under random initial conditions and a random input.
-
-The system produced by =randB= may be unstable:
-#+begin_src matlab
-[B, R] = randB(q, [m, ell, n]); any(abs(eig(B)) > 1) % -> true
+#+begin_src matlab :exports none :tangle examples_web.m
+pause
 #+end_src
-When =B= is unstable, the trajectory obtained from random input and initial conditions is almost surely exponentially diverging
-#+begin_src matlab
-T = 300; w = ss2w(B, T); max(w(:)) % -> large
+
+** The data-generating system may be unstable (but it's OK)
+#+begin_src matlab :exports none :tangle examples_web.m
+%% The data-generating system may be unstable (but it's OK)
+#+end_src
+
+In the examples above, we've used the function =randB= for obtaining a random data-generating system =B= and the function =B2w= for obtaining a random trajectory of that system. 
+- =randB= constructs a kernel representation =R= corresponding to the specified structure (number of variables, number of inputs, lag, and order) with nonzero elements generated as random uniformly distributed in the interval $[0,1]$. The kernel representation =R= is then converted to an input/state/output representation =B=.
+- =B2w= uses the function =lsim= from the Control System Toolbox of Matlab in order to simulate a trajectory of =B= under random initial conditions and a random input.
+
+The system produced by =randB= may be BIBO unstable:
+#+begin_src matlab :tangle examples_web.m
+B = R2ss(Rp, q); any(abs(eig(B)) > 1) % -> true
+#+end_src
+When it is unstable, the trajectory obtained from random input and initial conditions is almost surely exponentially diverging
+#+begin_src matlab :tangle examples_web.m
+T = 300; 
+u = rand(T, m); y = lsim(B, u, [], rand(n, 1)); 
+w = [u y]; max(w(:)) % -> large
 #+end_src
 Generating a "sufficiently long well behaved" random trajectory from unstable system requires special care (e.g., design of a stabilizing controller).
 
 An alternative way to generate a random trajectory of the system is using the nonparameteric representation $B_T$ of the finite-horizon behavior. For a random vector $g\in\mathbb{R}^{mT+n}$, we obtain a random trajectory $w = B_T g$. When $||g||$ is bounded (e.g., its elements are uniformly distributed in the interval $[0,1]$), since by construction the matrix $B_T$ is orthonormal, the resulting trajectory $w$ is also bounded. 
-#+begin_src matlab
-BT = B2BT(B, T); w = BT * rand(size(BT, 2), 1); max(w) % -> small
+#+begin_src matlab :tangle examples_web.m
+BT = R2BT(Rp, q, T); w = BT * rand(size(BT, 2), 1); max(w) % -> small
 #+end_src
 Thus, using the nonparameteric representation $B_T$ of the finite-horizon behavior, standard linear algebra (computation of an orthonormal basis) allows us to obtain "sufficiently long well behaved" trajectories of unstable systems.
 
-** Checking controllability                                             :NP:
+#+begin_src matlab :exports none :tangle examples_web.m
+pause
+#+end_src
+
 ** Distance of a signal to a system
+#+begin_src matlab :exports none :tangle examples_web.m
+%% Distance of a signal to a system
+#+end_src
 
 The distance of a signal $w$ to a system $\mathcal{B}$ has the familiar definition and geometrical interpretation: $\min_{\hat w \in \mathcal{B}} \| w - \hat w \|$. It's computation is implemented in the function =dist=. As a specification of $\mathcal{B}$, =dist= accepts an =lti= object as well as the finite-horizon representation $B_T$ with horizon $T$ the length of $w$.
 
 Finding the distance of a signal to a system is useful in particular for checking if the signal is a valid trajectory of the system:
-#+begin_src matlab
-dist(wd, B) % -> 0
+#+begin_src matlab :tangle examples_web.m
+dist(wd, BT) % -> 0
 #+end_src
 
 The function =dist= returns also the projection $\hat w$ of $w$ in $\mathcal{B}$. The signal $\hat w$ is useful because it the best approximation of $w$ by a trajectory of the system. It is called the smoothed signal. Here is an example.
-- We add a perturbation on the trajectory and compute its distance to the system:
-#+begin_src matlab :tangle examples.m
-wd_noisy = wd + randn(size(wd)); [d, wdh] = dist(wd_noisy, B);
-#+end_src
+- We add a perturbation on the trajectory
+  #+begin_src matlab :tangle examples_web.m
+  wn = randn(size(wd)); wd_noisy = wd + 0.1 * norm(wd) * wn / norm(wd); 
+  #+end_src
+- and compute the projection =wdh= of the perturbed signal =wd_noisy= on the system
+  #+begin_src matlab :tangle examples_web.m
+  [d, wdh] = dist(wd_noisy, BT);
+  #+end_src
 - The distance of the best approximation to the original trajectory is smaller than the distance of the perturbed trajectory to the original trajectory:
-#+begin_src matlab :tangle examples.m
-[norm(wd - wdh) norm(wd - wd_noisy)] / norm(wd)
+  #+begin_src matlab :tangle examples_web.m
+  100 * [norm(wd - wd_noisy) norm(wd - wdh)] / norm(wd)
+  #+end_src
+
+#+begin_src matlab :exports none :tangle examples_web.m
+pause
 #+end_src
 
 ** Distance between systems
+#+begin_src matlab :exports none :tangle examples_web.m
+%% Distance between systems
+#+end_src
 
 How to check if two systems are equal? By construction the system 
-#+begin_src matlab
+#+begin_src matlab :tangle examples_web.m
 Bp = ss2ss(B, rand(n));
 #+end_src
 is equal to =B=. However, the Control Systems Toolbox of Matlab does not allow us to infer it by 
-#+begin_src matlab
-B == Bp % -> Operator '==' is not supported for operands of type 'ss'.
+#+begin_src matlab :tangle examples_web.m
+try 
+    B == Bp % -> Operator '==' is not supported for operands of type 'ss'.
+catch me
+    me
+end    
 #+end_src
 Instead, we can check the norm of difference:
-#+begin_src matlab
-norm(Bp - B) % -> 0
+#+begin_src matlab :tangle examples_web.m
+norm(Bp - B) % -> Inf
 #+end_src
-The norm computation, however, is restricted to stable systems. 
+however, it is restricted to stable systems. 
 
 The function =Bdist= computes a distance between systems defined as the angle between the corresponding behaviors:
-#+begin_src matlab
+#+begin_src matlab :tangle examples_web.m
 Bdist(Bp, B) % -> 0
 #+end_src
-This distance measure is applicable also to stable systems.
+This distance measure is applicable also to unstable systems.
 
+#+begin_src matlab :exports none :tangle examples_web.m
+echo off
+#+end_src
+
+** More examples in the package
+  #+ATTR_LaTeX: :float nil :center nil
+  | script name            | example                                             |
+  |------------------------+-----------------------------------------------------|
+  | =observer=             | missing input estimation                            |
+  | =smoothing=            | errors-in-variables smoothing                       |
+  | =dd_forecasting=       | data-driven forecasting                             |
+  | =interconnection=      | interconnection as variables sharing                |
+  | =controllability=      | distance to uncontrollability                       |
+  | =sysid_with_structure= | system identification with predefined structure     |
+  | =sysid_missing_data=   | system identification from data with missing values |
+
+** Checking controllability                                             :NP:
 ** Distance of a signal to being a trajectory of a bounded complexity system :NP:
 
 In the previous sections we considered distance of a signal to a system and distance between systems. 
 In this section, we consider another distance problem: the distance of a given signal to a system in a class of linear time-invariant systems with bounded complexity. 
 This is actually a model identification problem. Zero distance means that there is an exact model of bounded complexity. Nonzero distance delivers as a by-product a system with bounded complexity that certifies the reported distance. Since the problem is non-convex there is no grantee that the obtained distance is globally minimal.
+
+* List of functions                                                      :NP:
+** Input/output partitioning
+  #+ATTR_LaTeX: :float nil :center nil
+  | =uy2w= and =w2uy= | row permutation reordering variables from $(u,y)$ to $w$ and back                |
+  | =BT2W=            | convert the basis =BT= into a set of trajectories (cell array)                   |
+  | =BT2BT=           | change horizon or permute variables                                              |
+  | =is_io=           | check if a partitioning of the variables is a possible input/output partitioning |
+  | =BT2IO=           | find all input/output partitionings of the variables                             |
+
+** Analysis
+  #+ATTR_LaTeX: :float nil :center nil
+  | =ells2c= and =c2ells= | conversion between complexity and lag structure                            |
+  | =lag= / =ss2ell=      | find the lag of a system given by a state-space representation             |
+  | =ss2c=                | find the complexity of a system given by a state-space representation      |
+  | =BT2c=                | find the complexity from the finite-horizon behavior                       |
+  | =BT2ells=             | find the lag structure from the finite-horizon behavior                    |
+  | =Rp2ells=             | find the lag structure from a shortest-lag kernel representation           |
+  | =is_lti=              | check a if finite-horizon behavior represents a bounded complexity LTI system |
+  | =dist_lti=            | distance to the set of bounded complexity LTI systems                      |
+  | =Bdist=               | distance between two systems                                               |
+  | =equal=               | check if two systems are equal                                             |
+  | =isunctr=             | check controllability                                                      |
+  | =distunctr=           | distance to uncontrollability                                              |
+  | =BT2Hinf=             | finite-horizon H-infty norm                                                |
+  | =BT2Hz=               | transfer function evaluation                                               |
+
+** Subbehaviors
+  #+ATTR_LaTeX: :float nil :center nil
+  | =BT2Y0= and =ss2Y0= | zero input subbehavior                                     |
+  | =BT2U0=             | zero output subbehavior                                    |
+  | =BT2B0=             | zero initial conditions subbehavior                        |
+  | =BT2HT= and =ss2HT= | zero initial conditions finite-horizon input-to-output map |
+  | =BT2BC=             | controllable subbehavior                                   |
+
+** Signal processing and open-loop control
+  #+ATTR_LaTeX: :float nil :center nil
+  | =R2w= / =B2w=     | select random trajectory of system specified by kernel / state-space representation |
+  | =dist=            | distance from trajectory to system                                                    |
+  | =w_in_B=          | check if signal is trajectory of a system                                             |
+  | =w2xini=          | find initial state for future trajectory                                              |
+  | =w2wini=          | find initial trajectory for future trajectory                                         |
+  | =u2y=             | simulation                                                                            |
+  | =B2h=             | impulse response computation                                                          |
+  | =wgiven2wmissing= | estimation of missing variables                                                       |
+  | =lqctr=           | open-loop linear-quadratic tracking control                                           |
+
+** System identification
+  #+ATTR_LaTeX: :float nil :center nil
+  | =w2c=  | complexity of the most powerful unfalsified model    |
+  | =w2BT= | finite-horizon behavior from a trajectory            |
+  | =w2R=  | kernel representation from a trajectory              |
+  | =w2Rp= | shortest-lag kernel representation from a trajectory |
+  | =w2ss= | state-space representation from a trajectory         |
+
+** Interconnection of systems
+  #+ATTR_LaTeX: :float nil :center nil
+  | =BTappend= | append one finite-horizon behavior to another      |
+  | =Rappend=  | append one kernel representation to another        |
+  | =connect=  | interconnection of systems                         |
+  | =BTselect= | projection of the behavior on a subset of variable |
+
+** Auxiliary functions
+  #+ATTR_LaTeX: :float nil :center nil
+  | =randB=           | random LTI systems                                                |
+  | =hank=            | mosaic Hankel matrix                                              |
+  | =R2M=             | multiplication matrix                                             |
 
 * Tutorial                                                               :NP:
 
@@ -188,9 +385,9 @@ check(size(BT, 2) == m * T + n) % -> PASS
 #+end_src
 The function =check= prints "PASS" if its argument is true and "FAIL" otherwise. 
 
-Then, we check that a random trajectory of the system is in the image of =BT=. The function =ss2w= selects a random trajectory of =B=. Its output is a $T\times q$ matrix, where $T$ is the number of samples and $q$ is the number of variables. Checking if $w$ is a trajectory is a common task and is implemented in a function =w_in_B=:
+Then, we check that a random trajectory of the system is in the image of =BT=. The function =B2w= selects a random trajectory of =B=. Its output is a $T\times q$ matrix, where $T$ is the number of samples and $q$ is the number of variables. Checking if $w$ is a trajectory is a common task and is implemented in a function =w_in_B=:
 #+begin_src matlab :tangle demo.m
-w = ss2w(B, T); check(w_in_B(w, B)) % -> PASS
+w = B2w(B, T); check(w_in_B(w, B)) % -> PASS
 #+end_src
 The columns of =BT= are finite trajectories of the system. The function =BT2W= extracts them into a cell array =W=:
 #+begin_src matlab :tangle demo.m
@@ -423,7 +620,7 @@ The distance =d= from $w$ to $\mathcal{B}|_T$ is zero if and only if $w\in\mathc
 For ${w_\text{d}}\in\mathcal{B}|_T$, there is a corresponding initial conditions. 
 If $\mathcal{B}$ is defined by an input/state/output representation, the initial conditions can be specified by the initial state $x_\text{ini} = x(1)$. The initial state $x_\text{ini}$ corresponding to a trajectory $w$ can be found with the function =w2xini=:
 #+begin_src matlab :tangle demo.m
-[xini, e] = w2xini(w, B); check(norm(w - ss2w(B, T, xini, w(:, 1:m))) < tol)  % -> PASS
+[xini, e] = w2xini(w, B); check(norm(w - B2w(B, T, xini, w(:, 1:m))) < tol)  % -> PASS
 #+end_src
 The output argument =e= is zero when $w\in\mathcal{B}|_T$ and nonzero otherwise.
 
@@ -461,7 +658,7 @@ Special cases of the observer problem are estimation of the input given the outp
 The solution of the observer problem is implemented in the function =wgiven2wmissing=. Here is an example verifying the method for disturbance estimation:
 #+begin_src matlab :tangle demo.m
 qg = 2; qm = 2; q = qm + qg; m = 1; p = q - m; n = 5; B = drss(n, p, m);
-T = 20; w = ss2w(B, T); wg = w(:, 1:qg); wm = w(:, qg+1:q);
+T = 20; w = B2w(B, T); wg = w(:, 1:qg); wm = w(:, qg+1:q);
 wmh = wgiven2wmissing(wg, B); check(norm(wm - wmh) / norm(wm) < tol) % -> PASS
 #+end_src
 
@@ -500,7 +697,7 @@ In order to solve the optimal state transfer problem with specified initial and 
 #+begin_src matlab :tangle demo.m
 if ~isunctr(B)
   Tr = ell; wr = zeros(Tr, q);
-  wp = ss2w(B, ell); wf = zeros(ell, q); 
+  wp = B2w(B, ell); wf = zeros(ell, q); 
   wh = lqctr(B, wr, [], wp, wf);
   check(w_in_B([wp; wh; wf], B))
 end
@@ -544,7 +741,7 @@ equal(Bcl, Bcl_yT, q) % -> 1
 
 The functions presented in the previous sections of the tutorial use the nonparameteric representation of a linear time-invariant system $\mathcal{B}\in\mathcal{L}_c^q$. In this section, the system $\mathcal{B}$ is implicitly specified by a trajectory $w_{\text{d}}\in\mathcal{B}|_{T_{text{d}}}$
 #+begin_src matlab :tangle demo.m
-Td = 100; wd = ss2w(B, Td); 
+Td = 100; wd = B2w(B, Td); 
 #+end_src
 A necessary and sufficient condition for ${w_\text{d}}$ to define $\mathcal{B}\in\mathcal{L}^q_c$ is the /identifiability condition/:
 \]
@@ -599,15 +796,17 @@ R_ = mpum(wd); check(w_in_B(wd, R2BT(R_, q, Td))) % -> PASS
 
 * preamble								 :NP:
 #+AUTHOR: Ivan Markovsky
-#+DATE:  
+#+DATE:   In memory of Jan C. Willems (1937–2012),\linebreak who shaped my thinking and whose vision of rethinking systems theory continues to live on.
 #+CREATOR: Ivan Markovsky 
-#+OPTIONS:     num:nil toc:nil html-postamble:nil
+#+OPTIONS:     num:nil toc:1 html-postamble:nil
 #+LaTeX_CLASS_OPTIONS: [11pt,a4paper]
 #+LaTeX_HEADER: \input{/home/im/texinputs/mystyle-org.tex}\usepackage[final]{pdfpages}
 # #+LaTeX_HEADER: \usepackage[backend=biber]{biblatex}\bibliography{bib-new,bib,mypapers}
 #+LaTeX_HEADER: \newcommand{\quotebib}[1]{\begin{quote}\small\bibentry{#1}\end{quote}}
 #+LaTeX_HEADER: \topmargin=-1.5cm  \oddsidemargin=-1cm \evensidemargin=-1cm 
 #+LaTeX_HEADER: \textheight=25cm   \textwidth=18cm
+#+LaTeX_HEADER: \usepackage{tikz}\usetikzlibrary{matrix,arrows,decorations.pathmorphing,positioning,fit} % \usepackage{pgfplots}
+#+LaTeX_HEADER: \usepackage{xr} \externaldocument{bt}
 #+EXCLUDE_TAGS: NP SOL
 #+SELECT_TAGS: 
 #+DESCRIPTION:

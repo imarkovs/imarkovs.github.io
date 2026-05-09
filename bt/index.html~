@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2026-05-09 Sat 08:44 -->
+<!-- 2026-04-21 Tue 11:37 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>The Behavioral Toolbox</title>
@@ -269,16 +269,16 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#org015b1d8">Overview</a></li>
-<li><a href="#orgc9d1f69">Functions</a></li>
-<li><a href="#org1d76813">Examples</a></li>
+<li><a href="#org2906365">Overview</a></li>
+<li><a href="#org25ae1c7">Functions</a></li>
+<li><a href="#org4923fa9">Examples</a></li>
 </ul>
 </div>
 </div>
 
-<div id="outline-container-org015b1d8" class="outline-2">
-<h2 id="org015b1d8">Overview</h2>
-<div class="outline-text-2" id="text-org015b1d8">
+<div id="outline-container-org2906365" class="outline-2">
+<h2 id="org2906365">Overview</h2>
+<div class="outline-text-2" id="text-org2906365">
 <p>
 The Behavioral Toolbox is a collection of Matlab functions for analysis and design of dynamical systems using the behavioral approach to systems theory and control. It implements newly emerged nonparameteric data-driven methods for linear time-invariant systems. In order to install it, download and unpack the <a href="./bt.tar">archive file</a>. In order to cite it, please use:
 </p>
@@ -302,9 +302,9 @@ I. Markovsky. <a href="https://imarkovs.github.io/publications/bt-l4dc.pdf">The 
 </div>
 </div>
 
-<div id="outline-container-orgc9d1f69" class="outline-2">
-<h2 id="orgc9d1f69">Functions</h2>
-<div class="outline-text-2" id="text-orgc9d1f69">
+<div id="outline-container-org25ae1c7" class="outline-2">
+<h2 id="org25ae1c7">Functions</h2>
+<div class="outline-text-2" id="text-org25ae1c7">
 <p>
 The Behavioral Toolbox supports the following representations:
 </p>
@@ -336,17 +336,17 @@ In addition to the functions for transformations among representations, the tool
 </div>
 </div>
 
-<div id="outline-container-org1d76813" class="outline-2">
-<h2 id="org1d76813">Examples</h2>
-<div class="outline-text-2" id="text-org1d76813">
+<div id="outline-container-org4923fa9" class="outline-2">
+<h2 id="org4923fa9">Examples</h2>
+<div class="outline-text-2" id="text-org4923fa9">
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orgc4d812e">Finding the number of inputs</a></li>
-<li><a href="#org281c927">Finding an input/output partitioning of the variables</a></li>
-<li><a href="#org65fe935">The data-generating system may be unstable (but it&rsquo;s OK)</a></li>
-<li><a href="#org56bb5c8">Distance of a signal to a system</a></li>
-<li><a href="#org4ee8381">Distance between systems</a></li>
-<li><a href="#org4e30a55">More examples in the package</a></li>
+<li><a href="#org54b8712">Finding the number of inputs</a></li>
+<li><a href="#orgf228131">Finding an input/output partitioning of the variables</a></li>
+<li><a href="#orgebc7d64">The data-generating system may be unstable (but it&rsquo;s OK)</a></li>
+<li><a href="#orgba9949c">Distance of a signal to a system</a></li>
+<li><a href="#org417913f">Distance between systems</a></li>
+<li><a href="#org04429f5">More examples in the package</a></li>
 </ul>
 </div>
 
@@ -355,13 +355,13 @@ In the examples shown below, a trajectory of a discrete-time linear time-invaria
 </p>
 
 <p>
-The code of the examples is should be run sequentially (data generated from one example is used in the following examples). It is extracted in the script file <a href="./examples_web.m"><code>examples_web.m</code></a>. 
+The code of the examples is should be run sequentially (data generated from one example is used in the following examples). It is extracted in the script file <a href="./examples_web.m">examples<sub>web.m</sub></a>. 
 </p>
 </div>
 
-<div id="outline-container-orgc4d812e" class="outline-3">
-<h3 id="orgc4d812e">Finding the number of inputs</h3>
-<div class="outline-text-3" id="text-orgc4d812e">
+<div id="outline-container-org54b8712" class="outline-3">
+<h3 id="org54b8712">Finding the number of inputs</h3>
+<div class="outline-text-3" id="text-org54b8712">
 <p>
 The data is a vector time series containing the observed variables of the system. Since these variables are not partitioned into inputs and outputs, which variables are inputs is not known. Also, how many variables are inputs is not known. It is possible however to fining the number of inputs from the given data. The function of the toolbox that does this is <code>w2c</code>. In addition to finding the number of inputs \(m\), it finds also the order \(n\) and the lag \(\ell\) of the underlying data-generating system. 
 </p>
@@ -415,9 +415,9 @@ Here is an example:
 </div>
 </div>
 
-<div id="outline-container-org281c927" class="outline-3">
-<h3 id="org281c927">Finding an input/output partitioning of the variables</h3>
-<div class="outline-text-3" id="text-org281c927">
+<div id="outline-container-orgf228131" class="outline-3">
+<h3 id="orgf228131">Finding an input/output partitioning of the variables</h3>
+<div class="outline-text-3" id="text-orgf228131">
 <p>
 We&rsquo;ve seen that we can find the number of inputs \(m\) from the data. Can we find also <i>the</i> input variables \(u\)? No, in general, we can not do this because different sets of variables can act as inputs. The function of the toolbox that finds all possibilities of partitioning the variables into inputs and outputs is <code>BT2IO</code>. 
 </p>
@@ -474,9 +474,9 @@ is the first input/output partitioning.
 </div>
 </div>
 
-<div id="outline-container-org65fe935" class="outline-3">
-<h3 id="org65fe935">The data-generating system may be unstable (but it&rsquo;s OK)</h3>
-<div class="outline-text-3" id="text-org65fe935">
+<div id="outline-container-orgebc7d64" class="outline-3">
+<h3 id="orgebc7d64">The data-generating system may be unstable (but it&rsquo;s OK)</h3>
+<div class="outline-text-3" id="text-orgebc7d64">
 <p>
 In the examples above, we&rsquo;ve used the function <code>randB</code> for obtaining a random data-generating system <code>B</code> and the function <code>B2w</code> for obtaining a random trajectory of that system. 
 </p>
@@ -518,9 +518,9 @@ Thus, using the nonparameteric representation \(B_T\) of the finite-horizon beha
 </div>
 </div>
 
-<div id="outline-container-org56bb5c8" class="outline-3">
-<h3 id="org56bb5c8">Distance of a signal to a system</h3>
-<div class="outline-text-3" id="text-org56bb5c8">
+<div id="outline-container-orgba9949c" class="outline-3">
+<h3 id="orgba9949c">Distance of a signal to a system</h3>
+<div class="outline-text-3" id="text-orgba9949c">
 <p>
 The distance of a signal \(w\) to a system \(\mathcal{B}\) has the familiar definition and geometrical interpretation: \(\min_{\hat w \in \mathcal{B}} \| w - \hat w \|\). It&rsquo;s computation is implemented in the function <code>dist</code>. As a specification of \(\mathcal{B}\), <code>dist</code> accepts an <code>lti</code> object as well as the finite-horizon representation \(B_T\) with horizon \(T\) the length of \(w\).
 </p>
@@ -562,9 +562,9 @@ The distance of the best approximation to the original trajectory is smaller tha
 </div>
 </div>
 
-<div id="outline-container-org4ee8381" class="outline-3">
-<h3 id="org4ee8381">Distance between systems</h3>
-<div class="outline-text-3" id="text-org4ee8381">
+<div id="outline-container-org417913f" class="outline-3">
+<h3 id="org417913f">Distance between systems</h3>
+<div class="outline-text-3" id="text-org417913f">
 <p>
 How to check if two systems are equal? By construction the system 
 </p>
@@ -607,9 +607,9 @@ This distance measure is applicable also to unstable systems.
 </div>
 </div>
 
-<div id="outline-container-org4e30a55" class="outline-3">
-<h3 id="org4e30a55">More examples in the package</h3>
-<div class="outline-text-3" id="text-org4e30a55">
+<div id="outline-container-org04429f5" class="outline-3">
+<h3 id="org04429f5">More examples in the package</h3>
+<div class="outline-text-3" id="text-org04429f5">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
